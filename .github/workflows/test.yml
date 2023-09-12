@@ -17,6 +17,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4.0.0
+    - name: Cache node modules
+      uses: actions/cache@v3.3.2
+      with:
+        path: node_modules
+        key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: | 
+          ${{ runner.OS }}-build-${{ env.cache-name }}-
+          ${{ runner.OS }}-build-
+          ${{ runner.OS }}-
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3.8.1
       with:
