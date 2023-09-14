@@ -290,10 +290,10 @@ etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
-express-rate-limit@^6.11.0:
-  version "6.11.0"
-  resolved "https://registry.yarnpkg.com/express-rate-limit/-/express-rate-limit-6.11.0.tgz#bbb474c9765e5027ac92683a494e06162ea7c542"
-  integrity sha512-H9afltGTaEZcvenAB5LFgb/ysTMHUzMxoB3TJM6UHP5FtAP1p2+heMj1xwTei54Zm4I9I/2qsS5m+XrdKQp/Hw==
+express-rate-limit@^6.11.2:
+  version "6.11.2"
+  resolved "https://registry.yarnpkg.com/express-rate-limit/-/express-rate-limit-6.11.2.tgz#6c42035603d3b52e4e2fb59f6ebaa89e628ef980"
+  integrity sha512-a7uwwfNTh1U60ssiIkuLFWHt4hAC5yxlLGU2VP0X4YNlyEDZAqF4tK3GD3NSitVBrCQmQ0++0uOyFOgC2y4DDw==
 
 express@^4.18.2:
   version "4.18.2"
