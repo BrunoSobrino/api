@@ -82,6 +82,53 @@ http://localhost:3000/live
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fsanwebinfo%2Fcricket-api-nodejs)  
 
+## Docker 🐬
+
+Keep Running the Node JS API in Docker  
+
+- Update the `.dockerfile` before build - Modify it according to your Needs  
+
+```sh
+FROM node:18-alpine
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN yarn install
+COPY . .
+EXPOSE 3000
+CMD [ "node", "index.js" ]
+```
+
+```sh
+
+## Build image
+docker build . -t="cricket-api-nodejs"
+
+## List the image
+docker image ls
+
+## Create and Test Container
+docker run -d -p 3000:3000 --name cricket cricket-api-nodejs
+docker container ps
+docker stop (containerID)
+
+## Run the container forever
+docker run -d --restart=always -p 3000:3000 --name cricket cricket-api-nodejs
+
+## List Hidden container if error exists
+docker ps -a
+
+## other commands
+docker logs (containerID)
+docker stop (containerID)
+docker rm (containerid)
+docker docker rmi (imageid)
+docker image prune
+docker builder prune --all -f
+docker system prune --all
+docker rm $(docker ps -all -q)
+docker rmi $(docker image ls -q)
+```
+
 ## Contributing 🙌
 
 Your PR's are Welcome
