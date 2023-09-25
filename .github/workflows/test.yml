@@ -16,7 +16,7 @@ jobs:
         node-version: [18.x]
 
     steps:
-    - uses: actions/checkout@v4.0.0
+    - uses: actions/checkout@v4.1.0
     - name: Cache node modules
       uses: actions/cache@v3.3.2
       with:
