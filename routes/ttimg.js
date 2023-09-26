@@ -17,26 +17,8 @@ const apiRequestLimiter = rateLimit({
 
 const cache = apicache.middleware;
 
-// ttimg function
-const ttimg = async (link) => {
-    try {    
-        let url = `https://dlpanda.com/es?url=${link}&token=G7eRpMaa`;    
-        let response = await axios.get(url);
-        const html = response.data;
-        const $ = cheerio.load(html);
-        let imgSrc = [];
-        $('div.col-md-12 > img').each((index, element) => {
-            imgSrc.push($(element).attr('src'));
-        });
-        if (imgSrc.length === 0) {
-            return { data: '*[❗] No se encontraron imágenes en el enlace proporcionado.*' };
-        }
-        return { data: imgSrc }; 
-    } catch (error) {
-        console.log(error);
-        return { data: '*[❗] No se obtuvo respuesta de la página, intente más tarde.*'};
-    }
-};
+// Import the ttimg function from './func-ttimg'
+const ttimg = require('./func-ttimg');
 
 // Define the route
 router.get('/', cache('2 minutes'), apiRequestLimiter, async (req, res) => {
