@@ -2,6 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 const ttimg = async (link) => {
+    if (!link) return { data: '*[❗] Enlace no encontrado.*' };
     try {    
         let url = `https://dlpanda.com/es?url=${link}&token=G7eRpMaa`;    
         let response = await axios.get(url);
