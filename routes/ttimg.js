@@ -47,11 +47,4 @@ router.get('/', cache('2 minutes'), apiRequestLimiter, async (req, res) => {
     }
 });
 
-// Define other routes or middleware as needed
-
-// Start the Express app
-const PORT = process.env.PORT || 3000;
-app.use('/api', router); // Use the router for /api/* routes
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+module.exports = router;
