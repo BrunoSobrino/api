@@ -31,8 +31,8 @@ router.get('/', cache('2 minutes'), apiRequestLimiter, async (req, res) => {
   const match_url = req.query.url;
 
   try {
-    const audioData = await YT.mp4(match_url);
-    const fileStream = fs.createReadStream(audioData.path);
+    const videoData = await YT.mp4(match_url);
+    const fileStream = fs.createReadStream(videoData.path);
     fileStream.pipe(res);
   } catch (error) {
     if (!error.response) {
