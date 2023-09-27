@@ -23,7 +23,7 @@ router.get('/', cache('1 hour'), apiRequestLimiter, function(req, res) {
     res.header('X-Content-Type-Options', 'nosniff');
     res.header('Strict-Transport-Security', 'max-age=63072000');
     res.setHeader('Content-Type', 'application/json');
-    res.json('Api Rest - By BrunoSobrino\n- En Desarollo');
+    res.json('Api Rest - By BrunoSobrino - En Desarollo');
 
 });
 
