@@ -26,7 +26,7 @@ router.get('/', cache('2 minutes'), apiRequestLimiter, async (req, res) => {
   res.header('X-XSS-Protection', '1; mode=block');
   res.header('X-Content-Type-Options', 'nosniff');
   res.header('Strict-Transport-Security', 'max-age=63072000');
-  res.setHeader('Content-Type', 'audio/mpeg');
+  res.setHeader('Content-Type', 'video/mp4');
 
   const match_url = req.query.url;
 
