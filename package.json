@@ -1,32 +1,29 @@
 {
-  "name": "cricket-api-nodejs",
+  "name": "BrunoSobrino - Api Rest",
   "version": "0.0.1",
-  "description": "Live Cricket Score JSON API - Get data from Cricbuzz.",
+  "description": "Simple Api Rest para Bots - By BrunoSobrino.",
   "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "node test.js",
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sanwebinfo/cricket-api-nodejs.git"
+    "url": "git+https://github.com/BrunoSobrino/api.git"
   },
   "keywords": [
-    "cricet",
-    "cricket",
     "api",
     "api",
     "json",
     "express"
   ],
-  "author": "Santhosh Veer",
+  "author": "Bruno Sobrino",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sanwebinfo/cricket-api-nodejs/issues"
+    "url": "https://github.com/BrunoSobrino/api/issues"
   },
-  "homepage": "https://github.com/sanwebinfo/cricket-api-nodejs#readme",
+  "homepage": "https://github.com/BrunoSobrino/api#readme",
   "dependencies": {
     "apicache": "^1.6.3",
     "axios": "^1.5.0",
