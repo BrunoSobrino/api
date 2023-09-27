@@ -17,10 +17,8 @@ const apiRequestLimiter = rateLimit({
 
 const cache = apicache.middleware;
 
-// Import the ttimg function from './func-ttimg'
-const ttimg = require('./func-ttimg');
+const ttimg = require('./func/ttimg');
 
-// Define the route
 router.get('/', cache('2 minutes'), apiRequestLimiter, async (req, res) => {
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
     res.header('Access-Control-Allow-Methods', 'GET');
@@ -33,12 +31,9 @@ router.get('/', cache('2 minutes'), apiRequestLimiter, async (req, res) => {
     const match_url = req.query.url;
 
     try {
-        // Call the ttimg function here
         const result = await ttimg(match_url);
-
         res.send(JSON.stringify(result, null, 4));
     } catch (error) {
-        // Handle errors here, you can use a similar approach as in your example
         if (!error.response) {
             res.json({ error: 'An error occurred' });
         } else {
