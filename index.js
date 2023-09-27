@@ -32,6 +32,7 @@ app.use('/live', live);
 app.use('/score', score);
 app.use('/api', ttimg);
 app.use('/ytdl', ytdl);
+app.use('/tmp', express.static('tmp'));
 
 app.disable("x-powered-by");
 
