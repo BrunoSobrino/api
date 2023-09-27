@@ -22,15 +22,11 @@ app.use(cors({
 }));
 
 const home = require('./routes/home');
-const live = require('./routes/live');
-const score = require('./routes/score');
 const ttimg = require('./routes/ttimg');
 const ytmp3 = require('./routes/ytmp3');
 const ytmp4 = require('./routes/ytmp4');
 
 app.use('/', home);
-app.use('/live', live);
-app.use('/score', score);
 app.use('/ttimg', ttimg);
 app.use('/ytmp3', ytmp3);
 app.use('/ytmp4', ytmp4);
