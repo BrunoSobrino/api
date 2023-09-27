@@ -25,8 +25,8 @@ const home = require('./routes/home');
 const live = require('./routes/live');
 const score = require('./routes/score');
 const ttimg = require('./routes/ttimg');
-const ytdl = require('./routes/ytmp3');
-const ytdl = require('./routes/ytmp4');
+const ytmp3 = require('./routes/ytmp3');
+const ytmp4 = require('./routes/ytmp4');
 
 app.use('/', home);
 app.use('/live', live);
