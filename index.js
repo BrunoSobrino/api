@@ -25,11 +25,13 @@ const home = require('./routes/home');
 const live = require('./routes/live');
 const score = require('./routes/score');
 const ttimg = require('./routes/ttimg');
+const ytdl = require('./routes/ytdl');
 
 app.use('/', home);
 app.use('/live', live);
 app.use('/score', score);
 app.use('/api', ttimg);
+app.use('/ytdl', ytdl);
 
 app.disable("x-powered-by");
 
