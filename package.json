@@ -36,7 +36,8 @@
     "node-fetch": "^3.2.0",
     "fs": "^0.0.1-security",
     "ytdl-core": "github:khlevon/node-ytdl-core#v4.11.4-patch.2",
-    "fluent-ffmpeg": "^2.1.2"
+    "fluent-ffmpeg": "^2.1.2",
+    "@bochilteam/scraper": "^4.2.4"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
