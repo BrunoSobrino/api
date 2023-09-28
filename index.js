@@ -30,10 +30,10 @@ const ytmp4_2 = require('./routes/ytmp4_2');
 
 app.use('/', home);
 app.use('/ttimg', ttimg);
-app.use('/ytmp3', ytmp3);
-app.use('/ytmp4', ytmp4);
-app.use('/ytmp3/v2', ytmp3_2);
-app.use('/ytmp4/v2', ytmp4_2);
+app.use('/v1/ytmp3', ytmp3);
+app.use('/v1/ytmp4', ytmp4);
+app.use('/v2/ytmp3', ytmp3_2);
+app.use('/v2/ytmp4', ytmp4_2);
 app.use('/tmp', express.static('tmp'));
 
 app.disable("x-powered-by");
