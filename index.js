@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3036;
 
 var allowedOrigins = ['http://localhost:8080',
     'https://score.sanweb.info',
@@ -14,7 +14,6 @@ app.use(cors({
         if (allowedOrigins.indexOf(origin) === -1) {
             var msg = 'The CORS policy for this site does not ' +
                 'allow access from the specified Origin.';
-            //return callback(new Error(msg), false);
              return callback((msg));
         }
         return callback(null, true);
