@@ -142,10 +142,7 @@ try {
     } catch (error) {
       throw error;
     }
-  }
-}
-  
+  }  
   
 }
-
 module.exports = YT;
