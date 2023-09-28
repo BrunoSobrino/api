@@ -4,38 +4,21 @@ const ffmpeg = require("fluent-ffmpeg");
 const fs = require("fs");
 const { randomBytes } = require("crypto");
 const { youtubedl, youtubedlv2 } = require('@bochilteam/scraper');
-
-const ytIdRegex =
-  /(?:youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|youtu\.be\/)([a-zA-Z0-9_-]{6,11})/;
+const { getBuffer } = require('./functions');
+const ytIdRegex = /(?:youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|youtu\.be\/)([a-zA-Z0-9_-]{6,11})/;
 
 class YT {
   constructor() {}
 
-  /**
-   * is Youtube URL?
-   * @param {string|URL} url youtube url
-   * @returns Returns true if the given YouTube URL.
-   */
   static isYTUrl(url) {
     return ytIdRegex.test(url);
   }
 
-  /**
-   * get video id from url
-   * @param {string|URL} url the youtube url want to get video id
-   * @returns
-   */
   static getVideoID(url) {
     if (!this.isYTUrl(url)) throw new Error("is not YouTube URL");
     return ytIdRegex.exec(url)[1];
   }
 
-  /**
-   * Download YouTube to mp3
-   * @param {string|URL} url YouTube link want to download to mp3
-   * @copyright Darlyn1234
-   * @returns
-   */
   static async mp3(url) {
     try {
       if (!url) {
@@ -68,13 +51,7 @@ class YT {
       throw error;
     }
   }    
-    
-  /**
-   * Download YouTube to mp4
-   * @param {string|URL} url YouTube link want to download to mp4
-   * @copyright Darlyn1234
-   * @returns
-   */
+        
   static async mp4(url) {
 try {
   if (!url) {
@@ -91,6 +68,11 @@ try {
     quality: 'highestvideo'
   });
   const videoPath = `./tmp/${randomBytes(3).toString("hex")}.mp4`;
+  let index = 1;
+  while (fs.existsSync(videoPath)) {
+     videoPath = `./tmp/${randomBytes(3).toString("hex")}_${index}.mp4`;
+     index++;
+  }
   const output = fs.createWriteStream(videoPath);
   await new Promise((resolve, reject) => {
     stream.pipe(output);
@@ -112,8 +94,8 @@ try {
 } catch (error) {
   throw error;
 }
-}
-
+}    
+    
   static async mp3_2(url, quality = '128kbps') {
   try {
     if (!url) {
@@ -122,7 +104,7 @@ try {
     url = this.isYTUrl(url) ? `https://www.youtube.com/watch?v=${this.getVideoID(url)}` : url;
     const yt = await youtubedl(url).catch(async (_) => await youtubedlv2(url));
     const dl_url = await yt.audio[quality].download();
-    const audioBuffer = await this.getBuffer(dl_url);
+    const audioBuffer = await getBuffer(dl_url);
     return audioBuffer;
   } catch (error) {
     throw error;
@@ -137,12 +119,13 @@ try {
       url = this.isYTUrl(url) ? `https://www.youtube.com/watch?v=${this.getVideoID(url)}` : url;
       const yt = await youtubedl(url).catch(async (_) => await youtubedlv2(url));
       const dl_url = await yt.video[quality].download();
-      const videoBuffer = await this.getBuffer(dl_url);
+      const videoBuffer = await getBuffer(dl_url);
       return videoBuffer;
     } catch (error) {
       throw error;
     }
-  }  
+  } 
   
 }
+
 module.exports = YT;
