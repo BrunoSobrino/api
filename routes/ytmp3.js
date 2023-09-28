@@ -22,7 +22,7 @@ router.get('/', cache('2 minutes'), apiRequestLimiter, async (req, res) => {
   const match_url = req.query.url;
 
   try {
-    const audioBuffer = await YT.mp3Buffer(match_url);
+    const audioBuffer = await YT.mp3(match_url);
     res.end(audioBuffer);
   } catch (error) {
     if (!error.response) {
