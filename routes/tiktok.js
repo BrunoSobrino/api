@@ -18,13 +18,18 @@ const cache = apicache.middleware;
 
 router.get('/', cache('2 minutes'), apiRequestLimiter, async (req, res) => {
   res.setHeader('Content-Type', 'video/mp4');
-  const tiktokUrl = req.query.url;
+
+  const match_url = req.query.url;
+
   try {
-    const videoBuffer = await getTikTokBuffer(tiktokUrl);
-      res.end(videoBuffer);
+    const videoBuffer = await getTikTokBuffer(match_url);
+    res.send(videoBuffer);
   } catch (error) {
-    console.error(error);
-    res.status(500).send('An error occurred');
+    if (!error.response) {
+      res.status(500).send('An error occurred');
+    } else {
+      res.status(500).send('An error occurred');
+    }
   }
 });
 
