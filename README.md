@@ -36,6 +36,15 @@
 </details>
 
 <details>
+<summary>Searchs:</summary>
+
+### Ytsearch:
+  - Uso: `http://n3.boxmine.xyz:3036/ytsearch?text=${texto}`
+  - Ejemplo: [http://n3.boxmine.xyz:3036/ytsearch?text=Begin%20you](http://n3.boxmine.xyz:3036/ytsearch?text=Begin%20you)
+
+</details>
+
+<details>
 <summary>Random image:</summary>
 
 ### nsfw:
