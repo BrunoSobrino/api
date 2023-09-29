@@ -40,6 +40,6 @@
 
 ### nsfw:
 - **nsfwloli:**
-  - Uso: [http://n3.boxmine.xyz:3036/nsfw/nsfwloli](http://n3.boxmine.xyz:3036/nsfw/nsfwloli(http://n3.boxmine.xyz:3036/nsfw/nsfwloli)
+  - Uso: [http://n3.boxmine.xyz:3036/nsfw/nsfwloli](http://n3.boxmine.xyz:3036/nsfw/nsfwloli)
 
 </details>
