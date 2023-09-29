@@ -29,7 +29,7 @@ const ytmp4_2 = require('./routes/ytmp4_2');
 const nsfwloli = require('./routes/nsfwloli');
 const tiktokdl = require('./routes/tiktok');
 const ytsearch = require('./routes/ytsearch');
-const ytinfo = require('./routes/ytinfo');
+const ytdl = require('./routes/ytdl');
 
 app.use('/', home);
 app.use('/ttimg', ttimg);
@@ -40,7 +40,7 @@ app.use('/v2/ytmp4', ytmp4_2);
 app.use('/nsfw/nsfwloli', nsfwloli);
 app.use('/tiktok', tiktokdl);
 app.use('/ytsearch', ytsearch);
-app.use('/ytinfo', ytinfo);
+app.use('/ytdl', ytdl);
 app.use('/tmp', express.static('tmp'));
 
 app.disable("x-powered-by");
