@@ -11,11 +11,11 @@
 
 ### YT downloader v1:
 - **audio:**
-  - Uso: `http://n3.boxmine.xyz:3036/v1/ytmp3?url=${url}`
-  - Ejemplo: [http://n3.boxmine.xyz:3036/v1/ytmp3?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p](http://n3.boxmine.xyz:3036/v1/ytmp3?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p)
+  - Uso: `https://api.boxmine.xyz/v1/ytmp3?url=${url}`
+  - Ejemplo: [https://api.boxmine.xyz/v1/ytmp3?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p](https://api.boxmine.xyz/v1/ytmp3?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p)
 - **video:**
-  - Uso: `http://n3.boxmine.xyz:3036/v1/ytmp4?url=${url}`
-  - Ejemplo: [http://n3.boxmine.xyz:3036/v1/ytmp4?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p](http://n3.boxmine.xyz:3036/v1/ytmp4?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p)
+  - Uso: `https://api.boxmine.xyz/v1/ytmp4?url=${url}`
+  - Ejemplo: [https://api.boxmine.xyz/v1/ytmp4?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p](https://api.boxmine.xyz/v1/ytmp4?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p)
 
 ### YT downloader v2:
 - **audio:**
