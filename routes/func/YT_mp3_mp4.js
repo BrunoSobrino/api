@@ -131,9 +131,13 @@ try {
       if (!url) throw new Error("Video ID or YouTube Url is required");
       url = this.isYTUrl(url) ? "https://www.youtube.com/watch?v=" + this.getVideoID(url) : url;
       const info = await ytdl.getInfo(url, { lang: "id" });    
-      const { videoDetails } = info    
+      const { videoDetails } = info;    
       const audioURL = ytdl.chooseFormat(info.formats, {quality: 'highestaudio'}).url;
       const videoURL = ytdl.chooseFormat(info.formats, {quality: 'highestvideo'}).url;
+      const shortUrl1 = await (await fetch(`https://tinyurl.com/api-create.php?url=${audioURL}`)).text();
+      const shortUrl2 = await (await fetch(`https://tinyurl.com/api-create.php?url=${videoURL}`)).text();
+      const audiodl = shortUrl1 ? shortUrl1 : audioURL; 
+      const videodl = shortUrl2 ? shortUrl2 : videoURL; 
     return {
       resultado: {
         channelUrl: videoDetails.author.channel_url,
@@ -151,8 +155,8 @@ try {
         image: videoDetails.thumbnails.slice(-1)[0].url,
       },
       download: {
-        audio: audioURL,
-        video: videoURL,
+        audio: audiodl,
+        video: videodl,
       },
     };
     } catch (error) {
