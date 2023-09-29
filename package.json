@@ -37,7 +37,9 @@
     "fs": "^0.0.1-security",
     "ytdl-core": "github:khlevon/node-ytdl-core#v4.11.4-patch.2",
     "fluent-ffmpeg": "^2.1.2",
-    "@bochilteam/scraper": "^4.2.4"
+    "@bochilteam/scraper": "^4.2.4",
+    "@xct007/frieren-scraper": "github:xct007/frieren-scraper#main",
+    "api-dylux": "^1.6.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
