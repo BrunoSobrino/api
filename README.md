@@ -1,6 +1,10 @@
-# Api Rest - By BrunoSobrino
+# Free Api Rest - By BrunoSobrino
 
 - En desarrollo
+
+------------------
+
+# Funciones disponibles
 
 <details>
 <summary>Downloaders:</summary>
