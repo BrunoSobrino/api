@@ -138,13 +138,13 @@ try {
           category: videoDetails.category,
           id: videoDetails.videoId,
           url: videoDetails.video_url,
-          description: videoDetails.description,   
           publicDate: videoDetails.publishDate,
           uploadDate: videoDetails.uploadDate,
           keywords: videoDetails.keywords,
           title: videoDetails.title,
           channel: videoDetails.author.name,
           seconds: videoDetails.lengthSeconds,
+          description: videoDetails.description,   
           image: videoDetails.thumbnails.slice(-1)[0].url,
         }
       };
