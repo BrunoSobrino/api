@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const axios = require('axios'); // Asegúrate de importar axios
+const axios = require('axios');
 const { rateLimit } = require('express-rate-limit');
 const apicache = require('apicache');
 
@@ -18,8 +18,8 @@ const cache = apicache.middleware;
 
 router.get('/', async (req, res) => {
   try {
-    const res = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/nsfwloli.json');
-    const data = res.data;
+    const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/nsfwloli.json');
+    const data = response.data;
     const randomIndex = Math.floor(data.length * Math.random());
     const imageUrl = data[randomIndex];
     const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
