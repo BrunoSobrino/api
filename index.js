@@ -26,7 +26,7 @@ const ytmp3 = require('./routes/ytmp3');
 const ytmp4 = require('./routes/ytmp4');
 const ytmp3_2 = require('./routes/ytmp3_2');
 const ytmp4_2 = require('./routes/ytmp4_2');
-const nsfwloli = require('./routes/nsfwoli');
+const nsfwloli = require('./routes/nsfwloli');
 
 app.use('/', home);
 app.use('/ttimg', ttimg);
