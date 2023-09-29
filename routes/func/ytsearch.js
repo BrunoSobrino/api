@@ -10,6 +10,7 @@ const ytsearch = async (searchText) => {
   const formattedResults = results.all.map((video) => {
     if (video.type === 'video') {
       return {
+        data: {
         title: video.title,
         url: video.url,
         duration: video.timestamp,
@@ -17,6 +18,7 @@ const ytsearch = async (searchText) => {
         views: video.views,
         thumbnail: video.thumbnail
       };
+     }
     }
     return null;
   }).filter(Boolean);
