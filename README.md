@@ -2,7 +2,8 @@
 
 - En desarrollo
 
-## Downloaders:
+<details>
+<summary>Downloaders:</summary>
 
 ### YT downloader v1:
 - **audio:**
@@ -20,10 +21,20 @@
   - Uso: `http://n3.boxmine.xyz:3036/v2/ytmp4?url=${url}`
   - Ejemplo: Uso - [Ejemplo](http://n3.boxmine.xyz:3036/v2/ytmp4?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p)
 
-### TikTok image downloader:
+</details>
+
+<details>
+<summary>TikTok image downloader:</summary>
+
 - Uso: `http://n3.boxmine.xyz:3036/ttimg?url=${url}`
 - Ejemplo: Uso - [Ejemplo](http://n3.boxmine.xyz:3036/http://n3.boxmine.xyz:3036/ttimg?url=https://vm.tiktok.com/ZM2cqBRVS)
 
-### Random image:
-- **nsfw:**
-  - nsfwloli - [Enlace](http://n3.boxmine.xyz:3036/nsfw/nsfwloli)
+</details>
+
+<details>
+<summary>Random image:</summary>
+
+### nsfw:
+- nsfwloli - [Enlace](http://n3.boxmine.xyz:3036/nsfw/nsfwloli)
+
+</details>
