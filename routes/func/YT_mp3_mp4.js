@@ -130,30 +130,35 @@ try {
     try {
       if (!url) throw new Error("Video ID or YouTube Url is required");
       url = this.isYTUrl(url) ? "https://www.youtube.com/watch?v=" + this.getVideoID(url) : url;
-      const { videoDetails } = await ytdl.getInfo(url, { lang: "id" });
-      return {
-        resultado: {
-          channelUrl: videoDetails.author.channel_url,
-          views: videoDetails.viewCount,
-          category: videoDetails.category,
-          id: videoDetails.videoId,
-          url: videoDetails.video_url,
-          publicDate: videoDetails.publishDate,
-          uploadDate: videoDetails.uploadDate,
-          keywords: videoDetails.keywords,
-          title: videoDetails.title,
-          channel: videoDetails.author.name,
-          seconds: videoDetails.lengthSeconds,
-          description: videoDetails.description,   
-          image: videoDetails.thumbnails.slice(-1)[0].url,
-        }
-      };
+      const info = await ytdl.getInfo(url, { lang: "id" });    
+      const { videoDetails } = info    
+      const audioURL = ytdl.chooseFormat(info.formats, {quality: 'highestaudio'}).url;
+      const videoURL = ytdl.chooseFormat(info.formats, {quality: 'highestvideo'}).url;
+    return {
+      resultado: {
+        channelUrl: videoDetails.author.channel_url,
+        views: videoDetails.viewCount,
+        category: videoDetails.category,
+        id: videoDetails.videoId,
+        url: videoDetails.video_url,
+        publicDate: videoDetails.publishDate,
+        uploadDate: videoDetails.uploadDate,
+        keywords: videoDetails.keywords,
+        title: videoDetails.title,
+        channel: videoDetails.author.name,
+        seconds: videoDetails.lengthSeconds,
+        description: videoDetails.description,
+        image: videoDetails.thumbnails.slice(-1)[0].url,
+      },
+      download: {
+        audio: audioURL,
+        video: videoURL,
+      },
+    };
     } catch (error) {
       throw error;
     }
   };
     
-  
 }
-
 module.exports = YT;
