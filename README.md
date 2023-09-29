@@ -24,6 +24,11 @@
 - **video:**
   - Uso: `https://api.boxmine.xyz/v2/ytmp4?url=${url}`
   - Ejemplo: [https://api.boxmine.xyz/v2/ytmp4?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p](https://api.boxmine.xyz/v2/ytmp4?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p)
+
+### YTDL:
+- **info + audio + video:**
+  - Uso: `https://api.boxmine.xyz/ytdl?url=${url}`
+  - Ejemplo: [https://api.boxmine.xyz/ytdl?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p](https://api.boxmine.xyz/ytdl?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p)
   
 ### TikTokDL:
 - Uso: `https://api.boxmine.xyz/tiktok?url=${url}`
@@ -38,13 +43,9 @@
 <details>
 <summary>Searchs:</summary>
 
-### Ytsearch:
+### YTSearch:
   - Uso: `https://api.boxmine.xyz/ytsearch?text=${texto}`
   - Ejemplo: [https://api.boxmine.xyz/ytsearch?text=Begin%20you](https://api.boxmine.xyz/ytsearch?text=Begin%20you)
-    
-### Ytinfo:
-  - Uso: `https://api.boxmine.xyz/ytinfo?url=${url}`
-  - Ejemplo: [https://api.boxmine.xyz/ytinfo?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p](https://api.boxmine.xyz/ytinfo?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p)
 
 </details>
 
