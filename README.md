@@ -39,6 +39,7 @@
 <summary>Random image:</summary>
 
 ### nsfw:
-- nsfwloli - [Enlace](http://n3.boxmine.xyz:3036/nsfw/nsfwloli)
+- **nsfwloli:**
+  - Uso: [http://n3.boxmine.xyz:3036/nsfw/nsfwloli](http://n3.boxmine.xyz:3036/nsfw/nsfwloli(http://n3.boxmine.xyz:3036/nsfw/nsfwloli)
 
 </details>
