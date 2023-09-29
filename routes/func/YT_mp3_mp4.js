@@ -124,7 +124,35 @@ try {
     } catch (error) {
       throw error;
     }
-  } 
+  }
+    
+  static ytinfo = async (url) => {
+    try {
+      if (!url) throw new Error("Video ID or YouTube Url is required");
+      url = this.isYTUrl(url) ? "https://www.youtube.com/watch?v=" + this.getVideoID(url) : url;
+      const { videoDetails } = await ytdl.getInfo(url, { lang: "id" });
+      return {
+        resultado: {
+          channelUrl: videoDetails.author.channel_url,
+          views: videoDetails.viewCount,
+          category: videoDetails.category,
+          id: videoDetails.videoId,
+          url: videoDetails.video_url,
+          description: videoDetails.description,   
+          publicDate: videoDetails.publishDate,
+          uploadDate: videoDetails.uploadDate,
+          keywords: videoDetails.keywords,
+          title: videoDetails.title,
+          channel: videoDetails.author.name,
+          seconds: videoDetails.lengthSeconds,
+          image: videoDetails.thumbnails.slice(-1)[0].url,
+        }
+      };
+    } catch (error) {
+      throw error;
+    }
+  };
+    
   
 }
 
