@@ -15,6 +15,7 @@ const ytsearch = async (searchText) => {
         duration: video.timestamp,
         uploaded: video.ago,
         views: video.views,
+        thumbnail: video.thumbnail
       };
     }
     return null;
