@@ -4,7 +4,7 @@
 
 ------------------
 
-# Funciones disponibles
+## Funciones disponibles:
 
 <details>
 <summary>Downloaders:</summary>
