@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web con API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Estilos para el tema claro */
+        .theme-light {
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Estilos para el tema oscuro */
+        .theme-dark {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Estilos para el menú en el tema claro */
+        .theme-light #menu {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Estilos para el menú en el tema oscuro */
+        .theme-dark #menu {
+            background-color: #fff;
+            color: #333;
+        }
+
+        #menu {
+            position: fixed;
+            top: 0;
+            right: -300px; /* El menú estará oculto inicialmente */
+            width: 250px;
+            height: 100%;
+            transition: right 0.3s;
+        }
+
+        #menu.active {
+            right: 0; /* Muestra el menú cuando tiene la clase "active" */
+        }
+
+        #menu-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 2;
+            transition: right 0.3s;
+        }
+
+        #menu-button.active {
+            right: 280px; /* Desplaza la imagen cuando se abre el menú */
+        }
+
+        /* Estilos para el recuadro de bienvenida */
+        .welcome-box {
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+        /* Estilos para el botón de redirección */
+        .redirect-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px; /* Añade espacio debajo del recuadro */
+            display: block;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%); /* Centra horizontalmente */
+            top: calc(50% + 100px); /* Coloca 100px debajo del recuadro */
+        }
+    </style>
+</head>
+<body class="theme-light">
+    <div id="menu">
+        <!-- Aquí puedes colocar tu contenido de la API -->
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="downloader.html">Downloader</a></li>
+            <li><a href="pagina3.html">Página 3</a></li>
+        </ul>
+    </div>
+    
+    <div id="content">
+        <img id="menu-button" src="menu.jpg" alt="Menú" width="40" height="40">
+        <button id="theme-toggle">Cambiar Tema</button>
+    </div>
+
+    <!-- Recuadro de bienvenida centrado -->
+    <div class="welcome-box">
+        <h2>Bienvenido a Mi API</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lectus non ligula fringilla aliquet ac at odio.</p>
+        <!-- Botón de redirección abajo del recuadro -->
+        <button class="redirect-button" onclick="window.location.href='downloader.html'">Ir a otro apartado</button>
+    </div>
+
+    <script>
+        const menuButton = document.getElementById('menu-button');
+        const menu = document.getElementById('menu');
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        menuButton.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            menuButton.classList.toggle('active');
+        });
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('theme-light');
+            body.classList.toggle('theme-dark');
+        });
+    </script>
+</body>
+</html>
