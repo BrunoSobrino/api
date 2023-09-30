@@ -3,83 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página Web con API</title>
+    <title>Downloaders</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            transition: background-color 0.3s, color 0.3s;
+            background-color: #0000ff;
+            color: #000; 
+            background-image: url('https://wallpapercave.com/wp/wp9052724.png'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
-        /* Estilos para el tema claro */
-        .theme-light {
-            background-color: #fff;
-            color: #333;
+        @media (max-width: 768px) {
+            body {
+                background-image: url('https://cdn.donmai.us/original/46/af/46af946c26c9f6d6dd0d9e632f2c0902.jpg');
+            }
         }
 
-        /* Estilos para el tema oscuro */
-        .theme-dark {
-            background-color: #333;
-            color: #fff;
-        }
-
-        /* Estilos para el menú en el tema claro */
-        .theme-light #menu {
-            background-color: #333;
-            color: #fff;
-        }
-
-        /* Estilos para el menú en el tema oscuro */
-        .theme-dark #menu {
-            background-color: #fff;
-            color: #333;
-        }
-
-        #menu {
-            position: fixed;
-            top: 0;
-            right: -300px; /* El menú estará oculto inicialmente */
-            width: 250px;
-            height: 100%;
-            transition: right 0.3s;
-        }
-
-        #menu.active {
-            right: 0; /* Muestra el menú cuando tiene la clase "active" */
-        }
-
-        #menu-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            z-index: 2;
-            transition: right 0.3s;
-        }
-
-        #menu-button.active {
-            right: 280px; /* Desplaza la imagen cuando se abre el menú */
-        }
-
-        /* Estilos para el recuadro de bienvenida */
-        .welcome-box {
-            background-color: #f0f0f0;
-            padding: 20px;
-            border-radius: 15px;
+        .section-title {
+            font-size: 36px; 
+            font-weight: bold;
+            margin-top: 20px; 
             text-align: center;
-            position: absolute;
-            top: 20px; /* Alineado en la parte superior */
-            left: 50%;
-            transform: translateX(-50%);
         }
 
-        /* Estilos para la tabla de comandos */
+        .subsection-title {
+            font-size: 24px; 
+            margin-top: 10px;
+            text-align: center;
+        }
+
         .command-table {
             width: 80%;
-            margin: 0 auto; /* Centra la tabla horizontalmente */
+            margin: 0 auto; 
             border-collapse: collapse;
-            margin-top: 120px; /* Aumenta el margen superior */
+            margin-top: 60px; 
         }
 
         .command-table th,
@@ -100,103 +61,127 @@
         .command-table tr:nth-child(odd) {
             background-color: #e0e0e0;
         }
-
-        /* Estilos para el título "Downloader" */
-        .section-title {
-            font-size: 24px;
-            font-weight: bold;
+        
+        #menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 250px;
+            height: 100%;
+            transition: right 0.3s;
+            background-color: #333;
+            color: #fff;
         }
 
-        /* Estilos para el subtítulo "List Downloader" */
-        .subsection-title {
-            font-size: 18px;
-            margin-top: 10px;
+        #menu.active {
+            right: 0;
+        }
+
+        #menu-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 2;
+            transition: right 0.3s;
+        }
+
+        #menu-button.active {
+            right: 280px;
         }
     </style>
 </head>
-<body class="theme-light">
+<body>
     <div id="menu">
-        <!-- Aquí puedes colocar tu contenido de la API -->
         <ul>
             <li><a href="index.html">Inicio</a></li>
             <li><a href="downloader.html">Downloader</a></li>
             <li><a href="pagina3.html">Página 3</a></li>
         </ul>
     </div>
-    
+
     <div id="content">
-        <img id="menu-button" src="menu.jpg" alt="Menú" width="40" height="40">
-        <button id="theme-toggle">Cambiar Tema</button>
-    </div>
+        <img id="menu-button" src="https://github.com/BrunoSobrino.png" alt="Menú" width="40" height="40">
 
-    <!-- Título "Downloader" centrado en la parte superior -->
-    <div class="welcome-box">
-        <div class="section-title">Downloader</div>
-        <!-- Subtítulo "List Downloader" -->
-        <div class="subsection-title">List Downloader</div>
-    </div>
+        <div class="welcome-box">
+            <div class="section-title">Downloader</div>
+            <div class="subsection-title">List Downloader</div>
+        </div>
 
-    <!-- Tabla de comandos -->
-    <table class="command-table">
-        <tr>
-            <th>API NAME</th>
-            <th>PARAMETER</th>
-            <th>STATUS</th>
-            <th>INFORMATION</th>
-            <th>ACTION</th>
-        </tr>
-        <tr>
-            <td>Comando 1</td>
-            <td>Parámetro 1</td>
-            <td>Activo</td>
-            <td>Información del comando 1</td>
-            <td><button>Acción 1</button></td>
-        </tr>
-        <tr>
-            <td>Comando 2</td>
-            <td>Parámetro 2</td>
-            <td>Inactivo</td>
-            <td>Información del comando 2</td>
-            <td><button>Acción 2</button></td>
-        </tr>
-        <tr>
-            <td>Comando 3</td>
-            <td>Parámetro 3</td>
-            <td>Inactivo</td>
-            <td>Información del comando 3</td>
-            <td><button>Acción 3</button></td>
-        </tr>
-        <tr>
-            <td>Comando 4</td>
-            <td>Parámetro 4</td>
-            <td>Inactivo</td>
-            <td>Información del comando 4</td>
-            <td><button>Acción 4</button></td>
-        </tr>
-        <tr>
-            <td>Comando 5</td>
-            <td>Parámetro 5</td>
-            <td>Inactivo</td>
-            <td>Información del comando 5</td>
-            <td><button>Acción 5</button></td>
-        </tr>
-        <!-- Agrega más filas según tus necesidades -->
-    </table>
+        <table class="command-table">
+            <tr>
+                <th>API NAME</th>
+                <th>PARAMETER</th>
+                <th>STATUS</th>
+                <th>INFORMATION</th>
+                <th>ACTION</th>
+            </tr>
+            <tr>
+                <td>YTMP3 V1</td>
+                <td>url</td>
+                <td>active</td>
+                <td>Descarga audios de YouTube</td>
+                <td><a href="https://api.boxmine.xyz/v1/ytmp3?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvSOkDk7p" target="_blank">Ejemplo</a></td>
+            </tr>
+            <tr>
+                <td>YTMP4 V1</td>
+                <td>url</td>
+                <td>active</td>
+                <td>Descarga videos de YouTube</td>
+                <td><a href="https://api.boxmine.xyz/v1/ytmp4?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvSOkDk7p" target="_blank">Ejemplo</a></td>
+            </tr>
+             <tr>
+                <td>YTMP3 V2</td>
+                <td>url</td>
+                <td>active</td>
+                <td>Descarga audios de YouTube</td>
+                <td><a href="https://api.boxmine.xyz/v2/ytmp3?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvSOkDk7p" target="_blank">Ejemplo</a></td>
+            </tr>
+            <tr>
+                <td>YTMP4 V2</td>
+                <td>url</td>
+                <td>active</td>
+                <td>Descarga videos de YouTube</td>
+                <td><a href="https://api.boxmine.xyz/v2/ytmp4?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvSOkDk7p" target="_blank">Ejemplo</a></td>
+            </tr>           
+            <tr>
+                <td>YTDL</td>
+                <td>url</td>
+                <td>active</td>
+                <td>Descarga audios y videos de YouTube con su información</td>
+                <td><a href="https://api.boxmine.xyz/ytdl?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvSOkDk7p" target="_blank">Ejemplo</a></td>
+            </tr>
+            <tr>
+                <td>YTPLAY</td>
+                <td>text || url</td>
+                <td>active</td>
+                <td>Descarga audios y videos de YouTube con su información</td>
+                <td><a href="https://api.boxmine.xyz/ytplay?text=begin%20you" target="_blank">Ejemplo 1</a><br><a href="https://api.boxmine.xyz/ytplay?text=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvSOkDk7p" target="_blank">Ejemplo 2</a></td>
+            </tr>
+            <tr>
+                <td>TIKTOKDL</td>
+                <td>url</td>
+                <td>active</td>
+                <td>Descarga videos de TikTok</td>
+                <td><a href="https://api.boxmine.xyz/tiktok?url=https://vm.tiktok.com/ZMjPXawEV" target="_blank">Ejemplo</a></td>
+            </tr>
+            <tr>
+                <td>TTIMG</td>
+                <td>url</td>
+                <td>active</td>
+                <td>Descarga imágenes de TikTok</td>
+                <td><a href="https://api.boxmine.xyz/ttimg?url=https://vm.tiktok.com/ZM2cqBRVS" target="_blank">Ejemplo</a></td>
+            </tr>
+        </table>
+    </div>
 
     <script>
         const menuButton = document.getElementById('menu-button');
         const menu = document.getElementById('menu');
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
 
         menuButton.addEventListener('click', () => {
             menu.classList.toggle('active');
             menuButton.classList.toggle('active');
-        });
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('theme-light');
-            body.classList.toggle('theme-dark');
         });
     </script>
 </body>
