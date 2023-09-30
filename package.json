@@ -42,7 +42,8 @@
     "api-dylux": "^1.6.2",
     "yt-search": "^2.10.3",
     "@silent-killer/killer-spotify-searching": "^1.0.5",
-    "spotifydl-x": "*"
+    "spotifydl-x": "*",
+    "chalk": "^4.1.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
