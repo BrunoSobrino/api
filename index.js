@@ -4,7 +4,7 @@ const cors = require('cors');
 const chalk = require('chalk');
 const port = process.env.PORT || 3036;
 
-var allowedOrigins = ['https://api.onrender.com'];
+var allowedOrigins = ['https://api-sxe5.onrender.com'];
 
 app.set('trust proxy', 1)
 
