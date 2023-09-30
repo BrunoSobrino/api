@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path'); 
 
 router.get('/', async (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.json('Api Rest - By BrunoSobrino - En Desarollo');
+    const indexPath = path.join(__dirname, '..', 'public', 'index.html');
+    res.sendFile(indexPath);
 });
 
 module.exports = router;
