@@ -16,7 +16,6 @@
             color: #fff;
         }
 
-        /* Estilos para el menú */
         #menu {
             position: fixed;
             top: 0;
@@ -45,7 +44,6 @@
             right: 280px;
         }
 
-        /* Estilos para el recuadro de bienvenida */
         .welcome-box {
             padding: 20px;
             text-align: center;
@@ -55,7 +53,6 @@
             transform: translate(-50%, -50%);
         }
 
-        /* Estilos para el título "Bienvenido a Mi API" con efecto neon */
         .neon-text {
             font-size: 36px;
             text-transform: uppercase;
@@ -63,7 +60,6 @@
             text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
         }
 
-        /* Estilos para el botón de redirección */
         .redirect-button {
             background-color: #007bff;
             color: #fff;
@@ -71,18 +67,16 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 20px;
             display: block;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            top: calc(50% + 100px);
+            top: calc(50% + 40px); 
         }
     </style>
 </head>
 <body>
     <div id="menu">
-        <!-- Aquí puedes colocar tu contenido de la API -->
         <ul>
             <li><a href="index.html">Inicio</a></li>
             <li><a href="downloader.html">Downloader</a></li>
@@ -94,10 +88,8 @@
         <img id="menu-button" src="https://github.com/BrunoSobrino.png" alt="Menú" width="40" height="40">
     </div>
 
-    <!-- Recuadro de bienvenida centrado -->
     <div class="welcome-box">
         <h2 class="neon-text">Bienvenido a Mi API</h2>
-        <!-- Botón de redirección abajo del recuadro -->
         <button class="redirect-button" onclick="window.location.href='downloader.html'">Documentación</button>
     </div>
 
