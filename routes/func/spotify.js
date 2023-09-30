@@ -3,7 +3,6 @@ const Spotify = require('spotifydl-x');
 const fs = require('fs');
 const NodeID3 = require('node-id3');
 const axios = require('axios');
-const { find_lyrics } = require('@brandond/findthelyrics');
 
 const credentials = {
   clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3',
@@ -25,7 +24,7 @@ async function getMusicBuffer(text) {
 
     await fs.promises.writeFile(filePath, spty.audio);
     const buffer = fs.readFileSync(filePath);
-    fs.unlinkSync(filePath); // Elimina el archivo temporal
+    fs.unlinkSync(filePath); 
 
     return buffer;
   } catch (error) {
@@ -42,9 +41,6 @@ async function getMusicData(text) {
     const spty = await spotifydl(linkDL);
     const artist = spty.data.artists.join(', ') || '-';
     const img = await (await fetch(`${spty.data.cover_url}`)).buffer();
-    const letra_s = await find_lyrics(spty.data.name ? spty.data.name : '');
-    let letra;
-    letra = `${letra_s ? letra_s + '\n\n🤴🏻 Descarga por BrunoSobrino & TheMystic-Bot-MD 🤖' : '🤴🏻 Descarga por BrunoSobrino & TheMystic-Bot-MD 🤖'}`;
 
     const data = {
       title: spty.data.name || '-',
@@ -54,11 +50,11 @@ async function getMusicData(text) {
       genre: 'Música',
       comment: {
         language: 'spa',
-        text: letra,
+        text: '🤴🏻 Descarga por BrunoSobrino & TheMystic-Bot-MD 🤖',
       },
       unsynchronisedLyrics: {
         language: 'spa',
-        text: letra,
+        text: '🤴🏻 Descarga por BrunoSobrino & TheMystic-Bot-MD 🤖',
       },
       image: {
         mime: 'image/jpeg',
