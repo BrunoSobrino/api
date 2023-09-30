@@ -1,12 +1,10 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const chalk = require('chalk');
 const port = process.env.PORT || 3036;
 
-var allowedOrigins = ['http://localhost:8080',
-    'https://score.sanweb.info',
-    'https://sanweb.info/'
-];
+var allowedOrigins = ['https://api.onrender.com'];
 
 app.use(cors({
     origin: function(origin, callback) {
@@ -14,7 +12,7 @@ app.use(cors({
         if (allowedOrigins.indexOf(origin) === -1) {
             var msg = 'The CORS policy for this site does not ' +
                 'allow access from the specified Origin.';
-             return callback((msg));
+            return callback((msg));
         }
         return callback(null, true);
     }
@@ -50,12 +48,31 @@ app.use('/tmp', express.static('tmp'));
 app.disable("x-powered-by");
 
 app.use('/', function(req, res) {
-    res.status(404).json({
+    const errorMessage = {
         error: 1,
         message: 'Data not Found'
-    });
-})
+    };
+    res.status(404).json(errorMessage);
+});
+
+app.get('/', function(req, res) {
+    const serverUrl = req.protocol + '://' + req.get('host');
+    res.send('La aplicación está funcionando en: ' + serverUrl);
+});
 
 app.listen(port, function() {
-    console.log('listening on port ' + port);
+    const line = chalk.yellow('==========================================');
+    const serverUrl = 'http://localhost:' + port;
+    const serverMessage = chalk.green.bold('| Server activo: ') + chalk.blue.bold(serverUrl);
+    const creatorMessage = chalk.magenta.bold('| Creador: BrunoSobrino');
+    const numberMessage = chalk.magenta.bold('| Numero: +52 1 999 612 5657');
+    const apiMessage = chalk.red.bold('|          "Api Rest Free"');
+    console.log(chalk.yellow(line));
+    console.log(apiMessage);
+    console.log(chalk.yellow(line));
+    console.log(serverMessage);
+    console.log(chalk.yellow(line));
+    console.log(creatorMessage);
+    console.log(numberMessage);
+    console.log(chalk.yellow(line));
 });
