@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getMusicBuffer } = require('./func/spotifysearch'); 
+const { getMusicBuffer } = require('./func/spotify'); 
 
 router.get('/', async (req, res) => {
   res.setHeader('Content-Type', 'audio/mpeg');
