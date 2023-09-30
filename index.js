@@ -46,6 +46,7 @@ app.use('/ytdl', ytdl);
 app.use('/ytplay', ytplay);
 app.use('/spotifysearch', spotifys);
 app.use('/tmp', express.static('tmp'));
+app.use(express.static('public'));
 
 app.disable("x-powered-by");
 
