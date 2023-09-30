@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { rateLimit } = require('express-rate-limit');
 const apicache = require('apicache');
-const spotifySearch = require('./func/spotifysearch'); 
+const { getMusicBuffer } = require('./func/spotifysearch'); 
 
 const app = express();
 
@@ -16,18 +16,20 @@ const apiRequestLimiter = rateLimit({
 
 const cache = apicache.middleware;
 
-router.get('/', async (req, res) => {
-  const searchText = req.query.text;
+router.get('/', cache('2 minutes'), apiRequestLimiter, async (req, res) => {
+  res.setHeader('Content-Type', 'audio/mpeg');
+
+  const songName = req.query.songName; 
+
   try {
-    if (!searchText) {
-      throw new Error('Texto de búsqueda no especificado');
-    }
-    const spotifyResults = await spotifySearch(searchText);
-    res.setHeader('Content-Type', 'application/json');
-    res.send(spotifyResults);
+    const songBuffer = await getMusicBuffer(songName); 
+    res.end(songBuffer);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error en la búsqueda' });
+    if (!error.response) {
+      res.status(500).send('An error occurred');
+    } else {
+      res.status(500).send('An error occurred');
+    }
   }
 });
 
