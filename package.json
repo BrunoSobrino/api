@@ -43,7 +43,8 @@
     "yt-search": "^2.10.3",
     "@silent-killer/killer-spotify-searching": "^1.0.5",
     "spotifydl-x": "*",
-    "chalk": "^4.1.2"
+    "chalk": "^4.1.2",
+    "node-persist": "*"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
