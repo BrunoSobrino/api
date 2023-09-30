@@ -31,6 +31,7 @@ const tiktokdl = require('./routes/tiktok');
 const ytsearch = require('./routes/ytsearch');
 const ytdl = require('./routes/ytdl');
 const ytplay = require('./routes/ytplay');
+const spotifys = require('./routes/spotifysearch');
 
 app.use('/', home);
 app.use('/ttimg', ttimg);
@@ -43,6 +44,7 @@ app.use('/tiktok', tiktokdl);
 app.use('/ytsearch', ytsearch);
 app.use('/ytdl', ytdl);
 app.use('/ytplay', ytplay);
+app.use('/spotifyseacrh', spotifys);
 app.use('/tmp', express.static('tmp'));
 
 app.disable("x-powered-by");
