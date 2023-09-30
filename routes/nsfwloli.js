@@ -1,20 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
-const { rateLimit } = require('express-rate-limit');
-const apicache = require('apicache');
-
-const app = express();
-
-const apiRequestLimiter = rateLimit({
-  windowMs: 1 * 60 * 1000,
-  max: 40,
-  handler: function(req, res) {
-    return res.status(429).json({ error: 'Rate limit exceeded' });
-  },
-});
-
-const cache = apicache.middleware;
 
 router.get('/', async (req, res) => {
   try {
