@@ -1,29 +1,20 @@
-const Spotify = require('@silent-killer/killer-spotify-searching');
+const playdl = require('play-dl');
 
-function spotifySearch(query) {
-  const credentials = {
-    clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3',
-    clientSecret: '0e8439a1280a43aba9a5bc0a16f3f009',
-  };
-
-  const client = new Spotify({
-    consumer: {
-      key: credentials.clientId,
-      secret: credentials.clientSecret,
-    },
-  });
-
-  const params = {
-    q: query,
-  };
-
-  return client.search(params)
-    .then(data => {
-      return data;
-    }).catch(error => {
-      console.error('Error en la búsqueda de Spotify:', error);
-      throw error;
-    });
+async function spotifySearch(query) {
+  try {
+    const results = await playdl.search(query, { limit: 10 }); // Limita a 10 resultados
+    const data = results.map((result, index) => ({
+      title: result.title,
+      url: result.url,
+      author: result.uploader.name,
+      duration: result.duration,
+    }));
+    
+    return { data };
+  } catch (error) {
+    console.error('Error en la búsqueda de canciones:', error);
+    return { error: 'Error en la búsqueda de canciones' };
+  }
 }
 
 module.exports = spotifySearch;
