@@ -45,6 +45,8 @@
             transition: right 0.3s;
             background-color: #333;
             color: #fff;
+            z-index: 2;
+            overflow-y: auto;
         }
 
         #menu.active {
@@ -56,7 +58,7 @@
             top: 20px;
             right: 20px;
             cursor: pointer;
-            z-index: 2;
+            z-index: 3;
             transition: right 0.3s;
         }
 
@@ -93,6 +95,18 @@
             transform: translateX(-50%);
             top: calc(50% + 40px); 
         }
+
+        /* Estilos para el reproductor de audio en el menú */
+        #audio-player-container {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+
+        #audio-player-menu {
+            width: 100%;
+            height: 30px;
+        }
     </style>
 </head>
 <body>
@@ -102,6 +116,11 @@
             <li><a href="downloader.html">Downloader</a></li>
             <li><a href="pagina3.html">Página 3</a></li>
         </ul>
+        <div id="audio-player-container">
+            <audio id="audio-player-menu" controls autoplay loop>
+                <source src="https://api.boxmine.xyz/v1/ytmp3?url=https://www.youtube.com/watch?v=33PIIljnTPE" type="audio/mp3">
+            </audio>
+        </div>
     </div>
     
     <div id="content">
