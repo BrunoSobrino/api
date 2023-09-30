@@ -42,7 +42,8 @@
     "api-dylux": "^1.6.2",
     "yt-search": "^2.10.3",
     "spotifydl-x": "*",
-    "chalk": "^4.1.2"
+    "chalk": "^4.1.2",
+    "play-dl": "*"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
