@@ -6,6 +6,8 @@ const port = process.env.PORT || 3036;
 
 var allowedOrigins = ['https://api.onrender.com'];
 
+app.set('trust proxy', 1)
+
 app.use(cors({
     origin: function(origin, callback) {
         if (!origin) return callback(null, true);
