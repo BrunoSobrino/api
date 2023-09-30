@@ -23,7 +23,7 @@ async function getMusicBuffer(text) {
     const filePath = `./tmp/${randomName}`;
     const artist = spty.data.artists.join(', ') || '-';
     const img = await (await fetch(`${spty.data.cover_url}`)).buffer()  
-    const data = {
+    const tags = {
       title: spty.data.name || '-',
       artist: artist,
       album: spty.data.album_name || '-',
