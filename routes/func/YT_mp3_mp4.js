@@ -153,11 +153,11 @@ try {
         seconds: videoDetails.lengthSeconds,
         description: videoDetails.description,
         image: videoDetails.thumbnails.slice(-1)[0].url,
+          download: {
+             audio: audiodl,
+             video: videodl
       },
-      download: {
-        audio: audiodl,
-        video: videodl,
-      },
+     }   
     };
     } catch (error) {
       throw error;
