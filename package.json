@@ -44,7 +44,7 @@
     "@silent-killer/killer-spotify-searching": "^1.0.5",
     "spotifydl-x": "*",
     "chalk": "^4.1.2",
-    "node-persist": "*"
+    "node-persist": "^3.1.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
