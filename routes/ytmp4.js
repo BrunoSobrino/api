@@ -3,7 +3,7 @@ const router = express.Router();
 const fs = require('fs');
 const YT = require('./func/YT_mp3_mp4');
 
-router.get('/', cache('2 minutes'), apiRequestLimiter, async (req, res) => {
+router.get('/', async (req, res) => {
   res.setHeader('Content-Type', 'video/mp4');
   const match_url = req.query.url;
   try {
