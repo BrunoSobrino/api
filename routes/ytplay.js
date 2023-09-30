@@ -26,9 +26,9 @@ router.get('/', async (req, res) => {
     }
     let results;
     if (searchText) {
-      results = await getYoutubeInfo(searchText);
+      results = await ytplay(searchText);
     } else {
-      results = await getYoutubeInfo(videoUrl);
+      results = await ytplay(videoUrl);
     }
     const formattedResults = JSON.stringify(results, null, 2);
     res.setHeader('Content-Type', 'application/json');
