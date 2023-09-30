@@ -44,7 +44,7 @@ app.use('/tiktok', tiktokdl);
 app.use('/ytsearch', ytsearch);
 app.use('/ytdl', ytdl);
 app.use('/ytplay', ytplay);
-app.use('/spotifyseacrh', spotifys);
+app.use('/spotifysearch', spotifys);
 app.use('/tmp', express.static('tmp'));
 
 app.disable("x-powered-by");
