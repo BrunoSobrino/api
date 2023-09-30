@@ -57,11 +57,6 @@ app.use('/', function(req, res) {
     res.status(404).json(errorMessage);
 });
 
-app.get('/', function(req, res) {
-    const serverUrl = req.protocol + '://' + req.get('host');
-    res.send('La aplicación está funcionando en: ' + serverUrl);
-});
-
 app.listen(port, function() {
     const line = chalk.yellow('==========================================');
     const serverUrl = 'http://localhost:' + port;
