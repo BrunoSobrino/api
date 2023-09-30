@@ -19,8 +19,17 @@ async function getMusicBuffer(text) {
     const getRandom = (ext) => {
       return `${Math.floor(Math.random() * 10000)}${ext}`;
     };
-    const randomName = getRandom('.mp3');
-    const filePath = `./tmp/${randomName}`;
+    let randomName = getRandom('.mp3');
+    let filePath = `./tmp/${randomName}`; 
+    let fileExists = true;
+    while (fileExists) {
+      if (fs.existsSync(filePath)) {
+        randomName = getRandom('.mp3');
+        filePath = `./tmp/${randomName}`;
+      } else {
+        fileExists = false;
+      }
+    }
     const artist = spty.data.artists.join(', ') || '-';
     const img = await (await fetch(`${spty.data.cover_url}`)).buffer()  
     const tags = {
@@ -60,7 +69,7 @@ async function getMusicBuffer(text) {
   }
 }
 
-async function getMusicData(text) {
+async function spotifySearch1(text) {
   try {
     const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
     const jsonDL = await resDL.json();
@@ -71,11 +80,11 @@ async function getMusicData(text) {
       title: spty?.data.name || '-',
       artist: artist,
       album: spty?.data.album_name || '-',
-      url: jsonDL?.resultado.link || '-',
+      url: jsonDL?.result[0].link || '-',
       year: spty?.data.release_date || '-',
       genre: 'Música',
       thumbnail: spty?.data.cover_url || '-',
-      preview: jsonDL?.resultado.preview_url || '-',
+      preview: jsonDL?.result[0].preview_url || '-',
     };
     return {resultado: data, download: {audio: spty?.audio}};
   } catch (error) {
@@ -84,7 +93,7 @@ async function getMusicData(text) {
   }
 }
 
-async function spotifySearch(text) {
+async function spotifySearch2(text) {
   try {
     const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
     const jsonDL = await resDL.json();
@@ -115,6 +124,6 @@ async function spotifydl(url) {
 
 module.exports = {
   getMusicBuffer,
-  getMusicData,
-  spotifySearch,
+  spotifySearch1,
+  spotifySearch2,
 };
