@@ -21,27 +21,8 @@ async function getMusicBuffer(text) {
     };
     const randomName = getRandom('.mp3');
     const filePath = `./tmp/${randomName}`;
-
-    await fs.promises.writeFile(filePath, spty.audio);
-    const buffer = fs.readFileSync(filePath);
-    fs.unlinkSync(filePath); 
-
-    return buffer;
-  } catch (error) {
-    console.error(error);
-    throw 'Error al obtener el buffer de la música.';
-  }
-}
-
-async function getMusicData(text) {
-  try {
-    const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
-    const jsonDL = await resDL.json();
-    const linkDL = jsonDL.result[0].link;
-    const spty = await spotifydl(linkDL);
     const artist = spty.data.artists.join(', ') || '-';
-    const img = await (await fetch(`${spty.data.cover_url}`)).buffer();
-
+    const img = await (await fetch(`${spty.data.cover_url}`)).buffer()  
     const data = {
       title: spty.data.name || '-',
       artist: artist,
@@ -68,8 +49,35 @@ async function getMusicData(text) {
       mimetype: 'image/jpeg',
       copyright: 'Copyright Darlyn ©2023',
     };
+    await fs.promises.writeFile(filePath, spty.audio);
+    await NodeID3.write(tags, filePath);
+    const buffer = fs.readFileSync(filePath);
+    fs.unlinkSync(filePath); 
+    return buffer;
+  } catch (error) {
+    console.error(error);
+    throw 'Error al obtener el buffer de la música.';
+  }
+}
 
-    return data;
+async function getMusicData(text) {
+  try {
+    const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
+    const jsonDL = await resDL.json();
+    const linkDL = jsonDL.result[0].link;
+    const spty = await spotifydl(linkDL);
+    const artist = spty?.data.artists.join(', ') || '-';
+    const data = {
+      title: spty?.data.name || '-',
+      artist: artist,
+      album: spty?.data.album_name || '-',
+      url: jsonDL?.resultado.link || '-',
+      year: spty?.data.release_date || '-',
+      genre: 'Música',
+      thumbnail: spty?.data.cover_url || '-',
+      preview: jsonDL?.resultado.preview_url || '-',
+    };
+    return {resultado: data, download: {audio: spty?.audio}};
   } catch (error) {
     console.error(error);
     throw 'Error al obtener los datos de la música.';
@@ -80,7 +88,7 @@ async function spotifySearch(text) {
   try {
     const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
     const jsonDL = await resDL.json();
-    return jsonDL.result;
+    return { resultado: jsonDL.result };
   } catch (error) {
     console.error(error);
     throw 'Error en la búsqueda de Spotify.';
