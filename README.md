@@ -63,3 +63,17 @@
   - Uso: [https://api.boxmine.xyz/nsfw/nsfwloli](http://n3.boxmine.xyz:3036/nsfw/nsfwloli)
 
 </details>
+
+<details>
+<summary>Tools:</summary>
+
+### ChatGPT:
+- **Sin lenguaje:**
+  - Uso: `https://api.boxmine.xyz/chatgpt?text=${text}`
+  - Ejemplo: [https://api.boxmine.xyz/chatgpt?text=Hola](https://api.boxmine.xyz/chatgpt?text=Hola)
+- **Con lenguaje:**
+  - Uso: `https://api.boxmine.xyz/chatgpt?text=${text}&lenguaje=${lenguaje}`
+  - Ejemplo: [https://api.boxmine.xyz/chatgpt?text=Hola&lenguaje=es](https://api.boxmine.xyz/chatgpt?text=Hola&lenguaje=es)
+  - Ejemplo: [https://api.boxmine.xyz/chatgpt?text=Hola&lenguaje=en](https://api.boxmine.xyz/chatgpt?text=Hola&lenguaje=en)
+
+</details>
