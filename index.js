@@ -3,6 +3,9 @@ const app = express();
 const cors = require('cors');
 const chalk = require('chalk');
 const port = process.env.PORT || 3036;
+const fs = require('fs');
+const path = require('path');
+let totalRequests = 0;
 
 var allowedOrigins = ['https://api-sxe5.onrender.com', 'https://api.boxmine.xyz'];
 
@@ -34,6 +37,20 @@ const ytplay = require('./routes/ytplay');
 const spotifys = require('./routes/spotifysearch');
 const chatgpt = require('./routes/chatgpt');
 
+const getUptime = () => {
+  const uptimeInSeconds = Math.floor(process.uptime());
+  const hours = Math.floor(uptimeInSeconds / 3600);
+  const minutes = Math.floor((uptimeInSeconds % 3600) / 60);
+  const seconds = uptimeInSeconds % 60;
+  return `${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+};
+
+app.use((req, res, next) => {
+  req.startTime = Date.now();
+  totalRequests++; 
+  next();
+});
+
 app.use('/', home);
 app.use('/ttimg', ttimg);
 app.use('/v1/ytmp3', ytmp3);
@@ -50,6 +67,36 @@ app.use('/chatgpt', chatgpt);
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
 
+app.get('/status', (req, res) => {
+  const uptime = getUptime();
+  const averageResponseTime = Date.now() - req.startTime;
+  const response = {
+    uptime: uptime,
+    latencia: `${averageResponseTime} ms`,
+    totalRequests: totalRequests,
+    creator: 'BrunoSobrino',
+    phoneNumber: '+52 1 999 612 5657',
+    mainPages: {
+      home: '/',
+      ttimg: '/ttimg',
+      'v1/ytmp3': '/v1/ytmp3',
+      'v1/ytmp4': '/v1/ytmp4',
+      'v2/ytmp3': '/v2/ytmp3',
+      'v2/ytmp4': '/v2/ytmp4',
+      'nsfw/nsfwloli': '/nsfw/nsfwloli',
+      tiktok: '/tiktok',
+      ytsearch: '/ytsearch',
+      ytdl: '/ytdl',
+      ytplay: '/ytplay',
+      spotifysearch: '/spotifysearch',
+      chatgpt: '/chatgpt',
+    },
+  };
+  const formattedResponse = JSON.stringify(response, null, 2);
+  res.setHeader('Content-Type', 'application/json');
+  res.end(formattedResponse);
+});
+
 app.disable("x-powered-by");
 
 app.use('/', function(req, res) {
@@ -59,6 +106,24 @@ app.use('/', function(req, res) {
     };
     res.status(404).json(errorMessage);
 });
+
+const clearTmpFiles = () => {
+  const tmpDir = './tmp';
+  fs.readdir(tmpDir, (err, files) => {
+    if (err) return console.error('Error al leer directorio temporal:', err);
+    files.forEach((file) => {
+      if (file !== 'file') {
+        const filePath = path.join(tmpDir, file);
+        fs.unlink(filePath, (unlinkErr) => {
+          if (unlinkErr) {
+            console.error('Error al eliminar el archivo:', unlinkErr);
+          }
+        });
+      }
+    });
+  });
+};
+setInterval(clearTmpFiles, 180000);
 
 app.listen(port, function() {
     const line = chalk.yellow('==========================================');
