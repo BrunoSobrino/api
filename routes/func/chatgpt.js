@@ -1,11 +1,6 @@
 const fetch = require('node-fetch');
 const translate = require('@vitalets/google-translate-api');
 
-function correctEscapeSequences(text) {
-  const correctedText = text.replace(/\\ U/g, "\\u").replace(/\\ f/g, "\\u00");
-  return correctedText;
-}
-
 async function chatgpt(text, lenguaje = 'es') {
   const result = {
     status: true,
@@ -30,8 +25,7 @@ async function chatgpt(text, lenguaje = 'es') {
         } catch {
           parsedData1 = vihangaytjson1.data;    
         }  
-        const correctedData1 = correctEscapeSequences(vihangaytjson1.data);
-        const translatedResult = await translate(correctedData1, { to: lenguaje, autoCorrect: true });
+        const translatedResult = await translate(parsedData1, { to: lenguaje, autoCorrect: true });
         result.resultado = translatedResult.text.trim();
         return result;
       }
@@ -46,8 +40,7 @@ async function chatgpt(text, lenguaje = 'es') {
           } catch {
             parsedData2 = vihangaytjson2.data;    
           }  
-          const correctedData2 = correctEscapeSequences(vihangaytjson2.data);
-          const translatedResult = await translate(correctedData2, { to: lenguaje, autoCorrect: true });
+          const translatedResult = await translate(parsedData2, { to: lenguaje, autoCorrect: true });
           result.resultado = translatedResult.text.trim();
           return result;
         }
@@ -62,8 +55,7 @@ async function chatgpt(text, lenguaje = 'es') {
             } catch {
               parsedData3 = vihangaytjson3.data;    
             }  
-            const correctedData3 = correctEscapeSequences(vihangaytjson3.data);
-            const translatedResult = await translate(correctedData3, { to: lenguaje, autoCorrect: true });
+            const translatedResult = await translate(parsedData3, { to: lenguaje, autoCorrect: true });
             result.resultado = translatedResult.text.trim();
             return result;
           }
@@ -107,7 +99,8 @@ async function chatgpt(text, lenguaje = 'es') {
                     result.resultado = translatedResult.text.trim();
                     return result;
                   }
-                } catch {
+                } catch (e) {
+                  console.log(e)
                   result.status = false;
                   result.resultado = "Error en todas las APIs";
                   return result;
@@ -125,3 +118,4 @@ async function chatgpt(text, lenguaje = 'es') {
 }
 
 module.exports = chatgpt;
+
