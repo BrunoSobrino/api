@@ -32,6 +32,7 @@ const ytsearch = require('./routes/ytsearch');
 const ytdl = require('./routes/ytdl');
 const ytplay = require('./routes/ytplay');
 const spotifys = require('./routes/spotifysearch');
+const chatgpt = require('./routes/chatgpt');
 
 app.use('/', home);
 app.use('/ttimg', ttimg);
@@ -45,6 +46,7 @@ app.use('/ytsearch', ytsearch);
 app.use('/ytdl', ytdl);
 app.use('/ytplay', ytplay);
 app.use('/spotifysearch', spotifys);
+app.use('/chatgpt', chatgpt);
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
 
