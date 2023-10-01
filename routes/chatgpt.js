@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { chatgpt } = require('./func/chatgpt'); 
+const chatgpt = require('./func/chatgpt'); 
 
 router.get('/', async (req, res) => {
   const inputText = req.query.text;
