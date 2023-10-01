@@ -12,7 +12,12 @@ router.get('/', async (req, res) => {
     const results = await chatgpt(inputText, lenguaje);
     const formattedResults = JSON.stringify(results, null, 2);
     res.setHeader('Content-Type', 'application/json');
-    res.send(formattedResults);
+    const correctEscapeSequences = async function (text) {
+    const correctedText = text.replace(/\\U/g, "\\u").replace(/\\f/g, "\\u00");
+      return correctedText;
+    }
+    const finr = await correctEscapeSequences(formattedResults)
+    res.send(finr);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error en la solicitud de chatgpt' });
