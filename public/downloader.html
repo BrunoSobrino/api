@@ -28,42 +28,84 @@
             font-weight: bold;
             margin-top: 20px; 
             text-align: center;
-            color: neongreen; /* Color neon verde */
+            color: #6ac045; /* Color verde neón */
         }
 
         .subsection-title {
             font-size: 24px; 
             margin-top: 10px;
             text-align: center;
-            color: neonred; /* Color neon rojo */
+            color: #ff3f80; /* Color rosa neón */
         }
 
         .command-table {
             width: 80%;
-            margin: 0 auto; 
+            margin: 0 auto;
             border-collapse: collapse;
-            margin-top: 60px; 
+            margin-top: 60px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
+            background-color: #121212; /* Fondo oscuro */
         }
 
         .command-table th,
         .command-table td {
-            border: 1px solid #ccc;
-            padding: 10px;
+            border: none; /* Elimina los bordes de las celdas */
+            padding: 15px;
+            color: #fff; /* Texto blanco */
         }
 
         .command-table th {
-            background-color: #333;
-            color: #fff;
+            background-color: #2d2d2d; /* Fondo de encabezado más oscuro */
         }
 
         .command-table tr:nth-child(even) {
-            background-color: #f0f0f0;
+            background-color: #1e1e1e; /* Fondo de filas pares */
         }
 
         .command-table tr:nth-child(odd) {
-            background-color: #e0e0e0;
+            background-color: #181818; /* Fondo de filas impares */
         }
-        
+
+        /* Estilos para los botones de ejemplo */
+        .command-table a {
+            background-color: #6ac045; /* Color de fondo verde neón */
+            color: #fff; /* Texto blanco */
+            padding: 5px 10px; /* Espaciado interno */
+            border-radius: 5px; /* Bordes redondeados */
+            text-decoration: none; /* Sin subrayado de enlace */
+            transition: background-color 0.3s; /* Transición de color de fondo al pasar el ratón */
+            display: inline-block;
+            margin: 5px; /* Margen entre los botones */
+        }
+
+        .command-table a:hover {
+            background-color: #ff3f80; /* Cambio de color al pasar el ratón */
+        }
+
+        /* Estilos para la lluvia de emojis de corazón */
+        .kitten-rain {
+            font-size: 36px;
+            position: absolute;
+            animation: fall 5s linear infinite;
+            top: -50px; /* Comienza desde la parte superior de la pantalla */
+            left: calc(50% - 18px); /* Centra los emojis horizontalmente */
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-50px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* ... Tus otros estilos ... */
+
         #menu {
             position: fixed;
             top: 0;
@@ -91,9 +133,26 @@
         #menu-button.active {
             right: 280px;
         }
+        
+        audio {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+            color: #fff;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
+    <audio autoplay loop volume="100">
+        <source src="music.mp3" type="audio/mp3">
+        <source src="music.wav" type="audio/wav">
+        Tu navegador no admite el elemento de audio.
+    </audio>
     <div id="menu">
         <ul>
             <li><a href="index.html">Inicio</a></li>
@@ -177,6 +236,7 @@
         </table>
     </div>
 
+    <!-- Lluvia de emojis -->
     <script>
         const menuButton = document.getElementById('menu-button');
         const menu = document.getElementById('menu');
@@ -185,6 +245,22 @@
             menu.classList.toggle('active');
             menuButton.classList.toggle('active');
         });
+
+        function createKittenRain() {
+            const kittenRain = document.createElement("div");
+            kittenRain.className = "kitten-rain";
+            kittenRain.innerHTML = "💫"; // Emoji 
+            kittenRain.style.left = `${Math.random() * 100}vw`;
+            document.body.appendChild(kittenRain);
+
+            // Elimina el emoji después de que caiga
+            kittenRain.addEventListener("animationiteration", () => {
+                kittenRain.remove();
+            });
+        }
+
+        // Crea una lluvia de emojis cada pocos segundos
+        setInterval(createKittenRain, 500);
     </script>
 </body>
 </html>
