@@ -107,14 +107,21 @@ async function chatgpt(text, lenguaje = 'es') {
       },
     },
   ];
+
   for (const apiEndpoint of apiEndpoints) {  
-      const response = await fetch(apiEndpoint.url);
-      const responseData = await response.json();
-      await apiEndpoint.processResponse(responseData);
-      if (result.resultado) {
-        result.resultado = result.resultado;
-        return result;
-      }
+    const response = await fetch(apiEndpoint.url);
+    if (response.ok) {
+      try {
+        const responseData = await response.json();
+        if (responseData) {
+          await apiEndpoint.processResponse(responseData);
+          if (result.resultado) {
+            result.resultado = result.resultado;
+            return result;
+          }
+        }
+      } catch {}
+    }
   }
   result.status = false;
   result.resultado = "Error en todas las APIs";
