@@ -129,10 +129,16 @@
 
     <div class="welcome-box">
         <h2 class="neon-text">Bienvenido a Mi API</h2>
-        <button class="redirect-button" onclick="window.location.href='docs.html'">Documentación</button>
+        <button class="redirect-button" id="docs-button">Documentación</button>
     </div>
 
     <script>
+        const baseurl = window.location.origin;
+        const docsButton = document.getElementById('docs-button');
+        docsButton.addEventListener('click', function () {
+            window.location.href = `${baseurl}/docs`;
+        });
+
         const menuButton = document.getElementById('menu-button');
         const menu = document.getElementById('menu');
 
@@ -141,5 +147,5 @@
             menuButton.classList.toggle('active');
         });
     </script>
-</body>
+ </body>
 </html>
