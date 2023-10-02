@@ -24,6 +24,8 @@ app.use(cors({
 }));
 
 const home = require('./routes/home');
+const docs = require('./routes/docs');
+
 const ttimg = require('./routes/ttimg');
 const ytmp3 = require('./routes/ytmp3');
 const ytmp4 = require('./routes/ytmp4');
@@ -52,6 +54,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/', home);
+app.use('/docs', docs);
+
 app.use('/ttimg', ttimg);
 app.use('/v1/ytmp3', ytmp3);
 app.use('/v1/ytmp4', ytmp4);
