@@ -4,6 +4,10 @@
 
 ------------------
 
+- Estado de la API: [https://api.boxmine.xyz/status](http://api.boxmine.xyz/status)
+
+------------------
+
 ## Funciones disponibles:
 
 <details>
@@ -60,7 +64,7 @@
 
 ### nsfw:
 - **nsfwloli:**
-  - Uso: [https://api.boxmine.xyz/nsfw/nsfwloli](http://n3.boxmine.xyz:3036/nsfw/nsfwloli)
+  - Uso: [https://api.boxmine.xyz/nsfw/nsfwloli](http://api.boxmine.xyz/nsfw/nsfwloli)
 
 </details>
 
