@@ -82,10 +82,10 @@
 
 </details>
 
-## `COLABORADORES DEL BOT` 
+## `COLABORADORES` 
 <a href="https://github.com/Shizu-SH"><img src="https://github.com/Shizu-SH.png" width="100" height="100" alt="Shizu-SH"/></a>
 
 ## `EDITOR & PROPIETARIO` 
-<a href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="250" height="250" alt="BrunoSobrino"/></a>
+<a href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="150" height="150" alt="BrunoSobrino"/></a>
   
 `Api Rest Free - By Bruno Sobrino`
