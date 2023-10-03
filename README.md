@@ -8,7 +8,6 @@
 - API 1: [https://api.boxmine.xyz/status](http://api.boxmine.xyz/status)
 - API 2: [https://api-sxe5.onrender.com/status](https://api-sxe5.onrender.com/status)
 - API 3: [http://prem-n1.zipponodes.com:50031/status](http://prem-n1.zipponodes.com:50031/status)
-- API 4: [https://silver-couscous-74wwg9xjq74hr4j9-3036.app.github.dev/status](https://silver-couscous-74wwg9xjq74hr4j9-3036.app.github.dev/status)
 
 ------------------
 
