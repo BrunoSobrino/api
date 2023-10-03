@@ -36,6 +36,17 @@
             white-space: nowrap;
         }
 
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+
         @keyframes gradient {
             0% {
                 background-position: 0% 50%;
@@ -53,10 +64,12 @@
     <div class="error-container">
         <h1 id="error-text"></h1>
         <p id="subtext"></p>
+        <button id="home-button">Ir a la página principal</button>
     </div>
     <script>
         const textElement = document.getElementById('error-text');
         const subtextElement = document.getElementById('subtext');
+        const homeButton = document.getElementById('home-button');
         const text = "Error 404";
         const subtext = "Página no encontrada";
 
@@ -78,10 +91,18 @@
                 subtextElement.textContent += subtext.charAt(subtextIndex);
                 subtextIndex++;
                 setTimeout(typeSubtext, 100);
+            } else {
+                homeButton.style.display = 'block'; 
+                homeButton.style.margin = '20px auto'; 
             }
         }
 
         typeText();
+
+        homeButton.addEventListener('click', function() {
+            const baseUrl = window.location.origin;
+            window.location.href = baseUrl;
+        });
     </script>
 </body>
 </html>
