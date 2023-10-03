@@ -103,12 +103,10 @@ app.get('/status', (req, res) => {
 
 app.disable("x-powered-by");
 
-app.use('/', function(req, res) {
-    const errorMessage = {
-        error: 1,
-        message: 'Data not Found'
-    };
-    res.status(404).json(errorMessage);
+app.use(function(req, res, next) {
+    res.status(404);
+    const filePath = path.join(__dirname, 'public', '404.html');
+    res.sendFile(filePath);
 });
 
 const clearTmpFiles = () => {
