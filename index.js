@@ -146,11 +146,8 @@ const clearTmpFiles = () => {
 };
 setInterval(clearTmpFiles, 60000);
 
-const owner = 'BrunoSobrino';
-const repo = 'api';
 let previousCommitSHA = '';
-let isError = false; // Bandera para controlar los errores
-
+let isError = false; 
 async function checkRepoUpdates() {
   if (isError) return;
   try {
