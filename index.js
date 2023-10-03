@@ -5,6 +5,7 @@ const chalk = require('chalk');
 const port = process.env.PORT || 3036 || 50031;
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 let totalRequests = 0;
 
 var allowedOrigins = ['https://api-sxe5.onrender.com', 'https://api.boxmine.xyz', 'http://prem-n1.zipponodes.com:50031'];
@@ -123,6 +124,7 @@ app.use(function(req, res, next) {
     res.sendFile(filePath);
 });
 
+// Funciones automáticas 
 const clearTmpFiles = () => {
   const tmpDir = './tmp';
   fs.readdir(tmpDir, (err, files) => {
@@ -144,6 +146,31 @@ const clearTmpFiles = () => {
 };
 setInterval(clearTmpFiles, 60000);
 
+const owner = 'BrunoSobrino';
+const repo = 'api';
+let previousCommitSHA = '';
+let isError = false; // Bandera para controlar los errores
+
+async function checkRepoUpdates() {
+  if (isError) return;
+  try {
+    const response = await axios.get(`https://api.github.com/repos/BrunoSobrino/api/commits?per_page=1`);
+    const { sha } = response.data[0];
+    if (sha !== previousCommitSHA) {
+      console.log('[INFO] Repositorio actualizado. Realizando la actualización...');
+      const stdout = execSync('git pull');
+      let messager = stdout.toString();
+      //console.log(messager); // Esta línea se ha eliminado
+      previousCommitSHA = sha;
+    }
+  } catch (error) {
+    isError = true; 
+    return;  
+  }
+}
+setInterval(checkRepoUpdates, 300000);
+
+// Log incial 
 app.listen(port, function() {
     const line = chalk.yellow('==========================================');
     const serverUrl = 'http://localhost:' + port;
