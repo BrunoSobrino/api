@@ -87,5 +87,4 @@
 
 ## `EDITOR & PROPIETARIO` 
 <a href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="150" height="150" alt="BrunoSobrino"/></a>
-  
-`Api Rest Free - By Bruno Sobrino`
+- Api Rest Free - By Bruno Sobrino
