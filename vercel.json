@@ -3,7 +3,15 @@
     "builds": [
         {
             "src": "index.js",
-            "use": "@vercel/node"
+            "use": "@vercel/node",
+            "config": {
+                "commands": [
+                    {
+                        "command": "yarn install",
+                        "useOutput": true
+                    }
+                ]
+            }
         }
     ],
     "routes": [
