@@ -4,14 +4,14 @@
 
 ------------------
 
-## APIs online:
+## —◉ APIs online:
 - API 1: [https://api.boxmine.xyz/status](http://api.boxmine.xyz/status)
 - API 2: [https://api-sxe5.onrender.com/status](https://api-sxe5.onrender.com/status)
 - API 3: [http://prem-n1.zipponodes.com:50031/status](http://prem-n1.zipponodes.com:50031/status)
 
 ------------------
 
-## Funciones disponibles:
+## —◉ Funciones disponibles:
 
 <details>
 <summary>Downloaders:</summary>
@@ -87,9 +87,19 @@
 
 ------------------
 
-## `COLABORADORES` 
+## `—◉ Activar en replit`
+
+[![Run on Repl.it](https://repl.it/badge/github/BrunoSobrino/api)](https://repl.it/github/BrunoSobrino/api) 
+  
+## `—◉ Activar en render`
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://dashboard.render.com/blueprint/new?repo=https%3A%2F%2Fgithub.com%2FBrunoSobrino%2Fapi) 
+
+------------------
+
+## `—◉ Colaboradores` 
 <a href="https://github.com/Shizu-SH"><img src="https://github.com/Shizu-SH.png" width="100" height="100" alt="Shizu-SH"/></a>
 
-## `EDITOR & PROPIETARIO` 
+## `—◉ Editor & propietario` 
 <a href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="150" height="150" alt="BrunoSobrino"/></a>
 - Api Rest Free - By Bruno Sobrino
