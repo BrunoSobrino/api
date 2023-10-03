@@ -127,19 +127,22 @@ const clearTmpFiles = () => {
   const tmpDir = './tmp';
   fs.readdir(tmpDir, (err, files) => {
     if (err) return console.error('Error al leer directorio temporal:', err);
-    files.forEach((file) => {
-      if (file !== 'file') {
+    const filesToDelete = files.filter((file) => file !== 'file');
+    if (filesToDelete.length > 0) {
+      filesToDelete.forEach((file) => {
         const filePath = path.join(tmpDir, file);
         fs.unlink(filePath, (unlinkErr) => {
           if (unlinkErr) {
             console.error('Error al eliminar el archivo:', unlinkErr);
           }
         });
-      }
-    });
+      });
+    } else {
+      return;
+    }
   });
 };
-setInterval(clearTmpFiles, 180000);
+setInterval(clearTmpFiles, 60000);
 
 app.listen(port, function() {
     const line = chalk.yellow('==========================================');
