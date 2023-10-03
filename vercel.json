@@ -3,12 +3,12 @@
    "version": 2, 
    "routes": [ 
      { 
-       "src": "/status", 
+       "src": "/:path", 
        "headers": { 
          "cache-control": "no-cache, no-store, must-revalidate", 
          "Access-Control-Allow-Origin": "*" 
        }, 
-       "dest": "/status" 
+       "dest": "/:path" 
      },
      { 
        "src": "/", 
