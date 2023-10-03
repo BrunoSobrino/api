@@ -1,6 +1,14 @@
-{
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/$1" }
-  ]
-}
-
+{ 
+   "name": "api-brunosobrino", 
+   "version": 2, 
+   "routes": [ 
+     { 
+       "src": "/status", 
+       "headers": { 
+         "cache-control": "no-cache, no-store, must-revalidate", 
+         "Access-Control-Allow-Origin": "*" 
+       }, 
+       "dest": "/status" 
+     }
+   ] 
+ }
