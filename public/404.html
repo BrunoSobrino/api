@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404 - Página no encontrada</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #00ff00, #ff00ff, #00ff00, #ff00ff);
+            background-size: 400% 400%;
+            animation: gradient 10s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .error-container {
+            text-align: center;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1 id="error-text"></h1>
+        <p id="subtext"></p>
+    </div>
+    <script>
+        const textElement = document.getElementById('error-text');
+        const subtextElement = document.getElementById('subtext');
+        const text = "Error 404";
+        const subtext = "Página no encontrada";
+
+        let textIndex = 0;
+        let subtextIndex = 0;
+
+        function typeText() {
+            if (textIndex < text.length) {
+                textElement.textContent += text.charAt(textIndex);
+                textIndex++;
+                setTimeout(typeText, 100);
+            } else {
+                setTimeout(typeSubtext, 200);
+            }
+        }
+
+        function typeSubtext() {
+            if (subtextIndex < subtext.length) {
+                subtextElement.textContent += subtext.charAt(subtextIndex);
+                subtextIndex++;
+                setTimeout(typeSubtext, 100);
+            }
+        }
+
+        typeText();
+    </script>
+</body>
+</html>
