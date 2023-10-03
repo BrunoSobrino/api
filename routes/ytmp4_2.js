@@ -18,15 +18,10 @@ router.get('/', async (req, res) => {
       fileIndex++;
     }
     fs.writeFileSync(`./tmp/${fileName}`, videoBuffer);
-    res.sendFile(fileName, { root: './tmp' }, (err) => {
-      if (err) {
-        console.error('Error al enviar el archivo:', err);
-        res.status(500).json({ error: 'Ocurrió un error al enviar el archivo' });
-      }
-    });
+    res.sendFile(fileName, { root: './tmp' });
   } catch (error) {
+    console.error('Ocurrió un error al procesar la solicitud:', error);
     res.status(500).json({ error: 'Ocurrió un error al procesar la solicitud' });
-    console.error(error);
   }
 });
 
