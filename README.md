@@ -81,3 +81,11 @@
   - Ejemplo: [https://api.boxmine.xyz/chatgpt?text=Hola&lenguaje=en](https://api.boxmine.xyz/chatgpt?text=Hola&lenguaje=en)
 
 </details>
+
+## `COLABORADORES DEL BOT` 
+<a href="https://github.com/Shizu-SH"><img src="https://github.com/Shizu-SH.png" width="100" height="100" alt="Shizu-SH"/></a>
+
+## `EDITOR & PROPIETARIO` 
+<a href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="250" height="250" alt="BrunoSobrino"/></a>
+  
+`Api Rest Free - By Bruno Sobrino`
