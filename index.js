@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 let totalRequests = 0;
 
-var allowedOrigins = ['https://api-sxe5.onrender.com', 'https://api.boxmine.xyz'];
+var allowedOrigins = ['https://api-sxe5.onrender.com', 'https://api.boxmine.xyz', 'http://prem-n1.zipponodes.com:50031'];
 
 app.set('trust proxy', 1)
 
@@ -23,9 +23,10 @@ app.use(cors({
     }
 }));
 
+// Funciones
+
 const home = require('./routes/home');
 const docs = require('./routes/docs');
-
 const ttimg = require('./routes/ttimg');
 const ytmp3 = require('./routes/ytmp3');
 const ytmp4 = require('./routes/ytmp4');
@@ -47,6 +48,8 @@ const getUptime = () => {
   return `${hours} horas, ${minutes} minutos, ${seconds} segundos`;
 };
 
+// Subpaginas y usos
+
 app.use((req, res, next) => {
   req.startTime = Date.now();
   totalRequests++; 
@@ -56,18 +59,19 @@ app.use((req, res, next) => {
 app.use('/', home);
 app.use('/docs', docs);
 
-app.use('/ttimg', ttimg);
-app.use('/v1/ytmp3', ytmp3);
-app.use('/v1/ytmp4', ytmp4);
-app.use('/v2/ytmp3', ytmp3_2);
-app.use('/v2/ytmp4', ytmp4_2);
-app.use('/nsfw/nsfwloli', nsfwloli);
-app.use('/tiktok', tiktokdl);
-app.use('/ytsearch', ytsearch);
-app.use('/ytdl', ytdl);
-app.use('/ytplay', ytplay);
-app.use('/spotifysearch', spotifys);
-app.use('/chatgpt', chatgpt);
+app.use('/api/ttimg', ttimg);
+app.use('/api/v1/ytmp3', ytmp3);
+app.use('/api/v1/ytmp4', ytmp4);
+app.use('/api/v2/ytmp3', ytmp3_2);
+app.use('/api/v2/ytmp4', ytmp4_2);
+app.use('/api/nsfw/nsfwloli', nsfwloli);
+app.use('/api/tiktok', tiktokdl);
+app.use('/api/ytsearch', ytsearch);
+app.use('/api/ytdl', ytdl);
+app.use('/api/ytplay', ytplay);
+app.use('/api/spotifysearch', spotifys);
+app.use('/api/chatgpt', chatgpt);
+
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
 
@@ -82,18 +86,28 @@ app.get('/status', (req, res) => {
     phoneNumber: '+52 1 999 612 5657',
     mainPages: {
       home: '/',
-      ttimg: '/ttimg',
-      'v1/ytmp3': '/v1/ytmp3',
-      'v1/ytmp4': '/v1/ytmp4',
-      'v2/ytmp3': '/v2/ytmp3',
-      'v2/ytmp4': '/v2/ytmp4',
-      'nsfw/nsfwloli': '/nsfw/nsfwloli',
-      tiktok: '/tiktok',
-      ytsearch: '/ytsearch',
-      ytdl: '/ytdl',
-      ytplay: '/ytplay',
-      spotifysearch: '/spotifysearch',
-      chatgpt: '/chatgpt',
+      status: '/status',  
+      documentacion: '/docs',    
+      searchs: {
+         ytsearch: '/api/ytsearch',
+         spotifysearch: '/api/spotifysearch'
+      },
+      herramientas: {
+         chatgpt: '/api/chatgpt'
+      },
+      downloader: {
+         v1_ytmp3: '/api/v1/ytmp3',
+         v1_ytmp4: '/api/v1/ytmp4',
+         v2_ytmp3: '/api/v2/ytmp3',
+         v2_ytmp4: '/api/v2/ytmp4',
+         ytdl: '/api/ytdl',
+         ytplay: '/api/ytplay',
+         tiktok: '/api/tiktok',
+         ttimg: '/ttimg'          
+      },
+      imagen_random: {
+         nsfwloli: '/api/nsfw/nsfwloli'
+      }
     },
   };
   const formattedResponse = JSON.stringify(response, null, 2);
