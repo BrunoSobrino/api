@@ -14,15 +14,10 @@ router.get('/', async (req, res) => {
       fileIndex++;
     }
     fs.writeFileSync(`./tmp/${fileName}`, audioBuffer);
-    res.sendFile(fileName, { root: './tmp', headers: { 'Content-Type': 'audio/mpeg' } }, (err) => {
-      if (err) {
-        console.error('Error al enviar el archivo:', err);
-        res.status(500).json({ error: 'Ocurrió un error al enviar el archivo' });
-      }
-    });
+    res.sendFile(fileName, { root: './tmp', headers: { 'Content-Type': 'audio/mpeg' } });
   } catch (error) {
+    console.error('Ocurrió un error al procesar la solicitud:', error);
     res.status(500).json({ error: 'Ocurrió un error al procesar la solicitud' });
-    console.error(error);
   }
 });
 
