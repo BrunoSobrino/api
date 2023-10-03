@@ -18,15 +18,10 @@ router.get('/', async (req, res) => {
       fileIndex++;
     }
     fs.renameSync(videoPath, `./tmp/${fileName}`);
-    res.sendFile(fileName, { root: './tmp', headers: { 'Content-Type': 'video/mp4' } }, (err) => {
-      if (err) {
-        console.error('Error al enviar el archivo:', err);
-        res.status(500).json({ error: 'Ocurrió un error al enviar el archivo' });
-      }
-    });
+    res.sendFile(fileName, { root: './tmp', headers: { 'Content-Type': 'video/mp4' } });
   } catch (error) {
+    console.error('Ocurrió un error al procesar la solicitud:', error);
     res.status(500).json({ error: 'Ocurrió un error al procesar la solicitud' });
-    console.error(error);
   }
 });
 
