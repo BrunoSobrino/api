@@ -159,11 +159,9 @@ async function checkRepoUpdates() {
     if (sha !== previousCommitSHA) {
       console.log('[INFO] Repositorio actualizado. Realizando la actualización...');
       const stdout = execSync('git pull');
-      let messager = stdout.toString();
-      //console.log(messager); // Esta línea se ha eliminado
       previousCommitSHA = sha;
     }
-  } catch (error) {
+  } catch {
     isError = true; 
     return;  
   }
