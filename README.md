@@ -82,6 +82,8 @@
 
 </details>
 
+------------------
+
 ## `COLABORADORES` 
 <a href="https://github.com/Shizu-SH"><img src="https://github.com/Shizu-SH.png" width="100" height="100" alt="Shizu-SH"/></a>
 
