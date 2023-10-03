@@ -1,14 +1,54 @@
-{
-   "name": "api-brunosobrino",
-   "version": 2,
-   "routes": [
-      {
-         "src": "/baseurl/:path*",
-         "headers": {
-            "cache-control": "no-cache, no-store, must-revalidate",
-            "Access-Control-Allow-Origin": "*"
-         },
-         "dest": "/:path*"
-      }
-   ]
-}
+{ 
+   "name": "api-brunosobrino", 
+   "version": 2, 
+   "routes": [ 
+     { 
+       "src": "/", 
+       "headers": { 
+         "cache-control": "no-cache, no-store, must-revalidate", 
+         "Access-Control-Allow-Origin": "*" 
+       }, 
+       "dest": "/" 
+     }, 
+     { 
+       "src": "/status", 
+       "headers": { 
+         "cache-control": "no-cache, no-store, must-revalidate", 
+         "Access-Control-Allow-Origin": "*" 
+       }, 
+       "dest": "/status" 
+     }, 
+     { 
+       "src": "/chatgpt", 
+       "headers": { 
+         "cache-control": "no-cache, no-store, must-revalidate", 
+         "Access-Control-Allow-Origin": "*" 
+       }, 
+       "dest": "/chatgpt" 
+     }, 
+     { 
+       "src": "/v1/ytmp3", 
+       "headers": { 
+         "cache-control": "no-cache, no-store, must-revalidate", 
+         "Access-Control-Allow-Origin": "*" 
+       }, 
+       "dest": "/v1/ytmp3" 
+     }, 
+     { 
+       "src": "/v1/ytmp4", 
+       "headers": { 
+         "cache-control": "no-cache, no-store, must-revalidate", 
+         "Access-Control-Allow-Origin": "*" 
+       }, 
+       "dest": "/v1/ytmp4" 
+     }, 
+     { 
+       "src": "/v2/ytmp3", 
+       "headers": { 
+         "cache-control": "no-cache, no-store, must-revalidate", 
+         "Access-Control-Allow-Origin": "*" 
+       }, 
+       "dest": "/v2/ytmp3" 
+     } 
+   ] 
+ }
