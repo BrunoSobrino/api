@@ -103,7 +103,7 @@ app.get('/status', (req, res) => {
          ytdl: '/api/ytdl',
          ytplay: '/api/ytplay',
          tiktok: '/api/tiktok',
-         ttimg: '/ttimg'          
+         ttimg: '/api/ttimg'          
       },
       imagen_random: {
          nsfwloli: '/api/nsfw/nsfwloli'
