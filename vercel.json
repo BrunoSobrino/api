@@ -4,9 +4,6 @@
     {
       "src": "index.js",
       "use": "@vercel/node",
-      "config": {
-        "installCommand": "npm install"
-      }
     }
   ],
   "routes": [
@@ -15,4 +12,5 @@
       "dest": "index.js"
     }
   ]
+        "installCommand": "npm install"  
 }
