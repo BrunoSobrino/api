@@ -155,7 +155,6 @@ async function checkRepoUpdates() {
     const response = await axios.get(`https://api.github.com/repos/BrunoSobrino/api/commits?per_page=1`);
     const { sha } = response.data[0];
     if (sha !== previousCommitSHA) {
-      console.log('[INFO] Repositorio actualizado. Realizando la actualización...');
       const stdout = execSync('git pull');
       previousCommitSHA = sha;
     }
