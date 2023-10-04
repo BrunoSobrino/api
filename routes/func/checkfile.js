@@ -3,11 +3,11 @@ const path = require('path');
 
 function analyzeFiles() {
   const foldersToAnalyze = [
-    './././routes',
-    './././public',
-    '././func' 
+    '../routes',
+    '../public',
+    './func' 
   ];
-  const filesToAnalyze = ['./././index.js'];
+  const filesToAnalyze = ['../index.js'];
   foldersToAnalyze.forEach((folder) => {
     const folderPath = path.join(__dirname, folder);
     fs.readdir(folderPath, (err, files) => {
