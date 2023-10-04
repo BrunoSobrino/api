@@ -79,7 +79,7 @@ app.use('/api/chatgpt', chatgpt);
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
 
-app.get('/status', (req, res) => {
+app.get('/statuss', (req, res) => {
   const uptime = getUptime();
   const averageResponseTime = Date.now() - req.startTime;
   const response = {
