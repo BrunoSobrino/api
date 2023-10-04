@@ -7,6 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const axios = require('axios');
+const analyzeFiles = require('./routes/func/checkfile');
 let totalRequests = 0;
 
 var allowedOrigins = ['https://api-sxe5.onrender.com', 'https://api.boxmine.xyz', 'http://prem-n1.zipponodes.com:50031'];
@@ -148,7 +149,7 @@ const clearTmpFiles = () => {
 setInterval(clearTmpFiles, 60000);
 
 let previousCommitSHA = '';
-let isError = false; 
+let isError = false;
 async function checkRepoUpdates() {
   if (isError) return;
   try {
@@ -157,10 +158,11 @@ async function checkRepoUpdates() {
     if (sha !== previousCommitSHA) {
       const stdout = execSync('git pull');
       previousCommitSHA = sha;
+      setTimeout(analyzeFiles, 30000);
     }
   } catch {
-    isError = true; 
-    return;  
+    isError = true;
+    return;
   }
 }
 setInterval(checkRepoUpdates, 300000);
