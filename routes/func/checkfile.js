@@ -3,13 +3,13 @@ const path = require('path');
 
 function analyzeFiles() {
   const foldersToAnalyze = [
-    '../routes',
-    '../public',
-    '../routes/func' // Rutas a las carpetas que deseas analizar
+    './routes',
+    './public',
+    './func' // Rutas a las carpetas que deseas analizar
   ];
 
   // Agregar el archivo index.js a los archivos a analizar
-  const filesToAnalyze = ['../index.js'];
+  const filesToAnalyze = ['./index.js'];
 
   foldersToAnalyze.forEach((folder) => {
     const folderPath = path.join(__dirname, folder);
