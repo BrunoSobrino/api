@@ -159,14 +159,14 @@ async function checkRepoUpdates() {
     if (sha !== previousCommitSHA) {
       const stdout = execSync('git pull');
       previousCommitSHA = sha;
-      setTimeout(analyzeFiles, 30000);
+      setTimeout(analyzeFiles, 10000); //30000
     }
   } catch {
     isError = true;
     return;
   }
 }
-setInterval(checkRepoUpdates, 300000);
+setInterval(checkRepoUpdates, 60000); //300000
 
 // Log incial 
 app.listen(port, function() {
