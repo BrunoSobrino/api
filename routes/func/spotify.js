@@ -12,60 +12,108 @@ const spotify = new Spotify.default(credentials);
 
 async function getMusicBuffer(text) {
   try {
-    const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
-    const jsonDL = await resDL.json();
-    const linkDL = jsonDL.result[0].link;
-    const spty = await spotifydl(linkDL);
-    const getRandom = (ext) => {
-      return `${Math.floor(Math.random() * 10000)}${ext}`;
-    };
-    let randomName = getRandom('.mp3');
-    let filePath = `./tmp/${randomName}`; 
-    let fileExists = true;
-    while (fileExists) {
-      if (fs.existsSync(filePath)) {
-        randomName = getRandom('.mp3');
-        filePath = `./tmp/${randomName}`;
-      } else {
-        fileExists = false;
+    const isSpotifyUrl = text.match(/^(https:\/\/open\.spotify\.com\/track\/[a-zA-Z0-9]+)/i);
+    if (isSpotifyUrl) {
+      const spty = await spotifydl(isSpotifyUrl[0]);
+      const getRandom = (ext) => {
+        return `${Math.floor(Math.random() * 10000)}${ext}`;
+      };
+      let randomName = getRandom('.mp3');
+      let filePath = `./tmp/${randomName}`; 
+      let fileExists = true;
+      while (fileExists) {
+        if (fs.existsSync(filePath)) {
+          randomName = getRandom('.mp3');
+          filePath = `./tmp/${randomName}`;
+        } else {
+          fileExists = false;
+        }
       }
-    }
-    const artist = spty.data.artists.join(', ') || '-';
-    const img = await (await fetch(`${spty.data.cover_url}`)).buffer()  
-    const tags = {
-      title: spty.data.name || '-',
-      artist: artist,
-      album: spty.data.album_name || '-',
-      year: spty.data.release_date || '-',
-      genre: 'Música',
-      comment: {
-        language: 'spa',
-        text: '🤴🏻 Descarga por BrunoSobrino & TheMystic-Bot-MD 🤖',
-      },
-      unsynchronisedLyrics: {
-        language: 'spa',
-        text: '🤴🏻 Descarga por BrunoSobrino & TheMystic-Bot-MD 🤖',
-      },
-      image: {
-        mime: 'image/jpeg',
-        type: {
-          id: 3,
-          name: 'front cover',
+      const artist = spty.data.artists.join(', ') || '-';
+      const img = await (await fetch(`${spty.data.cover_url}`)).buffer()  
+      const tags = {
+        title: spty.data.name || '-',
+        artist: artist,
+        album: spty.data.album_name || '-',
+        year: spty.data.release_date || '-',
+        genre: 'Música',
+        comment: {
+          language: 'spa',
+          text: '🤴🏻 Descarga por BrunoSobrino & TheMystic-Bot-MD 🤖',
         },
-        description: 'Spotify Thumbnail',
-        imageBuffer: await axios.get(spty.data.cover_url, { responseType: 'arraybuffer' }).then((response) => Buffer.from(response.data, 'binary')),
-      },
-      mimetype: 'image/jpeg',
-      copyright: 'Copyright Darlyn ©2023',
-    };
-    await fs.promises.writeFile(filePath, spty.audio);
-    await NodeID3.write(tags, filePath);
-    const buffer = fs.readFileSync(filePath);
-    fs.unlinkSync(filePath); 
-    return buffer;
+        unsynchronisedLyrics: {
+          language: 'spa',
+          text: '🤴🏻 Descarga por BrunoSobrino & TheMystic-Bot-MD 🤖',
+        },
+        image: {
+          mime: 'image/jpeg',
+          type: {
+            id: 3,
+            name: 'front cover',
+          },
+          description: 'Spotify Thumbnail',
+          imageBuffer: await axios.get(spty.data.cover_url, { responseType: 'arraybuffer' }).then((response) => Buffer.from(response.data, 'binary')),
+        },
+        mimetype: 'image/jpeg',
+        copyright: 'Copyright Darlyn ©2023',
+      };
+      await fs.promises.writeFile(filePath, spty.audio);
+      await NodeID3.write(tags, filePath);
+      return filePath;
+    } else {
+      const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
+      const jsonDL = await resDL.json();
+      const linkDL = jsonDL.result[0].link;
+      const spty = await spotifydl(linkDL);
+      const getRandom = (ext) => {
+        return `${Math.floor(Math.random() * 10000)}${ext}`;
+      };
+      let randomName = getRandom('.mp3');
+      let filePath = `./tmp/${randomName}`; 
+      let fileExists = true;
+      while (fileExists) {
+        if (fs.existsSync(filePath)) {
+          randomName = getRandom('.mp3');
+          filePath = `./tmp/${randomName}`;
+        } else {
+          fileExists = false;
+        }
+      }
+      const artist = spty.data.artists.join(', ') || '-';
+      const img = await (await fetch(`${spty.data.cover_url}`)).buffer()  
+      const tags = {
+        title: spty.data.name || '-',
+        artist: artist,
+        album: spty.data.album_name || '-',
+        year: spty.data.release_date || '-',
+        genre: 'Música',
+        comment: {
+          language: 'spa',
+          text: '🤴🏻 Descarga por BrunoSobrino & TheMystic-Bot-MD 🤖',
+        },
+        unsynchronisedLyrics: {
+          language: 'spa',
+          text: '🤴🏻 Descarga por BrunoSobrino & TheMystic-Bot-MD 🤖',
+        },
+        image: {
+          mime: 'image/jpeg',
+          type: {
+            id: 3,
+            name: 'front cover',
+          },
+          description: 'Spotify Thumbnail',
+          imageBuffer: await axios.get(spty.data.cover_url, { responseType: 'arraybuffer' }).then((response) => Buffer.from(response.data, 'binary')),
+        },
+        mimetype: 'image/jpeg',
+        copyright: 'Copyright Darlyn ©2023',
+      };
+      await fs.promises.writeFile(filePath, spty.audio);
+      await NodeID3.write(tags, filePath);
+      return filePath;
+    }
   } catch (error) {
     console.error(error);
-    throw 'Error al obtener el buffer de la música.';
+    throw 'Error al obtener la ruta de la música.';
   }
 }
 
