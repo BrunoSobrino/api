@@ -75,8 +75,8 @@ app.use('/api/ytdl', ytdl);
 app.use('/api/ytplay', ytplay);
 app.use('/api/spotifysearch', spotifys);
 app.use('/api/chatgpt', chatgpt);
-app.use('/api/igdl', igdl1);
-app.use('/api/igdl2', igdl2);
+app.use('/api/v1/igdl', igdl1);
+app.use('/api/v2/igdl', igdl2);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
