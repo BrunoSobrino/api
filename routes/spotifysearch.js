@@ -4,7 +4,7 @@ const { getMusicBuffer } = require('./func/spotify');
 
 router.get('/', async (req, res) => {
   res.setHeader('Content-Type', 'audio/mpeg');
-  const songName = req.query.songName; 
+  const songName = req.query.text; 
   try {
     const songBuffer = await getMusicBuffer(songName); 
     res.end(songBuffer);
