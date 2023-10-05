@@ -50,10 +50,15 @@
   - Ejemplo: [https://api.boxmine.xyz/api/spotifysearch?text=maneskin%20beggin](https://api.boxmine.xyz/api/spotifysearch?text=maneskin%20beggin)
   - Ejemplo: [https://api.boxmine.xyz/api/spotifysearch?text=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e](https://api.boxmine.xyz/api/spotifysearch?text=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e)
 
-### InstagramDL:
+### InstagramDL V1:
 - **video, imagen, reel, publicación, historia**
   - Uso: `https://api.boxmine.xyz/api/igdl?url=${url}`
   - Ejemplo: [https://api.boxmine.xyz/api/igdl?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link](https://api.boxmine.xyz/api/igdl?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link)
+
+### InstagramDL V2:
+- **video, imagen, reel, publicación, historia**
+  - Uso: `https://api.boxmine.xyz/api/igdl2?url=${url}`
+  - Ejemplo: [https://api.boxmine.xyz/api/igdl2?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link](https://api.boxmine.xyz/api/igdl2?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link)
   
 ### TikTokDL:
 - Uso: `https://api.boxmine.xyz/api/tiktok?url=${url}`
