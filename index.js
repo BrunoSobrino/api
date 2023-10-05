@@ -7,7 +7,6 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const axios = require('axios');
-const analyzeFiles = require('./routes/func/checkfile');
 let totalRequests = 0;
 
 var allowedOrigins = ['https://api-sxe5.onrender.com', 'https://api.boxmine.xyz', 'http://prem-n1.zipponodes.com:50031'];
@@ -158,7 +157,6 @@ async function checkRepoUpdates() {
     if (sha !== previousCommitSHA) {
       const stdout = execSync('git pull');
       previousCommitSHA = sha;
-     // setTimeout(analyzeFiles, 10000); //30000
     }
   } catch {
     isError = true;
