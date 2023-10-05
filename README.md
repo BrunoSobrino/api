@@ -46,8 +46,8 @@
 ### SpotifySearch:
 - **audio**
   - Uso: `https://api.boxmine.xyz/api/spotifysearch?text=${text || url}`
-  - Ejemplo: [https://api.boxmine.xyz/api/spotifysearch?text=beret%20ojala](https://api.boxmine.xyz/api/spotifysearch?text=beret%20ojala)
-  - Ejemplo: [https://api.boxmine.xyz/api/spotifysearch?text=](https://api.boxmine.xyz/api/spotifysearch?text=)
+  - Ejemplo: [https://api.boxmine.xyz/api/spotifysearch?text=maneskin%20beggin](https://api.boxmine.xyz/api/spotifysearch?text=maneskin%20beggin)
+  - Ejemplo: [https://api.boxmine.xyz/api/spotifysearch?text=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e](https://api.boxmine.xyz/api/spotifysearch?text=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e)
   
 ### TikTokDL:
 - Uso: `https://api.boxmine.xyz/api/tiktok?url=${url}`
