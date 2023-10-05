@@ -39,6 +39,7 @@
     "express-rate-limit": "^7.0.1",
     "fluent-ffmpeg": "^2.1.2",
     "fs": "^0.0.1-security",
+    "file-type": "^16.5.3",
     "node-fetch": "^2.6.6",
     "node-id3": "*",
     "nodemon": "*",
