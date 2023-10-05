@@ -40,6 +40,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "fs": "^0.0.1-security",
     "file-type": "^16.5.3",
+    "instagram-url-direct": "^1.0.13",
     "node-fetch": "^2.6.6",
     "node-id3": "*",
     "nodemon": "*",
