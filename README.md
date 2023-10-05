@@ -49,6 +49,11 @@
   - Uso: `https://api.boxmine.xyz/api/spotifysearch?text=${text || url}`
   - Ejemplo: [https://api.boxmine.xyz/api/spotifysearch?text=maneskin%20beggin](https://api.boxmine.xyz/api/spotifysearch?text=maneskin%20beggin)
   - Ejemplo: [https://api.boxmine.xyz/api/spotifysearch?text=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e](https://api.boxmine.xyz/api/spotifysearch?text=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e)
+
+### InstagramDL:
+- **video, imagen, reel, publicación, historia**
+  - Uso: `https://api.boxmine.xyz/api/igdl?url=${url}`
+  - Ejemplo: [https://api.boxmine.xyz/api/igdl?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link](https://api.boxmine.xyz/api/igdl?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link)
   
 ### TikTokDL:
 - Uso: `https://api.boxmine.xyz/api/tiktok?url=${url}`
