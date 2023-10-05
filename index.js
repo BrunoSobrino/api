@@ -9,7 +9,7 @@ const { execSync } = require('child_process');
 const axios = require('axios');
 let totalRequests = 0;
 
-var allowedOrigins = ['https://api-brunosobrino.onrender.com', 'https://api.boxmine.xyz', 'http://prem-n1.zipponodes.com:50031'];
+var allowedOrigins = ['https://api-brunosobrino.onrender.com', 'https://api.boxmine.xyz', 'http://prem-n1.zipponodes.com:50031', 'https://api.brunosobrino.repl.co'];
 
 app.set('trust proxy', 1)
 
