@@ -42,6 +42,12 @@
   - Uso: `https://api.boxmine.xyz/api/ytplay?text=${text || url}`
   - Ejemplo: [https://api.boxmine.xyz/api/ytplay?text=begin%20you](https://api.boxmine.xyz/api/ytplay?text=begin%20you)
   - Ejemplo: [https://api.boxmine.xyz/api/ytplay?text=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvSOkDk7p](https://api.boxmine.xyz/api/ytplay?text=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvSOkDk7p)
+
+### SpotifySearch:
+- **audio**
+  - Uso: `https://api.boxmine.xyz/api/spotifysearch?text=${text || url}`
+  - Ejemplo: [https://api.boxmine.xyz/api/spotifysearch?text=beret%20ojala](https://api.boxmine.xyz/api/spotifysearch?text=beret%20ojala)
+  - Ejemplo: [https://api.boxmine.xyz/api/spotifysearch?text=](https://api.boxmine.xyz/api/spotifysearch?text=)
   
 ### TikTokDL:
 - Uso: `https://api.boxmine.xyz/api/tiktok?url=${url}`
