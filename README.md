@@ -6,7 +6,7 @@
 
 ## —◉ APIs online:
 - API 1: [https://api.boxmine.xyz/status](http://api.boxmine.xyz/status)
-- API 2: [https://api-sxe5.onrender.com/status](https://api-sxe5.onrender.com/status)
+- API 2: [https://api-brunosobrino.onrender.com/status](https://api-brunosobrino.onrender.com/status)
 - API 3: [http://prem-n1.zipponodes.com:50031/status](http://prem-n1.zipponodes.com:50031/status)
 
 ------------------
