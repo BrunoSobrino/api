@@ -41,6 +41,8 @@ const ytdl = require('./routes/ytdl');
 const ytplay = require('./routes/ytplay');
 const spotifys = require('./routes/spotifysearch');
 const chatgpt = require('./routes/chatgpt');
+const igdl1 = require('./routes/igdl');
+const igdl2 = require('./routes/igdl2');
 
 const getUptime = () => {
   const uptimeInSeconds = Math.floor(process.uptime());
@@ -73,6 +75,8 @@ app.use('/api/ytdl', ytdl);
 app.use('/api/ytplay', ytplay);
 app.use('/api/spotifysearch', spotifys);
 app.use('/api/chatgpt', chatgpt);
+app.use('/api/igdl', igdl1);
+app.use('/api/igdl2', igdl2);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
