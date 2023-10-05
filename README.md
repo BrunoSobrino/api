@@ -52,13 +52,13 @@
 
 ### InstagramDL V1:
 - **video, imagen, reel, publicación, historia**
-  - Uso: `https://api.boxmine.xyz/api/igdl?url=${url}`
-  - Ejemplo: [https://api.boxmine.xyz/api/igdl?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link](https://api.boxmine.xyz/api/igdl?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link)
+  - Uso: `https://api.boxmine.xyz/api/v1/igdl?url=${url}`
+  - Ejemplo: [https://api.boxmine.xyz/api/v1/igdl?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link](https://api.boxmine.xyz/api/v1/igdl?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link)
 
 ### InstagramDL V2:
 - **video, imagen, reel, publicación, historia**
-  - Uso: `https://api.boxmine.xyz/api/igdl2?url=${url}`
-  - Ejemplo: [https://api.boxmine.xyz/api/igdl2?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link](https://api.boxmine.xyz/api/igdl2?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link)
+  - Uso: `https://api.boxmine.xyz/api/v2/igdl?url=${url}`
+  - Ejemplo: [https://api.boxmine.xyz/api/v2/igdl?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link](https://api.boxmine.xyz/api/v2/igdl?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link)
   
 ### TikTokDL:
 - Uso: `https://api.boxmine.xyz/api/tiktok?url=${url}`
