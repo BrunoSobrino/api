@@ -119,7 +119,9 @@ app.get('/status', (req, res) => {
          ytdl: '/api/ytdl',
          ytplay: '/api/ytplay',
          tiktok: '/api/tiktok',
-         ttimg: '/api/ttimg'          
+         ttimg: '/api/ttimg',        
+         spotifydl: '/api/spotifydl',
+         spotifyinfo: '/api/spotifyinfo'   
       },
       imagen_random: {
          nsfwloli: '/api/nsfw/nsfwloli'
@@ -169,7 +171,7 @@ async function checkRepoUpdates() {
     const response = await axios.get(`https://api.github.com/repos/BrunoSobrino/api/commits?per_page=1`);
     const { sha } = response.data[0];
     if (sha !== previousCommitSHA) {
-      const stdout = execSync('git pull');
+      const stdout = execSync('git pull > /dev/null 2>&1');
       previousCommitSHA = sha;
     }
   } catch {
