@@ -4,6 +4,7 @@ const fs = require('fs');
 const NodeID3 = require('node-id3');
 const axios = require('axios');
 const uploadFile = require('./uploadFile')
+const imgbb = require('imgbb-uploader')
 
 const credentials = {
   clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3',
@@ -135,11 +136,11 @@ async function spotifySearch1(input) {
       url: linkDL || '-',
       year: spty?.data.release_date || '-',
       genre: 'Música',
-      thumbnail: spty?.data.cover_url || '-',
-      preview: spty?.data.preview_url || '-',
+      thumbnail: spty?.data.cover_url || '-'
     };
-    const audiodl = await uploadFile(spty?.audio)
-    return { resultado: data, download: { audio: audiodl } };
+    //const audiodl = await uploadFile(spty?.audio)
+    const audiodl = await imgbb("3b8594f4cb11895f4084291bc655e510", spty?.audio)
+    return { resultado: data, download: { audio: audiodl.display_url } };
   } catch (error) {
     console.error(error);
     throw 'Error al obtener los datos de la música.';
