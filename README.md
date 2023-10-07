@@ -49,6 +49,13 @@
   - Uso: `https://api.boxmine.xyz/api/spotifydl?text=${text || url}`
   - Ejemplo: [https://api.boxmine.xyz/api/spotifydl?text=maneskin%20beggin](https://api.boxmine.xyz/api/spotifydl?text=maneskin%20beggin)
   - Ejemplo: [https://api.boxmine.xyz/api/spotifydl?text=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e](https://api.boxmine.xyz/api/spotifydl?text=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e)
+ 
+### SpotifyInfo:
+- **info + audio:**
+  - Uso: `https://api.boxmine.xyz/api/spotifyinfo?text=${text || url}`
+  - Ejemplo: [https://api.boxmine.xyz/api/spotifyinfo?text=begin%20you](https://api.boxmine.xyz/api/spotifyinfo?text=begin%20you)
+  - Ejemplo: [https://api.boxmine.xyz/api/spotifyinfo?text=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e](https://api.boxmine.xyz/api/spotifyinfo?text=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e)
+
 
 ### InstagramDL V1:
 - **video, imagen, reel, publicación, historia**
@@ -76,6 +83,10 @@
 ### YTSearch:
   - Uso: `https://api.boxmine.xyz/api/ytsearch?text=${texto}`
   - Ejemplo: [https://api.boxmine.xyz/api/ytsearch?text=begin%20you](https://api.boxmine.xyz/api/ytsearch?text=begin%20you)
+
+### SpotifySearch:
+  - Uso: `https://api.boxmine.xyz/api/spotifysearch?text=${text}`
+  - Ejemplo: [https://api.boxmine.xyz/api/spotifysearch?text=maneskin%20beggin](https://api.boxmine.xyz/api/spotifysearch?text=maneskin%20beggin)
 
 </details>
 
