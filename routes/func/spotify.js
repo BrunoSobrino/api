@@ -121,14 +121,11 @@ async function getMusicBuffer(text) {
 async function spotifySearch1(input) {
   try {
     let linkDL = input;
-
-    // Si el input no es una URL de Spotify válida, realizar una búsqueda
     if (!input.match(/^(https:\/\/open\.spotify\.com\/track\/[a-zA-Z0-9]+)/i)) {
       const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${input}`);
       const jsonDL = await resDL.json();
       linkDL = jsonDL.result[0].link;
     }
-
     const spty = await spotifydl(linkDL);
     const artist = spty?.data.artists.join(', ') || '-';
     const data = {
@@ -141,7 +138,7 @@ async function spotifySearch1(input) {
       thumbnail: spty?.data.cover_url || '-',
       preview: spty?.data.preview_url || '-',
     };
-    const audiodl = uploadFile(spty?.audio)
+    const audiodl = await uploadFile(spty?.audio)
     return { resultado: data, download: { audio: audiodl } };
   } catch (error) {
     console.error(error);
