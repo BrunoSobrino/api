@@ -44,11 +44,11 @@
   - Ejemplo: [https://api.boxmine.xyz/api/ytplay?text=begin%20you](https://api.boxmine.xyz/api/ytplay?text=begin%20you)
   - Ejemplo: [https://api.boxmine.xyz/api/ytplay?text=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvSOkDk7p](https://api.boxmine.xyz/api/ytplay?text=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvSOkDk7p)
 
-### SpotifySearch:
+### SpotifyDL:
 - **audio**
-  - Uso: `https://api.boxmine.xyz/api/spotifysearch?text=${text || url}`
-  - Ejemplo: [https://api.boxmine.xyz/api/spotifysearch?text=maneskin%20beggin](https://api.boxmine.xyz/api/spotifysearch?text=maneskin%20beggin)
-  - Ejemplo: [https://api.boxmine.xyz/api/spotifysearch?text=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e](https://api.boxmine.xyz/api/spotifysearch?text=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e)
+  - Uso: `https://api.boxmine.xyz/api/spotifydl?text=${text || url}`
+  - Ejemplo: [https://api.boxmine.xyz/api/spotifydl?text=maneskin%20beggin](https://api.boxmine.xyz/api/spotifydl?text=maneskin%20beggin)
+  - Ejemplo: [https://api.boxmine.xyz/api/spotifydl?text=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e](https://api.boxmine.xyz/api/spotifydl?text=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e)
 
 ### InstagramDL V1:
 - **video, imagen, reel, publicación, historia**
