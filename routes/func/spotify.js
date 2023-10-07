@@ -3,6 +3,7 @@ const Spotify = require('spotifydl-x');
 const fs = require('fs');
 const NodeID3 = require('node-id3');
 const axios = require('axios');
+const uploadFile = require('./uploadFile')
 
 const credentials = {
   clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3',
@@ -117,24 +118,31 @@ async function getMusicBuffer(text) {
   }
 }
 
-async function spotifySearch1(text) {
+async function spotifySearch1(input) {
   try {
-    const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
-    const jsonDL = await resDL.json();
-    const linkDL = jsonDL.result[0].link;
+    let linkDL = input;
+
+    // Si el input no es una URL de Spotify válida, realizar una búsqueda
+    if (!input.match(/^(https:\/\/open\.spotify\.com\/track\/[a-zA-Z0-9]+)/i)) {
+      const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${input}`);
+      const jsonDL = await resDL.json();
+      linkDL = jsonDL.result[0].link;
+    }
+
     const spty = await spotifydl(linkDL);
     const artist = spty?.data.artists.join(', ') || '-';
     const data = {
       title: spty?.data.name || '-',
       artist: artist,
       album: spty?.data.album_name || '-',
-      url: jsonDL?.result[0].link || '-',
+      url: linkDL || '-',
       year: spty?.data.release_date || '-',
       genre: 'Música',
       thumbnail: spty?.data.cover_url || '-',
-      preview: jsonDL?.result[0].preview_url || '-',
+      preview: spty?.data.preview_url || '-',
     };
-    return {resultado: data, download: {audio: spty?.audio}};
+    const audiodl = uploadFile(spty?.audio)
+    return { resultado: data, download: { audio: audiodl } };
   } catch (error) {
     console.error(error);
     throw 'Error al obtener los datos de la música.';
