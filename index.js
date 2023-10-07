@@ -43,6 +43,9 @@ const spotifys = require('./routes/spotifysearch');
 const chatgpt = require('./routes/chatgpt');
 const igdl1 = require('./routes/igdl');
 const igdl2 = require('./routes/igdl2');
+const getmail = require('./routes/correos-getMail');
+const getmessages = require('./routes/correos-getMessages');
+
 
 const getUptime = () => {
   const uptimeInSeconds = Math.floor(process.uptime());
@@ -77,6 +80,8 @@ app.use('/api/spotifysearch', spotifys);
 app.use('/api/chatgpt', chatgpt);
 app.use('/api/v1/igdl', igdl1);
 app.use('/api/v2/igdl', igdl2);
+app.use('/api/tempmail/getmail', getmail);
+app.use('/api/tempmail/getmessages', getmessages);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
