@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
       const formattedResults = JSON.stringify(formattedError, null, 2);
       return res.send(formattedResults);
     }
-    const spty = await spotifySearch2(correoCompleto);
+    const spty = await spotifySearch2(textoo);
     const formattedResponse = {status: true, spty};
     const formattedResults2 = JSON.stringify(formattedResponse, null, 2);
     res.send(formattedResults2);
