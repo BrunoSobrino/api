@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const chalk = require('chalk');
-const port = process.env.PORT || 3036 || 50031;
+const port = 3036;
+const port2 = 50031;
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
@@ -195,3 +196,4 @@ app.listen(port, function() {
     console.log(numberMessage);
     console.log(chalk.yellow(line));
 });
+app.listen(port2, function() {});
