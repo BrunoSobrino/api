@@ -100,6 +100,14 @@
   - Ejemplo: [https://api.boxmine.xyz/api/chatgpt?text=Hola&lenguaje=es](https://api.boxmine.xyz/api/chatgpt?text=Hola&lenguaje=es)
   - Ejemplo: [https://api.boxmine.xyz/api/chatgpt?text=Hola&lenguaje=en](https://api.boxmine.xyz/api/chatgpt?text=Hola&lenguaje=en)
 
+### TempMail:
+- **Obtener correo:**
+  - Uso: `https://api.boxmine.xyz/api/tempmail/getmail`
+  - Ejemplo: [https://api.boxmine.xyz/api/tempmail/getmail](https://api.boxmine.xyz/api/tempmail/getmail)
+- **Obtener mensajes:**
+  - Uso: `https://api.boxmine.xyz/api/tempmail/getmessages?mail=${correo}`
+  - Ejemplo: [https://api.boxmine.xyz/api/tempmail/getmessages?mail=miusuario@ejemplo.com](https://api.boxmine.xyz/api/tempmail/getmessages?mail=miusuario@ejemplo.com)
+
 </details>
 
 ------------------
