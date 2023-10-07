@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     const correoTemp = await generarCorreoAleatorio();
     const formattedResponse = JSON.stringify({
       status: true,
-      correo: correoTemp.correo
+      mail: correoTemp.correo
     }, null, 2);
     res.status(200).json(JSON.parse(formattedResponse)); 
   } catch (error) {
