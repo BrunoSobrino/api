@@ -5,11 +5,9 @@ const { generarCorreoAleatorio } = require('./func/tempmail');
 router.get('/', async (req, res) => {
   try {
     const correoTemp = await generarCorreoAleatorio();
-    const formattedResponse = JSON.stringify({
-      status: true,
-      mail: correoTemp.correo
-    }, null, 2);
-    res.status(200).json(JSON.parse(formattedResponse)); 
+    const formattedResults = JSON.stringify(correoTemp, null, 2);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(formattedResults);
   } catch (error) {
     console.error(error);
     const errorMessage = 'Error al generar el correo aleatorio';
