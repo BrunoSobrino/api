@@ -5,7 +5,7 @@ const { facebookdlfunc } = require('./func/facebook');
 router.get('/', async (req, res) => {
   const url = req.query.url;
   try {
-    const results = await facebook(url);
+    const results = await facebookdlfunc(url);
       const formattedResults = JSON.stringify(results, null, 2);
       res.setHeader('Content-Type', 'application/json');
       res.send(formattedResults);
