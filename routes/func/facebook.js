@@ -5,7 +5,7 @@ const { savefrom, facebookdl, facebookdlv2 } = require('@bochilteam/scraper');
 const { facebook } = require('@xct007/frieren-scraper');
 const fbDownloader = require('fb-downloader-scrapper');
 
-const facebook = async (url) => {
+const facebookdlfunc = async (url) => {
   if (!url) {
     return {
       status: false,
@@ -135,4 +135,4 @@ async function igeh(url_media) {
   });
 }
 
-module.exports = { facebook };
+module.exports = { facebookdlfunc };
