@@ -18,6 +18,7 @@ const facebookdlfunc = async (url) => {
     if (d2ata.urls && d2ata.urls.length > 0) {
       r2es = `${d2ata.urls[0]?.hd || d2ata.urls[1]?.sd || ''}`;
     }
+    if (!r2es || r2es == '' || r2es == undefined || r2es == null) return XD; 
     return {
       status: true,
       resultado: {
@@ -28,6 +29,7 @@ const facebookdlfunc = async (url) => {
     try {
       const req = await igeh(url); 
       const res = req.url_list;
+      if (!res || res == '' || res == undefined || res == null) return XD; 
       return {
         status: true,
         resultado: {
@@ -40,6 +42,7 @@ const facebookdlfunc = async (url) => {
         const Jjson = await Rres.json();
         let VIDEO = Jjson.result[0];
         if (VIDEO == '' || !VIDEO || VIDEO == null) VIDEO = Jjson.result[1];
+        if (!VIDEO || VIDEO == '' || VIDEO == undefined || VIDEO == null) return XD;
         return {
           status: true,
           resultado: {
@@ -50,6 +53,7 @@ const facebookdlfunc = async (url) => {
         try {
           const ress = await fg.fbdl(url); 
           const urll = ress.data[0].url;
+          if (!urll || urll == '' || urll == undefined || urll == null) return XD;
           return {
             status: true,
             resultado: {
@@ -61,6 +65,7 @@ const facebookdlfunc = async (url) => {
             const res = await fbDownloader(url); 
             for (const result of res.download) {
               const ur = result.url;
+              if (!ur || ur == '' || ur == undefined || ur == null) return XD;
               return {
                 status: true,
                 resultado: {
@@ -73,6 +78,7 @@ const facebookdlfunc = async (url) => {
               const res3 = await fetch(`https://latam-api.vercel.app/api/facebookdl?apikey=nekosmic&q=${url}`); 
               const json = await res3.json();
               const url3 = json.video;
+              if (!url3 || url3 == '' || url3 == undefined || url3 == null) return XD;
               return {
                 status: true,
                 resultado: {
@@ -82,10 +88,8 @@ const facebookdlfunc = async (url) => {
             } catch (error6) {
               try {
                 const { result } = await facebookdl(url).catch(async (_) => await facebookdlv2(url)).catch(async (_) => await savefrom(url)); 
-                const urls = result.map(({ url, isVideo }) => ({
-                  url,
-                  isVideo
-                }));
+                const urls = result.map(({ url, isVideo }) => ({ url }));
+                if (!urls || urls == '' || urls == undefined || urls == null) return XD;
                 return {
                   status: true,
                   resultado: {
