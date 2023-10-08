@@ -49,6 +49,7 @@ const igdl1 = require('./routes/igdl');
 const igdl2 = require('./routes/igdl2');
 const getmail = require('./routes/correos-getMail');
 const getmessages = require('./routes/correos-getMessages');
+const facebook = require('./routes/facebook');
 
 
 const getUptime = () => {
@@ -88,6 +89,7 @@ app.use('/api/v1/igdl', igdl1);
 app.use('/api/v2/igdl', igdl2);
 app.use('/api/tempmail/getmail', getmail);
 app.use('/api/tempmail/getmessages', getmessages);
+app.use('/api/facebook', facebook);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
@@ -126,7 +128,8 @@ app.get('/status', (req, res) => {
          tiktok: '/api/tiktok',
          ttimg: '/api/ttimg',        
          spotifydl: '/api/spotifydl',
-         spotifyinfo: '/api/spotifyinfo'   
+         spotifyinfo: '/api/spotifyinfo',
+         facebook: '/api/facebook'  
       },
       imagen_random: {
          nsfwloli: '/api/nsfw/nsfwloli'
