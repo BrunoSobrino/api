@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const axios = require('axios');
+const favicon = require('serve-favicon');
 let totalRequests = 0;
 
 var allowedOrigins = ['https://api-brunosobrino.onrender.com', 'https://api.boxmine.xyz', 'http://prem-n1.zipponodes.com:40016', 'https://api.brunosobrino.repl.co'];
@@ -91,7 +92,7 @@ app.use('/api/tempmail/getmessages', getmessages);
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
 
-var _0xaeb0e5=_0x3269;function _0x3269(_0x23cb3e,_0x50eec7){var _0x1eed49=_0x1eed();return _0x3269=function(_0x326917,_0x1a4d2d){_0x326917=_0x326917-0x13f;var _0x5b755f=_0x1eed49[_0x326917];return _0x5b755f;},_0x3269(_0x23cb3e,_0x50eec7);}(function(_0x3e7141,_0x353955){var _0x2b6c81=_0x3269,_0x2cdcd6=_0x3e7141();while(!![]){try{var _0x568502=-parseInt(_0x2b6c81(0x143))/0x1*(parseInt(_0x2b6c81(0x14c))/0x2)+-parseInt(_0x2b6c81(0x13f))/0x3*(-parseInt(_0x2b6c81(0x14b))/0x4)+-parseInt(_0x2b6c81(0x142))/0x5+-parseInt(_0x2b6c81(0x149))/0x6*(-parseInt(_0x2b6c81(0x147))/0x7)+parseInt(_0x2b6c81(0x14a))/0x8+-parseInt(_0x2b6c81(0x141))/0x9+-parseInt(_0x2b6c81(0x140))/0xa*(parseInt(_0x2b6c81(0x148))/0xb);if(_0x568502===_0x353955)break;else _0x2cdcd6['push'](_0x2cdcd6['shift']());}catch(_0x232b38){_0x2cdcd6['push'](_0x2cdcd6['shift']());}}}(_0x1eed,0x214eb),app['get'](_0xaeb0e5(0x14e),(_0x3d8ce9,_0x5a63c0)=>{var _0x396875=_0xaeb0e5;console['log'](_0x396875(0x14d)),_0x5a63c0[_0x396875(0x146)]('Reiniciando\x20la\x20aplicación\x20con\x20nodemon...'),process[_0x396875(0x144)](process['pid'],_0x396875(0x145));}));function _0x1eed(){var _0x2b0f76=['12072uTIfoL','1632504ZRtnPH','54500VTdvEG','2KcuthM','Reiniciando\x20la\x20aplicación\x20con\x20nodemon...','/restart','57hgnKKS','10eirLHB','970839mzxmiz','115380woGCpF','177592tYeLsX','kill','SIGUSR2','send','427VOzSUj','1547744bDOQYy'];_0x1eed=function(){return _0x2b0f76;};return _0x1eed();}
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 app.get('/status', (req, res) => {
   const uptime = getUptime();
