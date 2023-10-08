@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { facebook } = require('./func/facebook'); 
+const { facebookdlfunc } = require('./func/facebook'); 
 
 router.get('/', async (req, res) => {
   const url = req.query.url;
