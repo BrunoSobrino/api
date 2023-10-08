@@ -109,7 +109,9 @@ app.get('/status', (req, res) => {
          spotifysearch: '/api/spotifysearch'
       },
       herramientas: {
-         chatgpt: '/api/chatgpt'
+         chatgpt: '/api/chatgpt',
+         tempmail_getmail: '/api/tempmail/getmail', 
+         tempmail_getmessage: '/api/tempmail/getmessage' 
       },
       downloader: {
          v1_ytmp3: '/api/v1/ytmp3',
