@@ -3,14 +3,14 @@ const app = express();
 const cors = require('cors');
 const chalk = require('chalk');
 const port = 3036;
-const port2 = 50031;
+const port2 = 40016;
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const axios = require('axios');
 let totalRequests = 0;
 
-var allowedOrigins = ['https://api-brunosobrino.onrender.com', 'https://api.boxmine.xyz', 'http://prem-n1.zipponodes.com:50031', 'https://api.brunosobrino.repl.co'];
+var allowedOrigins = ['https://api-brunosobrino.onrender.com', 'https://api.boxmine.xyz', 'http://prem-n1.zipponodes.com:40016', 'https://api.brunosobrino.repl.co'];
 
 app.set('trust proxy', 1)
 
