@@ -1,149 +1,360 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta property="og:image" content="https://github.com/BrunoSobrino.png">
-    <title>API | BrunoSobrino</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url('https://wallpapercave.com/wp/wp9052724.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: #fff;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                background-image: url('https://cdn.donmai.us/original/46/af/46af946c26c9f6d6dd0d9e632f2c0902.jpg');
-            }
-
-            .welcome-box {
-                padding: 10px;
-            }
-
-            .neon-text {
-                font-size: 24px; 
-                white-space: nowrap; 
-            }
-
-            .redirect-button {
-                padding: 5px 15px; 
-                top: calc(50% + 20px);
-            }
-        }
-
-        #menu {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 250px;
-            height: 100%;
-            transition: right 0.3s;
-            background-color: #333;
-            color: #fff;
-            z-index: 2;
-            overflow-y: auto;
-        }
-
-        #menu.active {
-            right: 0;
-        }
-
-        #menu-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            z-index: 3;
-            transition: right 0.3s;
-        }
-
-        #menu-button.active {
-            right: 280px;
-        }
-
-        .welcome-box {
-            padding: 20px;
-            text-align: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .neon-text {
-            font-size: 36px;
-            text-transform: uppercase;
-            color: #fff;
-            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
-        }
-
-        .redirect-button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            display: block;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: calc(50% + 40px); 
-        }
-
-        /* Estilos para el reproductor de audio en el menú */
-        #audio-player-container {
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-        }
-
-        #audio-player-menu {
-            width: 100%;
-            height: 30px;
-        }
-    </style>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta property="og:image" content="https://github.com/BrunoSobrino.png">
+<title>API | BrunoSobrino</title>
 </head>
 <body>
-    <div id="menu">
-        <ul>
-            <li><a href="docs">Documentación</a></li>
-            <li><a href="contact">Contacto</a></li>
-        </ul>
+  <div class="sp-container">
+    <div class="sp-content">
+      <div class="sp-globe"></div>
+      <h2 class="frame-1">Bienvenido(a)</h2>
+      <h2 class="frame-2">a mi página</h2>
+      <h2 class="frame-3">Empire Rest Api</h2>
+      <h2 class="frame-4">
+        <span>Api - </span>
+        <span>Empire</span>
+      </h2>
+      <a class="documentation-button" href="/docs">Documentación</a>
     </div>
-    
-    <div id="content">
-        <img id="menu-button" src="https://github.com/BrunoSobrino.png" alt="Menú" width="40" height="40">
-    </div>
-
-    <div class="welcome-box">
-        <h2 class="neon-text">Bienvenido a Mi API</h2>
-        <button class="redirect-button" id="docs-button">Documentación</button>
-    </div>
-
-    <script>
-        const baseurl = window.location.origin;
-        const docsButton = document.getElementById('docs-button');
-        docsButton.addEventListener('click', function () {
-            window.location.href = `${baseurl}/docs`;
-        });
-
-        const menuButton = document.getElementById('menu-button');
-        const menu = document.getElementById('menu');
-
-        menuButton.addEventListener('click', () => {
-            menu.classList.toggle('active');
-            menuButton.classList.toggle('active');
-        });
-    </script>
- </body>
+  </div>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Barlow');
+    body {
+      background: #310404 url(https://wallpapercave.com/wp/wp9052724.png) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      font-family: 'Barlow', sans-serif;
+    }
+    .container {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    a {
+      text-decoration: none;
+    }
+    h1.main,
+    p.demos {
+      -webkit-animation-delay: 18s;
+      -moz-animation-delay: 18s;
+      -ms-animation-delay: 18s;
+      animation-delay: 18s;
+    }
+    .sp-container {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background: -webkit-radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
+      background: -moz-radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
+      background: -ms-radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
+      background: radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
+    }
+    .sp-content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0px;
+      top: 0px;
+      z-index: 1000;
+    }
+    .sp-container h2 {
+      position: absolute;
+      top: 50%;
+      line-height: 100px;
+      height: 90px;
+      margin-top: -50px;
+      font-size: 90px;
+      width: 100%;
+      text-align: center;
+      color: transparent;
+      -webkit-animation: blurFadeInOut 3s ease-in backwards;
+      -moz-animation: blurFadeInOut 3s ease-in backwards;
+      -ms-animation: blurFadeInOut 3s ease-in backwards;
+      animation: blurFadeInOut 3s ease-in backwards;
+    }
+    .sp-container h2.frame-1 {
+      -webkit-animation-delay: 0s;
+      -moz-animation-delay: 0s;
+      -ms-animation-delay: 0s;
+      animation-delay: 0s;
+    }
+    .sp-container h2.frame-2 {
+      -webkit-animation-delay: 3s;
+      -moz-animation-delay: 3s;
+      -ms-animation-delay: 3s;
+      animation-delay: 3s;
+    }
+    .sp-container h2.frame-3 {
+      -webkit-animation-delay: 6s;
+      -moz-animation-delay: 6s;
+      -ms-animation-delay: 6s;
+      animation-delay: 6s;
+    }
+    .sp-container h2.frame-4 {
+      -webkit-animation: none;
+      -moz-animation: none;
+      -ms-animation: none;
+      animation: none;
+      color: transparent;
+      text-shadow: 0px 0px 1px #fff;
+    }
+    .sp-container h2.frame-4 span {
+      -webkit-animation: blurFadeIn 3s ease-in 10s backwards;
+      -moz-animation: blurFadeIn 1s ease-in 10s backwards;
+      -ms-animation: blurFadeIn 3s ease-in 10s backwards;
+      animation: blurFadeIn 3s ease-in 10s backwards;
+      color: transparent;
+      text-shadow: 0px 0px 1px #fff;
+    }
+    .sp-container h2.frame-4 span:nth-child(2) {
+      -webkit-animation-delay: 12s;
+      -moz-animation-delay: 12s;
+      -ms-animation-delay: 12s;
+      animation-delay: 12s;
+    }      
+    .sp-globe {
+      position: absolute;
+      width: 282px;
+      height: 273px;
+      left: 50%;
+      top: 50%;
+      margin: -137px 0 0 -141px;
+      background: transparent url(http://web-sonick.zz.mu/images/sl/globe.png) no-repeat top left;
+      -webkit-animation: fadeInBack 3.6s linear 14s backwards;
+      -moz-animation: fadeInBack 3.6s linear 14s backwards;
+      -ms-animation: fadeInBack 3.6s linear 14s backwards;
+      animation: fadeInBack 3.6s linear 14s backwards;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+      filter: alpha(opacity=30);
+      opacity: 0.3;
+      -webkit-transform: scale(5);
+      -moz-transform: scale(5);
+      -o-transform: scale(5);
+      -ms-transform: scale(5);
+      transform: scale(5);
+    }
+    .documentation-button {
+      display: inline-block;
+      padding: 10px 20px; 
+      background: linear-gradient(to bottom, #000033, #000066); 
+      color: white; 
+      font-weight: bold; 
+      border: 2px solid #00FFFF; 
+      text-transform: uppercase; 
+      text-decoration: none; 
+      border-radius: 5px; 
+      cursor: pointer; 
+      position: absolute;
+      left: 50%;
+      bottom: 100px;
+      transform: translateX(-50%);
+      transition: background 0.3s, color 0.3s;
+    }
+    .documentation-button {
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+    .documentation-button:hover {
+      background: #85373b;
+      color: #fff;
+    }
+      @-webkit-keyframes blurFadeInOut {
+      0% {
+        opacity: 0;
+        text-shadow: 0px 0px 40px #fff;
+        -webkit-transform: scale(1.3);
+      }
+      20%,
+      75% {
+        opacity: 1;
+        text-shadow: 0px 0px 1px #fff;
+        -webkit-transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        text-shadow: 0px 0px 50px #fff;
+        -webkit-transform: scale(0);
+      }
+    }
+    @-webkit-keyframes blurFadeIn {
+      0% {
+        opacity: 0;
+        text-shadow: 0px 0px 40px #fff;
+        -webkit-transform: scale(1.3);
+      }
+      50% {
+        opacity: 0.5;
+        text-shadow: 0px 0px 10px #fff;
+        -webkit-transform: scale(1.1);
+      }
+      100% {
+        opacity: 1;
+        text-shadow: 0px 0px 1px #fff;
+        -webkit-transform: scale(1);
+      }
+    }
+    @-webkit-keyframes fadeInBack {
+      0% {
+        opacity: 0;
+        -webkit-transform: scale(0);
+      }
+      50% {
+        opacity: 0.4;
+        -webkit-transform: scale(2);
+      }
+      100% {
+        opacity: 0.2;
+        -webkit-transform: scale(5);
+      }
+    }
+    @-webkit-keyframes fadeInRotate {
+      0% {
+        opacity: 0;
+        -webkit-transform: scale(0) rotate(360deg);
+      }
+      100% {
+        opacity: 1;
+        -webkit-transform: scale(1) rotate(0deg);
+      }
+    }
+    @-moz-keyframes blurFadeInOut {
+      0% {
+        opacity: 0;
+        text-shadow: 0px 0px 40px #fff;
+        -moz-transform: scale(1.3);
+      }
+      20%,
+      75% {
+        opacity: 1;
+        text-shadow: 0px 0px 1px #fff;
+        -moz-transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        text-shadow: 0px 0px 50px #fff;
+        -moz-transform: scale(0);
+      }
+    }
+    @-moz-keyframes blurFadeIn {
+      0% {
+        opacity: 0;
+        text-shadow: 0px 0px 40px #fff;
+        -moz-transform: scale(1.3);
+      }
+      100% {
+        opacity: 1;
+        text-shadow: 0px 0px 1px #fff;
+        -moz-transform: scale(1);
+      }
+    }
+    @-moz-keyframes fadeInBack {
+      0% {
+        opacity: 0;
+        -moz-transform: scale(0);
+      }
+      50% {
+        opacity: 0.4;
+        -moz-transform: scale(2);
+      }
+      100% {
+        opacity: 0.2;
+        -moz-transform: scale(5);
+      }
+    }
+    @-moz-keyframes fadeInRotate {
+      0% {
+        opacity: 0;
+        -moz-transform: scale(0) rotate(360deg);
+      }
+      100% {
+        opacity: 1;
+        -moz-transform: scale(1) rotate(0deg);
+      }
+    }
+    @keyframes blurFadeInOut {
+      0% {
+        opacity: 0;
+        text-shadow: 0px 0px 40px #fff;
+        transform: scale(1.3);
+      }
+      20%,
+      75% {
+        opacity: 1;
+        text-shadow: 0px 0px 1px #fff;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        text-shadow: 0px 0px 50px #fff;
+        transform: scale(0);
+      }
+    }
+    @keyframes blurFadeIn {
+      0% {
+        opacity: 0;
+        text-shadow: 0px 0px 40px #fff;
+        transform: scale(1.3);
+      }
+      50% {
+        opacity: 0.5;
+        text-shadow: 0px 0px 10px #fff;
+        transform: scale(1.1);
+      }
+      100% {
+        opacity: 1;
+        text-shadow: 0px 0px 1px #fff;
+        transform: scale(1);
+      }
+    }
+    @keyframes fadeInBack {
+      0% {
+        opacity: 0;
+        transform: scale(0);
+      }
+      50% {
+        opacity: 0.4;
+        transform: scale(2);
+      }
+      100% {
+        opacity: 0.2;
+        transform: scale(5);
+      }
+    }
+    @keyframes fadeInRotate {
+      0% {
+        opacity: 0;
+        transform: scale(0) rotate(360deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+    @media (max-width: 768px) {
+      .sp-container h2 {
+        font-size: 40px; 
+      }
+      body {
+        background-image: url('https://cdn.donmai.us/original/46/af/46af946c26c9f6d6dd0d9e632f2c0902.jpg');
+      }
+    }      
+  </style>
+  <script>
+    setTimeout(function() {
+      const documentationButton = document.querySelector('.documentation-button');
+      documentationButton.style.opacity = '1';
+    }, 16000); 
+  </script>    
+</body>
 </html>
