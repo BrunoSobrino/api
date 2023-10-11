@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <!-- icon animated -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.8/font-awesome-animation.min.css"/>
@@ -19,25 +19,32 @@
     h1 {
         text-align: center;
     }
-    .fire-text {
-        font-size: 2.5em;
-        color: #ff5733;
-        text-shadow: 0 0 10px #ff5733, 0 0 20px #ff5733, 0 0 30px #ff5733; 
-        animation: burn 0.5s infinite alternate; 
-        display: inline-block;
+.text-container {
+    display: inline-flex;
+    align-items: center;
+}
+
+.fire-text {
+    font-size: 2.5em;
+    color: #ff5733;
+    text-shadow: 0 0 10px #ff5733, 0 0 20px #ff5733, 0 0 30px #ff5733; 
+    animation: burn 0.5s infinite alternate; 
+    display: inline-block;
+    white-space: nowrap; 
+}
+
+@keyframes burn {
+    0% {
+        opacity: 1;
     }
-    @keyframes burn {
-        0% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0.5;
-        }
+    100% {
+        opacity: 0.5;
     }
-    .fire-emoji {
-        font-size: 0.9em; 
-        color: #ff5733;
-    }
+}
+.fire-emoji {
+    font-size: 0.9em; 
+    color: #ff5733;
+}
     .button-style {
         background-color: rgba(0, 0, 128, 0.0); 
         color: #fff; 
@@ -54,12 +61,11 @@
 </style>
   <body id="page-top" class="dark-mode">
     <div id="wrapper">
-        <!-- Sidebar -->
         <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <i class="fa fa-smile-beam fa-2x"></i>
-                <div class="sidebar-brand-text mx-3">Free - Api Rest</div>
-            </a>
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <img src="https://github.com/BrunoSobrino.png" alt="BrunoSobrino" width="48" height="48" style="border-radius: 50%;">
+    <div class="sidebar-brand-text mx-3" style="white-space: nowrap;">By BrunoSobrino</div>
+</a>
 <audio autoplay loop>
     <source src="music.mp3" type="audio/mpeg">
     <source src="music.wav" type="audio/wav">
@@ -157,21 +163,22 @@
             <hr class="sidebar-divider">
             <button id="toggleButton" class="button-style">Pausar Música</button>
         </ul>
+<!-- Sidebar -->
+<div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+            <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="text-container">
+                <h1 class="my-4 fire-text">API - EMPIRE <span class="fire-emoji">🔥</span></h1>
+            </div>
+            <ul class="navbar-nav ml-auto">
+                <div class="topbar-divider d-none d-sm-block"></div>
+            </ul>
+        </nav>
         <!-- Sidebar -->
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-                <!-- TopBar -->
-                <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
-                    <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <h1 class="my-4 fire-text">API - EMPIRE <span class="fire-emoji">🔥</span></h1>
-                    <ul class="navbar-nav ml-auto">
-                        <div class="topbar-divider d-none d-sm-block"></div>
-                    </ul>
-                </nav>
-                <!-- Sidebar -->
-
                 <!-- Container Fluid-->
                 <div class="container-fluid" id="container-wrapper">
                     <div class="card h-50 mb-4">
