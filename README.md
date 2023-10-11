@@ -75,6 +75,10 @@
 - Uso: `https://api.boxmine.xyz/api/ttimg?url=${url}`
 - Ejemplo: [https://api.boxmine.xyz/api/ttimg?url=https://vm.tiktok.com/ZM2cqBRVS](https://api.boxmine.xyz/api/ttimg?url=https://vm.tiktok.com/ZM2cqBRVS)
 
+### FacebookDL:
+- Uso: `https://api.boxmine.xyz/api/facebook?url=${url}`
+- Ejemplo: [https://api.boxmine.xyz/api/facebook?url=https://fb.watch/fOTpgn6UFQ](https://api.boxmine.xyz/api/facebook?url=https://fb.watch/fOTpgn6UFQ)
+
 </details>
 
 <details>
