@@ -58,6 +58,14 @@
         outline: none !important;
         border: 0; 
     }
+    .age-restriction-icon {
+        background-color: red;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 16px;
+    }
 </style>
   <body id="page-top" class="dark-mode">
     <div id="wrapper">
@@ -149,11 +157,11 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTools" aria-expanded="true" aria-controls="collapseTools">
-                    <i class="fas fa-fw fa-plus"></i><i class="fas fa-fw fa-one"></i><i class="fas fa-fw fa-eight"></i>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNsfw" aria-expanded="true" aria-controls="collapseNsfw">
+                    <div class="age-restriction-icon">+18</div>
                     <span>Random +18</span>
                 </a>
-                <div id="collapseTools" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+                <div id="collapseNsfw" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded">
                         <h6 class="collapse-header">+18 Random</h6>
                         <a class="collapse-item" target="_blank" href="/api/adult/packgirl">Packs Girl</a>
@@ -161,7 +169,7 @@
                         <a class="collapse-item" target="_blank" href="/api/adult/gawrgura">Gawr Gura</a>
                     </div>
                 </div>
-            </li>            
+            </li>        
             <hr class="sidebar-divider">
             <div class="sidebar-heading">Contact</div>
             <li class="nav-item">
