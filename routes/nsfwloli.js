@@ -4,7 +4,7 @@ const axios = require('axios');
 
 router.get('/', async (req, res) => {
   try {
-    const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/JSON/nsfwloli.json');
+    const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/api/main/data/nsfwloli.json');
     const data = response.data;
     const randomIndex = Math.floor(data.length * Math.random());
     const imageUrl = data[randomIndex];
