@@ -36,7 +36,15 @@ const ytmp3 = require('./routes/ytmp3');
 const ytmp4 = require('./routes/ytmp4');
 const ytmp3_2 = require('./routes/ytmp3_2');
 const ytmp4_2 = require('./routes/ytmp4_2');
+const nsfwass = require('./routes/nsfwass');
+const nsfwbdsm = require('./routes/nsfwbdsm');
+const nsfwcum = require('./routes/nsfwcum');
+const nsfwero = require('./routes/nsfwero');
+const nsfwfemdom = require('./routes/nsfwfemdom');
+const nsfwfoot = require('./routes/nsfwfoot');
+const nsfwglass = require('./routes/nsfwglass');
 const nsfwloli = require('./routes/nsfwloli');
+const nsfworgy = require('./routes/nsfworgy');
 const tiktokdl = require('./routes/tiktok');
 const ytsearch = require('./routes/ytsearch');
 const ytdl = require('./routes/ytdl');
@@ -76,7 +84,6 @@ app.use('/api/v1/ytmp3', ytmp3);
 app.use('/api/v1/ytmp4', ytmp4);
 app.use('/api/v2/ytmp3', ytmp3_2);
 app.use('/api/v2/ytmp4', ytmp4_2);
-app.use('/api/nsfw/nsfwloli', nsfwloli);
 app.use('/api/tiktok', tiktokdl);
 app.use('/api/ytsearch', ytsearch);
 app.use('/api/ytdl', ytdl);
@@ -90,6 +97,15 @@ app.use('/api/v2/igdl', igdl2);
 app.use('/api/tempmail/getmail', getmail);
 app.use('/api/tempmail/getmessages', getmessages);
 app.use('/api/facebook', facebook);
+app.use('/api/nsfw/nsfwass', nsfwass);
+app.use('/api/nsfw/nsfwbdsm', nsfwbdsm);
+app.use('/api/nsfw/nsfwcum', nsfwcum);
+app.use('/api/nsfw/nsfwero', nsfwero);
+app.use('/api/nsfw/nsfwfemdom', nsfwfemdom);
+app.use('/api/nsfw/nsfwfoot', nsfwfoot);
+app.use('/api/nsfw/nsfwglass', nsfwglass);
+app.use('/api/nsfw/nsfwloli', nsfwloli);
+app.use('/api/nsfw/nsfworgy', nsfworgy);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
@@ -104,37 +120,7 @@ app.get('/status', (req, res) => {
     latencia: `${averageResponseTime} ms`,
     totalRequests: totalRequests,
     creator: 'BrunoSobrino',
-    phoneNumber: '+52 1 999 612 5657',
-    mainPages: {
-      home: '/',
-      status: '/status',  
-      documentacion: '/docs',    
-      searchs: {
-         ytsearch: '/api/ytsearch',
-         spotifysearch: '/api/spotifysearch'
-      },
-      herramientas: {
-         chatgpt: '/api/chatgpt',
-         tempmail_getmail: '/api/tempmail/getmail', 
-         tempmail_getmessage: '/api/tempmail/getmessage' 
-      },
-      downloader: {
-         v1_ytmp3: '/api/v1/ytmp3',
-         v1_ytmp4: '/api/v1/ytmp4',
-         v2_ytmp3: '/api/v2/ytmp3',
-         v2_ytmp4: '/api/v2/ytmp4',
-         ytdl: '/api/ytdl',
-         ytplay: '/api/ytplay',
-         tiktok: '/api/tiktok',
-         ttimg: '/api/ttimg',        
-         spotifydl: '/api/spotifydl',
-         spotifyinfo: '/api/spotifyinfo',
-         facebook: '/api/facebook'  
-      },
-      imagen_random: {
-         nsfwloli: '/api/nsfw/nsfwloli'
-      }
-    },
+    phoneNumber: '+52 1 999 612 5657'
   };
   const formattedResponse = JSON.stringify(response, null, 2);
   res.setHeader('Content-Type', 'application/json');
