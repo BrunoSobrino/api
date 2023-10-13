@@ -59,12 +59,14 @@
         border: 0; 
     }
     .age-restriction-icon {
-        background-color: red;
-        color: white;
+        background-color: transparent;
+        color: red;
         padding: 5px 10px;
+        border: 1px solid red;
         border-radius: 5px;
         font-weight: bold;
         font-size: 16px;
+        text-align: left;
     }
 </style>
   <body id="page-top" class="dark-mode">
@@ -157,11 +159,11 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNsfw" aria-expanded="true" aria-controls="collapseNsfw">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse18plus" aria-expanded="true" aria-controls="collapse18plus">
                     <div class="age-restriction-icon">+18</div>
                     <span>Random +18</span>
                 </a>
-                <div id="collapseNsfw" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+                <div id="collapse18plus" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded">
                         <h6 class="collapse-header">+18 Random</h6>
                         <a class="collapse-item" target="_blank" href="/api/adult/packgirl">Packs Girl</a>
