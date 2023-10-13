@@ -4,7 +4,7 @@ const axios = require('axios');
 
 router.get('/', async (req, res) => {
   try {
-    const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/api/main/data/nsfwcum.json');
+    const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/api/main/data/nsfwero.json');
     const data = response.data;
     const randomIndex = Math.floor(data.length * Math.random());
     const imageUrl = data[randomIndex];
