@@ -58,6 +58,9 @@ const igdl2 = require('./routes/igdl2');
 const getmail = require('./routes/correos-getMail');
 const getmessages = require('./routes/correos-getMessages');
 const facebook = require('./routes/facebook');
+const gawrgura = require('./routes/gawrgura');
+const packmen = require('./routes/packmen');
+const packgirl = require('./routes/packgirl');
 
 
 const getUptime = () => {
@@ -106,6 +109,9 @@ app.use('/api/nsfw/nsfwfoot', nsfwfoot);
 app.use('/api/nsfw/nsfwglass', nsfwglass);
 app.use('/api/nsfw/nsfwloli', nsfwloli);
 app.use('/api/nsfw/nsfworgy', nsfworgy);
+app.use('/api/adult/packgirl', packgirl);
+app.use('/api/adult/packmen', packmen);
+app.use('/api/adult/gawrgura', gawrgura);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
