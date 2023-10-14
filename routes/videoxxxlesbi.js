@@ -6,6 +6,10 @@ const path = require('path');
 
 router.get('/', async (req, res) => {
   try {
+    res.setHeader('Content-Type', 'video/mp4');
+    res.setHeader('Cache-Control', 'no-store, max-age=0');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
     const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/api/main/data/videolesbixxx.json');
     const data = response.data;
     const randomIndex = Math.floor(data.length * Math.random());
