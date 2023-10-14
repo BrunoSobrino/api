@@ -155,6 +155,8 @@ app.get('/status', (req, res) => {
     creator: 'BrunoSobrino',
     phoneNumber: '+52 1 999 612 5657'
   };
+  global.totalRequests = totalRequests
+  global.totalVisitors = totalVisitors
   const formattedResponse = JSON.stringify(response, null, 2);
   res.setHeader('Content-Type', 'application/json');
   res.end(formattedResponse);
