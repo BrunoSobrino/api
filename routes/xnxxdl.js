@@ -11,7 +11,8 @@ router.get('/', async (req, res) => {
         message: 'Debes especificar una URL de video'
       };
       const formattedResults_e = JSON.stringify(errorResponse, null, 2);
-      res.status(400).json(formattedResults_e);
+      res.setHeader('Content-Type', 'application/json');
+      res.send(formattedResults_e);
     } else {
       const result = await xnxxdl(videoUrl);
       const formattedResults = JSON.stringify(result, null, 2);
