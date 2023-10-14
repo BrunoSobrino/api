@@ -9,14 +9,12 @@ const path = require('path');
 const { execSync } = require('child_process');
 const axios = require('axios');
 const favicon = require('serve-favicon');
-const ejs = require('ejs');
 let totalRequests = 0;
 let totalVisitors = 0;
 
 var allowedOrigins = ['https://api.boxmine.xyz', 'https://api.brunosobrino.repl.co'];
 
 app.set('trust proxy', 1)
-app.set('view engine', 'ejs');
 
 app.use(cors({
     origin: function(origin, callback) {
@@ -156,8 +154,6 @@ app.get('/status', (req, res) => {
     creator: 'BrunoSobrino',
     phoneNumber: '+52 1 999 612 5657'
   };
-  global.totalRequests = totalRequests
-  global.totalVisitors = totalVisitors
   const formattedResponse = JSON.stringify(response, null, 2);
   res.setHeader('Content-Type', 'application/json');
   res.end(formattedResponse);
