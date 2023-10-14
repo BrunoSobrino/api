@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
     const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
     const videoBuffer = Buffer.from(videoResponse.data, 'binary');
     res.setHeader('Content-Type', 'video/mp4');
-    let videoFileName = generateRandomFileName(path.join(__dirname, '..', 'tmp'), 'video', '.mp4');
+    const videoFileName = await getUniqueFileName(path.join(__dirname, '..', 'tmp'), 'video', '.mp4');
     const videoFilePath = path.join(__dirname, videoFileName);
     fs.writeFileSync(videoFilePath, videoBuffer);
     console.log('Video URL:', videoUrl);
@@ -33,16 +33,18 @@ router.get('/', async (req, res) => {
     res.status(500).send('An error occurred');
   }
 });
-function generateRandomFileName(directory, baseName, extension) {
+async function getUniqueFileName(directory, baseName, extension) {
   let counter = 0;
-  let fileName = `${baseName}${counter}${extension}`;
-  let filePath = path.join(__dirname, directory, fileName);
+  let fileName = `${baseName}${extension}`;
+  const filePath = path.join(directory, fileName);
+
   while (fs.existsSync(filePath)) {
     counter++;
-    fileName = `${baseName}${counter}${extension}`;
-    filePath = path.join(__dirname, directory, fileName);
+    fileName = `${baseName}_${counter}${extension}`;
   }
+
   return fileName;
 }
+
 
 module.exports = router;
