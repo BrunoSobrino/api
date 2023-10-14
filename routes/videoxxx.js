@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
-const { RandomAgresivo, getFileName } = require('./func/functions');
+const { RandomAgresivo } = require('./func/functions');
 
 router.get('/', async (req, res) => {
   try {
@@ -16,6 +16,10 @@ router.get('/', async (req, res) => {
     const randomIndex = RandomAgresivo(0, data.length - 1);
     const videoUrl = data[randomIndex];
     const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
+    res.range({
+      length: videoResponse.headers['content-length'], 
+      accept: req.headers.range,
+    });    
     const videoBuffer = Buffer.from(videoResponse.data, 'base64');
     res.end(videoBuffer);
   } catch (error) {
