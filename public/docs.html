@@ -263,7 +263,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-uppercase mb-1">Visitor</div>
-                                            <div class="h5 mb-0 font-weight-bold"><%= totalVisitors %></div>
+                                            <div id="totalVisitors"></div>
+                                            <!-- div class="h5 mb-0 font-weight-bold"><%= totalVisitors %></div -->
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa fa-user faa-ring animated fa-2x text-primary"></i>
@@ -279,7 +280,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-uppercase mb-1">Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold"><%= totalRequests %></div>
+                                            <div id="totalRequests"></div>
+                                            <!-- div class="h5 mb-0 font-weight-bold"><%= totalRequests %></div -->
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar faa-wrench animated fa-2x text-primary"></i>
@@ -309,7 +311,12 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js"></script>
 <script>
+    fetch('/status').then(response => response.json()).then(data => {
+        document.getElementById('totalRequests').textContent = data.totalRequests;
+        document.getElementById('totalVisitors').textContent = data.totalVisitors;
+      });
     document.addEventListener("DOMContentLoaded", function () {
         const audioElement = document.querySelector("audio");
         const toggleButton = document.getElementById("toggleButton");
