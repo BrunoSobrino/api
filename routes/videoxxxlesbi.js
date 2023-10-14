@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
     res.setHeader('Pragma', 'no-cache');
     res.setHeader('Expires', '0');
     if (fs.existsSync(videoFilePath)) {*/
-      res.sendFile(videoBuffer) //videoFileName, { root: tmpDirectory });
+      res.end(videoBuffer) //videoFileName, { root: tmpDirectory });
     /*} else {
       console.error('El archivo no existe en la ubicación especificada.');
       res.status(404).send('File not found');
