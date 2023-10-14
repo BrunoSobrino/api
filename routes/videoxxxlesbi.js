@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const fs = require('fs');
+const { RandomAgresivo } = require('./func/functions');
 
 router.get('/', async (req, res) => {
   try {
