@@ -66,6 +66,8 @@ const videoxxxlesbi = require('./routes/videoxxxlesbi');
 const xnxxdl = require('./routes/xnxxdl');
 const xnxxsearch = require('./routes/xnxxsearch');
 const booty = require('./routes/a-booty');
+const ecchi = require('./routes/nsfwecchi');
+const hentai = require('./routes/nsfwhentai');
 
 
 const getUptime = () => {
@@ -114,6 +116,8 @@ app.use('/api/nsfw/nsfwfoot', nsfwfoot);
 app.use('/api/nsfw/nsfwglass', nsfwglass);
 app.use('/api/nsfw/nsfwloli', nsfwloli);
 app.use('/api/nsfw/nsfworgy', nsfworgy);
+app.use('/api/nsfw/ecchi', ecchi);
+app.use('/api/nsfw/hentai', hentai);
 app.use('/api/adult/packgirl', packgirl);
 app.use('/api/adult/packmen', packmen);
 app.use('/api/adult/gawrgura', gawrgura);
