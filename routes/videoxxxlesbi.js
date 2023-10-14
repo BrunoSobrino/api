@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     const videoUrl = data[randomIndex];
     const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
     const videoBuffer = Buffer.from(videoResponse.data, 'binary');
-    const tmpDirectory = path.join(__dirname, '..', 'tmp');
+    /*const tmpDirectory = path.join(__dirname, '..', 'tmp');
     if (!fs.existsSync(tmpDirectory)) {
       fs.mkdirSync(tmpDirectory);
     }
@@ -29,12 +29,12 @@ router.get('/', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store, max-age=0');
     res.setHeader('Pragma', 'no-cache');
     res.setHeader('Expires', '0');
-    if (fs.existsSync(videoFilePath)) {
-      res.sendFile(videoFileName, { root: tmpDirectory });
-    } else {
+    if (fs.existsSync(videoFilePath)) {*/
+      res.sendFile(videoBuffer) //videoFileName, { root: tmpDirectory });
+    /*} else {
       console.error('El archivo no existe en la ubicación especificada.');
       res.status(404).send('File not found');
-    }
+    }*/
   } catch (error) {
     console.error(error);
     res.status(500).send('An error occurred');
