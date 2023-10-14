@@ -10,10 +10,12 @@ router.get('/', async (req, res) => {
         status: false,
         message: 'Debes especificar un término de búsqueda'
       };
-      res.status(400).json(errorResponse);
+      const formattedResults_e = JSON.stringify(errorResponse, null, 2);
+      res.status(400).json(formattedResults_e);
     } else {
       const result = await xnxxsearch(query);
-      res.status(200).json(result);
+      const formattedResults = JSON.stringify(result, null, 2);
+      res.status(200).json(formattedResults);
     }
   } catch (error) {
     console.error(error);
