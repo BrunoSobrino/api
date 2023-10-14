@@ -6,38 +6,29 @@ const path = require('path');
 
 router.get('/', async (req, res) => {
   try {
-    res.setHeader('Content-Type', 'video/mp4');
-    res.setHeader('Cache-Control', 'no-store, max-age=0');
-    res.setHeader('Pragma', 'no-cache');
-    res.setHeader('Expires', '0');
     const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/api/main/data/videolesbixxx.json');
     const data = response.data;
     const randomIndex = Math.floor(data.length * Math.random());
-    const videoUrl = data[randomIndex] + `?nocache=${Date.now()}`;
+    const videoUrl = data[randomIndex];
     const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
     const videoBuffer = Buffer.from(videoResponse.data, 'binary');
-
     const tmpDirectory = path.join(__dirname, '..', 'tmp');
     if (!fs.existsSync(tmpDirectory)) {
       fs.mkdirSync(tmpDirectory);
     }
-
+    res.setHeader('Content-Type', 'video/mp4');
+    res.setHeader('Cache-Control', 'no-store, max-age=0');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
     let counter = 0;
     let videoFileName = 'video.mp4';
     let videoFilePath = path.join(tmpDirectory, videoFileName);
-
     while (fs.existsSync(videoFilePath)) {
       counter++;
       videoFileName = `video_${counter}.mp4`;
       videoFilePath = path.join(tmpDirectory, videoFileName);
     }
-
     fs.writeFileSync(videoFilePath, videoBuffer);
-
-    console.log('Video URL:', videoUrl);
-    console.log('Video Buffer Length:', videoBuffer.length);
-    console.log('Video File Path:', videoFilePath);
-
     if (fs.existsSync(videoFilePath)) {
       res.sendFile(videoFileName, { root: tmpDirectory });
     } else {
