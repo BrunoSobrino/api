@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
     res.setHeader('Content-Type', 'video/mp4');
 
     // Genera un nombre de archivo aleatorio y verifica si ya existe en el directorio `tmp`.
-    let videoFileName = generateRandomFileName('tmp', 'video', '.mp4');
+    let videoFileName = generateRandomFileName('..', 'tmp', 'video', '.mp4');
 
     // Escribe el videoBuffer en un archivo temporal en el servidor.
     const videoFilePath = path.join(__dirname, videoFileName);
