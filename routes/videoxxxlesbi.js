@@ -13,8 +13,10 @@ router.get('/', async (req, res) => {
     const data = response.data;
     const randomIndex = Math.floor(data.length * Math.random());
     const videoUrl = data[randomIndex];
+    console.log(videoUrl)
     const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
     const videoBuffer = Buffer.from(videoResponse.data, 'binary');
+    console.log(videoBuffer)
 
     // Establece el tipo de contenido de la respuesta como 'video/mp4' (cámbialo según el formato del video).
     res.setHeader('Content-Type', 'video/mp4');
