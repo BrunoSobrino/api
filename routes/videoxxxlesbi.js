@@ -10,13 +10,17 @@ router.get('/', async (req, res) => {
     const data = response.data;
     const randomIndex = Math.floor(data.length * Math.random());
     const videoUrl = data[randomIndex];
-    const tmpDirectory = path.join('../tmp');
+    const tmpDirectory = path.join(__dirname, '..', 'tmp'); // Ruta absoluta
+    fs.mkdirSync(tmpDirectory, { recursive: true }); // Asegura que la carpeta tmp exista
+
     const videoFileName = generateUniqueFileName('video.mp4', tmpDirectory);
-    const videoFilePath = path.join(__dirname, tmpDirectory, videoFileName);
+    const videoFilePath = path.join(tmpDirectory, videoFileName);
+
     const videoResponse = await axios.get(videoUrl, { responseType: 'stream' });
     const videoStream = videoResponse.data;
     const writeStream = fs.createWriteStream(videoFilePath);
     videoStream.pipe(writeStream);
+
     writeStream.on('finish', () => {
       res.sendFile(videoFilePath);
     });
@@ -37,3 +41,4 @@ function generateUniqueFileName(baseName, directory) {
 }
 
 module.exports = router;
+
