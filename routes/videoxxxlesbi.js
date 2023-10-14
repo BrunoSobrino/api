@@ -3,6 +3,9 @@ const router = express.Router();
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
+const range = require('express-range');
+
+router.use(range({ accept: 'bytes' }));
 
 router.get('/', async (req, res) => {
   try {
