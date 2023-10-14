@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { xnxxdl } = require('./func/functions');
 
-router.get('/xnxxdl', async (req, res) => {
+router.get('/', async (req, res) => {
   const videoUrl = req.query.url;
   try {
     if (!videoUrl) {
