@@ -18,8 +18,8 @@ router.get('/', async (req, res) => {
     const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
     const tmpFileName = getFileName('video', '../tmp'); 
     const tmpFilePath = path.join(__dirname, '..', 'tmp', tmpFileName);
-    constole.log(tmpFileName)
-    constole.log(tmpFilePath)
+    console.log(tmpFileName)
+    console.log(tmpFilePath)
     fs.writeFileSync(tmpFilePath, Buffer.from(videoResponse.data, 'base64'));
     res.sendFile(tmpFilePath, { root: path.join(__dirname, '..') });
   } catch (error) {
