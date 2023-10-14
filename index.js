@@ -96,29 +96,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  const nuevaIP = req.ip;
-  fs.readFile('ips.json', 'utf8', (err, data) => {
-    if (err) {
-      return next();
-    }
-    let ips;
-    try {
-      ips = JSON.parse(data);
-    } catch (err) {
-      ips = [];
-    }
-    if (!ips.includes(nuevaIP)) {
-      ips.push(nuevaIP);
-    }
-    fs.writeFile('ips.json', JSON.stringify(ips, null, 2), (err) => {
-      if (err) {}
-    });
-    next();
-  });
-});
-
-
 app.use('/', home);
 app.use('/docs', docs);
 
