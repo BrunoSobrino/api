@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 
     let counter = 0;
     let videoFileName = 'video.mp4';
-    const videoFilePath = path.join(tmpDirectory, videoFileName);
+    let videoFilePath = path.join(tmpDirectory, videoFileName);
 
     while (fs.existsSync(videoFilePath)) {
       counter++;
