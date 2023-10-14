@@ -13,14 +13,13 @@ router.get('/', async (req, res) => {
     const tmpDirectory = path.join(__dirname, '..', 'tmp'); // Ruta absoluta
     fs.mkdirSync(tmpDirectory, { recursive: true }); // Asegura que la carpeta tmp exista
 
-    const baseName = 'video.mp4'; // Nombre base del archivo
-    let videoFileName = baseName;
-    let counter = 1;
+    let videoFileName = `video_${Date.now()}.mp4`;
+    let fileIndex = 1;
 
     // Genera un nombre de archivo único con sufijo numérico
     while (fs.existsSync(path.join(tmpDirectory, videoFileName))) {
-      videoFileName = `${baseName.replace('.mp4', '')}_${counter}.mp4`;
-      counter++;
+      videoFileName = `video_${Date.now()}_${fileIndex}.mp4`;
+      fileIndex++;
     }
 
     const videoFilePath = path.join(tmpDirectory, videoFileName);
@@ -31,13 +30,12 @@ router.get('/', async (req, res) => {
     videoStream.pipe(writeStream);
 
     writeStream.on('finish', () => {
-      res.sendFile(videoFilePath);
+      res.sendFile(videoFileName, { root: tmpDirectory, headers: { 'Content-Type': 'video/mp4' } });
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).send('An error occurred');
+    console.error('Ocurrió un error al procesar la solicitud:', error);
+    res.status(500).json({ error: 'Ocurrió un error al procesar la solicitud' });
   }
 });
 
 module.exports = router;
-
