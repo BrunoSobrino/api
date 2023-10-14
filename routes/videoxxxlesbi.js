@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
     const videoBuffer = Buffer.from(videoResponse.data, 'binary');
     const videoBase64 = videoBuffer.toString('base64');
-    res.send(videoBase64);
+    res.end(videoBase64);
   } catch (error) {
     console.error(error);
     res.status(500).send('An error occurred');
