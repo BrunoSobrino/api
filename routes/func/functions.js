@@ -63,6 +63,9 @@ const getBuffer2 = async (url, options) => {
   if (typeInfo) {
     fileTypeResult = typeInfo.mime;
   }
+  if (buffer) {
+    bufferResult = buffer;
+  }  
   return {
     buffer: bufferResult,
     fileType: fileTypeResult
