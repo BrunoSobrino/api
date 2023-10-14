@@ -3,19 +3,7 @@ const router = express.Router();
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
-
-function RandomAgresivo(min, max) {
-  if (typeof RandomAgresivo.seen === 'undefined') {
-    RandomAgresivo.seen = [];
-  }
-  if (RandomAgresivo.seen.length === 0) {
-    RandomAgresivo.seen = Array.from({ length: max - min + 1 }, (_, index) => index + min);
-  }
-  const randomIndex = Math.floor(Math.random() * RandomAgresivo.seen.length);
-  const randomNumber = RandomAgresivo.seen[randomIndex];
-  RandomAgresivo.seen.splice(randomIndex, 1);
-  return randomNumber;
-}
+const { RandomAgresivo, getFileName } = require('./func/functions');
 
 router.get('/', async (req, res) => {
   try {
