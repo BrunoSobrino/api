@@ -9,7 +9,6 @@ const path = require('path');
 const { execSync } = require('child_process');
 const axios = require('axios');
 const favicon = require('serve-favicon');
-const range = require('express-range');
 let totalRequests = 0;
 
 var allowedOrigins = ['https://api-brunosobrino.onrender.com', 'https://api.boxmine.xyz', 'http://prem-n1.zipponodes.com:40016', 'https://api.brunosobrino.repl.co'];
@@ -73,8 +72,6 @@ const getUptime = () => {
   const seconds = uptimeInSeconds % 60;
   return `${hours} horas, ${minutes} minutos, ${seconds} segundos`;
 };
-
-app.use(range({ accept: 'bytes' }));
 
 // Subpaginas y usos
 
