@@ -10,30 +10,35 @@ router.get('/', async (req, res) => {
     const data = response.data;
     const randomIndex = Math.floor(data.length * Math.random());
     const videoUrl = data[randomIndex];
-    const tmpDirectory = path.join('../tmp');
-    const videoFileName = generateUniqueFileName('video.mp4', tmpDirectory);
-    const videoFilePath = path.join(__dirname, tmpDirectory, videoFileName);
-    const videoResponse = await axios.get(videoUrl, { responseType: 'stream' });
-    const videoStream = videoResponse.data;
-    const writeStream = fs.createWriteStream(videoFilePath);
-    videoStream.pipe(writeStream);
-    writeStream.on('finish', () => {
-      res.sendFile(videoFilePath);
-    });
+    const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
+    const videoBuffer = Buffer.from(videoResponse.data, 'binary');
+    const tmpDirectory = path.join(__dirname, '..', 'tmp');
+    if (!fs.existsSync(tmpDirectory)) {
+      fs.mkdirSync(tmpDirectory);
+    }
+    let counter = 0;
+    let videoFileName = 'video.mp4';
+    let videoFilePath = path.join(tmpDirectory, videoFileName);
+    while (fs.existsSync(videoFilePath)) {
+      counter++;
+      videoFileName = `video_${counter}.mp4`;
+      videoFilePath = path.join(tmpDirectory, videoFileName);
+    }
+    fs.writeFileSync(videoFilePath, videoBuffer);
+    res.setHeader('Content-Type', 'video/mp4');
+    res.setHeader('Cache-Control', 'no-store, max-age=0');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    if (fs.existsSync(videoFilePath)) {
+      res.sendFile(videoFileName, { root: tmpDirectory });
+    } else {
+      console.error('El archivo no existe en la ubicación especificada.');
+      res.status(404).send('File not found');
+    }
   } catch (error) {
     console.error(error);
     res.status(500).send('An error occurred');
   }
 });
-
-function generateUniqueFileName(baseName, directory) {
-  let timestamp = new Date().getTime();
-  let uniqueName = `${timestamp}_${baseName}`;
-  while (fs.existsSync(path.join(directory, uniqueName))) {
-    timestamp++;
-    uniqueName = `${timestamp}_${baseName}`;
-  }
-  return uniqueName;
-}
 
 module.exports = router;
