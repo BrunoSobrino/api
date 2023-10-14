@@ -10,8 +10,7 @@ router.get('/', async (req, res) => {
     const data = response.data;
     const randomIndex = Math.floor(data.length * Math.random());
     const videoUrl = data[randomIndex];
-    const videoResponse = await axios.get(videoUrl + `?timestamp=${Date.now()}`, { responseType: 'arraybuffer' });
-    //const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
+    const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
     const videoBuffer = Buffer.from(videoResponse.data, 'binary');
     const tmpDirectory = path.join(__dirname, '..', 'tmp');
     if (!fs.existsSync(tmpDirectory)) {
