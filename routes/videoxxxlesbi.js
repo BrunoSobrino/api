@@ -51,15 +51,17 @@ router.get('/', async (req, res) => {
 function generateRandomFileName(directory, baseName, extension) {
   let counter = 0;
   let fileName = `${baseName}${counter}${extension}`;
-  const filePath = path.join(directory, fileName);
+  const filePath = path.join(__dirname, directory, fileName);
 
   // Verifica si el archivo con el nombre generado ya existe en el directorio.
   while (fs.existsSync(filePath)) {
     counter++;
     fileName = `${baseName}${counter}${extension}`;
+    filePath = path.join(__dirname, directory, fileName);
   }
 
   return fileName;
 }
+
 
 module.exports = router;
