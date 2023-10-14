@@ -13,7 +13,6 @@ const visitors = new Set();
 let totalRequests = 0;
 let totalVisitors = 0;
 
-
 var allowedOrigins = ['https://api.boxmine.xyz', 'https://api.brunosobrino.repl.co'];
 
 app.set('trust proxy', 1)
@@ -96,6 +95,24 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+app.use((req, res, next) => {
+  const nuevaIP = req.ip;
+  fs.readFile('ips.json', 'utf8', (err, data) => {
+    if (err) {
+      return next();
+    }
+    let ips = JSON.parse(data);
+    if (!ips.includes(nuevaIP)) {
+      ips.push(nuevaIP);
+    }
+    fs.writeFile('ips.json', JSON.stringify(ips, null, 2), (err) => {
+      if (err) {}
+    });
+    next();
+  });
+});
+
 
 app.use('/', home);
 app.use('/docs', docs);
