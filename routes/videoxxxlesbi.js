@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const path = require('path');
-const fs = require('fs'); // Importa el módulo fs
+const fs = require('fs');
 const { RandomAgresivo, getFileName } = require('./func/functions');
 
 router.get('/', async (req, res) => {
