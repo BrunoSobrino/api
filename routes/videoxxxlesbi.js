@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
       length: videoResponse.headers['content-length'], 
       accept: req.headers.range, 
     });
-    res.send(Buffer.from(videoResponse.data, 'base64'));
+    res.end(Buffer.from(videoResponse.data, 'base64'));
   } catch (error) {
     console.error(error);
     res.status(500).send('An error occurred');
