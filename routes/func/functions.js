@@ -60,15 +60,24 @@ const getBuffer2 = async (url, options) => {
   const typeInfo = await fromBuffer(buffer);
   let bufferResult = '';
   let fileTypeResult = '';
+  let fileSize = '';
   if (typeInfo) {
     fileTypeResult = typeInfo.mime;
   }
   if (buffer) {
     bufferResult = buffer;
-  }  
+    const fileSizeBytes = buffer.length;
+    const fileSizeMB = fileSizeBytes / (1024 * 1024);
+    if (fileSizeMB % 1 === 0) {
+      fileSize = fileSizeMB.toFixed(0); // Mostrar como entero
+    } else {
+      fileSize = fileSizeMB.toFixed(2); // Mostrar con 2 decimales
+    }
+  }
   return {
     buffer: bufferResult,
-    fileType: fileTypeResult
+    fileType: fileTypeResult,
+    fileSize: fileSize
   };
 };
 
