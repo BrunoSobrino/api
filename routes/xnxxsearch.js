@@ -11,7 +11,8 @@ router.get('/', async (req, res) => {
         message: 'Debes especificar un término de búsqueda'
       };
       const formattedResults_e = JSON.stringify(errorResponse, null, 2);
-      res.status(400).json(formattedResults_e);
+      res.setHeader('Content-Type', 'application/json');
+      res.send(formattedResults_e);
     } else {
       const result = await xnxxsearch(query);
       const formattedResults = JSON.stringify(result, null, 2);
