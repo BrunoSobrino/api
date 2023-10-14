@@ -74,7 +74,7 @@ const getUptime = () => {
   return `${hours} horas, ${minutes} minutos, ${seconds} segundos`;
 };
 
-//app.use(range({ accept: 'bytes' }));
+app.use(range({ accept: 'bytes' }));
 
 // Subpaginas y usos
 
