@@ -9,12 +9,14 @@ const path = require('path');
 const { execSync } = require('child_process');
 const axios = require('axios');
 const favicon = require('serve-favicon');
+const ejs = require('ejs');
 let totalRequests = 0;
 let totalVisitors = 0;
 
-var allowedOrigins = ['https://api-brunosobrino.onrender.com', 'https://api.boxmine.xyz', 'http://prem-n1.zipponodes.com:40016', 'https://api.brunosobrino.repl.co'];
+var allowedOrigins = ['https://api.boxmine.xyz', 'https://api.brunosobrino.repl.co'];
 
 app.set('trust proxy', 1)
+app.set('view engine', 'ejs');
 
 app.use(cors({
     origin: function(origin, callback) {
