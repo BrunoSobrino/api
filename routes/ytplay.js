@@ -7,7 +7,13 @@ router.get('/', async (req, res) => {
   const videoUrl = req.query.url;
   try {
     if (!searchText && !videoUrl) {
-      throw new Error('Debes especificar un texto de búsqueda o una URL de video');
+      const errorResponse = {
+        status: false,
+        message: 'Debes especificar un texto de búsqueda o una URL de video'
+      };
+      const formattedResults_e = JSON.stringify(errorResponse, null, 2);
+      res.setHeader('Content-Type', 'application/json');
+      res.send(formattedResults_e);
     }
     let results;
     if (searchText) {
