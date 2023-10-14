@@ -16,12 +16,12 @@ router.get('/', async (req, res) => {
     const randomIndex = RandomAgresivo(0, data.length - 1);
     const videoUrl = data[randomIndex];
     const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
-    const tmpFileName = getFileName('video', '../tmp'); 
+    const tmpFileName = getFileName('video.mp4', '../tmp'); 
     const tmpFilePath = path.join(__dirname, '..', 'tmp', tmpFileName);
     console.log(tmpFileName)
     console.log(tmpFilePath)
     fs.writeFileSync(tmpFilePath, Buffer.from(videoResponse.data, 'base64'));
-    res.sendFile(tmpFilePath, { root: path.join(__dirname, '..') });
+    res.sendFile(tmpFileName, { root: path.join(__dirname, '..', 'tmp') });
   } catch (error) {
     console.error(error);
     res.status(500).send('An error occurred');
