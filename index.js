@@ -9,8 +9,10 @@ const path = require('path');
 const { execSync } = require('child_process');
 const axios = require('axios');
 const favicon = require('serve-favicon');
+const visitors = new Set(); 
 let totalRequests = 0;
 let totalVisitors = 0;
+
 
 var allowedOrigins = ['https://api.boxmine.xyz', 'https://api.brunosobrino.repl.co'];
 
@@ -86,8 +88,12 @@ const getUptime = () => {
 
 app.use((req, res, next) => {
   req.startTime = Date.now();
-  totalRequests++; 
-  totalVisitors++;  
+  totalRequests++;
+  const userIp = req.ip; 
+  if (!visitors.has(userIp)) {
+    visitors.add(userIp); 
+    totalVisitors++; 
+  }
   next();
 });
 
