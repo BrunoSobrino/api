@@ -22,8 +22,6 @@ router.get('/', async (req, res) => {
     });
     const tmpFileName = getFileName('video.mp4', './././tmp'); 
     const tmpFilePath = path.join(__dirname, '..', 'tmp', tmpFileName);
-    console.log(tmpFileName)
-    console.log(tmpFilePath)
     fs.writeFileSync(tmpFilePath, Buffer.from(videoResponse.data, 'base64'));
     res.sendFile(tmpFileName, { root: path.join(__dirname, '..', 'tmp') });
   } catch (error) {
