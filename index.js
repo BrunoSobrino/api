@@ -102,7 +102,12 @@ app.use((req, res, next) => {
     if (err) {
       return next();
     }
-    let ips = JSON.parse(data);
+    let ips;
+    try {
+      ips = JSON.parse(data);
+    } catch (err) {
+      ips = [];
+    }
     if (!ips.includes(nuevaIP)) {
       ips.push(nuevaIP);
     }
