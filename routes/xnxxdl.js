@@ -15,7 +15,8 @@ router.get('/', async (req, res) => {
     } else {
       const result = await xnxxdl(videoUrl);
       const formattedResults = JSON.stringify(result, null, 2);
-      res.status(200).json(formattedResults);
+      res.setHeader('Content-Type', 'application/json');
+      res.send(formattedResults);
     }
   } catch (error) {
     console.error(error);
