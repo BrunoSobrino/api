@@ -15,26 +15,14 @@ router.get('/', async (req, res) => {
     const videoUrl = data[randomIndex];
     const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
     const videoBuffer = Buffer.from(videoResponse.data, 'binary');
-
-    // Establece el tipo de contenido de la respuesta como 'video/mp4' (cámbialo según el formato del video).
     res.setHeader('Content-Type', 'video/mp4');
-
-    // Genera un nombre de archivo aleatorio y verifica si ya existe en el directorio `tmp`.
-    let videoFileName = generateRandomFileName(path.join(__dirname, 'tmp'), 'video', '.mp4');
-
-
-    // Escribe el videoBuffer en un archivo temporal en el servidor.
+    let videoFileName = generateRandomFileName(path.join(__dirname, '..', 'tmp'), 'video', '.mp4');
     const videoFilePath = path.join(__dirname, videoFileName);
     fs.writeFileSync(videoFilePath, videoBuffer);
-
-    // Logs para depuración
     console.log('Video URL:', videoUrl);
     console.log('Video Buffer Length:', videoBuffer.length);
     console.log('Video File Path:', videoFilePath);
-
-    // Verifica si el archivo existe en la ruta especificada antes de enviarlo.
     if (fs.existsSync(videoFilePath)) {
-      // Usa res.sendFile() para enviar el archivo de video al cliente.
       res.sendFile(videoFileName, { root: __dirname });
     } else {
       console.error('El archivo no existe en la ubicación especificada.');
@@ -42,27 +30,19 @@ router.get('/', async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-
-    // En caso de error, envía una respuesta de error al cliente con un mensaje.
     res.status(500).send('An error occurred');
   }
 });
-
-// Función para generar un nombre de archivo aleatorio que no existe en el directorio.
 function generateRandomFileName(directory, baseName, extension) {
   let counter = 0;
   let fileName = `${baseName}${counter}${extension}`;
-  const filePath = path.join(__dirname, directory, fileName);
-
-  // Verifica si el archivo con el nombre generado ya existe en el directorio.
+  let filePath = path.join(__dirname, directory, fileName);
   while (fs.existsSync(filePath)) {
     counter++;
     fileName = `${baseName}${counter}${extension}`;
     filePath = path.join(__dirname, directory, fileName);
   }
-
   return fileName;
 }
-
 
 module.exports = router;
