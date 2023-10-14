@@ -69,9 +69,9 @@ const getBuffer2 = async (url, options) => {
     const fileSizeBytes = buffer.length;
     const fileSizeMB = fileSizeBytes / (1024 * 1024);
     if (fileSizeMB % 1 === 0) {
-      fileSize = fileSizeMB.toFixed(0); // Mostrar como entero
+      fileSize = fileSizeMB.toFixed(0); 
     } else {
-      fileSize = fileSizeMB.toFixed(2); // Mostrar con 2 decimales
+      fileSize = fileSizeMB.toFixed(2); 
     }
   }
   return {
