@@ -63,6 +63,8 @@ const packmen = require('./routes/packmen');
 const packgirl = require('./routes/packgirl');
 const videoxxx = require('./routes/videoxxx');
 const videoxxxlesbi = require('./routes/videoxxxlesbi');
+const xnxxdl = require('./routes/xnxxdl');
+const xnxxsearch = require('./routes/xnxxsearch');
 
 
 const getUptime = () => {
@@ -116,6 +118,8 @@ app.use('/api/adult/packmen', packmen);
 app.use('/api/adult/gawrgura', gawrgura);
 app.use('/api/adult/videoxxx', videoxxx);
 app.use('/api/adult/videoxxxlesbi', videoxxxlesbi);
+app.use('/api/xnxxdl', xnxxdl);
+app.use('/api/xnxxsearch', xnxxsearch);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
