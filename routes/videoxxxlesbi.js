@@ -13,10 +13,8 @@ router.get('/', async (req, res) => {
     const data = response.data;
     const randomIndex = Math.floor(data.length * Math.random());
     const videoUrl = data[randomIndex];
-    console.log(videoUrl)
     const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
     const videoBuffer = Buffer.from(videoResponse.data, 'binary');
-    console.log(videoBuffer)
 
     // Establece el tipo de contenido de la respuesta como 'video/mp4' (cámbialo según el formato del video).
     res.setHeader('Content-Type', 'video/mp4');
@@ -28,8 +26,19 @@ router.get('/', async (req, res) => {
     const videoFilePath = path.join(__dirname, videoFileName);
     fs.writeFileSync(videoFilePath, videoBuffer);
 
-    // Usa res.sendFile() para enviar el archivo de video al cliente.
-    res.sendFile(videoFileName, { root: __dirname });
+    // Logs para depuración
+    console.log('Video URL:', videoUrl);
+    console.log('Video Buffer Length:', videoBuffer.length);
+    console.log('Video File Path:', videoFilePath);
+
+    // Verifica si el archivo existe en la ruta especificada antes de enviarlo.
+    if (fs.existsSync(videoFilePath)) {
+      // Usa res.sendFile() para enviar el archivo de video al cliente.
+      res.sendFile(videoFileName, { root: __dirname });
+    } else {
+      console.error('El archivo no existe en la ubicación especificada.');
+      res.status(404).send('File not found');
+    }
   } catch (error) {
     console.error(error);
 
