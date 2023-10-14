@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
     const randomIndex = RandomAgresivo(0, data.length - 1);
     const videoUrl = data[randomIndex];
     const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
-    const tmpFileName = getFileName('video.mp4', '../tmp'); 
+    const tmpFileName = getFileName('video.mp4', './././tmp'); 
     const tmpFilePath = path.join(__dirname, '..', 'tmp', tmpFileName);
     console.log(tmpFileName)
     console.log(tmpFilePath)
