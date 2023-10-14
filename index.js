@@ -61,6 +61,7 @@ const facebook = require('./routes/facebook');
 const gawrgura = require('./routes/gawrgura');
 const packmen = require('./routes/packmen');
 const packgirl = require('./routes/packgirl');
+const videoxxx = require('./routes/videoxxx');
 
 
 const getUptime = () => {
@@ -112,6 +113,7 @@ app.use('/api/nsfw/nsfworgy', nsfworgy);
 app.use('/api/adult/packgirl', packgirl);
 app.use('/api/adult/packmen', packmen);
 app.use('/api/adult/gawrgura', gawrgura);
+app.use('/api/adult/videoxxx', videoxxx);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
