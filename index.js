@@ -10,6 +10,7 @@ const { execSync } = require('child_process');
 const axios = require('axios');
 const favicon = require('serve-favicon');
 let totalRequests = 0;
+let totalVisitors = 0;
 
 var allowedOrigins = ['https://api-brunosobrino.onrender.com', 'https://api.boxmine.xyz', 'http://prem-n1.zipponodes.com:40016', 'https://api.brunosobrino.repl.co'];
 
@@ -86,6 +87,7 @@ const getUptime = () => {
 app.use((req, res, next) => {
   req.startTime = Date.now();
   totalRequests++; 
+  totalVisitors++;  
   next();
 });
 
@@ -147,6 +149,7 @@ app.get('/status', (req, res) => {
     uptime: uptime,
     latencia: `${averageResponseTime} ms`,
     totalRequests: totalRequests,
+    totalVisitors: totalVisitors,
     creator: 'BrunoSobrino',
     phoneNumber: '+52 1 999 612 5657'
   };
