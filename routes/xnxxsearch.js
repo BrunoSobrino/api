@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { xnxxsearch } = require('./func/functions');
 
-router.get('/xnxxsearch', async (req, res) => {
+router.get('/', async (req, res) => {
   const query = req.query.text;
   try {
     if (!query) {
