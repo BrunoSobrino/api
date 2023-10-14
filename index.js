@@ -147,6 +147,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.get('/status', (req, res) => {
   const uptime = getUptime();
   const averageResponseTime = Date.now() - req.startTime;
+  totalRequests--; 
   const response = {
     uptime: uptime,
     latencia: `${averageResponseTime} ms`,
