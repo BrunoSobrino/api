@@ -13,7 +13,16 @@ router.get('/', async (req, res) => {
     const tmpDirectory = path.join(__dirname, '..', 'tmp'); // Ruta absoluta
     fs.mkdirSync(tmpDirectory, { recursive: true }); // Asegura que la carpeta tmp exista
 
-    const videoFileName = generateUniqueFileName('video.mp4', tmpDirectory);
+    const baseName = 'video.mp4'; // Nombre base del archivo
+    let videoFileName = baseName;
+    let counter = 1;
+
+    // Genera un nombre de archivo único con sufijo numérico
+    while (fs.existsSync(path.join(tmpDirectory, videoFileName))) {
+      videoFileName = `${baseName.replace('.mp4', '')}_${counter}.mp4`;
+      counter++;
+    }
+
     const videoFilePath = path.join(tmpDirectory, videoFileName);
 
     const videoResponse = await axios.get(videoUrl, { responseType: 'stream' });
@@ -29,16 +38,6 @@ router.get('/', async (req, res) => {
     res.status(500).send('An error occurred');
   }
 });
-
-function generateUniqueFileName(baseName, directory) {
-  let timestamp = new Date().getTime();
-  let uniqueName = `${timestamp}_${baseName}`;
-  while (fs.existsSync(path.join(directory, uniqueName))) {
-    timestamp++;
-    uniqueName = `${timestamp}_${baseName}`;
-  }
-  return uniqueName;
-}
 
 module.exports = router;
 
