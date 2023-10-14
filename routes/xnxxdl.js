@@ -10,10 +10,12 @@ router.get('/', async (req, res) => {
         status: false,
         message: 'Debes especificar una URL de video'
       };
-      res.status(400).json(errorResponse);
+      const formattedResults_e = JSON.stringify(errorResponse, null, 2);
+      res.status(400).json(formattedResults_e);
     } else {
       const result = await xnxxdl(videoUrl);
-      res.status(200).json(result);
+      const formattedResults = JSON.stringify(result, null, 2);
+      res.status(200).json(formattedResults);
     }
   } catch (error) {
     console.error(error);
