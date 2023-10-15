@@ -17,7 +17,6 @@ router.get('/', async (req, res) => {
       return;
     }        
     const letrasoung = await lyrics(texto);
-    letrasoung.lyrics = letrasoung.lyrics.replace(/\n/g, '\n');
     const formattedResults = JSON.stringify(letrasoung, null, 2);
     res.setHeader('Content-Type', 'application/json');
     res.send(formattedResults);
