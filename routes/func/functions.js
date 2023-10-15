@@ -52,7 +52,6 @@ async function tiktokStalk(username, options) {
       resultado: {
         users: data.result.users,
         stats: data.result.stats,
-        posts: data.result.posts
       }
     }
   } catch (e) {
