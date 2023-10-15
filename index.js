@@ -55,6 +55,7 @@ const xnxxsearch = require('./routes/xnxxsearch');
 const apirouter = require('./routes/anime-apis');
 const apirouter2 = require('./routes/adult-apis');
 const apirouter3 = require('./routes/nsfw-apis');
+const lyrics = require('./routes/lyrics');
 
 
 const getUptime = () => {
@@ -103,6 +104,7 @@ app.use('/api/tempmail/getmessages', getmessages);
 app.use('/api/facebook', facebook);
 app.use('/api/xnxxdl', xnxxdl);
 app.use('/api/xnxxsearch', xnxxsearch);
+app.use('/api/lyrics', lyrics);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
