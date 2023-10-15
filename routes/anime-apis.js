@@ -383,7 +383,7 @@ router.get('/isuzu', async (req, res) => {
     const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/api/main/data/anime-isuzu.json');
     const data = response.data;
     let imageUrl = null;
-    while !imageUrl {
+    while (!imageUrl) {
       const randomIndex = Math.floor(Math.random() * data.length);
       imageUrl = data[randomIndex];
       try {
