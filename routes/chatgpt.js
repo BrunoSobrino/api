@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 const chatgpt = require('./func/chatgpt'); 
 
 router.get('/', async (req, res) => {
@@ -7,12 +8,21 @@ router.get('/', async (req, res) => {
   const inputText = req.query.text;
   const lenguaje = req.query.lenguaje || 'es'; 
    try {
+    if (!inputText) {
+      const errorResponse = {
+        status: false,
+        message: 'Debes especificar un texto para usar chatgpt.'
+      };
+      const formattedResults_e = JSON.stringify(errorResponse, null, 2);
+      res.setHeader('Content-Type', 'application/json');
+      res.send(formattedResults_e);
+      return;      
+    }     
     const results = await chatgpt(inputText, lenguaje);
     const formattedResults = JSON.stringify(results, null, 2);
     res.send(formattedResults);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error en la solicitud de chatgpt' });
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
