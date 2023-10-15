@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
       const formattedResults_e = JSON.stringify(errorResponse, null, 2);
       res.setHeader('Content-Type', 'application/json');
       res.send(formattedResults_e);
+      return;
     }
     let results;
     if (searchText) {
