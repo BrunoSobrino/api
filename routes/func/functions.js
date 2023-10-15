@@ -21,10 +21,9 @@ async function lyrics(search) {
   const artist = $$('#site > div > div > div > main > div > div > div > div > div > div > div> div > div > h2 > span').text().trim();
   const img = `https:${thumb || ''}`
   if (!thumb || (!lyrics1 || !lyrics2)) {
-    return { status: false, resultado: { titulo: title ? title : '', artista: artist ? artist : '', imagen: img ? img : '', letra1: lyrics ? lyrics : '', letra2: lyrics2 ? lyrics2 : ''}};
+    return { status: false, resultado: { titulo: title ? title : '', artista: artist ? artist : '', imagen: img ? img : '', letra1: lyrics ? lyrics : (lyrics2 ? lyrics2 : '')}};
   }
-  //const lyrics = `${lyrics1}\n\n\n\n${lyrics2}`;
-  return { status: true, resultado: { titulo: title, artista: artist, imagen: `https:${thumb}`, letra1: lyrics, letra2: lyrics2 }};
+  return { status: true, resultado: { titulo: title, artista: artist, imagen: `https:${thumb}`, letra1: lyrics ? lyrics : (lyrics2 ? lyrics2 : '')}};
 }
 
 function RandomAgresivo(min, max) {
