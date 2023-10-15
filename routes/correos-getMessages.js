@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 const { obtenerCorreos } = require('./func/tempmail'); 
 
 router.get('/', async (req, res) => {
@@ -16,8 +17,7 @@ router.get('/', async (req, res) => {
     const formattedResults2 = JSON.stringify(formattedResponse, null, 2);
     res.send(formattedResults2);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error al obtener los correos' });
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
