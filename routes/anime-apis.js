@@ -6,7 +6,7 @@ const { RandomAgresivo } = require('./func/functions');
 
 router.get('/akira', async (req, res) => {
   try {
-    const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/api/main/data/anime-akira.jsonn');
+    const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/api/main/data/anime-akira.json');
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
@@ -45,7 +45,7 @@ router.get('/akiyama', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -67,7 +67,7 @@ router.get('/anna', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -89,7 +89,7 @@ router.get('/asuna', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -111,7 +111,7 @@ router.get('/ayuzawa', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -133,7 +133,7 @@ router.get('/boruto', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -155,7 +155,7 @@ router.get('/chiho', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -177,7 +177,7 @@ router.get('/chitoge', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -199,7 +199,7 @@ router.get('/cosplay', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -221,7 +221,7 @@ router.get('/deidara', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -243,7 +243,7 @@ router.get('/eba', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -265,7 +265,7 @@ router.get('/elaina', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -287,7 +287,7 @@ router.get('/emilia', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -309,7 +309,7 @@ router.get('/erza', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -331,7 +331,7 @@ router.get('/hestia', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -353,7 +353,7 @@ router.get('/hinata', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -375,7 +375,7 @@ router.get('/inori', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -397,7 +397,7 @@ router.get('/isuzu', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -419,7 +419,7 @@ router.get('/itachi', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -441,7 +441,7 @@ router.get('/itori', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -463,7 +463,7 @@ router.get('/kaga', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -485,7 +485,7 @@ router.get('/kagura', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -507,7 +507,7 @@ router.get('/kaori', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -529,7 +529,7 @@ router.get('/keneki', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -551,7 +551,7 @@ router.get('/kotori', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -573,7 +573,7 @@ router.get('/kurumi', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -595,7 +595,7 @@ router.get('/madara', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -617,7 +617,7 @@ router.get('/mikasa', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -639,7 +639,7 @@ router.get('/miku', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -661,7 +661,7 @@ router.get('/minato', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -683,7 +683,7 @@ router.get('/naruto', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -705,7 +705,7 @@ router.get('/nezuko', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -727,7 +727,7 @@ router.get('/sagiri', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -749,7 +749,7 @@ router.get('/sakura', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
@@ -771,7 +771,7 @@ router.get('/sasuke', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
