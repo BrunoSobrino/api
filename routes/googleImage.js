@@ -39,6 +39,7 @@ router.get('/', async (req, res) => {
     const imageBuffer = Buffer.from(imageResponse.data, 'base64')
     res.end(imageBuffer);*/
   } catch (error) {
+    console.log((error))
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
