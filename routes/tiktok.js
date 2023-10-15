@@ -5,8 +5,18 @@ const path = require('path');
 const { getTikTokBuffer } = require('./func/tiktokdl');
 
 router.get('/', async (req, res) => {
+  const link = req.query.url; 
   try {
-    const link = req.query.url; 
+    if (!link) {
+      const errorResponse = {
+        status: false,
+        message: 'Debes especificar la URL del video de tiktok.'
+      };
+      const formattedResults_e = JSON.stringify(errorResponse, null, 2);
+      res.setHeader('Content-Type', 'application/json');
+      res.send(formattedResults_e);
+      return;      
+    }    
     const videoData = await getTikTokBuffer(link); 
     const videoBuffer = Buffer.from(videoData.buffer); 
     let fileName = `video_${Date.now()}.mp4`;
@@ -20,8 +30,7 @@ router.get('/', async (req, res) => {
     fs.writeFileSync(`./tmp/${fileName}`, videoBuffer);
     res.sendFile(fileName, { root: './tmp' });
   } catch (error) {
-    console.error('Ocurrió un error al procesar la solicitud:', error);
-    res.status(500).json({ error: 'Ocurrió un error al procesar la solicitud' });
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
