@@ -4,6 +4,30 @@ const path = require('path');
 const cheerio = require('cheerio');
 const { fromBuffer  } = require('file-type');
 
+async function ssweb(url = '', full = false, type = 'desktop') {
+	type = type.toLowerCase()
+	if (!['desktop', 'tablet', 'phone'].includes(type)) type = 'desktop'
+	let form = new URLSearchParams()
+	form.append('url', url)
+	form.append('device', type)
+	if (!!full) form.append('full', 'on')
+	form.append('cacheLimit', 0)
+	let res = await axios({
+		url: 'https://www.screenshotmachine.com/capture.php',
+		method: 'post',
+		data: form
+	})
+	let cookies = res.headers['set-cookie']
+	let buffer = await axios({
+		url: 'https://www.screenshotmachine.com/' + res.data.link,
+		headers: {
+			'cookie': cookies.join('')
+		},
+		responseType: 'arraybuffer' 
+	})
+	return Buffer.from(buffer.data)
+}
+
 async function wallpaper(title, page = '1') {
   return new Promise((resolve, reject) => {
     axios.get(`https://www.besthdwallpaper.com/search?CurrentPage=${page}&q=${title}`).then(({data}) => {
@@ -195,5 +219,6 @@ module.exports = {
     xnxxsearch,
     xnxxdl,
     lyrics,
-    wallpaper
+    wallpaper,
+    ssweb
 };
