@@ -4,7 +4,7 @@ const path = require('path');
 const cheerio = require('cheerio');
 const { fromBuffer  } = require('file-type');
 
-function lyrics(search) {
+async function lyrics(search) {
   const searchUrl = `https://www.musixmatch.com/search/${search}`;
   const searchResponse = await axios.get(searchUrl);
   const searchHtml = searchResponse.data;
