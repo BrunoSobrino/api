@@ -10,7 +10,7 @@ router.get('/lolivid', async (req, res) => {
     res.setHeader('Cache-Control', 'no-store, max-age=0');
     res.setHeader('Pragma', 'no-cache');
     res.setHeader('Expires', '0');
-    const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/api/main/data/videoxxx.json');
+    const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/api/main/data/lolivid.json');
     const data = response.data;
     let videoUrl = null;
     while (!videoUrl) {
