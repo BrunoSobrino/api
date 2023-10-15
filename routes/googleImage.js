@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
     const randomIndex = RandomAgresivo(0, imagess.length - 1)
     const image = imagess[randomIndex]
     console.log(image)
-    const imageBuffer = Buffer.from(image)
+    const imageBuffer = Buffer.from(image, 'base64')
     res.end(imageBuffer);
   } catch (error) {
     res.sendFile(path.join(__dirname, '../public/500.html'));
