@@ -19,7 +19,7 @@ router.get('/lolivid', async (req, res) => {
       try {
         const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
         const videoBuffer = Buffer.from(videoResponse.data, 'base64');
-        res.end(videoBuffer);
+        res.sendFile(videoBuffer);
       } catch (error) {
         videoUrl = null;
       }
