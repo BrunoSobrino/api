@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const path = require('path');
-const { RandomAgresivo } = require('./func/functions');
+const { RandomAgresivo, wallpaper } = require('./func/functions');
 
 router.get('/wprandom', async (req, res) => {
   try {
@@ -102,6 +102,27 @@ router.get('/navidad', async (req, res) => {
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+        const imageBuffer = Buffer.from(imageResponse.data, 'binary');
+        res.setHeader('Content-Type', 'image/jpeg');
+        res.send(imageBuffer);
+      } catch (error) {
+        imageUrl = null;
+      }
+    }
+  } catch (error) {
+    res.sendFile(path.join(__dirname, '../public/500.html'));
+  }
+});
+
+router.get('/wpmontaña', async (req, res) => {
+  try {
+    const response = await wallpaper('mountain');
+    let imageUrl = null;
+    while (!imageUrl) {
+      const randomIndex = RandomAgresivo(0, response.length - 1);
+      imageUrl = data[randomIndex];
+      try {
+        const imageResponse = await axios.get(imageUrl.image[0], { responseType: 'arraybuffer' });
         const imageBuffer = Buffer.from(imageResponse.data, 'binary');
         res.setHeader('Content-Type', 'image/jpeg');
         res.send(imageBuffer);
