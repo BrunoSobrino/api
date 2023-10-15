@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const path = require('path');
 const { RandomAgresivo } = require('./func/functions');
 
 router.get('/akira', async (req, res) => {
