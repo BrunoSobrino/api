@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
       res.send(formattedResults_e);
       return;
     }    
-    const image = await googleImage(match_url);
+    const image = await googleImage(texto);
     console.log(image)
     const imageBuffer = Buffer.from(image)
     res.end(imageBuffer);
