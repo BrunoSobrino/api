@@ -44,91 +44,16 @@ async function getCookie() {
 async function tiktokStalk(username, options) {
   username = username.replace("@", "");
   try {
-    const { data } = await axios.get(`https://www.tiktok.com/@${username}`, {
-      headers: {
-        "user-agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36",
-        cookie: options?.cookie || (await getCookie()),
-      },
-    });
-
-    const $ = cheerio.load(data);
-      console.log($("script#__NEXT_DATA__").html())
-    const result = JSON.parse($("script#__NEXT_DATA__").html());
-      
-    const user = result.props.pageProps.userData;
-    const stats = user.stats;
-    const posts = user.items || [];
-
-    const userProfile = {
-      username: user.user.uniqueId,
-      nickname: user.user.nickname,
-      avatarLarger: user.user.avatarLarger,
-      avatarThumb: user.user.avatarThumb,
-      avatarMedium: user.user.avatarMedium,
-      signature: user.user.signature,
-      verified: user.user.verified,
-      privateAccount: user.user.isSecret,
-      region: user.user.region,
-      commerceUser: user.user.commerceUserInfo.commerceUser,
-      usernameModifyTime: user.user.uniqueIdModifyTime,
-      nicknameModifyTime: user.user.nickNameModifyTime,
-    };
-
-    const userStats = {
-      followerCount: stats.followerCount,
-      followingCount: stats.followingCount,
-      heartCount: stats.heart,
-      videoCount: stats.videoCount,
-      likeCount: stats.diggCount,
-      friendCount: stats.followingCount,
-      postCount: posts.length,
-    };
-
-    const userPosts = posts.map((post) => {
-      const media = post.video
-        ? {
-            video: {
-              id: post.id,
-              duration: post.video.duration,
-              ratio: post.video.ratio,
-              cover: post.video.cover,
-              originCover: post.video.originCover,
-              dynamicCover: post.video.dynamicCover,
-              playAddr: post.video.playAddr,
-              downloadAddr: post.video.downloadAddr,
-              format: post.video.format,
-              bitrate: post.video.bitrate,
-            },
-          }
-        : {
-            images: post.images.map((image) => image.url),
-          };
-
-      const music = post.music || {};
-      const statistics = post.stats || {};
-
-      return {
-        id: post.id,
-        desc: post.desc,
-        createTime: post.createTime,
-        author: post.author,
-        locationCreated: post.location,
-        hashtags: post.challenges.map((challenge) => challenge.title),
-        statistics,
-        music,
-        ...media,
-      };
-    });
-
+    const data = await TiktokStalk(`${username}`, {cookie: await getCookie()})
+     console.log(data)
     return {
-      status: "success",
-      result: {
-        userProfile,
-        userStats,
-        userPosts,
-      },
-    };
+      status: true,
+      resultado: {
+        users: data.result.users,
+        stats: data.result.stats,
+        posts: data.result.posts
+      }
+    }
   } catch (e) {
     return { status: "error", message: e.message };
   }
