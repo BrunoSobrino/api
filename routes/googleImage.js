@@ -32,14 +32,7 @@ router.get('/', async (req, res) => {
         imageUrl = null;
       }
     }
-   /* const imagess = await googleImage(texto);
-    const randomIndex = RandomAgresivo(0, imagess.length - 1)
-    const image = imagess[randomIndex]
-    const imageResponse = await axios.get(image, { responseType: 'arraybuffer' });
-    const imageBuffer = Buffer.from(imageResponse.data, 'base64')
-    res.end(imageBuffer);*/
-  } catch (error) {
-    console.log((error))
+  } catch {
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
