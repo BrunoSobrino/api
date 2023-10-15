@@ -29,7 +29,7 @@ async function ssweb(url = '', full = false, type = 'desktop') {
     type = type.toLowerCase();
     if (!['desktop', 'tablet', 'phone'].includes(type)) type = 'desktop';
     try {
-        const thumioUrl = `https://image.thum.io/get/fullpage/${url}`;
+        const thumioUrl = `https://eimage.thum.io/get/fullpage/${url}`;
         const thumioResponse = await axios.get(thumioUrl, { responseType: 'arraybuffer' });
         if (thumioResponse.data) {
             return Buffer.from(thumioResponse.data, 'base64');
