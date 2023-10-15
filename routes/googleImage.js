@@ -18,8 +18,7 @@ router.get('/', async (req, res) => {
       return;
     }    
     const images = await googleImage(texto);
-    const image = RandomAgresivo(0, images.length - 1)
-    console.log(image)
+    console.log(images)
     res.setHeader('Content-Type', 'image/png')
     const imageBuffer = Buffer.from(image)
     res.end(imageBuffer);
