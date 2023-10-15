@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 const { ytplay } = require('./func/ytplay');
 
 router.get('/', async (req, res) => {
@@ -25,8 +26,7 @@ router.get('/', async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.send(formattedResults);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error en la búsqueda de YouTube' });
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
