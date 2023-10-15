@@ -32,6 +32,7 @@ async function igStalk(username) {
 }
 
 async function tiktokStalk(user) {
+  try {  
     let res = await axios.get(`https://urlebird.com/user/${user}/`)
     let $ = cheerio.load(res.data)
     const pp_user = $('div[class="col-md-auto justify-content-center text-center"] > img').attr('src')
@@ -41,7 +42,10 @@ async function tiktokStalk(user) {
     const following = $('div[class="col-auto d-none d-sm-block text-truncate"]').text().trim().split(' ')[1]
     const description = $('div.content > p').text().trim()
     return { status: true, resultado: {profile: pp_user, name: username, username: name, followers, following, desc: description }}
- }
+  } catch (error) {
+     return { status: false, error: error.message };
+   }     
+}
 
 async function googleImage(query) {
   const data = await fetch(`https://www.google.com/search?q=${query}&tbm=isch`, {
