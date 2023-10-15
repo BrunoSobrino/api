@@ -10,6 +10,7 @@ const { execSync } = require('child_process');
 const axios = require('axios');
 const favicon = require('serve-favicon');
 const visitors = new Set(); 
+var mainrouter = require('./routes/main'),
 let totalRequests = 0;
 let totalVisitors = 0;
 
@@ -80,6 +81,8 @@ const pechos = require('./routes/a-pechos');
 const pene = require('./routes/a-pene');
 const porno = require('./routes/a-porno');
 const tetas = require('./routes/a-tetas');
+const apirouter = require('./routes/main');
+
 
 const getUptime = () => {
   const uptimeInSeconds = Math.floor(process.uptime());
@@ -105,6 +108,7 @@ app.use((req, res, next) => {
 app.use('/', home);
 app.use('/docs', docs);
 
+app.use('/api/anime', apirouter);
 app.use('/api/ttimg', ttimg);
 app.use('/api/v1/ytmp3', ytmp3);
 app.use('/api/v1/ytmp4', ytmp4);
