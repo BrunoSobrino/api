@@ -23,7 +23,7 @@ async function lyrics(search) {
     throw new Error('No se encontraron letras para la canción');
   }
   const lyrics = `${lyrics1}\n\n\n\n${lyrics2}`;
-  return { status: true, titulo: title, artista: artist, imagen: thumb: `https:${thumb}`, letra: lyrics };
+  return { status: true, titulo: title, artista: artist, imagen: `https:${thumb}`, letra: lyrics };
 }
 
 function RandomAgresivo(min, max) {
