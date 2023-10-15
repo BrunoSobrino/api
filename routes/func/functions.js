@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
 const { fromBuffer  } = require('file-type');
+const { TiktokStalk } = require("@tobyg74/tiktok-api-dl")
 
 async function igStalk(username) {
     try {
