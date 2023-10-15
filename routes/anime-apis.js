@@ -76,7 +76,7 @@ router.get('/asuna', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -98,7 +98,7 @@ router.get('/ayuzawa', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -120,7 +120,7 @@ router.get('/boruto', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -142,7 +142,7 @@ router.get('/chiho', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -164,7 +164,7 @@ router.get('/chitoge', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -186,7 +186,7 @@ router.get('/cosplay', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -208,7 +208,7 @@ router.get('/deidara', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -230,7 +230,7 @@ router.get('/eba', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -252,7 +252,7 @@ router.get('/elaina', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -274,7 +274,7 @@ router.get('/emilia', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -296,7 +296,7 @@ router.get('/erza', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -318,7 +318,7 @@ router.get('/hestia', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -340,7 +340,7 @@ router.get('/hinata', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -362,7 +362,7 @@ router.get('/inori', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -384,7 +384,7 @@ router.get('/isuzu', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -406,7 +406,7 @@ router.get('/itachi', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -428,7 +428,7 @@ router.get('/itori', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -450,7 +450,7 @@ router.get('/kaga', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -472,7 +472,7 @@ router.get('/kagura', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -494,7 +494,7 @@ router.get('/kaori', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -516,7 +516,7 @@ router.get('/keneki', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -538,7 +538,7 @@ router.get('/kotori', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -560,7 +560,7 @@ router.get('/kurumi', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -582,7 +582,7 @@ router.get('/madara', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -604,7 +604,7 @@ router.get('/mikasa', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -626,7 +626,7 @@ router.get('/miku', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -648,7 +648,7 @@ router.get('/minato', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -670,7 +670,7 @@ router.get('/naruto', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -692,7 +692,7 @@ router.get('/nezuko', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -714,7 +714,7 @@ router.get('/sagiri', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -736,7 +736,7 @@ router.get('/sakura', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
@@ -758,7 +758,7 @@ router.get('/sasuke', async (req, res) => {
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomIndex = RandomAgresivo(0, data.length - 1);
       imageUrl = data[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
