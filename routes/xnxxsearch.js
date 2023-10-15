@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 const { xnxxsearch } = require('./func/functions');
 
 router.get('/', async (req, res) => {
@@ -20,8 +21,7 @@ router.get('/', async (req, res) => {
       res.send(formattedResults);
     }
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: false, message: 'Error en la búsqueda de XNXX' });
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
