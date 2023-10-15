@@ -32,54 +32,29 @@ async function igStalk(username) {
     }
 }
 
-async function tiktokStalk(username) {
-  try {
-    const response = await axios.request({
-        method: "GET",
-        url: `https://tiktok.com/@${username}`,
-        headers: {
-          "User-Agent": "Mozilla/5.0 (Linux; Android 9; CPH1923) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.62 Mobile Safari/537.36",
-          "Cookie": "tt_webid_v2=7023321823367792130;tt_webid=7023321823367792130;tt_csrf_token=Ko3eYWlaA81BtC_6ezxMN4qf;R6kq3TV7=AHwiLLx8AQAAlTgrDyev4OA6MBZL078p4m5wG5CZEK8rU7kHUbizioKGVR8j|1|0|5839bf36b909a5e044847442b7d4dc0390a72e59;ttwid=1%7C3p7mb0Z4EWtFfmmqArdM4PqSNcyXZe23Vy0tPgsbyyI%7C1635244602%7C5fb19e46484c8c4f840b7c941ff4edea0fdcd8b6ea13576295a0268f37080669;s_v_web_id=verify_kv7yey5z_ZCLcdnz5_Mmf4_4XZZ_9ZFw_ZEjGJdo9qi62;msToken=p0SYyf1ujFiJcET1HDLeL2j4-2760D8ueZK-hU4TBTYI9NPKlB3IMnO9GXHm3GK2wi7xJoMGlsz9Kta1ls13_Vgt9izMlk2bBiOe8EmdRd5UrGaJMZn3oBTfwmiMexhYBC8d"
-       }
-    });
-    if (isAxiosError(response)) {
-      return { status: false, error: 'Fetch error' };
-    }
-    const $ = cheerio.load(response.data);
-    const script = $("script#__NEXT_DATA__").get();
-    let parse;
-    for (let anu of script) {
-    if (anu.children && anu.children[0] && anu.children[0].data) {
-        const json = anu.children[0].data;
-        parse = JSON.parse(json);
-        break; 
-    } else {
-        parse = [];
-      }
-    }
-    const anu = parse.props.pageProps.userInfo;
-    const time = new Date(anu.user.createTime * 1000);
-    const verif = anu.user.verified;
-    const privAkun = anu.user.privateAccount;
-    return { status: true, resultado: {
-        username: anu.user.uniqueId,
-        nickname: anu.user.nickname,
-        signature: anu.user.signature || "-",
-        createTime: time,
-        verified: verif !== false ? "User Verified" : "Not Verified",
-        privateAccount: privAkun !== false ? "Private Account" : "Public Account",
-        followers: anu.stats.followerCount,
-        followings: anu.stats.followingCount,
-        hearts: anu.stats.heart,
-        heartsCount: anu.stats.heartCount,
-        videoCount: anu.stats.videoCount,
-        diggCount: anu.stats.diggCount,
-        profile: anu.user.avatarThumb
-      }};
-  } catch (error) {
-    return { status: false, error: error.message };
-  }
+async function tiktokStalk(user) {
+    return new Promise((resolve, reject) => {
+      try {    
+        let User = user.startsWith('@') ? user : '@' + user
+        axios({
+            url: `https://www.tiktok.com/${User}?lang=id`,
+            method: 'GET',
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
+		'Cookie': 'tt_csrf_token=psXax5iA3QxSpE_LI2j6iHU0; ttwid=1%7Cfpftinh7CEhYgKNa0Zi6Tg8okKrRQQej6DsUM8Bym-M%7C1640705402%7C7837ecf88b4283018f0b3bc91eef9e42af9fc4a68e64eea290eb3fb13539fa47; _abck=EBA03DEC357EB172FA758A935B33C888~-1~YAAQt3/3SLKkT919AQAA7kGpAQfZl7orSpqNkGxpXGcM0UZcExmPHHWIMV11g1ixLjDwfQ44s7VLGsfSc7A9UlHmuRsCv8JTcypSAWOAQB4fy3pTTTcuMD1vsc9raahBXw7HjHqBLUxy+GOb3AkbggZpldZIJTm9+CDo3XIs6JyMTgF/YIzlC2u4uDK0fX2AYbRTl2J/FdR/GuRXCW/whXmk7zQ9ZECfPM6sYpSQyXMKnSMwEZXl0LkSZ3wRE5Bj2uRJbxRk0fEuwyOSkN6FyS0lDU3EKoQpAvu2MhS98YdKjeX7dXbCNRYbgSMGJa++Pr2cIuwyZfBI4X/glj5dWW4JtVHW2NBxpuJrkG1cOFN3gz1LJepTuVv8BmtHSM7YTpoTbW3oJ4XabQ==~-1~-1~-1; bm_sz=E65E8E40342F6F53DEA6389742304A35~YAAQt3/3SLOkT919AQAA7kGpAQ4Ix9bfuKB/TNEc7AzfgEouOWl9EUtetDzyJWjxZ/u8OoNJm/LH3ahXONGH4/RBzfapPYF1Xw/lY/if6nlx4yaJl8LfIU1iVBz+Y0WOcJ9tOlg15Sn/fTu2VsGOMsGr1sx0FplV6VkJPd4xA4Oc5UVGM46e9gwWLLnVU9K6NeYhfynfXv0sa4ljpfOBrDL0YlVB0wOP3d9cNoUptyImzHbURICOLWMz7hy7NsQ3z5yra5d06fW0jSTa8ujpX/TRpI0raskHtOYoW83WqgRD0UU=~3291202~3688002'
+            }
+        }).then((data) => {
+            let $ = cheerio.load(data.data)
+            let res = $('body').find('#__NEXT_DATA__').get()[0].children[0]
+			let result = JSON.parse(res.data).props.pageProps.userInfo
+            return { status: true, resultado: { result }};
+        })
+        } catch (error) {
+         return { status: false, error: error.message };
+       }    
+    })      
 }
+
 
 async function googleImage(query) {
   const data = await fetch(`https://www.google.com/search?q=${query}&tbm=isch`, {
