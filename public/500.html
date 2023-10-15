@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:image" content="https://github.com/BrunoSobrino.png">
+  <title>Error 500 | Internal Server Error</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #333, #555);
+      color: transparent; 
+      font-family: 'Arial Black';
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .error-container {
+      text-align: center;
+      color: white;
+    }
+    .error-num {
+      font-size: 14vw;
+    }
+    .eye {
+      background: #fff;
+      border-radius: 50%;
+      display: inline-block;
+      height: 10vw;
+      width: 10vw;
+      position: relative;
+    }
+    .eye::after {
+      background: #000;
+      border-radius: 50%;
+      content: '';
+      height: 33%;
+      position: absolute;
+      right: 33%;
+      width: 33%;
+      bottom: 56.1%;
+    }
+    p {
+      margin: 0;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center; 
+    }
+    a {
+      color: white;
+      text-decoration: underline;
+      text-transform: uppercase;
+      margin: 1em;
+      padding: 1em 2em;
+      background: transparent;
+      cursor: pointer;
+      border: none;
+      opacity: 0; 
+      transition: opacity 1s; 
+    }
+    a:hover {
+      color: lightgray;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <span class='error-num'>5</span>
+    <div class='eye'></div>
+    <div class='eye'></div>
+    <p class='sub-text'></p> 
+    <p class="sub-text"></p>
+    <div class="buttons"> 
+      <a onclick="location.reload();">Recargar Página</a>
+      <a href="/docs">Volver a la documentación</a>
+    </div>
+  </div>
+  <script>
+    document.body.addEventListener('mousemove', function (event) {
+      var eyes = document.querySelectorAll('.eye');
+      eyes.forEach(function (eye) {
+        var x = eye.offsetLeft + eye.offsetWidth / 2;
+        var y = eye.offsetTop + eye.offsetHeight / 2;
+        var rad = Math.atan2(event.pageX - x, event.pageY - y);
+        var rot = (rad * (180 / Math.PI) * -1) + 180;
+        eye.style.transform = 'rotate(' + rot + 'deg)';
+      });
+    });
+    const textElement = document.querySelectorAll('.sub-text');
+    const textPart1 = "Server Internal Error";
+    const textPart2 = "Estamos Observando Qué Sucedió";
+    let index = 0;
+    function animateText() {
+      if (index < textPart1.length) {
+        textElement[0].innerHTML += textPart1.charAt(index);
+      } else if (index < textPart1.length + textPart2.length) {
+        textElement[1].innerHTML += textPart2.charAt(index - textPart1.length);
+      } else {
+        const buttons = document.querySelectorAll('a');
+        buttons.forEach((button, i) => {
+          setTimeout(() => {
+            button.style.opacity = 1;
+          }, i * 500); 
+        });
+        return;
+      }
+      index++;
+      setTimeout(animateText, 50);
+    }
+    animateText();
+  </script>
+</body>
+</html>
