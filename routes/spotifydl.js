@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   try {
     const input = req.query.text;
     const input2 = req.query.url;
-    const soungf = input ? input : input2
+    const soung = input ? input : input2
     if (!soung) {
       const errorResponse = {
         status: false,
