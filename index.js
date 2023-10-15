@@ -55,6 +55,7 @@ const xnxxsearch = require('./routes/xnxxsearch');
 const apirouter = require('./routes/anime-apis');
 const apirouter2 = require('./routes/adult-apis');
 const apirouter3 = require('./routes/nsfw-apis');
+const apirouter4 = require('./routes/wallpaper-apis');
 const lyrics = require('./routes/lyrics');
 
 
@@ -85,6 +86,7 @@ app.use('/docs', docs);
 app.use('/api/anime', apirouter);
 app.use('/api/adult', apirouter2);
 app.use('/api/nsfw', apirouter3);
+app.use('/api/wallpaper', apirouter4);
 app.use('/api/ttimg', ttimg);
 app.use('/api/v1/ytmp3', ytmp3);
 app.use('/api/v1/ytmp4', ytmp4);
