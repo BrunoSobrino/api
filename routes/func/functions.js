@@ -26,27 +26,34 @@ async function googleImage(query) {
 }
 
 async function ssweb(url = '', full = false, type = 'desktop') {
-	type = type.toLowerCase()
-	if (!['desktop', 'tablet', 'phone'].includes(type)) type = 'desktop'
-	let form = new URLSearchParams()
-	form.append('url', url)
-	form.append('device', type)
-	if (!!full) form.append('full', 'on')
-	form.append('cacheLimit', 0)
-	let res = await axios({
-		url: 'https://www.screenshotmachine.com/capture.php',
-		method: 'post',
-		data: form
-	})
-	let cookies = res.headers['set-cookie']
-	let buffer = await axios({
-		url: 'https://www.screenshotmachine.com/' + res.data.link,
-		headers: {
-			'cookie': cookies.join('')
-		},
-		responseType: 'arraybuffer' 
-	})
-	return Buffer.from(buffer.data)
+    type = type.toLowerCase();
+    if (!['desktop', 'tablet', 'phone'].includes(type)) type = 'desktop';
+    try {
+        const thumioUrl = `https://image.thum.io/get/fullpage/${url}`;
+        const thumioResponse = await axios.get(thumioUrl, { responseType: 'arraybuffer' });
+        if (thumioResponse.data) {
+            return Buffer.from(thumioResponse.data, 'base64');
+        }
+    } catch (error) {}
+    let form = new URLSearchParams();
+    form.append('url', url);
+    form.append('device', type);
+    if (!!full) form.append('full', 'on');
+    form.append('cacheLimit', 0);
+    let res = await axios({
+        url: 'https://www.screenshotmachine.com/capture.php',
+        method: 'post',
+        data: form,
+    });
+    let cookies = res.headers['set-cookie'];
+    let buffer = await axios({
+        url: 'https://www.screenshotmachine.com/' + res.data.link,
+        headers: {
+            'cookie': cookies.join(''),
+        },
+        responseType: 'arraybuffer',
+    });
+    return Buffer.from(buffer.data, 'base64');
 }
 
 async function wallpaper(title, page = '1') {
