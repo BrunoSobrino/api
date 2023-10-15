@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios');
 const { googleImage, RandomAgresivo } = require('./func/functions');
 
 router.get('/', async (req, res) => {
