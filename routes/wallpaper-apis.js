@@ -114,7 +114,7 @@ router.get('/navidad', async (req, res) => {
   }
 });
 
-router.get('/wpmontaña', async (req, res) => {
+router.get('/wpmountain', async (req, res) => {
   try {
     const response = await wallpaper('mountain');
     let imageUrl = null;
