@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
     const imagess = await googleImage(texto);
     let imageUrl = null;
     while (!imageUrl) {
-      const randomIndex = RandomAgresivo(0, data.length - 1);
+      const randomIndex = RandomAgresivo(0, imagess.length - 1);
       imageUrl = imagess[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
