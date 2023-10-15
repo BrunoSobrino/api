@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
-const { googleImage, RandomAgresio } = require('./func/functions');
+const { googleImage, RandomAgresivo } = require('./func/functions');
 
 router.get('/', async (req, res) => {
   const texto = req.query.text;
