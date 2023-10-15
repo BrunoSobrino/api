@@ -4,6 +4,21 @@ const axios = require('axios');
 const path = require('path');
 const { RandomAgresivo, wallpaper } = require('./func/functions');
 
+router.get('/coffee', async (req, res) => {
+  try {
+        const imageResponse = await axios.get('https://coffee.alexflipnote.dev/random', { responseType: 'arraybuffer' });
+        const imageBuffer = Buffer.from(imageResponse.data, 'binary');
+        res.setHeader('Content-Type', 'image/jpeg');
+        res.send(imageBuffer);
+      } catch (error) {
+        imageUrl = null;
+      }
+    }
+  } catch (error) {
+    res.sendFile(path.join(__dirname, '../public/500.html'));
+  }
+});
+
 router.get('/wprandom', async (req, res) => {
   try {
     const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/api/main/data/wprandom.json');
