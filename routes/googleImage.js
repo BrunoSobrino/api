@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
     }    
     res.setHeader('Content-Type', 'image/png')
     const imagess = await googleImage(texto);
-    const randomIndex = RandomAgresivo(0, images.length - 1)
+    const randomIndex = RandomAgresivo(0, imagess.length - 1)
     const image = imagess[randomIndex]
     console.log(image)
     const imageBuffer = Buffer.from(image)
