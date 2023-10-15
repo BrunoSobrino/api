@@ -18,13 +18,26 @@ router.get('/', async (req, res) => {
       res.send(formattedResults_e);
       return;
     }    
-    res.setHeader('Content-Type', 'image/png')
     const imagess = await googleImage(texto);
+    let imageUrl = null;
+    while (!imageUrl) {
+      const randomIndex = RandomAgresivo(0, data.length - 1);
+      imageUrl = imagess[randomIndex];
+      try {
+        const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+        const imageBuffer = Buffer.from(imageResponse.data, 'base64');
+        res.setHeader('Content-Type', 'image/jpeg');
+        res.send(imageBuffer);
+      } catch (error) {
+        imageUrl = null;
+      }
+    }
+   /* const imagess = await googleImage(texto);
     const randomIndex = RandomAgresivo(0, imagess.length - 1)
     const image = imagess[randomIndex]
     const imageResponse = await axios.get(image, { responseType: 'arraybuffer' });
     const imageBuffer = Buffer.from(imageResponse.data, 'base64')
-    res.end(imageBuffer);
+    res.end(imageBuffer);*/
   } catch (error) {
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
