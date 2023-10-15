@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
-const { googleImage } = require('./func/functions');
+const { googleImage, RandomAgresio } = require('./func/functions');
 
 router.get('/', async (req, res) => {
   const texto = req.query.text;
@@ -17,7 +17,8 @@ router.get('/', async (req, res) => {
       res.send(formattedResults_e);
       return;
     }    
-    const image = await googleImage(texto);
+    const images = await googleImage(texto);
+    const image = await RandomAgresivo(1, images.length, 0)
     console.log(image)
     const imageBuffer = Buffer.from(image)
     res.end(imageBuffer);
