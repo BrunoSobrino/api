@@ -4,6 +4,45 @@ const path = require('path');
 const cheerio = require('cheerio');
 const { fromBuffer  } = require('file-type');
 
+async function igStalk(username) {
+    try {
+        username = username.replace(/^@/, '');
+        const html = await (await fetch(`https://dumpor.com/v/${username}`)).text();
+        const $$ = cheerio.load(html);
+        const errorTitle = $$('h1.error__title').text().trim();
+        if (errorTitle === 'Page not found') {
+          return { status: false, message: `El usuario "${username}" no existe.` };
+        }
+        const name = $$('div.user__title > a > h1').text().trim();
+        const Uname = $$('div.user__title > h4').text().trim();
+        const description = $$('div.user__info-desc').text().trim();
+        const profilePic = $$('div.user__img').attr('style').match(/url\('(.+)'\)/)[1];
+        const row = $$('#user-page > div.container > div > div > div:nth-child(1) > div > a');
+        const postsH = row.eq(0).text().replace(/Posts/i, '').trim();
+        const followersH = row.eq(2).text().replace(/Followers/i, '').trim();
+        const followingH = row.eq(3).text().replace(/Following/i, '').trim();
+        const list = $$('ul.list > li.list__item');
+        const posts = parseInt(list.eq(0).text().replace(/Posts/i, '').replace(/\s+/g, ''));
+        const followers = parseInt(list.eq(1).text().replace(/Followers/i, '').replace(/\s+/g, ''));
+        const following = parseInt(list.eq(2).text().replace(/Following/i, '').replace(/\s+/g, ''));
+        return { status: true, resultado: {name, username: Uname, description, postsH, posts, followersH, followers, followingH, following, profilePic }};
+    } catch (error) {
+        return { status: false, error: error.message };
+    }
+}
+
+async function tiktokStalk(user) {
+    let res = await axios.get(`https://urlebird.com/user/${user}/`)
+    let $ = cheerio.load(res.data)
+    const pp_user = $('div[class="col-md-auto justify-content-center text-center"] > img').attr('src')
+    const name = $('h1.user').text().trim()
+    const username = $('div.content > h5').text().trim()
+    const followers = $('div[class="col-7 col-md-auto text-truncate"]').text().trim().split(' ')[1]
+    const following = $('div[class="col-auto d-none d-sm-block text-truncate"]').text().trim().split(' ')[1]
+    const description = $('div.content > p').text().trim()
+    return { status: true, resultado: {profile: pp_user, name: username, username: name, followers, following, desc: description }}
+ }
+
 async function googleImage(query) {
   const data = await fetch(`https://www.google.com/search?q=${query}&tbm=isch`, {
     headers: {
@@ -240,14 +279,16 @@ function xnxxsearch(query) {
 
 
 module.exports = {
-    getBuffer,
-    getBuffer2,
-    RandomAgresivo,
-    getFileName,
-    xnxxsearch,
-    xnxxdl,
-    lyrics,
-    wallpaper,
-    ssweb,
-    googleImage
+  getBuffer,
+  getBuffer2,
+  RandomAgresivo,
+  getFileName,
+  xnxxsearch,
+  xnxxdl,
+  lyrics,
+  wallpaper,
+  ssweb,
+  googleImage,
+  igStalk,
+  tiktokStalk
 };
