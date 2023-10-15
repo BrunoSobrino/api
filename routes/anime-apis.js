@@ -21,7 +21,7 @@ router.get('/akira', async (req, res) => {
       }
     }
   } catch (error) {
-    res.sendFile('../public/500.html', { root: __dirname });
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
