@@ -6,7 +6,7 @@ const { spotifySearch1 } = require('./func/spotify');
 router.get('/', async (req, res) => {
   res.setHeader('Content-Type', 'application/json');  
   const textoo = req.query.text;
-  const urll = req.query.text;
+  const urll = req.query.url;
   const input = textoo ? textoo : urll
   try {
     if (!input) {
