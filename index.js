@@ -81,6 +81,7 @@ const pene = require('./routes/a-pene');
 const porno = require('./routes/a-porno');
 const tetas = require('./routes/a-tetas');
 const apirouter = require('./routes/anime-apis');
+const apirouter2 = require('./routes/adult-apis');
 
 
 const getUptime = () => {
@@ -108,6 +109,7 @@ app.use('/', home);
 app.use('/docs', docs);
 
 app.use('/api/anime', apirouter);
+app.use('/api/adult', apirouter2);
 app.use('/api/ttimg', ttimg);
 app.use('/api/v1/ytmp3', ytmp3);
 app.use('/api/v1/ytmp4', ytmp4);
