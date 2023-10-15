@@ -54,6 +54,7 @@ async function tiktokStalk(username, options) {
 
     const $ = cheerio.load(data);
     const result = JSON.parse($("script#__NEXT_DATA__").html());
+      console.log(result)
     const user = result.props.pageProps.userData;
     const stats = user.stats;
     const posts = user.items || [];
