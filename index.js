@@ -110,7 +110,7 @@ app.use('/api/xnxxdl', xnxxdl);
 app.use('/api/xnxxsearch', xnxxsearch);
 app.use('/api/lyrics', lyrics);
 app.use('/api/ssweb', ssweb);
-app.use('/api/googieImage', googleImage);
+app.use('/api/googleimage', googleImage);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
