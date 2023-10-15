@@ -32,29 +32,105 @@ async function igStalk(username) {
     }
 }
 
-async function tiktokStalk(user) {
-    return new Promise((resolve, reject) => {
-      try {    
-        let User = user.startsWith('@') ? user : '@' + user
-        axios({
-            url: `https://www.tiktok.com/${User}?lang=id`,
-            method: 'GET',
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
-		'Cookie': 'tt_csrf_token=psXax5iA3QxSpE_LI2j6iHU0; ttwid=1%7Cfpftinh7CEhYgKNa0Zi6Tg8okKrRQQej6DsUM8Bym-M%7C1640705402%7C7837ecf88b4283018f0b3bc91eef9e42af9fc4a68e64eea290eb3fb13539fa47; _abck=EBA03DEC357EB172FA758A935B33C888~-1~YAAQt3/3SLKkT919AQAA7kGpAQfZl7orSpqNkGxpXGcM0UZcExmPHHWIMV11g1ixLjDwfQ44s7VLGsfSc7A9UlHmuRsCv8JTcypSAWOAQB4fy3pTTTcuMD1vsc9raahBXw7HjHqBLUxy+GOb3AkbggZpldZIJTm9+CDo3XIs6JyMTgF/YIzlC2u4uDK0fX2AYbRTl2J/FdR/GuRXCW/whXmk7zQ9ZECfPM6sYpSQyXMKnSMwEZXl0LkSZ3wRE5Bj2uRJbxRk0fEuwyOSkN6FyS0lDU3EKoQpAvu2MhS98YdKjeX7dXbCNRYbgSMGJa++Pr2cIuwyZfBI4X/glj5dWW4JtVHW2NBxpuJrkG1cOFN3gz1LJepTuVv8BmtHSM7YTpoTbW3oJ4XabQ==~-1~-1~-1; bm_sz=E65E8E40342F6F53DEA6389742304A35~YAAQt3/3SLOkT919AQAA7kGpAQ4Ix9bfuKB/TNEc7AzfgEouOWl9EUtetDzyJWjxZ/u8OoNJm/LH3ahXONGH4/RBzfapPYF1Xw/lY/if6nlx4yaJl8LfIU1iVBz+Y0WOcJ9tOlg15Sn/fTu2VsGOMsGr1sx0FplV6VkJPd4xA4Oc5UVGM46e9gwWLLnVU9K6NeYhfynfXv0sa4ljpfOBrDL0YlVB0wOP3d9cNoUptyImzHbURICOLWMz7hy7NsQ3z5yra5d06fW0jSTa8ujpX/TRpI0raskHtOYoW83WqgRD0UU=~3291202~3688002'
-            }
-        }).then((data) => {
-            let $ = cheerio.load(data.data)
-            let res = $('body').find('#__NEXT_DATA__').get()[0].children[0]
-			let result = JSON.parse(res.data).props.pageProps.userInfo
-            return { status: true, resultado: { result }};
-        })
-        } catch (error) {
-         return { status: false, error: error.message };
-       }    
-    })      
+async function getCookie() {
+  try {
+    const { data: cookie } = await axios.get("https://pastebin.com/raw/ELJjcbZT");
+    return cookie;
+  } catch (e) {
+    return { status: "error", message: "Failed to fetch cookie." };
+  }
 }
 
+async function tiktokStalk(username, options) {
+  username = username.replace("@", "");
+  try {
+    const { data } = await axios.get(`https://www.tiktok.com/@${username}`, {
+      headers: {
+        "user-agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36",
+        cookie: options?.cookie || (await getCookie()),
+      },
+    });
+
+    const $ = cheerio.load(data);
+    const result = JSON.parse($("script#__NEXT_DATA__").html());
+    const user = result.props.pageProps.userData;
+    const stats = user.stats;
+    const posts = user.items || [];
+
+    const userProfile = {
+      username: user.user.uniqueId,
+      nickname: user.user.nickname,
+      avatarLarger: user.user.avatarLarger,
+      avatarThumb: user.user.avatarThumb,
+      avatarMedium: user.user.avatarMedium,
+      signature: user.user.signature,
+      verified: user.user.verified,
+      privateAccount: user.user.isSecret,
+      region: user.user.region,
+      commerceUser: user.user.commerceUserInfo.commerceUser,
+      usernameModifyTime: user.user.uniqueIdModifyTime,
+      nicknameModifyTime: user.user.nickNameModifyTime,
+    };
+
+    const userStats = {
+      followerCount: stats.followerCount,
+      followingCount: stats.followingCount,
+      heartCount: stats.heart,
+      videoCount: stats.videoCount,
+      likeCount: stats.diggCount,
+      friendCount: stats.followingCount,
+      postCount: posts.length,
+    };
+
+    const userPosts = posts.map((post) => {
+      const media = post.video
+        ? {
+            video: {
+              id: post.id,
+              duration: post.video.duration,
+              ratio: post.video.ratio,
+              cover: post.video.cover,
+              originCover: post.video.originCover,
+              dynamicCover: post.video.dynamicCover,
+              playAddr: post.video.playAddr,
+              downloadAddr: post.video.downloadAddr,
+              format: post.video.format,
+              bitrate: post.video.bitrate,
+            },
+          }
+        : {
+            images: post.images.map((image) => image.url),
+          };
+
+      const music = post.music || {};
+      const statistics = post.stats || {};
+
+      return {
+        id: post.id,
+        desc: post.desc,
+        createTime: post.createTime,
+        author: post.author,
+        locationCreated: post.location,
+        hashtags: post.challenges.map((challenge) => challenge.title),
+        statistics,
+        music,
+        ...media,
+      };
+    });
+
+    return {
+      status: "success",
+      result: {
+        userProfile,
+        userStats,
+        userPosts,
+      },
+    };
+  } catch (e) {
+    return { status: "error", message: e.message };
+  }
+}
 
 async function googleImage(query) {
   const data = await fetch(`https://www.google.com/search?q=${query}&tbm=isch`, {
