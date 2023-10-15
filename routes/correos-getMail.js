@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 const { generarCorreoAleatorio } = require('./func/tempmail');
 
 router.get('/', async (req, res) => {
@@ -9,13 +10,7 @@ router.get('/', async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.send(formattedResults);
   } catch (error) {
-    console.error(error);
-    const errorMessage = 'Error al generar el correo aleatorio';
-    const formattedError = JSON.stringify({
-      status: false,
-      error: errorMessage
-    }, null, 2);
-    res.status(500).json(JSON.parse(formattedError)); 
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
