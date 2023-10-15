@@ -34,7 +34,7 @@ async function ssweb(url = '', full = false, type = 'desktop') {
         if (thumioResponse.data) {
             return Buffer.from(thumioResponse.data, 'base64');
         }
-    } catch (error) {
+    } catch (error) {}
     let form = new URLSearchParams();
     form.append('url', url);
     form.append('device', type);
@@ -54,7 +54,6 @@ async function ssweb(url = '', full = false, type = 'desktop') {
         responseType: 'arraybuffer',
     });
     return Buffer.from(buffer.data, 'base64');
-  }
 }
 
 async function wallpaper(title, page = '1') {
