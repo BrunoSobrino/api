@@ -5,7 +5,7 @@ const { RandomAgresivo } = require('./func/functions');
 
 router.get('/akira', async (req, res) => {
   try {
-    const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/api/main/data/anime-akira.json');
+    const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/api/main/data/anime-akira.jsonn');
     const data = response.data;
     let imageUrl = null;
     while (!imageUrl) {
@@ -21,7 +21,7 @@ router.get('/akira', async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).send('An error occurred');
+    res.sendFile('../public/500.html', { root: __dirname });
   }
 });
 
