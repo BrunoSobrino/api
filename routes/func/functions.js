@@ -31,7 +31,7 @@ async function lyrics(search) {
   lyrics = false;
   }
   if (!thumb || (!lyrics1 || !lyrics2 || !lyrics)) {
-    return { status: false, resultado: { titulo: title ? title : 'Titulo no encontrado', artista: artist ? artist : 'Artista no encontrado', imagen: img ? img : 'Imagen no encontrada', letra: lyrics ? lyrics : 'Letra no encontrada'}};
+    return { status: false, message: 'Algunos de los datos no fueron obtenidos correctamente.', resultado: { titulo: title ? title : 'Titulo no encontrado', artista: artist ? artist : 'Artista no encontrado', imagen: img ? img : 'Imagen no encontrada', letra: lyrics ? lyrics : 'Letra no encontrada'}};
   }
   return { status: true, resultado: { titulo: title, artista: artist, imagen: `https:${thumb}`, letra: lyrics}};
 }
