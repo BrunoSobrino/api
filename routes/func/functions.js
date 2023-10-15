@@ -19,11 +19,12 @@ async function lyrics(search) {
   const lyrics2 = $$('div.col-sm-10.col-md-8.col-ml-6.col-lg-6 > div.mxm-lyrics > span > div > p > span').text().trim();
   const title = $$('#site > div > div > div > main > div > div > div.mxm-track-banner.top > div > div > div').find('div.col-sm-10.col-md-8.col-ml-9.col-lg-9.static-position > div.track-title-header > div.mxm-track-title > h1').text().trim().replace('Lyrics','')
   const artist = $$('#site > div > div > div > main > div > div > div > div > div > div > div> div > div > h2 > span').text().trim();
-  if (!thumb || (!lyrics1 && !lyrics2)) {
-    throw new Error('No se encontraron letras para la canción');
+  const img = `https:${thumb || ''}`
+  if (!thumb || (!lyrics1 || !lyrics2)) {
+    return { status: false, resultado: { titulo: title ? title : '', artista: artist ? artist : '', imagen: img ? img : '', letra1: lyrics ? lyrics : '', letra2: lyrics2 ? lyrics2 : ''}};
   }
-  const lyrics = `${lyrics1}\n\n\n\n${lyrics2}`;
-  return { status: true, titulo: title, artista: artist, imagen: `https:${thumb}`, letra: lyrics };
+  //const lyrics = `${lyrics1}\n\n\n\n${lyrics2}`;
+  return { status: true, resultado: { titulo: title, artista: artist, imagen: `https:${thumb}`, letra1: lyrics, letra2: lyrics2 }};
 }
 
 function RandomAgresivo(min, max) {
