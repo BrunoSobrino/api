@@ -20,10 +20,11 @@ async function lyrics(search) {
   const title = $$('#site > div > div > div > main > div > div > div.mxm-track-banner.top > div > div > div').find('div.col-sm-10.col-md-8.col-ml-9.col-lg-9.static-position > div.track-title-header > div.mxm-track-title > h1').text().trim().replace('Lyrics','')
   const artist = $$('#site > div > div > div > main > div > div > div > div > div > div > div> div > div > h2 > span').text().trim();
   const img = `https:${thumb || ''}`
-  if (!thumb || (!lyrics1 || !lyrics2)) {
-    return { status: false, resultado: { titulo: title ? title : '', artista: artist ? artist : '', imagen: img ? img : '', letra: lyrics1 ? lyrics1 : (lyrics2 ? lyrics2 : 'Letra no encontrada')}};
+  const lyrics = `${lyrics1 || ''}\n${lyrics2 || ''}`;
+  if (!thumb || (!lyrics1 || !lyrics2 || !lyrics)) {
+    return { status: false, resultado: { titulo: title ? title : 'Titulo no encontrado', artista: artist ? artist : 'Artista no encontrado', imagen: img ? img : 'Imagen no encontrada', letra: lyrics ? lyrics : 'Letra no encontrada'}};
   }
-  return { status: true, resultado: { titulo: title, artista: artist, imagen: `https:${thumb}`, letra: lyrics1 ? lyrics1 : lyrics2}};
+  return { status: true, resultado: { titulo: title, artista: artist, imagen: `https:${thumb}`, letra: lyrics}};
 }
 
 function RandomAgresivo(min, max) {
