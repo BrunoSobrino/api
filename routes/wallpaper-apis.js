@@ -120,7 +120,7 @@ router.get('/wpmontaña', async (req, res) => {
     let imageUrl = null;
     while (!imageUrl) {
       const randomIndex = RandomAgresivo(0, response.length - 1);
-      imageUrl = data[randomIndex];
+      imageUrl = response[randomIndex];
       try {
         const imageResponse = await axios.get(imageUrl.image[0], { responseType: 'arraybuffer' });
         const imageBuffer = Buffer.from(imageResponse.data, 'binary');
