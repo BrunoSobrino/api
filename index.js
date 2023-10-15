@@ -73,7 +73,13 @@ const xnxxsearch = require('./routes/xnxxsearch');
 const booty = require('./routes/a-booty');
 const ecchi = require('./routes/nsfwecchi');
 const hentai = require('./routes/nsfwhentai');
-
+const furro = require('./routes/a-furro');
+const imglesbi = require('./routes/a-imagenlesbians');
+const panties = require('./routes/a-panties');
+const pechos = require('./routes/a-pechos');
+const pene = require('./routes/a-pene');
+const porno = require('./routes/a-porno');
+const tetas = require('./routes/a-tetas');
 
 const getUptime = () => {
   const uptimeInSeconds = Math.floor(process.uptime());
@@ -136,9 +142,14 @@ app.use('/api/adult/packmen', packmen);
 app.use('/api/adult/gawrgura', gawrgura);
 app.use('/api/adult/videoxxx', videoxxx);
 app.use('/api/adult/videoxxxlesbi', videoxxxlesbi);
-
 app.use('/api/adult/booty', booty);
-
+app.use('/api/adult/furro', furro);
+app.use('/api/adult/imglesbian', imglesbi);
+app.use('/api/adult/panties', panties);
+app.use('/api/adult/pechos', pechos);
+app.use('/api/adult/pene', pene);
+app.use('/api/adult/porno', porno);
+app.use('/api/adult/tetas', tetas);
 app.use('/api/xnxxdl', xnxxdl);
 app.use('/api/xnxxsearch', xnxxsearch);
 
