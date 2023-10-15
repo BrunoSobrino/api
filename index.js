@@ -59,6 +59,8 @@ const apirouter4 = require('./routes/wallpaper-apis');
 const lyrics = require('./routes/lyrics');
 const ssweb = require('./routes/ssweb');
 const googleImage = require('./routes/googleImage');
+const tiktokStalk = require('./routes/tiktokStalk');
+const igStalkss = require('./routes/igStalk');
 
 
 const getUptime = () => {
@@ -111,6 +113,8 @@ app.use('/api/xnxxsearch', xnxxsearch);
 app.use('/api/lyrics', lyrics);
 app.use('/api/ssweb', ssweb);
 app.use('/api/googleimage', googleImage);
+app.use('/api/tiktokstalk', tiktokStalk);
+app.use('/api/igstalk', igStalkss);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
