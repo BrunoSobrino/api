@@ -1,20 +1,28 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
+const path = require('path');
 const { getMusicBuffer } = require('./func/spotify');
 
 router.get('/', async (req, res) => {
   try {
     const input = req.query.text;
-    if (!input) {
-      res.status(400).json({ error: 'Se requiere un parámetro "input" en la consulta.' });
+    const input2 = req.query.url;
+    const soung = input ? input : input2
+    if (!soung) {
+      const errorResponse = {
+        status: false,
+        message: 'Debes especificar la URL o el titulo de la musica.'
+      };
+      const formattedResults_e = JSON.stringify(errorResponse, null, 2);
+      res.setHeader('Content-Type', 'application/json');
+      res.send(formattedResults_e);
       return;
     }
-    const filePath = await getMusicBuffer(input);
+    const filePath = await getMusicBuffer(soung);
     res.sendFile(filePath, { root: '.', headers: { 'Content-Type': 'audio/mpeg' } });
   } catch (error) {
-    console.error('Ocurrió un error al procesar la solicitud:', error);
-    res.status(500).json({ error: 'Ocurrió un error al procesar la solicitud' });
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
