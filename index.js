@@ -10,7 +10,6 @@ const { execSync } = require('child_process');
 const axios = require('axios');
 const favicon = require('serve-favicon');
 const visitors = new Set(); 
-var mainrouter = require('./routes/main'),
 let totalRequests = 0;
 let totalVisitors = 0;
 
