@@ -81,7 +81,7 @@ const pechos = require('./routes/a-pechos');
 const pene = require('./routes/a-pene');
 const porno = require('./routes/a-porno');
 const tetas = require('./routes/a-tetas');
-const apirouter = require('./routes/main');
+const apirouter = require('./routes/anime-apis');
 
 
 const getUptime = () => {
