@@ -10,10 +10,6 @@ router.get('/coffee', async (req, res) => {
         const imageBuffer = Buffer.from(imageResponse.data, 'binary');
         res.setHeader('Content-Type', 'image/jpeg');
         res.send(imageBuffer);
-      } catch (error) {
-        imageUrl = null;
-      }
-    }
   } catch (error) {
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
