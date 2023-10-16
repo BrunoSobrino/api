@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
 const { fromBuffer  } = require('file-type');
+const request = require('request')
 const { TiktokStalk } = require("@tobyg74/tiktok-api-dl")
 
 async function ttp(text, tcolor = "30F4EF") {
