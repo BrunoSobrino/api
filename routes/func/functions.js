@@ -43,36 +43,36 @@ async function getCookie() {
 }
 
 async function tiktokStalk(username, options) {
-  username = username.replace("@", "");
   try {
-    const data = await TiktokStalk(`${username}`, {cookie: await getCookie()})
+    username = username.replace("@", "");
+    const data = await TiktokStalk(username, { cookie: await getCookie() });
     const userData = data.result.users;
     const statsData = data.result.stats;
-return {
-  status: true,
-  resultado: {
-      nombreUsuario: userData.username,
-      apodoUsuario: userData.nickname,
-      avatarGrande: userData.avatarLarger,
-      avatarMiniatura: userData.avatarThumb,
-      avatarMediano: userData.avatarMedium,
-      firma: userData.signature,
-      verificado: userData.verified,
-      cuentaPrivada: userData.privateAccount,
-      región: userData.region,
-      usuarioComercial: userData.commerceUser,
-      últimaModificaciónNombreUsuario: userData.usernameModifyTime,
-      últimaModificaciónApodo: userData.nicknameModifyTime,
-      seguidores: statsData.followerCount,
-      seguidos: statsData.followingCount,
-      corazones: statsData.heartCount,
-      videosPublicados: statsData.videoCount,
-      meGusta: statsData.likeCount,
-      amigos: statsData.friendCount,
-      publicaciones: statsData.postCount
-  }
-}
-    //return { status: true, resultado: { users: data.result.users, stats: data.result.stats }}
+    return {
+      status: true,
+      resultado: {
+          nombreUsuario: userData.username,
+          apodoUsuario: userData.nickname,
+          avatarGrande: userData.avatarLarger,
+          avatarMiniatura: userData.avatarThumb,
+          avatarMediano: userData.avatarMedium,
+          firma: userData.signature,
+          verificado: userData.verified,
+          cuentaPrivada: userData.privateAccount,
+          región: userData.region,
+          usuarioComercial: userData.commerceUser,
+          últimaModificaciónNombreUsuario: userData.usernameModifyTime,
+          últimaModificaciónApodo: userData.nicknameModifyTime,
+          seguidores: statsData.followerCount,
+          seguidos: statsData.followingCount,
+          corazones: statsData.heartCount,
+          videosPublicados: statsData.videoCount,
+          meGusta: statsData.likeCount,
+          amigos: statsData.friendCount,
+          publicaciones: statsData.postCount,
+        },
+      },
+    };
   } catch (e) {
     return { status: false, message: e.message };
   }
