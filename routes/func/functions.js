@@ -47,12 +47,12 @@ async function pinterest(query) {
     };
     const url = `https://ar.pinterest.com/search/pins/?autologin=true&q=${query}`;
     const response = await axios.get(url, { headers: headers });
-    const results = [];
+    const resultado = [];
     const $ = cheerio.load(response.data);
     $('img').each(function () {
-      results.push($(this).attr('src'));
+      resultado.push($(this).attr('src'));
     });
-    return { status: true, resultado: { results }};
+    return { status: true, resultado };
   }
 
 async function stickersearch(query) {
