@@ -59,14 +59,14 @@ async function tiktokStalk(username, options) {
           isPrivate: userData.privateAccount,
           isUserCommerce: userData.commerceUser,
           region: userData.region,
-          LastUsernameModification: userData.usernameModifyTime,
-          LastNicknameModification: userData.nicknameModifyTime,
           followers: statsData.followerCount,
           following: statsData.followingCount,
           friends: statsData.friendCount,
           totalLikes: statsData.heartCount,
           totalVideos: statsData.videoCount,
-          totalPosts: statsData.postCount
+          totalPosts: statsData.postCount,
+          LastUsernameModification: userData.usernameModifyTime,
+          LastNicknameModification: userData.nicknameModifyTime          
       },
     };
   } catch (e) {
