@@ -7,7 +7,7 @@ const { fromBuffer  } = require('file-type');
 const request = require('request')
 const { TiktokStalk } = require("@tobyg74/tiktok-api-dl")
 
-async function ttp(text, tcolor = "30F4EF") {
+async function ttp(text) {
 	return new Promise(async (resolve, reject) => {
 		const getid = await axios.get('https://id.bloggif.com/text')
 		const id = cheerio.load(getid.data)('form').attr('action')
