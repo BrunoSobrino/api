@@ -46,6 +46,7 @@ async function tiktokStalk(username, options) {
   try {
     username = username.replace("@", "");
     const data = await TiktokStalk(username, { cookie: await getCookie() });
+    if (!data || !data?.result || !data?.result?.users || !data?.result?.stats) return { status: false, message: 'Username no encontrado, verifique nuevamente.' };
     const userData = data.result.users;
     const statsData = data.result.stats;
     return {
