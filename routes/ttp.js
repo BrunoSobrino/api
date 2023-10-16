@@ -4,7 +4,7 @@ const path = require('path');
 const { ttp } = require('./func/functions');
 
 router.get('/', async (req, res) => {
-  const texto = req.query.username; 
+  const texto = req.query.text; 
   try {
     if (!texto) {
       const errorResponse = {
@@ -16,11 +16,12 @@ router.get('/', async (req, res) => {
       res.send(formattedResults_e);
       return;
     }        
-    const igStalkss = await ttp(texto);
-    const formattedResults = JSON.stringify(igStalkss, null, 2);
+    const ttpst = await ttp(texto);
+    const formattedResults = JSON.stringify(ttpst, null, 2);
     res.setHeader('Content-Type', 'application/json');
     res.send(formattedResults);
   } catch (error) {
+    console.log(error)
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
