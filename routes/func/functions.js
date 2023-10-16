@@ -398,5 +398,8 @@ module.exports = {
   ssweb,
   googleImage,
   igStalk,
-  tiktokStalk
+  tiktokStalk,
+  ttp,
+  stickersearch,
+  pinterest
 };
