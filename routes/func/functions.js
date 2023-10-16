@@ -6,6 +6,82 @@ const cheerio = require('cheerio');
 const { fromBuffer  } = require('file-type');
 const { TiktokStalk } = require("@tobyg74/tiktok-api-dl")
 
+async function ttp(text, tcolor = "30F4EF") {
+    return new Promise((resolve, reject) => {
+            const options = {
+                method: 'POST',
+                url: `https://www.picturetopeople.org/p2p/text_effects_generator.p2p/transparent_text_effect`,
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36",
+                    "Cookie": "_ga=GA1.2.1667267761.1655982457; _gid=GA1.2.77586860.1655982457; __gads=ID=c5a896288a559a38-224105aab0d30085:T=1655982456:RT=1655982456:S=ALNI_MbtHcmgQmVUZI-a2agP40JXqeRnyQ; __gpi=UID=000006149da5cba6:T=1655982456:RT=1655982456:S=ALNI_MY1RmQtva14GH-aAPr7-7vWpxWtmg; _gat_gtag_UA_6584688_1=1"
+                },
+                formData: {
+                    'TextToRender': text,
+                    'FontSize': '100',
+                    'Margin': '30',
+                    'LayoutStyle': '0',
+                    'TextRotation': '0',
+                    'TextColor': `${tcolor}`,
+                    'TextTransparency': '0',
+                    'OutlineThickness': '3',
+                    'OutlineColor': '000000',
+                    'FontName': 'Lekton',
+                    'ResultType': 'view'
+                }
+            };
+            request(options, async function(error, response, body) {
+                if (error) throw new Error(error)
+                const $ = cheerio.load(body)
+                const result = 'https://www.picturetopeople.org' + $('#idResultFile').attr('value')
+                return { status: true, resultado: result };
+            });
+        })
+}
+
+async function pinterest(query) {
+    const headers = {
+      'sec-ch-ua': '"Google Chrome";v="95", "Chromium";v="95", ";Not A Brand";v="99"',
+      'cookie': '_auth=1; _b="AVna7S1p7l1C5I9u0+nR3YzijpvXOPc6d09SyCzO+DcwpersQH36SmGiYfymBKhZcGg="; _pinterest_sess=TWc9PSZHamJOZ0JobUFiSEpSN3Z4a2NsMk9wZ3gxL1NSc2k2NkFLaUw5bVY5cXR5alZHR0gxY2h2MVZDZlNQalNpUUJFRVR5L3NlYy9JZkthekp3bHo5bXFuaFZzVHJFMnkrR3lTbm56U3YvQXBBTW96VUgzVUhuK1Z4VURGKzczUi9hNHdDeTJ5Y2pBTmxhc2owZ2hkSGlDemtUSnYvVXh5dDNkaDN3TjZCTk8ycTdHRHVsOFg2b2NQWCtpOWxqeDNjNkk3cS85MkhhSklSb0hwTnZvZVFyZmJEUllwbG9UVnpCYVNTRzZxOXNJcmduOVc4aURtM3NtRFo3STlmWjJvSjlWTU5ITzg0VUg1NGhOTEZzME9SNFNhVWJRWjRJK3pGMFA4Q3UvcHBnWHdaYXZpa2FUNkx6Z3RNQjEzTFJEOHZoaHRvazc1c1UrYlRuUmdKcDg3ZEY4cjNtZlBLRTRBZjNYK0lPTXZJTzQ5dU8ybDdVS015bWJKT0tjTWYyRlBzclpiamdsNmtpeUZnRjlwVGJXUmdOMXdTUkFHRWloVjBMR0JlTE5YcmhxVHdoNzFHbDZ0YmFHZ1VLQXU1QnpkM1FqUTNMTnhYb3VKeDVGbnhNSkdkNXFSMXQybjRGL3pyZXRLR0ZTc0xHZ0JvbTJCNnAzQzE0cW1WTndIK0trY05HV1gxS09NRktadnFCSDR2YzBoWmRiUGZiWXFQNjcwWmZhaDZQRm1UbzNxc21pV1p5WDlabm1UWGQzanc1SGlrZXB1bDVDWXQvUis3elN2SVFDbm1DSVE5Z0d4YW1sa2hsSkZJb1h0MTFpck5BdDR0d0lZOW1Pa2RDVzNySWpXWmUwOUFhQmFSVUpaOFQ3WlhOQldNMkExeDIvMjZHeXdnNjdMYWdiQUhUSEFBUlhUVTdBMThRRmh1ekJMYWZ2YTJkNlg0cmFCdnU2WEpwcXlPOVZYcGNhNkZDd051S3lGZmo0eHV0ZE42NW8xRm5aRWpoQnNKNnNlSGFad1MzOHNkdWtER0xQTFN5Z3lmRERsZnZWWE5CZEJneVRlMDd2VmNPMjloK0g5eCswZUVJTS9CRkFweHc5RUh6K1JocGN6clc1JmZtL3JhRE1sc0NMTFlpMVErRGtPcllvTGdldz0=; _ir=0',
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36'
+    };
+    const url = `https://ar.pinterest.com/search/pins/?autologin=true&q=${query}`;
+    const response = await axios.get(url, { headers: headers });
+    const results = [];
+    const $ = cheerio.load(response.data);
+    $('img').each(function () {
+      results.push($(this).attr('src'));
+    });
+    return { status: true, resultado: { results }};
+  }
+
+async function stickersearch(query) {
+    return new Promise((resolve, reject) => {
+        axios.get(`https://getstickerpack.com/stickers?query=${query}`).then(({ data }) => {
+                const $ = cheerio.load(data)
+                const source = [];
+                const link = [];
+                $('#stickerPacks > div > div:nth-child(3) > div > a').each(function(a, b) {
+                    source.push($(b).attr('href'))
+                })
+                axios.get(source[Math.floor(Math.random() * source.length)]).then(({ data }) => {
+                        const $$ = cheerio.load(data)
+                        $$('#stickerPack > div > div.row > div > img').each(function(c, d) {
+                            link.push($$(d).attr('src').replace(/&d=200x200/g,''))
+                        })
+                        result = {
+                            status: true,
+                            resultado: {
+                            title: $$('#intro > div > div > h1').text(),
+                            sticker_url: link
+                          }
+                        }
+                        resolve(result)
+                    })
+            }).catch(reject)
+    })
+}
+
 async function igStalk(username) {
     try {
         username = username.replace(/^@/, '');
