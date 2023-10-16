@@ -61,6 +61,9 @@ const ssweb = require('./routes/ssweb');
 const googleImage = require('./routes/googleImage');
 const tiktokStalk = require('./routes/tiktokStalk');
 const igStalkss = require('./routes/igStalk');
+const ttp = require('./routes/ttp');
+const stickersearch = require('./routes/stickersearch');
+const pinterest = require('./routes/pinterest');
 
 
 const getUptime = () => {
@@ -115,6 +118,9 @@ app.use('/api/ssweb', ssweb);
 app.use('/api/googleimage', googleImage);
 app.use('/api/tiktokstalk', tiktokStalk);
 app.use('/api/igstalk', igStalkss);
+app.use('/api/ttp', ttp);
+app.use('/api/stickersearch', stickersearch);
+app.use('/api/pinterest', pinterest);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
