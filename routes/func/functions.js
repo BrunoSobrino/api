@@ -70,7 +70,6 @@ async function tiktokStalk(username, options) {
           meGusta: statsData.likeCount,
           amigos: statsData.friendCount,
           publicaciones: statsData.postCount,
-        },
       },
     };
   } catch (e) {
