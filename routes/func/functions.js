@@ -45,7 +45,9 @@ async function getCookie() {
 async function tiktokStalk(username, options) {
   username = username.replace("@", "");
   try {
-    const userData = await TiktokStalk(`${username}`, {cookie: await getCookie()})
+    const data = await TiktokStalk(`${username}`, {cookie: await getCookie()})
+    const userData = data.result.users;
+    const statsData = data.result.stats;
 return {
   status: true,
   resultado: {
