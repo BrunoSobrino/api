@@ -369,7 +369,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Pending Requests Card Example -->
+                        <!-- Requests Card -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card h-50">
                                 <div class="card-body">
@@ -386,8 +386,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <!-- Uptime web card -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card h-50">
@@ -405,9 +403,6 @@
                                 </div>
                             </div>
                         </div>
-                        
-
-                        
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div id="findipurl">
                                 <a href="find-ip.net"></a>
@@ -430,7 +425,6 @@
             <!-- Footer -->
         </div>
     </div>
-
     <!-- Scroll to top -->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
@@ -440,8 +434,14 @@
     fetch('/status').then(response => response.json()).then(data => {
         document.getElementById('totalRequests').textContent = data.totalRequests;
         document.getElementById('totalVisitors').textContent = data.totalVisitors;
-        document.getElementById('uptime').textContent = data.uptime;
+        //document.getElementById('uptime').textContent = data.uptime;
       });
+    const uptimeElement = document.getElementById('uptime');
+    const eventSource = new EventSource('/status');
+    eventSource.addEventListener('message', (event) => {
+        const data = JSON.parse(event.data);
+        uptimeElement.textContent = data.uptime;
+    });
     document.addEventListener("DOMContentLoaded", function () {
         const audioElement = document.querySelector("audio");
         const toggleButton = document.getElementById("toggleButton");
