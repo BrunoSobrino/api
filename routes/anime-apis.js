@@ -61,7 +61,6 @@ router.get('/waifu', async (req, res) => {
         res.setHeader('Content-Type', 'image/jpeg');        
         res.send(imageBuffer);
   } catch (error) {
-    console.log(error)
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
