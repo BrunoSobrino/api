@@ -5,6 +5,7 @@ const cors = require('cors');
 const chalk = require('chalk');
 const port = 3036;
 const port2 = 40016;
+const port3 = 2023;
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
@@ -229,6 +230,5 @@ app.listen(port, function() {
     console.log(chalk.yellow(line));
 });
 app.listen(port2, function() {});
-http.listen(port, () => {});
-http.listen(port2, () => {});
+http.listen(port3, () => {});
 
