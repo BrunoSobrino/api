@@ -54,8 +54,8 @@ router.get('/loli', async (req, res) => {
 
 router.get('/waifu', async (req, res) => {
   try {
-    const res = await fetch('https://api.waifu.pics/sfw/waifu');
-    const json = await res.json();
+    const resss = await fetch('https://api.waifu.pics/sfw/waifu');
+    const json = await resss.json();
         const imageResponse = await axios.get(json.url, { responseType: 'arraybuffer' });
         const imageBuffer = Buffer.from(imageResponse.data, 'binary');
         res.setHeader('Content-Type', 'image/jpeg');        
