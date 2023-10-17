@@ -1,3 +1,4 @@
+process.on('uncaughtException', console.error)
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -120,7 +121,6 @@ app.use('/api/ssweb', ssweb);
 app.use('/api/googleimage', googleImage);
 app.use('/api/tiktokstalk', tiktokStalk);
 app.use('/api/igstalk', igStalkss);
-app.use('/api/ttp', ttp);
 app.use('/api/stickersearch', stickersearch);
 app.use('/api/pinterest', pinterest);
 
