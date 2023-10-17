@@ -56,12 +56,12 @@ router.get('/waifu', async (req, res) => {
   try {
    const res = await fetch('https://api.waifu.pics/sfw/waifu');
     const json = await res.json();
-      const imageUrl = json.url
-        const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+        const imageResponse = await axios.get(json.url, { responseType: 'arraybuffer' });
         const imageBuffer = Buffer.from(imageResponse.data, 'binary');
         res.setHeader('Content-Type', 'image/jpeg');
         res.send(imageBuffer);
   } catch (error) {
+    console.log()
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
