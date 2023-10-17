@@ -17,9 +17,13 @@ router.get('/attp', async (req, res) => {
       return;
     }        
     const ttpst = await ttp(texto);
-    const formattedResults = JSON.stringify(ttpst, null, 2);
+    const imageResponse = await axios.get(ttpst.resultado, { responseType: 'arraybuffer' });
+    const imageBuffer = Buffer.from(imageResponse.data, 'binary');
+    res.setHeader('Content-Type', 'image/jpeg');
+    res.send(imageBuffer);
+    /*const formattedResults = JSON.stringify(ttpst, null, 2);
     res.setHeader('Content-Type', 'application/json');
-    res.send(formattedResults);
+    res.send(formattedResults);*/
   } catch (error) {
     console.log(error)
     res.sendFile(path.join(__dirname, '../public/500.html'));
