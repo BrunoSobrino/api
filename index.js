@@ -10,6 +10,7 @@ const path = require('path');
 const { execSync } = require('child_process');
 const axios = require('axios');
 const favicon = require('serve-favicon');
+const http = require('http').createServer(app);
 const visitors = new Set(); 
 let totalRequests = 0;
 let totalVisitors = 0;
@@ -148,6 +149,20 @@ app.get('/status', (req, res) => {
   res.end(formattedResponse);
 });
 
+app.get('/uptime', (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  let uptime = 0;
+  const interval = setInterval(() => {
+    uptime++;
+    res.write(`data: ${JSON.stringify({ uptime })}\n\n`);
+  }, 1000);
+  res.on('close', () => {
+    clearInterval(interval);
+  });
+});
+
 app.disable("x-powered-by");
 
 app.use(function(req, res, next) {
@@ -214,3 +229,6 @@ app.listen(port, function() {
     console.log(chalk.yellow(line));
 });
 app.listen(port2, function() {});
+http.listen(port, () => {});
+http.listen(port2, () => {});
+
