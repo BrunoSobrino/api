@@ -41,7 +41,7 @@ router.get('/loli', async (req, res) => {
       try {
         const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
         const imageBuffer = Buffer.from(imageResponse.data, 'binary');
-        res.setHeader('Content-Type', 'image/jpeg');
+        res.setHeader('Content-Type', 'image/jpeg');        
         res.send(imageBuffer);
       } catch (error) {
         imageUrl = null;
@@ -54,7 +54,6 @@ router.get('/loli', async (req, res) => {
 
 router.get('/waifu', async (req, res) => {
   try {
-   res.setHeader('Content-Type', 'image/jpeg'); 
    const res = await fetch('https://api.waifu.pics/sfw/waifu');
     const json = await res.json();
         const imageResponse = await axios.get(json.url, { responseType: 'arraybuffer' });
