@@ -34,7 +34,8 @@ router.get('/textpro/deep-sea-metal', async (req, res) => {
     if (!texto) {
       const errorResponse = {
         status: false,
-        message: 'Debes especificar un texto para el logo.'
+        message: 'Debes especificar un texto para el logo.',
+        example: 'api/maker/textpro/deep-sea-metal?text=api%20empire'
       };
       const formattedResults_e = JSON.stringify(errorResponse, null, 2);
       res.setHeader('Content-Type', 'application/json');
@@ -42,6 +43,32 @@ router.get('/textpro/deep-sea-metal', async (req, res) => {
       return;
     }        
     const resss = await maker('https://textpro.me/create-3d-deep-sea-metal-text-effect-online-1053.html', [texto])
+    const imageResponse = await axios.get(resss.image, { responseType: 'arraybuffer' });
+    const imageBuffer = Buffer.from(imageResponse.data, 'binary');
+    res.setHeader('Content-Type', 'image/jpeg');
+    res.send(imageBuffer);
+  } catch (error) {
+    console.log(error)
+    res.sendFile(path.join(__dirname, '../public/500.html'));
+  }
+});
+
+router.get('/textpro/wolf-logo-galaxy', async (req, res) => {
+  const texto1 = req.query.text; 
+  const texto2 = req.query.text2; 
+  try {
+    if (!texto) {
+      const errorResponse = {
+        status: false,
+        message: 'Debes especificar un texto para el logo.',
+        example: 'api/maker/textpro/wolf-logo-galaxy?text1=api%20empire&text2=by%20brunosobrino'
+      };
+      const formattedResults_e = JSON.stringify(errorResponse, null, 2);
+      res.setHeader('Content-Type', 'application/json');
+      res.send(formattedResults_e);
+      return;
+    }        
+    const resss = await maker('https://textpro.me/create-wolf-logo-galaxy-online-936.html', [texto1, texto2])
     const imageResponse = await axios.get(resss.image, { responseType: 'arraybuffer' });
     const imageBuffer = Buffer.from(imageResponse.data, 'binary');
     res.setHeader('Content-Type', 'image/jpeg');
