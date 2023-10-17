@@ -56,6 +56,7 @@ const apirouter = require('./routes/anime-apis');
 const apirouter2 = require('./routes/adult-apis');
 const apirouter3 = require('./routes/nsfw-apis');
 const apirouter4 = require('./routes/wallpaper-apis');
+const apirouter5 = require('./routes/human-apis');
 const lyrics = require('./routes/lyrics');
 const ssweb = require('./routes/ssweb');
 const googleImage = require('./routes/googleImage');
@@ -121,6 +122,8 @@ app.use('/api/igstalk', igStalkss);
 app.use('/api/ttp', ttp);
 app.use('/api/stickersearch', stickersearch);
 app.use('/api/pinterest', pinterest);
+
+app.use('/human', apirouter5);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
