@@ -29,6 +29,42 @@ router.get('/lolivid', async (req, res) => {
   }
 });
 
+router.get('/loli', async (req, res) => {
+  try {
+    const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/api/main/data/loli.json');
+    const data = response.data;
+    let imageUrl = null;
+    while (!imageUrl) {
+      const randomIndex = RandomAgresivo(0, data.length - 1);
+      imageUrl = data[randomIndex];
+      try {
+        const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+        const imageBuffer = Buffer.from(imageResponse.data, 'binary');
+        res.setHeader('Content-Type', 'image/jpeg');
+        res.send(imageBuffer);
+      } catch (error) {
+        imageUrl = null;
+      }
+    }
+  } catch (error) {
+    res.sendFile(path.join(__dirname, '../public/500.html'));
+  }
+});
+
+router.get('/waifu', async (req, res) => {
+  try {
+   const res = await fetch('https://api.waifu.pics/sfw/waifu');
+    const json = await res.json();
+      const imageUrl = json.url
+        const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+        const imageBuffer = Buffer.from(imageResponse.data, 'binary');
+        res.setHeader('Content-Type', 'image/jpeg');
+        res.send(imageBuffer);
+  } catch (error) {
+    res.sendFile(path.join(__dirname, '../public/500.html'));
+  }
+});
+
 router.get('/akira', async (req, res) => {
   try {
     const response = await axios.get('https://raw.githubusercontent.com/BrunoSobrino/api/main/data/anime-akira.json');
