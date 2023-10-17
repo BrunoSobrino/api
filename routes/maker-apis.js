@@ -54,7 +54,7 @@ router.get('/textpro/deep-sea-metal', async (req, res) => {
 });
 
 router.get('/textpro/wolf-logo-galaxy', async (req, res) => {
-  const texto1 = req.query.text; 
+  const texto1 = req.query.text1; 
   const texto2 = req.query.text2; 
   try {
     if (!texto1 || !texto2) {
