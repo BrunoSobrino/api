@@ -5,7 +5,6 @@ const cors = require('cors');
 const chalk = require('chalk');
 const port = 3036;
 const port2 = 40016;
-const port3 = 2023;
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
@@ -147,20 +146,6 @@ app.get('/status', (req, res) => {
   const formattedResponse = JSON.stringify(response, null, 2);
   res.setHeader('Content-Type', 'application/json');
   res.end(formattedResponse);
-});
-
-app.get('/uptime', (req, res) => {
-  res.setHeader('Content-Type', 'text/event-stream');
-  res.setHeader('Cache-Control', 'no-cache');
-  res.setHeader('Connection', 'keep-alive');
-  let uptime = 0;
-  const interval = setInterval(() => {
-    uptime++;
-    res.write(`data: ${JSON.stringify({ uptime })}\n\n`);
-  }, 1000);
-  res.on('close', () => {
-    clearInterval(interval);
-  });
 });
 
 app.disable("x-powered-by");
