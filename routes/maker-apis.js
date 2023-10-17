@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 const { ttp } = require('./func/functions');
 
-router.get('/', async (req, res) => {
+router.get('/attp', async (req, res) => {
   const texto = req.query.text; 
   try {
     if (!texto) {
