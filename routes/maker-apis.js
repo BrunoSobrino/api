@@ -57,7 +57,7 @@ router.get('/textpro/wolf-logo-galaxy', async (req, res) => {
   const texto1 = req.query.text; 
   const texto2 = req.query.text2; 
   try {
-    if (!texto) {
+    if (!texto1 || !texto2) {
       const errorResponse = {
         status: false,
         message: 'Debes especificar un texto para el logo.',
