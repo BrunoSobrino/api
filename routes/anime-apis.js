@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const path = require('path');
-const fetch = require('node-fetch'
+const fetch = require('node-fetch');
 const { RandomAgresivo } = require('./func/functions');
 
 router.get('/lolivid', async (req, res) => {
