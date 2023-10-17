@@ -11,7 +11,6 @@ const path = require('path');
 const { execSync } = require('child_process');
 const axios = require('axios');
 const favicon = require('serve-favicon');
-const http = require('http').createServer(app);
 const visitors = new Set(); 
 let totalRequests = 0;
 let totalVisitors = 0;
