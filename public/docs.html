@@ -89,6 +89,7 @@
             <hr class="sidebar-divider my-0">
             <li class="nav-item active"></li>
             <hr class="sidebar-divider">
+            <button id="toggleButton" class="button-style">Pausar Música</button>
             <div class="sidebar-heading">Features</div>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDownload" aria-expanded="true" aria-controls="collapseDownload">
@@ -313,7 +314,6 @@
                 </a>
             </li>            
             <hr class="sidebar-divider">
-            <button id="toggleButton" class="button-style">Pausar Música</button>
         </ul>
 <!-- Sidebar -->
 <div id="content-wrapper" class="d-flex flex-column">
@@ -384,6 +384,28 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        <!-- Uptime web card -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card h-50">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Uptime</div>
+                                            <div id="totalRequests"></div>
+                                            <!-- div class="h5 mb-0 font-weight-bold"><%= uptime %></div -->
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar faa-wrench animated fa-2x text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div id="findipurl">
                                 <a href="find-ip.net"></a>
@@ -416,6 +438,7 @@
     fetch('/status').then(response => response.json()).then(data => {
         document.getElementById('totalRequests').textContent = data.totalRequests;
         document.getElementById('totalVisitors').textContent = data.totalVisitors;
+        document.getElementById('uptime').textContent = data.uptime;
       });
     document.addEventListener("DOMContentLoaded", function () {
         const audioElement = document.querySelector("audio");
