@@ -22,9 +22,6 @@ router.get('/attp', async (req, res) => {
     const imageBuffer = Buffer.from(imageResponse.data, 'binary');
     res.setHeader('Content-Type', 'image/jpeg');
     res.send(imageBuffer);
-    /*const formattedResults = JSON.stringify(ttpst, null, 2);
-    res.setHeader('Content-Type', 'application/json');
-    res.send(formattedResults);*/
   } catch (error) {
     console.log(error)
     res.sendFile(path.join(__dirname, '../public/500.html'));
