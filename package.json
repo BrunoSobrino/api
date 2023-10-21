@@ -33,7 +33,7 @@
     "api-dylux": "^1.6.2",
     "apicache": "^1.6.3",
     "axios": "^1.5.0",
-    "canvacord": "^5.2.1",
+    "canvacord": "^5.3.0",
     "canvas-hikki": "npm:canvas-hikki-2",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.12",
