@@ -117,7 +117,7 @@ async function tiktokv2(url) {
          thumbnail: $("img.result_author").attr("src"),
          author: $("div.pure-u-18-24.pd-lr > h2").text().trim() || $("div.pure-u-20-24.pd-lr > h2").text().trim(),
          description: $("div.pure-u-18-24.pd-lr > p").text().trim(),
-         media: $("a.pure-button.pure-button-primary.is-center.u-bl.dl-button.download_link.without_watermark.vignette_active.notranslate").attr("href") || slide,
+         media: $("a.pure-button.pure-button-primary.is-center.u-bl.dl-button.download_link.without_watermark.vignette_active.notranslate").attr("href") || slide.trim(),
          music: $("a.pure-button.pure-button-primary.is-center.u-bl.dl-button.download_link.music.vignette_active.notranslate").attr("href") || $("a.pure-button.pure-button-primary.is-center.u-bl.dl-button.download_link.music.notranslate").attr("href"),
          like: $("div.d-flex.flex-1.align-items-center.justify-content-start").text().trim(),
          comment: $("div.d-flex.flex-1.align-items-center.justify-content-center").text().trim(),
