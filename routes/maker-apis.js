@@ -4,6 +4,8 @@ const path = require('path');
 const axios = require('axios');
 const { maker, ttp } = require('./func/functions');
 
+/* ------------{ stickers }------------ */
+
 router.get('/attp', async (req, res) => {
   const texto = req.query.text; 
   try {
@@ -27,6 +29,8 @@ router.get('/attp', async (req, res) => {
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
+
+/* ------------{ textpro }------------ */
 
 router.get('/textpro/deep-sea-metal', async (req, res) => {
   const texto = req.query.text; 
@@ -79,6 +83,8 @@ router.get('/textpro/wolf-logo-galaxy', async (req, res) => {
   }
 });
 
+/* ------------{ photooxy }------------ */
+
 router.get('/photooxy/flaming', async (req, res) => {
   const texto = req.query.text; 
   try {
@@ -103,6 +109,33 @@ router.get('/photooxy/flaming', async (req, res) => {
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
+
+router.get('/photooxy/painting-effect', async (req, res) => {
+  const img = req.query.img; 
+  try {
+    if (!img) {
+      const errorResponse = {
+        status: false,
+        message: 'Debes agregar el link de la imagen a la cual se le dara el efecto.',
+        example: 'api/maker/photooxy/painting-effect?img=https://telegra.ph/file/24fa902ead26340f3df2c.png'
+      };
+      const formattedResults_e = JSON.stringify(errorResponse, null, 2);
+      res.setHeader('Content-Type', 'application/json');
+      res.send(formattedResults_e);
+      return;
+    }        
+    const resss = await maker('https://photooxy.com/create-an-oil-painting-effect-with-a-puppy-415.html', [img])
+    const imageResponse = await axios.get(resss.image, { responseType: 'arraybuffer' });
+    const imageBuffer = Buffer.from(imageResponse.data, 'binary');
+    res.setHeader('Content-Type', 'image/jpeg');
+    res.send(imageBuffer);
+  } catch (error) {
+    console.log(error)
+    res.sendFile(path.join(__dirname, '../public/500.html'));
+  }
+});
+
+/* ------------{ ephoto360 }------------ */
 
 router.get('/ephoto360/eraser-deleting-text', async (req, res) => {
   const texto = req.query.text; 
