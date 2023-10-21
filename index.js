@@ -66,6 +66,8 @@ const tiktokStalk = require('./routes/tiktokStalk');
 const igStalkss = require('./routes/igStalk');
 const stickersearch = require('./routes/stickersearch');
 const pinterest = require('./routes/pinterest');
+const tiktokdlv1 = require('./routes/tiktokdlv1');
+
 const test = require('./routes/@prueba');
 
 
@@ -103,7 +105,8 @@ app.use('/api/v1/ytmp3', ytmp3);
 app.use('/api/v1/ytmp4', ytmp4);
 app.use('/api/v2/ytmp3', ytmp3_2);
 app.use('/api/v2/ytmp4', ytmp4_2);
-app.use('/api/tiktok', tiktokdl);
+app.use('/api/tiktokv1', tiktokdlv1);
+app.use('/api/tiktokv2', tiktokdl);
 app.use('/api/ytsearch', ytsearch);
 app.use('/api/ytplay', ytplay);
 app.use('/api/spotifydl', spotifydl);
