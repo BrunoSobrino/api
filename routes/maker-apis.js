@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 const axios = require('axios');
 const { maker, ttp } = require('./func/functions');
-const canvacard = require("canvacard");
+//const canvacard = require("canvacard");
 const knights = require("canvas-hikki")
 const option = require('knights-canvas')
 
