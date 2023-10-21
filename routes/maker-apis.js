@@ -3,49 +3,46 @@ const router = express.Router();
 const path = require('path');
 const axios = require('axios');
 const { maker, ttp } = require('./func/functions');
-const canvacard = require("canvacard");
-const knights = require("canvas-hikki")
-const option = require('knights-canvas')
+const { welCard } = require("@delirius/welcard");
 
 /* ------------{ canvas }------------ */
 
 router.get('/canvas/welcome', async (req, res) => {
-  const username = req.query.username 
-  const subtitulo = req.query.subtitulo   
-  const img = req.query.ppuser;
-  const background = req.query.background;
-  if (!img || !background || !username || !subtitulo) {
+  const titulo = req.query.titulo;
+  const username = req.query.username;
+  const groupname = req.query.groupname;
+  const profile = req.query.profile;
+  if (!username || !groupname || !profile || !titulo || !isUrl(profile)) {
     const errorResponse = {
       status: false,
-      message: 'Debes proporcionar la URL de la imagen de perfil y el fondo, asi como el nombre de usuario y un subtitulo.',
-      example: 'api/maker/canvas/welcome?username=shadow&subtitulo=bienvenido%20al%20grupo&ppuser=https://telegra.ph/file/24fa902ead26340f3df2c.png&background=https://static.videezy.com/system/resources/thumbnails/000/040/439/original/Comp-8.jpg'
+      message: 'Debes proporcionar los parámetros necesarios y validos: titulo, username, groupname y profile.',
+      example: 'api/maker/canvas/welcome?titulo=Bienvenido/a&username=Nombre%20del%20user&groupname=Nombre%20del%20grupo&profile=https://telegra.ph/file/24fa902ead26340f3df2c.png'  
     };
     const formattedResults_e = JSON.stringify(errorResponse, null, 2);
     res.setHeader('Content-Type', 'application/json');
     res.status(400).send(formattedResults_e);
     return;
   }
-  try {  
-  const welcomer = new canvacard.Welcomer()
-    .setAvatar(img)
-    .setBackground('IMAGE', background)
-    .setTitulo("WELCOME")
-    .setSubtitulo(subtitulo)
-    .setTitulo(username)
-    .setSubtitulo(subtitulo)
-    .setColorTitulo("#FFFFFF")
-    .setColorSubtitulo("#5865f2")
-    .setColorCircle("#FFFFFF")
-    .setColorOverlay("rgba(0, 0, 0, 0.5)")
-    .setOpacityOverlay("0.4");
-    const imageData = await welcomer.build();
+  try {
+    const card = await new welCard()
+        .setName(titulo)
+        .setAuthor(username)
+        .setServer(groupname)
+        .setColor("auto")
+        .setBrightness(50)
+        .setThumbnail(profile)
+    const cardBuffer = await card.build();
     res.contentType('image/png');
-    res.send(imageData);
+    res.send(cardBuffer);
   } catch (error) {
+    console.log(error)
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
+async function isUrl(text) {
+  return text.match(new RegExp(/^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'));
+}
 
 /* ------------{ stickers }------------ */
 
