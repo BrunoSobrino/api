@@ -4,12 +4,15 @@ const path = require('path');
 const canvacard = require("canvacard");
 
 router.get('/', async (req, res) => {
-  const img = req.query.img;
+  const username = req.query.username 
+  const subtitulo = req.query.subtitulo   
+  const img = req.query.ppuser;
   const background = req.query.background;
-  if (!img || !background) {
+  if (!img || !background || !username || !subtitulo) {
     const errorResponse = {
       status: false,
-      message: 'Debes proporcionar la URL de la imagen de perfil y el fondo.'
+      message: 'Debes proporcionar la URL de la imagen de perfil y el fondo, asi como el nombre de usuario y un subtitulo.',
+      example: 'https://api.boxmine.xyz/api/canvas/welcome?username?=shadow&subtitulo=bienvenido%20al%20grupo&img=https://cdn.discordapp.com/embed/avatars/0.png&background=https://i.imgur.com/5O7xmVe.png'
     };
     const formattedResults_e = JSON.stringify(errorResponse, null, 2);
     res.setHeader('Content-Type', 'application/json');
@@ -21,9 +24,9 @@ router.get('/', async (req, res) => {
     .setAvatar(img)
     .setBackground('IMAGE', background)
     .setTitulo("WELCOME")
-    .setSubtitulo("Subtitulo personalizable!")
-    .setTitulo("Titulo personalizable!")
-    .setSubtitulo("Subtitulo personalizable!")
+    .setSubtitulo(subtitulo)
+    .setTitulo(username)
+    .setSubtitulo(subtitulo)
     .setColorTitulo("#FFFFFF")
     .setColorSubtitulo("#5865f2")
     .setColorCircle("#FFFFFF")
