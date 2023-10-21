@@ -2,7 +2,10 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const axios = require('axios');
+const fs = require('fs');
 const { maker, ttp } = require('./func/functions');
+const Photooxy = require('@sl-code-lords/photooxy');
+const photooxy = new PhotoOxy();
 
 /* ------------{ stickers }------------ */
 
@@ -123,7 +126,12 @@ router.get('/photooxy/painting-effect', async (req, res) => {
       res.setHeader('Content-Type', 'application/json');
       res.send(formattedResults_e);
       return;
-    }        
+    }   
+    const image3 = await photooxy.create({
+      url : 'https://photooxy.com/create-an-oil-painting-effect-with-a-puppy-415.html',
+      images : [img]
+    })    
+    console.log(image3)
     const resss = await maker('https://photooxy.com/create-an-oil-painting-effect-with-a-puppy-415.html', [img])
     const imageResponse = await axios.get(resss.image, { responseType: 'arraybuffer' });
     const imageBuffer = Buffer.from(imageResponse.data, 'binary');
