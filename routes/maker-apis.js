@@ -130,11 +130,11 @@ router.get('/photooxy/painting-effect', async (req, res) => {
     const imgresponse = await axios.get(img, { responseType: 'arraybuffer' });
     const imgBuffer = Buffer.from(imgresponse.data, 'binary');    
     const image3 = await photooxy.create({
-      url : 'https://photooxy.com/create-an-oil-painting-effect-with-a-puppy-415.html',
-      images : [imgBuffer]
+      url: 'https://photooxy.com/create-an-oil-painting-effect-with-a-puppy-415.html',
+      images: [imgBuffer]
     })    
     console.log(image3)
-    const img2_buf = await photooxy.image_to_buffer(image2.url)
+    const img2_buf = await photooxy.image_to_buffer(image3.url)
     res.setHeader('Content-Type', 'image/jpeg');
     res.send(img2_buf);
   } catch (error) {
