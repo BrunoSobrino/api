@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-//const canvacard = require("canvacard");
+const { drawCard, LinearGradient } = require('discord-welcome-card');
 
 router.get('/', async (req, res) => {
   const username = req.query.username;
@@ -22,26 +22,38 @@ router.get('/', async (req, res) => {
     return;
   }
   try {
-    const imgBuffer = await welcome(req.query);
+
+  const image = await drawCard({
+    theme: 'circuit',
+    text: {
+      title: groupname,
+      text: username,
+      subtitle: 'por favor, lea las reglas del grupo',
+      color: `#88f`,
+    },
+    avatar: {
+      image: profile,
+      outlineWidth: 5,
+      outlineColor: new LinearGradient([0, '#33f'], [1, '#f33']),
+    },
+    background: 'https://i.imgur.com/ea9PB3H.png',
+    blur: 1,
+    border: true,
+    rounded: true,
+  });
+
+    
+console.log(image)
+
+
+
+    
     res.contentType('image/png');
-    res.send(imgBuffer);
+    res.send(image);
   } catch (error) {
     console.log(error)
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
-
-async function welcome(params) {
-  const img = await new canvacard.Welcome()
-    .setUsername(params.username)
-    .setGuildName(params.groupname)
-    .setGuildIcon(params.groupicon)
-    .setMemberCount(params.membercount)
-    .setAvatar(params.profile)
-    .setBackground(params.background)
-    .toAttachment();
-  const imgBuffer = await img.toBuffer();
-  return imgBuffer;
-}
 
 module.exports = router;
