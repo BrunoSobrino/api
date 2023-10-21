@@ -66,6 +66,7 @@ const tiktokStalk = require('./routes/tiktokStalk');
 const igStalkss = require('./routes/igStalk');
 const stickersearch = require('./routes/stickersearch');
 const pinterest = require('./routes/pinterest');
+const test = require('./routes/@prueba');
 
 
 const getUptime = () => {
@@ -123,6 +124,7 @@ app.use('/api/tiktokstalk', tiktokStalk);
 app.use('/api/igstalk', igStalkss);
 app.use('/api/stickersearch', stickersearch);
 app.use('/api/pinterest', pinterest);
+app.use('/api/test', test);
 
 app.use('/human', apirouter5);
 
