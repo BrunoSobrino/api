@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     const errorResponse = {
       status: false,
       message: 'Debes proporcionar la URL de la imagen de perfil y el fondo, asi como el nombre de usuario y un subtitulo.',
-      example: 'https://api.boxmine.xyz/api/canvas/welcome?username?=shadow&subtitulo=bienvenido%20al%20grupo&img=https://cdn.discordapp.com/embed/avatars/0.png&background=https://i.imgur.com/5O7xmVe.png'
+      example: 'api/maker/canvas/welcome?username=shadow&subtitulo=bienvenido%20al%20grupo&ppuser=https://telegra.ph/file/24fa902ead26340f3df2c.png&background=https://static.videezy.com/system/resources/thumbnails/000/040/439/original/Comp-8.jpg'
     };
     const formattedResults_e = JSON.stringify(errorResponse, null, 2);
     res.setHeader('Content-Type', 'application/json');
@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
     .setColorTitulo("#FFFFFF")
     .setColorSubtitulo("#5865f2")
     .setColorCircle("#FFFFFF")
-    .setColorOverlay("transparent")
+    .setColorOverlay("rgba(0, 0, 0, 0.5)")
     .setOpacityOverlay("0.4");
     const imageData = await welcomer.build();
     res.contentType('image/png');
