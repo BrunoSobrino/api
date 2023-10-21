@@ -6,11 +6,11 @@ const { drawCard, LinearGradient } = require('discord-welcome-card');
 router.get('/', async (req, res) => {
   const username = req.query.username;
   const groupname = req.query.groupname;
-  const groupicon = req.query.groupicon;
+  //const groupicon = req.query.groupicon;
   //const membercount = req.query.membercount;
   const profile = req.query.profile;
   //const background = req.query.background;
-  if (!username || !groupname || !groupicon || !profile) {
+  if (!username || !groupname || !profile) {
     const errorResponse = {
       status: false,
       message: 'Debes proporcionar los parámetros necesarios: username, groupname, groupicon, membercount, profile y background.',
