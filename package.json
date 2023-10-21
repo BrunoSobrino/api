@@ -33,6 +33,7 @@
     "api-dylux": "^1.6.2",
     "apicache": "^1.6.3",
     "axios": "^1.5.0",
+    "canvas": "*",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
