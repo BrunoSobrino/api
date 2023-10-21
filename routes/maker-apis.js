@@ -114,34 +114,48 @@ router.get('/photooxy/flaming', async (req, res) => {
 });
 
 router.get('/photooxy/painting-effect', async (req, res) => {
-  const img = req.query.img; 
+  const img = req.query.img;
   try {
     if (!img) {
       const errorResponse = {
         status: false,
-        message: 'Debes agregar el link de la imagen a la cual se le dara el efecto.',
+        message: 'Debes agregar el link de la imagen a la cual se le dará el efecto.',
         example: 'api/maker/photooxy/painting-effect?img=https://telegra.ph/file/24fa902ead26340f3df2c.png'
       };
       const formattedResults_e = JSON.stringify(errorResponse, null, 2);
       res.setHeader('Content-Type', 'application/json');
       res.send(formattedResults_e);
       return;
-    }   
-    const imgresponse = await axios.get(img, { responseType: 'arraybuffer' });
-    const imgBuffer = Buffer.from(imgresponse.data);    
+    }
+    const downloadDirectory = './tmp';
+    const timestamp = new Date().getTime();
+    const fileName = `${timestamp}.jpg`;
+    const filePath = path.join(downloadDirectory, fileName);
+    async function downloadAndSaveImage(imgUrl, filePath) {
+        const response = await axios.get(imgUrl, { responseType: 'stream' });
+        const writer = fs.createWriteStream(filePath);
+        response.data.pipe(writer);
+        return new Promise((resolve, reject) => {
+          writer.on('finish', resolve);
+          writer.on('error', reject);
+        });
+    }
+    await downloadAndSaveImage(img, filePath);
+    const imgBuffer = fs.readFileSync(filePath);
     const image3 = await photooxy.create({
       url: 'https://photooxy.com/create-an-oil-painting-effect-with-a-puppy-415.html',
       images: [imgBuffer]
-    })    
-    console.log(image3)
-    const img2_buf = await photooxy.image_to_buffer(image3.url)
+    });
+    console.log(image3);
+    const img2_buf = await photooxy.image_to_buffer(image3.url);
     res.setHeader('Content-Type', 'image/jpeg');
     res.send(img2_buf);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
+
 
 /* ------------{ ephoto360 }------------ */
 
