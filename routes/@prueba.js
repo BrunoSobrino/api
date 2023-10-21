@@ -3,14 +3,13 @@ const router = express.Router();
 const path = require('path');
 const canvacard = require("canvacard");
 
-router.get('/welcome', async (req, res) => {
+router.get('/', async (req, res) => {
   const username = req.query.username;
   const groupname = req.query.groupname;
   const groupicon = req.query.groupicon;
   const membercount = req.query.membercount;
   const profile = req.query.profile;
   const background = req.query.background;
-
   if (!username || !groupname || !groupicon || !membercount || !profile || !background) {
     const errorResponse = {
       status: false,
@@ -22,13 +21,12 @@ router.get('/welcome', async (req, res) => {
     res.status(400).send(formattedResults_e);
     return;
   }
-
   try {
     const imgBuffer = await welcome(req.query);
-
     res.contentType('image/png');
     res.send(imgBuffer);
   } catch (error) {
+    console.log(error)
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
