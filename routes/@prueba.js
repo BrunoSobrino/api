@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
 });
 
 async function welcome(params) {
-  const img = await new canvacard.Welcomer()
+  const img = await new canvacard.Welcome()
     .setUsername(params.username)
     .setGuildName(params.groupname)
     .setGuildIcon(params.groupicon)
