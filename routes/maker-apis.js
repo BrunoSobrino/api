@@ -104,4 +104,29 @@ router.get('/photooxy/flaming', async (req, res) => {
   }
 });
 
+router.get('/ephoto360/eraser-deleting-text', async (req, res) => {
+  const texto = req.query.text; 
+  try {
+    if (!texto) {
+      const errorResponse = {
+        status: false,
+        message: 'Debes especificar un texto para el logo.',
+        example: 'api/maker/ephoto360/eraser-deleting-text?text=api%20empire'
+      };
+      const formattedResults_e = JSON.stringify(errorResponse, null, 2);
+      res.setHeader('Content-Type', 'application/json');
+      res.send(formattedResults_e);
+      return;
+    }        
+    const resss = await maker('https://en.ephoto360.com/create-eraser-deleting-text-effect-online-717.html', [texto])
+    const imageResponse = await axios.get(resss.image, { responseType: 'arraybuffer' });
+    const imageBuffer = Buffer.from(imageResponse.data, 'binary');
+    res.setHeader('Content-Type', 'image/jpeg');
+    res.send(imageBuffer);
+  } catch (error) {
+    console.log(error)
+    res.sendFile(path.join(__dirname, '../public/500.html'));
+  }
+});
+
 module.exports = router;
