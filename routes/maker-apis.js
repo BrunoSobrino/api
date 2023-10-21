@@ -5,7 +5,7 @@ const axios = require('axios');
 const fs = require('fs');
 const { maker, ttp } = require('./func/functions');
 const Photooxy = require('@sl-code-lords/photooxy');
-const photooxy = new PhotoOxy();
+const photooxy = new Photooxy();
 
 /* ------------{ stickers }------------ */
 
