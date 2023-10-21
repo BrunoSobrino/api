@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
     .setColorTitulo("#FFFFFF")
     .setColorSubtitulo("#5865f2")
     .setColorCircle("#FFFFFF")
-    .setColorOverlay("#000000")
+    .setColorOverlay("transparent")
     .setOpacityOverlay("0.4");
     const imageData = await welcomer.build();
     res.contentType('image/png');
