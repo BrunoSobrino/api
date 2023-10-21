@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const canvacard = require("canvacard");
+//const canvacard = require("canvacard");
 
 router.get('/', async (req, res) => {
   const username = req.query.username;
