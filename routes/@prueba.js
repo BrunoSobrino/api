@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const { drawCard, LinearGradient } = require('discord-welcome-card');
+const knights = require("@clayzaaubert/canvix");
 
 router.get('/', async (req, res) => {
   const username = req.query.username;
@@ -22,26 +22,17 @@ router.get('/', async (req, res) => {
     return;
   }
   try {
-  const image = await drawCard({
-    theme: 'code', // 'circuit', 'Dark'
-    text: {
-      title: groupname,
-      text: username + ' #' + membercount,
-      subtitle: description,
-      color: `#88ff88`,
-    },
-    avatar: {
-      image: profile,
-      outlineWidth: 5,
-      outlineColor: new LinearGradient([0, '#33f'], [1, '#f33']),
-    },
-      background: background,
-      blur: 1,
-      border: true,
-      rounded: true,
-    });
+  const image = await new knights.Welcome()
+      .setUsername("UNDEFINED")
+      .setGuildName("WIBU NOLEP")
+      .setGuildIcon("https://i.ibb.co/G5mJZxs/rin.jpg")
+      .setMemberCount("120")
+      .setAvatar("https://i.ibb.co/1s8T3sY/48f7ce63c7aa.jpg")
+      .setBackground("https://i.ibb.co/4YBNyvP/images-76.jpg")
+      .toAttachment();
+    const data = image.toBuffer();
     res.contentType('image/png');
-    res.send(image);
+    res.send(data);
   } catch (error) {
     console.log(error)
     res.sendFile(path.join(__dirname, '../public/500.html'));
