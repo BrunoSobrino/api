@@ -22,7 +22,6 @@ router.get('/', async (req, res) => {
     return;
   }
   try {
-
   const image = await drawCard({
     theme: 'circuit',
     text: {
@@ -36,18 +35,11 @@ router.get('/', async (req, res) => {
       outlineWidth: 5,
       outlineColor: new LinearGradient([0, '#33f'], [1, '#f33']),
     },
-    background: background,
-    blur: 1,
-    border: true,
-    rounded: true,
-  });
-
-    
-console.log(image)
-
-
-
-    
+      background: background,
+      blur: 1,
+      border: true,
+      rounded: true,
+    });
     res.contentType('image/png');
     res.send(image);
   } catch (error) {
