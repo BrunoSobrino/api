@@ -55,7 +55,7 @@ router.get('/canvas/welcome2', async (req, res) => {
   if (!username || !groupname || !profile || !membercount || !description) {
     const errorResponse = {
       status: false,
-      message: 'Debes proporcionar los parámetros necesarios: username, groupname, groupicon, membercount, profile y background.',
+      message: 'Debes proporcionar los parámetros necesarios: username, groupname, membercoun, descriptiont y profile.',
       example: 'api/maker/canvas/welcome?username=Bruno%20Sobrino&groupname=API%20Empire%20-%20Comunidad&membercount=12&description=Bienvenido(a),%20lee%20las%20reglas%20del%20grupo&profile=https://github.com/BrunoSobrino.png'
     };
     const formattedResults_e = JSON.stringify(errorResponse, null, 2);
@@ -100,7 +100,7 @@ router.get('/canvas/welcome3', async (req, res) => {
   if (!username || !groupname || !profile || !membercount || !description) {
     const errorResponse = {
       status: false,
-      message: 'Debes proporcionar los parámetros necesarios: username, groupname, groupicon, membercount, profile y background.',
+      message: 'Debes proporcionar los parámetros necesarios: username, groupname, membercoun, descriptiont y profile.',
       example: 'api/maker/canvas/welcome?username=Bruno%20Sobrino&groupname=API%20Empire%20-%20Comunidad&membercount=12&description=Bienvenido(a),%20lee%20las%20reglas%20del%20grupo&profile=https://github.com/BrunoSobrino.png'
     };
     const formattedResults_e = JSON.stringify(errorResponse, null, 2);
@@ -145,7 +145,7 @@ router.get('/canvas/welcome4', async (req, res) => {
   if (!username || !groupname || !profile || !membercount || !description) {
     const errorResponse = {
       status: false,
-      message: 'Debes proporcionar los parámetros necesarios: username, groupname, groupicon, membercount, profile y background.',
+      message: 'Debes proporcionar los parámetros necesarios: username, groupname, membercoun, descriptiont y profile.',
       example: 'api/maker/canvas/welcome?username=Bruno%20Sobrino&groupname=API%20Empire%20-%20Comunidad&membercount=12&description=Bienvenido(a),%20lee%20las%20reglas%20del%20grupo&profile=https://github.com/BrunoSobrino.png'
     };
     const formattedResults_e = JSON.stringify(errorResponse, null, 2);
