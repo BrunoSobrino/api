@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
       title: groupname,
       text: username + ' #' + membercount,
       subtitle: description,
-      color: `#88f`,
+      color: `#88ff88`,
     },
     avatar: {
       image: profile,
