@@ -68,7 +68,7 @@ router.get('/canvas/welcome2', async (req, res) => {
     theme: 'code', 
     text: {
       title: groupname,
-      text: username + '\n' + 'participante #' + membercount,
+      text: username + ' #' + membercount,
       subtitle: description,
       color: `#88ff88`,
     },
@@ -110,10 +110,10 @@ router.get('/canvas/welcome3', async (req, res) => {
   }
   try {
   const image = await drawCard({
-    theme: 'Dark',
+    theme: 'dark',
     text: {
       title: groupname,
-      text: username + '\n' + 'participante #' + membercount,
+      text: username + ' #' + membercount,
       subtitle: description,
       color: `#88ff88`,
     },
@@ -158,7 +158,7 @@ router.get('/canvas/welcome4', async (req, res) => {
     theme: 'circuit',
     text: {
       title: groupname,
-      text: username + '\n' + 'participante #' + membercount,
+      text: username + ' #' + membercount,
       subtitle: description,
       color: `#88ff88`,
     },
