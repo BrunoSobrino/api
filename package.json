@@ -26,9 +26,11 @@
   "homepage": "https://github.com/BrunoSobrino/api#readme",
   "dependencies": {
     "@bochilteam/scraper": "^4.2.4",
+    "@delirius/welcard": "*",
     "@xct007/frieren-scraper": "*",
     "@tobyg74/tiktok-api-dl": "*",
     "@vitalets/google-translate-api": "^8.0.0",
+    "@clayzaaubert/canvix": "*",
     "@sasmeee/igdl": "*",
     "api-dylux": "^1.6.2",
     "apicache": "^1.6.3",
@@ -52,7 +54,6 @@
     "nodemon": "*",
     "random-useragent": "^0.5.0",
     "readline": "^1.3.0",
-    "@delirius/welcard": "*",
     "ytdl-core": "github:khlevon/node-ytdl-core#v4.11.4-patch.2",
     "yt-search": "^2.10.3"
   },
