@@ -6,15 +6,15 @@ const { drawCard, LinearGradient } = require('discord-welcome-card');
 router.get('/', async (req, res) => {
   const username = req.query.username;
   const groupname = req.query.groupname;
-  //const groupicon = req.query.groupicon;
-  //const membercount = req.query.membercount;
+  const membercount = req.query.membercount;
   const profile = req.query.profile;
-  //const background = req.query.background;
-  if (!username || !groupname || !profile) {
+  const background = req.query.background;
+  const description = req.query.description;
+  if (!username || !groupname || !profile || !background || !membercount || !description) {
     const errorResponse = {
       status: false,
       message: 'Debes proporcionar los parámetros necesarios: username, groupname, groupicon, membercount, profile y background.',
-      example: 'api/maker/canvas/welcome?username=shadow&groupname=MiGrupo&groupicon=https://example.com/groupicon.png&membercount=100&profile=https://example.com/user.png&background=https://example.com/background.jpg'
+      example: 'api/maker/canvas/welcome?username=shadow'
     };
     const formattedResults_e = JSON.stringify(errorResponse, null, 2);
     res.setHeader('Content-Type', 'application/json');
@@ -27,8 +27,8 @@ router.get('/', async (req, res) => {
     theme: 'circuit',
     text: {
       title: groupname,
-      text: username,
-      subtitle: 'por favor, lea las reglas del grupo',
+      text: username + ' #' + membercount,
+      subtitle: description,
       color: `#88f`,
     },
     avatar: {
@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
       outlineWidth: 5,
       outlineColor: new LinearGradient([0, '#33f'], [1, '#f33']),
     },
-    background: 'https://i.imgur.com/ea9PB3H.png',
+    background: background,
     blur: 1,
     border: true,
     rounded: true,
