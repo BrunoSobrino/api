@@ -23,11 +23,11 @@ router.get('/', async (req, res) => {
   }
   try {
   const image = await new knights.Welcome()
-      .setUsername("UNDEFINED")
-      .setGuildName("WIBU NOLEP")
+      .setUsername(username)
+      .setGuildName(groupname)
       .setGuildIcon("https://i.ibb.co/G5mJZxs/rin.jpg")
-      .setMemberCount("120")
-      .setAvatar("https://i.ibb.co/1s8T3sY/48f7ce63c7aa.jpg")
+      .setMemberCount(membercount)
+      .setAvatar(profile)
       .setBackground("https://i.ibb.co/4YBNyvP/images-76.jpg")
       .toAttachment();
     const data = image.toBuffer();
