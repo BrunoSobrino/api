@@ -8,6 +8,7 @@ router.get('/', async (req, res) => {
   const groupname = req.query.groupname;
   const membercount = req.query.membercount;
   const profile = req.query.profile;
+  const groupicon = req.query.groupicon
   const background = req.query.background;
   if (!username || !groupname || !profile || !membercount || !background) {
     const errorResponse = {
@@ -24,7 +25,7 @@ router.get('/', async (req, res) => {
   const image = await new knights.Welcome()
       .setUsername(username)
       .setGuildName(groupname)
-      .setGuildIcon("https://i.ibb.co/G5mJZxs/rin.jpg")
+      .setGuildIcon(groupicon)
       .setMemberCount(membercount)
       .setAvatar(profile)
       .setBackground(background)
