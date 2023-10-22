@@ -8,9 +8,8 @@ router.get('/', async (req, res) => {
   const groupname = req.query.groupname;
   const membercount = req.query.membercount;
   const profile = req.query.profile;
-  const background = req.query.background || 'https://telegra.ph/file/82d079999da723cc80899.png';
-  const description = req.query.description;
-  if (!username || !groupname || !profile || !membercount || !description) {
+  const background = req.query.background;
+  if (!username || !groupname || !profile || !membercount || !background) {
     const errorResponse = {
       status: false,
       message: 'Debes proporcionar los parámetros necesarios: username, groupname, groupicon, membercount, profile y background.',
@@ -28,7 +27,7 @@ router.get('/', async (req, res) => {
       .setGuildIcon("https://i.ibb.co/G5mJZxs/rin.jpg")
       .setMemberCount(membercount)
       .setAvatar(profile)
-      .setBackground("https://i.ibb.co/4YBNyvP/images-76.jpg")
+      .setBackground(background)
       .toAttachment();
     const data = image.toBuffer();
     res.contentType('image/png');
