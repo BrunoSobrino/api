@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
     theme: 'code', // 'circuit', 'Dark'
     text: {
       title: groupname,
-      text: username + '\n' + 'participante #' + membercount,
+      text: username + ' #' + membercount,
       subtitle: description,
       color: `#88ff88`,
     },
