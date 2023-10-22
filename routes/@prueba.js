@@ -8,13 +8,13 @@ router.get('/', async (req, res) => {
   const groupname = req.query.groupname;
   const membercount = req.query.membercount;
   const profile = req.query.profile;
-  const background = req.query.background;
+  const background = req.query.background || 'https://telegra.ph/file/82d079999da723cc80899.png';
   const description = req.query.description;
-  if (!username || !groupname || !profile || !background || !membercount || !description) {
+  if (!username || !groupname || !profile || !membercount || !description) {
     const errorResponse = {
       status: false,
       message: 'Debes proporcionar los parámetros necesarios: username, groupname, groupicon, membercount, profile y background.',
-      example: 'api/maker/canvas/welcome?username=shadow'
+      example: 'api/maker/canvas/welcome?username=Bruno%20Sobrino&groupname=API%20Empire%20-%20Comunidad&membercount=12&description=Bienvenido(a),%20lee%20las%20reglas%20del%20grupo&profile=https://github.com/BrunoSobrino.png'
     };
     const formattedResults_e = JSON.stringify(errorResponse, null, 2);
     res.setHeader('Content-Type', 'application/json');
@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
   }
   try {
   const image = await drawCard({
-    theme: 'circuit',
+    theme: 'code', // 'circuit', 'Dark'
     text: {
       title: groupname,
       text: username + ' #' + membercount,
