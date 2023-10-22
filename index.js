@@ -14,7 +14,7 @@ const visitors = new Set();
 let totalRequests = 0;
 let totalVisitors = 0;
 
-var allowedOrigins = ['https://api.boxmine.xyz', 'https://api.brunosobrino.repl.co'];
+var allowedOrigins = ['https://api.boxmine.xyz'];
 
 app.set('trust proxy', 1)
 
