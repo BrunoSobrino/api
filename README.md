@@ -5,8 +5,7 @@
 ------------------
 
 ## —◉ APIs online:
-- API 1: [https://api.boxmine.xyz/status](http://api.boxmine.xyz/status)
-- API 2: [http://prem-n2.zipponodes.com:50010/status](http://prem-n2.zipponodes.com:50010/status)
+- API 1: [http://prem-n2.zipponodes.com:50008/status](http://prem-n2.zipponodes.com:50008/status)
 
 ------------------
 
