@@ -5,7 +5,7 @@
 ------------------
 
 ## —◉ APIs online:
-- API 1: [http://prem-n2.zipponodes.com:50008/status](http://prem-n2.zipponodes.com:50008/status)
+- API 1: [http://prem-n2.zipponodes.xyz:50008/status](http://prem-n2.zipponodes.xyz:50008/status)
 
 ------------------
 
