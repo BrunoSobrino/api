@@ -133,6 +133,7 @@ app.use('/human', apirouter5);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
+app.use(express.static('data'));
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
