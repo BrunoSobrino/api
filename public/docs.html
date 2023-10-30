@@ -74,6 +74,20 @@
         margin-left: 10px; 
       }
     }    
+        #corner-image {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+            height: auto;
+        }
+        #powered-text {
+            position: absolute;
+            top: 70px; 
+            right: 10px;
+            font-size: 12px; 
+            color: #999;
+        }
 </style>
   <body id="page-top" class="dark-mode">
     <div id="wrapper">
@@ -338,7 +352,8 @@
             </button>
             <div class="text-container">
                 <h1 class="my-4 fire-text">API - EMPIRE <span class="fire-emoji">🔥</span></h1>
-                <img src="https://dash.zipponodes.com/storage/icon.png" alt="Icono" style="position: absolute; top: 10px; right: 10px; width: 50px; height: auto;">
+                <img id="corner-image" src="https://dash.zipponodes.com/storage/icon.png" alt="Icono">
+                <div id="powered-text">Powered by ZippoNodes</div>
             </div>
             <ul class="navbar-nav ml-auto">
                 <div class="topbar-divider d-none d-sm-block"></div>
