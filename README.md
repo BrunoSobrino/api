@@ -10,11 +10,11 @@
 ------------------
 
 ## —◉ Activar en ZippoNodes
-<a href="https://zipponodes.com"><img src="https://dash.zipponodes.com/storage/icon.png" width="50" height="50" alt="PNG"/></a>
+<a href="https://zipponodes.com"><img src="https://sttci.b-cdn.net/status.zipponodes.com/8932/logo.jpg" width="70" height="60" alt="JPG"/></a>
 - Pagina Oficial: [https://zipponodes.com](https://zipponodes.com)
 - Dashboard: [https://dash.zipponodes.com](https://dash.zipponodes.com)
 - Panel: [https://panel.zipponodes.com](https://panel.zipponodes.com)
-- Grupo De Soporte: [link](link)
+- Grupo De Soporte: [https://chat.whatsapp.com/EKQaXhfAO1D5ojNMcRdRVF](https://chat.whatsapp.com/EKQaXhfAO1D5ojNMcRdRVF)
 
 ## —◉ Activar en replit
 
