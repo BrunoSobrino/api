@@ -144,4 +144,4 @@ async function getBuffer(url, options) {
   }
 }
 
-module.exports = { downloadInstagramContent, igdl2 };
+module.exports = { igdl2 };
