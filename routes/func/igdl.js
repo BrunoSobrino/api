@@ -5,16 +5,11 @@ const instagramGetUrl = require('instagram-url-direct');
 const { instagram } = require('@xct007/frieren-scraper');
 const { instagramdl } = require('@bochilteam/scraper');
 
-async function downloadInstagramContent(url) {
+async function igdl2(url) {
   try {
     const dataList = await instagramDl(url);
-
-    if (!dataList || dataList.length === 0) {
-      throw new Error('No se encontraron datos de Instagram para la URL proporcionada');
-    }
-
+    if (!dataList || dataList.length === 0) return XD; //Error undefined
     const formattedData = [];
-
     for (const item of dataList) {
       if (item && item.download_link) {
         const { buffer, detectedType } = await getBuffer(item.download_link);
@@ -26,29 +21,15 @@ async function downloadInstagramContent(url) {
         }
       }
     }
-
-    if (formattedData.length === 0) {
-      throw new Error('No se encontraron imágenes ni videos en la URL de Instagram proporcionada');
-    }
-
+    if (formattedData.length === 0) return XD; //Error undefined
     return {
       success: true,
       data: formattedData
     };
-  } catch (error) {
-    return {
-      success: false,
-      error: error.message
-    };
-  }
-}
-
-async function igdl2(url) {
+  } catch {
   try {
     const datTa = await instagram.v1(url);
-    if (!datTa || datTa.length === 0) {
-      throw new Error('No se encontraron datos de Instagram para la URL proporcionada');
-    }
+    if (!datTa || datTa.length === 0) return XD; //Error undefined
     const formattedData = [];
     for (const urRRl of datTa) {
       if (urRRl && urRRl.url) {
@@ -61,9 +42,7 @@ async function igdl2(url) {
         }
       }
     }
-    if (formattedData.length === 0) {
-      throw new Error('No se encontraron imágenes ni videos en la URL de Instagram proporcionada');
-    }
+    if (formattedData.length === 0) return XD; //Error undefined
     return {
       success: true,
       data: formattedData
@@ -86,9 +65,7 @@ async function igdl2(url) {
         }
       }
     }
-    if (formattedData.length === 0) {
-      throw new Error('No se encontraron imágenes ni videos en la URL de Instagram proporcionada');
-    }
+    if (formattedData.length === 0) return XD; //Error undefined
     return {
       success: true,
       data: formattedData
@@ -96,9 +73,7 @@ async function igdl2(url) {
 } catch {
 try {    
     const resultssss = await instagramdl(url);
-    if (!resultssss || resultssss.length === 0) {
-      throw new Error('No se encontraron datos de Instagram para la URL proporcionada');
-    }
+    if (!resultssss || resultssss.length === 0) return XD; //Error undefined
     const formattedData = [];
     for (const tiosex of resultssss) {
       if (tiosex) {
@@ -111,9 +86,7 @@ try {
         }
       }
     }
-    if (formattedData.length === 0) {
-      throw new Error('No se encontraron imágenes ni videos en la URL de Instagram proporcionada');
-    }
+    if (formattedData.length === 0) return XD; //Error undefined
     return {
       success: true,
       data: formattedData
@@ -123,9 +96,7 @@ try {
      const human = await fetch(`https://api.lolhuman.xyz/api/instagram?apikey=GataDios&url=${url}`);
      const json = await human.json();
      const videoig = json.result;
-    if (!videoig || videoig.length === 0) {
-      throw new Error('No se encontraron datos de Instagram para la URL proporcionada');
-    }
+    if (!videoig || videoig.length === 0) return XD; //Error undefined
     const formattedData = [];
     for (const alaprimaselearrima of videoig) {
       if (alaprimaselearrima) {
@@ -138,9 +109,7 @@ try {
         }
       }
     }
-    if (formattedData.length === 0) {
-      throw new Error('No se encontraron imágenes ni videos en la URL de Instagram proporcionada');
-    }
+    if (formattedData.length === 0) return XD; //Error undefined
     return {
       success: true,
       data: formattedData
@@ -170,7 +139,7 @@ async function getBuffer(url, options) {
     const detectedType = await fromBuffer (buffer);
     return { buffer, detectedType };
   } catch (error) {
-    console.error('Error al obtener el buffer:', error);
+    console.error('Error al obtener el buffer en igdl:', error);
     return { buffer: null, detectedType: null };
   }
 }
