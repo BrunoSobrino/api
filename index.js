@@ -113,7 +113,6 @@ app.use('/api/spotifyinfo', spotifyinfo);
 app.use('/api/spotifysearch', spotifysearch);
 app.use('/api/chatgpt', chatgpt);
 app.use('/api/v1/igdl', igdl1);
-app.use('/api/v2/igdl', igdl2);
 app.use('/api/tempmail/getmail', getmail);
 app.use('/api/tempmail/getmessages', getmessages);
 app.use('/api/facebook', facebook);
