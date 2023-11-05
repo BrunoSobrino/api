@@ -9,6 +9,13 @@
 
 ------------------
 
+## —◉ Activar en ZippoNodes
+<a href="https://zipponodes.com"><img src="https://dash.zipponodes.com/storage/icon.png" width="50" height="50" alt="PNG"/></a>
+- Pagina Oficial: [https://zipponodes.com](https://zipponodes.com)
+- Dashboard: [https://dash.zipponodes.com](https://dash.zipponodes.com)
+- Panel: [https://panel.zipponodes.com](https://panel.zipponodes.com)
+- Grupo De Soporte: [link](link)
+
 ## —◉ Activar en replit
 
 [![Run on Repl.it](https://repl.it/badge/github/BrunoSobrino/api)](https://repl.it/github/BrunoSobrino/api) 
