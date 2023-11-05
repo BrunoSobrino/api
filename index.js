@@ -47,7 +47,6 @@ const spotifyinfo = require('./routes/spotifyinfo');
 const spotifysearch = require('./routes/spotifysearch');
 const chatgpt = require('./routes/chatgpt');
 const igdl1 = require('./routes/igdl');
-const igdl2 = require('./routes/igdl2');
 const getmail = require('./routes/correos-getMail');
 const getmessages = require('./routes/correos-getMessages');
 const facebook = require('./routes/facebook');
