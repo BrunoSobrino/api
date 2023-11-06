@@ -37,8 +37,7 @@ router.get('/canvas/welcome', async (req, res) => {
     const cardBuffer = await card.build();
     res.contentType('image/png');
     res.send(cardBuffer);
-  } catch (error) {
-    console.log(error)
+  } catch {
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
@@ -86,8 +85,7 @@ router.get('/canvas/welcome2', async (req, res) => {
     });
     res.contentType('image/png');
     res.send(image);
-  } catch (error) {
-    console.log(error)
+  } catch {
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
@@ -131,8 +129,7 @@ router.get('/canvas/welcome3', async (req, res) => {
     });
     res.contentType('image/png');
     res.send(image);
-  } catch (error) {
-    console.log(error)
+  } catch {
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
@@ -176,8 +173,7 @@ router.get('/canvas/welcome4', async (req, res) => {
     });
     res.contentType('image/png');
     res.send(image);
-  } catch (error) {
-    console.log(error)
+  } catch {
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
@@ -212,8 +208,7 @@ router.get('/canvas/welcome5', async (req, res) => {
     const data = image.toBuffer();
     res.contentType('image/png');
     res.send(data);
-  } catch (error) {
-    console.log(error)
+  } catch {
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
@@ -254,8 +249,7 @@ const image = await new Canvas.Goodbye()
     const data = image.toBuffer();
     res.contentType('image/png');
     res.send(data);
-  } catch (error) {
-    console.log(error)
+  } catch {
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
@@ -290,8 +284,38 @@ router.get('/canvas/goodbye2', async (req, res) => {
     const data = image.toBuffer();
     res.contentType('image/png');
     res.send(data);
-  } catch (error) {
-    console.log(error)
+  } catch {
+    res.sendFile(path.join(__dirname, '../public/500.html'));
+  }
+});
+
+router.get('/canvas/goodbye3', async (req, res) => {
+  const username = req.query.username;
+  const membercount = req.query.membercount;
+  const profile = req.query.profile;
+  const background = req.query.background;
+  if (!username || !profile || !membercount || !background) {
+    const errorResponse = {
+      status: false,
+      message: 'Debes proporcionar los parámetros necesarios: username, membercount, profile y background.',
+      example: 'api/maker/canvas/goodbye3?username=Bruno&membercount=12&profile=https://github.com/BrunoSobrino.png&background=https://telegra.ph/file/82d079999da723cc80899.png'
+    };
+    const formattedResults_e = JSON.stringify(errorResponse, null, 2);
+    res.setHeader('Content-Type', 'application/json');
+    res.status(400).send(formattedResults_e);
+    return;
+  }
+  try {
+  const image = await new knights.Goodbye2()
+      .setUsername(username)
+      .setMember(membercount)
+      .setAvatar(profile)
+      .setBg(background)
+      .toAttachment();
+    const data = image.toBuffer();
+    res.contentType('image/png');
+    res.send(data);
+  } catch {
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
@@ -316,8 +340,7 @@ router.get('/attp', async (req, res) => {
     const imageBuffer = Buffer.from(imageResponse.data, 'binary');
     res.setHeader('Content-Type', 'image/jpeg');
     res.send(imageBuffer);
-  } catch (error) {
-    console.log(error)
+  } catch {
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
