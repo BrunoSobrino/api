@@ -6,6 +6,7 @@ const { maker, ttp } = require('./func/functions');
 const { welCard } = require("@delirius/welcard");
 const { drawCard, LinearGradient } = require('discord-welcome-card');
 const knights = require("@clayzaaubert/canvix");
+const Canvas = require("discord-canvas-spanish-1ly4s0");
 
 /* ------------{ canvas }------------ */
 
@@ -208,6 +209,48 @@ router.get('/canvas/welcome5', async (req, res) => {
       .setAvatar(profile)
       .setBackground(background)
       .toAttachment();
+    const data = image.toBuffer();
+    res.contentType('image/png');
+    res.send(data);
+  } catch (error) {
+    console.log(error)
+    res.sendFile(path.join(__dirname, '../public/500.html'));
+  }
+});
+
+router.get('/canvas/goodbye', async (req, res) => {
+  const username = req.query.username;
+  const groupname = req.query.groupname;
+  const membercount = req.query.membercount;
+  const memberdiscriminator = req.query.memberdiscriminator;
+  const profile = req.query.profile;
+  const background = req.query.background;
+  if (!username || !groupname || !profile || !membercount || !background || !memberdiscriminator) {
+    const errorResponse = {
+      status: false,
+      message: 'Debes proporcionar los parámetros necesarios: username, groupname, groupicon, membercount, profile y background.',
+      example: 'api/maker/canvas/goodbye?username=bruno&groupname=api%20empire&membercount=12&memberdiscriminator=13&profile=https://github.com/BrunoSobrino.png&background=https://telegra.ph/file/82d079999da723cc80899.png'
+    };
+    const formattedResults_e = JSON.stringify(errorResponse, null, 2);
+    res.setHeader('Content-Type', 'application/json');
+    res.status(400).send(formattedResults_e);
+    return;
+  }
+  try {
+const image = await new Canvas.Goodbye()
+  .setUsername(username)
+  .setDiscriminator(memberdiscriminator)
+  .setMemberCount(membercount)
+  .setGuildName(groupname)
+  .setAvatar(profile)
+  .setColor("border", "#8015EA")
+  .setColor("username-box", "#8015EA")
+  .setColor("discriminator-box", "#8015EA")
+  .setColor("message-box", "#8015EA")
+  .setColor("title", "#8015EA")
+  .setColor("avatar", "#8015EA")
+  .setBackground(background)
+  .toAttachment();
     const data = image.toBuffer();
     res.contentType('image/png');
     res.send(data);
