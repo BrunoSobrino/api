@@ -320,6 +320,35 @@ router.get('/canvas/goodbye3', async (req, res) => {
   }
 });
 
+router.get('/canvas/goodbye4', async (req, res) => {
+  const username = req.query.username;
+  const membercount = req.query.membercount;
+  const profile = req.query.profile;
+  const background = req.query.background;
+  if (!username || !profile) {
+    const errorResponse = {
+      status: false,
+      message: 'Debes proporcionar los parámetros necesarios: username, membercount, profile y background.',
+      example: 'api/maker/canvas/goodbye4?username=Bruno&profile=https://github.com/BrunoSobrino.png'
+    };
+    const formattedResults_e = JSON.stringify(errorResponse, null, 2);
+    res.setHeader('Content-Type', 'application/json');
+    res.status(400).send(formattedResults_e);
+    return;
+  }
+  try {
+  const image = await new knights.Goodbye3()
+      .setUsername(username)
+      .setAvatar(profile)
+      .toAttachment();
+    const data = image.toBuffer();
+    res.contentType('image/png');
+    res.send(data);
+  } catch {
+    res.sendFile(path.join(__dirname, '../public/500.html'));
+  }
+});
+
 /* ------------{ stickers }------------ */
 
 router.get('/attp', async (req, res) => {
