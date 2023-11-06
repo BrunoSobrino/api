@@ -228,7 +228,7 @@ router.get('/canvas/goodbye', async (req, res) => {
   if (!username || !groupname || !profile || !membercount || !background || !memberdiscriminator) {
     const errorResponse = {
       status: false,
-      message: 'Debes proporcionar los parámetros necesarios: username, groupname, groupicon, membercount, profile y background.',
+      message: 'Debes proporcionar los parámetros necesarios: username, groupname, membercount, profile, memberdiscriminator y background.',
       example: 'api/maker/canvas/goodbye?username=bruno&groupname=api%20empire&membercount=12&memberdiscriminator=13&profile=https://github.com/BrunoSobrino.png&background=https://telegra.ph/file/82d079999da723cc80899.png'
     };
     const formattedResults_e = JSON.stringify(errorResponse, null, 2);
@@ -251,6 +251,42 @@ const image = await new Canvas.Goodbye()
   .setColor("avatar", "#8015EA")
   .setBackground(background)
   .toAttachment();
+    const data = image.toBuffer();
+    res.contentType('image/png');
+    res.send(data);
+  } catch (error) {
+    console.log(error)
+    res.sendFile(path.join(__dirname, '../public/500.html'));
+  }
+});
+
+router.get('/canvas/goodbye2', async (req, res) => {
+  const username = req.query.username;
+  const groupname = req.query.groupname;
+  const membercount = req.query.membercount;
+  const profile = req.query.profile;
+  const groupicon = req.query.groupicon
+  const background = req.query.background;
+  if (!username || !groupname || !profile || !membercount || !background || !groupicon) {
+    const errorResponse = {
+      status: false,
+      message: 'Debes proporcionar los parámetros necesarios: username, groupname, groupicon, membercount, profile y background.',
+      example: 'api/maker/canvas/goodbye2?username=bruno&groupname=api%20empire&membercount=12&groupicon=https://telegra.ph/file/4cc51944c9130560fb4a9.jpg&profile=https://github.com/BrunoSobrino.png&background=https://telegra.ph/file/82d079999da723cc80899.png'
+    };
+    const formattedResults_e = JSON.stringify(errorResponse, null, 2);
+    res.setHeader('Content-Type', 'application/json');
+    res.status(400).send(formattedResults_e);
+    return;
+  }
+  try {
+  const image = await new knights.Goodbye()
+      .setUsername(username)
+      .setGuildName(groupname)
+      .setGuildIcon(groupicon)
+      .setMemberCount(membercount)
+      .setAvatar(profile)
+      .setBackground(background)
+      .toAttachment();
     const data = image.toBuffer();
     res.contentType('image/png');
     res.send(data);
