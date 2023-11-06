@@ -10,7 +10,7 @@
 ------------------
 
 ## —◉ Activar en ZippoNodes
-<a href="https://zipponodes.com"><img src="https://sttci.b-cdn.net/status.zipponodes.com/8932/logo.jpg" width="150" height="50" alt="JPG"/></a>
+<a href="https://zipponodes.com"><img src="https://cdn.zipponodes.com/zipponodes/logos/logo_zipponodes3.jpg" width="150" height="50" alt="JPG"/></a>
 - Pagina Oficial: [https://zipponodes.com](https://zipponodes.com)
 - Dashboard: [https://dash.zipponodes.com](https://dash.zipponodes.com)
 - Panel: [https://panel.zipponodes.com](https://panel.zipponodes.com)
