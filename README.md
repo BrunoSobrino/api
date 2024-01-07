@@ -5,11 +5,11 @@
 ------------------
 
 ## —◉ APIs online:
-- API 1: [https://api-brunosobrino.zipponodes.xyz/status](https://api-brunosobrino.zipponodes.xyz/status)
+- API 1: [https://api.cafirexos.com](https://api.cafirexos.com)
 
 ------------------
 
-## —◉ Activar en ZippoNodes
+## —◉ Activar en Cafirexos
 <a href="https://zipponodes.com"><img src="https://cdn.zipponodes.com/zipponodes/logos/logo_zipponodes3.jpg" width="150" height="50" alt="JPG"/></a>
 - Pagina Oficial: [https://zipponodes.com](https://zipponodes.com)
 - Dashboard: [https://dash.zipponodes.com](https://dash.zipponodes.com)
