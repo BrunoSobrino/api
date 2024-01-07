@@ -11,10 +11,11 @@
 
 ## —◉ Activar en Cafirexos
 <a href="https://zipponodes.com"><img src="https://cdn.zipponodes.com/zipponodes/logos/logo_zipponodes3.jpg" width="150" height="50" alt="JPG"/></a>
-- Pagina Oficial: [https://zipponodes.com](https://zipponodes.com)
-- Dashboard: [https://dash.zipponodes.com](https://dash.zipponodes.com)
-- Panel: [https://panel.zipponodes.com](https://panel.zipponodes.com)
-- Grupo De Soporte: [https://chat.whatsapp.com/EKQaXhfAO1D5ojNMcRdRVF](https://chat.whatsapp.com/EKQaXhfAO1D5ojNMcRdRVF)
+- Sitio web: [cafirexos.com](https://www.cafirexos.com)
+- Dash: [dash.cafirexos.com](https://dash.cafirexos.com)
+- Panel: [panel.cafirexos.com](https://panel.cafirexos.com)
+- Documentación: [docs.cafirexos.com](https://docs.cafirexos.com)
+- Grupo de WhatsApp: [whatsapp.cafirexos.com](https://whatsapp.cafirexos.com)
 
 ## —◉ Activar en replit
 
