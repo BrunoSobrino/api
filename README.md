@@ -10,7 +10,7 @@
 ------------------
 
 ## —◉ Activar en Cafirexos
-<a href="https://zipponodes.com"><img src="https://cdn.zipponodes.com/zipponodes/logos/logo_zipponodes3.jpg" width="150" height="50" alt="JPG"/></a>
+<a href="https://www.cafirexos.com"><img src="https://grxcwmcwbxwj.objectstorage.sa-saopaulo-1.oci.customer-oci.com/n/grxcwmcwbxwj/b/cafirexos/o/logos%2Flogo.png" height="125px"></a>
 - Sitio web: [cafirexos.com](https://www.cafirexos.com)
 - Dash: [dash.cafirexos.com](https://dash.cafirexos.com)
 - Panel: [panel.cafirexos.com](https://panel.cafirexos.com)
