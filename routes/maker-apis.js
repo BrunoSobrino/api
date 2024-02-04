@@ -3,10 +3,20 @@ const router = express.Router();
 const path = require('path');
 const axios = require('axios');
 const { maker, ttp } = require('./func/functions');
-const { welCard } = require("@delirius/welcard");
-const { drawCard, LinearGradient } = require('discord-welcome-card');
-const knights = require("@clayzaaubert/canvix");
-const Canvas = require("discord-canvas-spanish-1ly4s0");
+let welCard, drawCard, LinearGradient, knights, Canvas;
+const tryRequire = (moduleName) => {
+  try {
+    return require(moduleName);
+  } catch (error) {
+    console.error(`No se pudo importar "${moduleName}".`);
+    return null;
+  }
+};
+welCard = tryRequire("@delirius/welcard");
+drawCard = tryRequire('discord-welcome-card')?.drawCard;
+LinearGradient = tryRequire('discord-welcome-card')?.LinearGradient;
+knights = tryRequire("@clayzaaubert/canvix");
+Canvas = tryRequire("discord-canvas-spanish-1ly4s0");
 
 /* ------------{ canvas }------------ */
 
