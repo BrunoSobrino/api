@@ -102,6 +102,7 @@
     <img src="https://github.com/BrunoSobrino.png" alt="BrunoSobrino" width="48" height="48" style="border-radius: 50%;">
     <div class="sidebar-brand-text mx-3" style="white-space: nowrap;">By BrunoSobrino</div>
 </a>
+            <!--
 <audio autoplay loop>
     <source src="musicDocs.mp3" type="audio/mpeg">
     <source src="musicDocs.wav" type="audio/wav">
@@ -110,7 +111,8 @@
             <li class="nav-item active"></li>
             <hr class="sidebar-divider">
             <button id="toggleButton" class="button-style">Pausar Música</button>
-            </hr>
+           -->
+
             <hr class="sidebar-divider">
             <div class="sidebar-heading">Features</div>
             <li class="nav-item">
@@ -120,23 +122,28 @@
                 </a>
                 <div id="collapseDownload" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Downloaders & Medias</h6>
-                        <a class="collapse-item" target="_blank" href="/api/v1/ytmp3?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p">YTMP3 V1</a>
-                        <a class="collapse-item" target="_blank" href="/api/v2/ytmp3?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p">YTMP3 V2</a>
-                        <a class="collapse-item" target="_blank" href="/api/v1/ytmp4?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p">YTMP4 V1</a>
-                        <a class="collapse-item" target="_blank" href="/api/v2/ytmp4?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p">YTMP4 V2</a>
-                        <a class="collapse-item" target="_blank" href="/api/ytplay?text=begin%20you">YT Play ex 1</a>
-                        <a class="collapse-item" target="_blank" href="/api/ytplay?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvSOkDk7p">YT Play ex 2</a>
-                        <a class="collapse-item" target="_blank" href="/api/spotifydl?text=maneskin%20beggin">SpotifyDL ex 1</a>
-                        <a class="collapse-item" target="_blank" href="/api/spotifydl?url=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e">SpotifyDL ex 2</a>
-                        <a class="collapse-item" target="_blank" href="/api/spotifyinfo?text=maneskin%20beggin">SpotifyInfo ex 1</a>
-                        <a class="collapse-item" target="_blank" href="/api/spotifyinfo?url=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e">SpotifyInfo ex 2</a>
-                        <a class="collapse-item" target="_blank" href="/api/v1/igdl?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link">InstagramDL V1</a>
-                        <a class="collapse-item" target="_blank" href="/api/tiktokv1?url=https://vm.tiktok.com/ZMjPXawEV">TikTokDL (img/video)</a>
-                        <a class="collapse-item" target="_blank" href="/api/tiktokv2?url=https://vm.tiktok.com/ZMjPXawEV">TikTokDL (video)</a>
-                        <a class="collapse-item" target="_blank" href="/api/ttimg?url=https://vm.tiktok.com/ZM2cqBRVS">TTImg (img)</a>
-                        <a class="collapse-item" target="_blank" href="/api/facebook?url=https://fb.watch/fOTpgn6UFQ">Facebook DL</a>
-                        <a class="collapse-item" target="_blank" href="/api/xnxxdl?url=https://www.xnxx.com/video-11qev1b8/estudiante_latina_se_da_unos_sentones_">XNXX DL</a>
+                        <h6 class="collapse-header">YouTube</h6>
+                        <a class="collapse-item" target="_blank" href="/api/v1/ytmp3?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p">MP3 - URL V1</a>
+                        <a class="collapse-item" target="_blank" href="/api/v2/ytmp3?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p">MP3 - URL V2</a>
+                        <a class="collapse-item" target="_blank" href="/api/v1/ytmp4?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p">MP4 - URL V1</a>
+                        <a class="collapse-item" target="_blank" href="/api/v2/ytmp4?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p">MP4 - URL V2</a>
+                        <a class="collapse-item" target="_blank" href="/api/ytplay?text=begin%20you">Play - Texto</a>
+                        <a class="collapse-item" target="_blank" href="/api/ytplay?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvSOkDk7p">Play - URL</a>
+                        <h6 class="collapse-header">Spotify</h6>
+                        <a class="collapse-item" target="_blank" href="/api/spotifydl?text=Believer">Track - Texto</a>
+                        <a class="collapse-item" target="_blank" href="/api/spotifydl?url=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e">Track - URL</a>
+                        <a class="collapse-item" target="_blank" href="/api/spotifyinfo?text=Believer">InfoTrack - Texto</a>
+                        <a class="collapse-item" target="_blank" href="/api/spotifyinfo?url=https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e">InfoTrack - URL</a>
+                        <h6 class="collapse-header">Instagram</h6>
+                        <a class="collapse-item" target="_blank" href="/api/v1/igdl?url=https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link">Instagram - URL</a>
+                        <h6 class="collapse-header">Tiktok</h6>
+                        <a class="collapse-item" target="_blank" href="/api/ttimg?url=https://vm.tiktok.com/ZM2cqBRVS">Imagen - URL</a>
+                        <a class="collapse-item" target="_blank" href="/api/tiktokv2?url=https://vm.tiktok.com/ZMjPXawEV">Vídeo - URL</a>
+                        <a class="collapse-item" target="_blank" href="/api/tiktokv1?url=https://vm.tiktok.com/ZMjPXawEV">Imagen/Vídeo - URL</a>
+                        <h6 class="collapse-header">Facebook</h6>
+                        <a class="collapse-item" target="_blank" href="/api/facebook?url=https://fb.watch/fOTpgn6UFQ">Facebook - URL</a>
+                        <h6 class="collapse-header">XNXX</h6>
+                        <a class="collapse-item" target="_blank" href="/api/xnxxdl?url=https://www.xnxx.com/video-11qev1b8/estudiante_latina_se_da_unos_sentones_">XNXX - URL</a>
                     </div>
                 </div>
             </li>
@@ -448,9 +455,9 @@
     <footer class="sticky-footer">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
-                <a href="https://www.zipponodes.com" target="_blank" style="color: #fff;">
-                    <img src="https://cdn.zipponodes.com/zipponodes/logos/741x860/logo_transparent.png" alt="Icono" style="width: 30px; height: 30px;">
-                    <span style="margin-left: 5px;">Powered By ZippoNodes</span>
+                <a href="https://www.cafirexos.com" target="_blank" style="color: #fff;">
+                    <img src="https://grxcwmcwbxwj.objectstorage.sa-saopaulo-1.oci.customer-oci.com/n/grxcwmcwbxwj/b/cafirexos/o/logos%2Flogo.png" alt="Icono" style="width: 30px; height: 30px;">
+                    <span style="margin-left: 5px;">Powered By Cafirexos Host</span>
                 </a>
             </div>
         </div>
