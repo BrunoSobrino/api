@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
       }
     });
   } catch (error) {
-    res.sendFile(path.join(__dirname, '../public/500.html'));
+    res.sendFile(path.join(__dirname, '../../public/500.html'));
   }
 });
 
