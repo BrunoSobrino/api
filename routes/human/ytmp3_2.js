@@ -26,8 +26,7 @@ router.get('/', async (req, res) => {
       fileIndex++;
     }
     fs.writeFileSync(`./tmp/${fileName}`, audioBuffer);
-    console.log(infoaud)
-    res.download(`./tmp/${fileName}`, fileName, (err) => {
+    res.download(`./tmp/${fileName}`, `${infoaud.resultado.title || fileName}.mp3`, (err) => {
       if (err) {
         res.sendFile(path.join(__dirname, '../public/500.html'));
       }
