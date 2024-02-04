@@ -72,6 +72,7 @@ const hytmp3_1 = require('./routes/human/ytmp3_1');
 const hytmp4_1 = require('./routes/human/ytmp4_1');
 const hytmp3_2 = require('./routes/human/ytmp3_2');
 const hytmp4_2 = require('./routes/human/ytmp4_2');
+const higdl = require('./routes/human/igdl');
 
 /* test */
 
@@ -140,6 +141,7 @@ app.use('/human/v1/ytmp3', hytmp3_1);
 app.use('/human/v1/ytmp4', hytmp4_1);
 app.use('/human/v2/ytmp3', hytmp3_2);
 app.use('/human/v2/ytmp4', hytmp4_2);
+app.use('/human/igdl', higdl);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
