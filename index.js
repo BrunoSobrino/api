@@ -70,7 +70,8 @@ const tiktokdlv1 = require('./routes/tiktokdlv1');
 /* human */
 const hytmp3_1 = require('./routes/human/ytmp3_1');
 const hytmp4_1 = require('./routes/human/ytmp4_1');
-
+const hytmp3_2 = require('./routes/human/ytmp3_2');
+const hytmp4_2 = require('./routes/human/ytmp4_2');
 
 /* test */
 
@@ -137,6 +138,8 @@ app.use('/api/test', test);
 app.use('/human', apirouter5);
 app.use('/human/v1/ytmp3', hytmp3_1);
 app.use('/human/v1/ytmp4', hytmp4_1);
+app.use('/human/v2/ytmp3', hytmp3_2);
+app.use('/human/v2/ytmp4', hytmp4_2);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
