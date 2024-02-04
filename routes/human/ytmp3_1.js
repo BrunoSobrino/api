@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
     res.setHeader('Content-Disposition', `attachment; filename="${youtubeInfo.resultado.ytmp3v2.title || fileName}.mp3"`);
     res.sendFile(fileName, { root: './tmp' });
   } catch (error) {  
-    res.sendFile(path.join(__dirname, '../public/500.html'));
+    res.sendFile(path.join(__dirname, '../../public/500.html'));
   }
 });
 
