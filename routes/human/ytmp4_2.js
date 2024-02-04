@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
     }
     fs.writeFileSync(`./tmp/${fileName}`, videoBuffer);
     console.log(infovid)
-    res.download(`./tmp/${fileName}`, fileName, (err) => {
+    res.download(`./tmp/${fileName}`, `${infovid.resultado.title || fileName}.mp4`, (err) => {
       if (err) {
         res.sendFile(path.join(__dirname, '../public/500.html'));
       }
