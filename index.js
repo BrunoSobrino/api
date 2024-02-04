@@ -67,6 +67,13 @@ const stickersearch = require('./routes/stickersearch');
 const pinterest = require('./routes/pinterest');
 const tiktokdlv1 = require('./routes/tiktokdlv1');
 
+/* human */
+const hytmp3_1 = require('./routes/human/ytmp3_1');
+const hytmp4_1 = require('./routes/human/ytmp4_1');
+
+
+/* test */
+
 const test = require('./routes/@prueba');
 
 
@@ -128,6 +135,8 @@ app.use('/api/pinterest', pinterest);
 app.use('/api/test', test);
 
 app.use('/human', apirouter5);
+app.use('/human/ytmp3', hytmp3_1);
+app.use('/human/ytmp4', hytmp4_!);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
