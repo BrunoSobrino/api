@@ -7,6 +7,10 @@
 ## —◉ APIs online:
 - API: [https://api.cafirexos.com](https://api.cafirexos.com)
 
+## —◉ Funciones extras:
+- YT: [https://api.cafirexos.com/human/youtube](https://api.cafirexos.com/human/youtube)
+- IG: [https://api.cafirexos.com/human/instagram](https://api.cafirexos.com/human/instagram)
+
 ------------------
 
 ## —◉ Activar en Cafirexos
