@@ -110,6 +110,29 @@
                 background-position: 0% 50%;
             }
         }
+
+.credits-bar {
+    background-color: #004080;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.credits-bar p {
+    margin: 0;
+}
+
+.credits-bar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 5px;
+}
+        
     </style>
 </head>
 <body>
@@ -118,21 +141,27 @@
                 <i class="fa fa-moon-o"></i><i class="fa fa-sun-o"></i>
             </button>
         <h1>YouTube Downloader</h1>
-        <p>—◉ Pega el enlace del video de YouTube y elige una opción de descarga:</p>
+        <p>◉ Inserte el enlace del vídeo de YouTube y elija una opción de descarga:</p>
         <input type="text" id="youtubeLink" class="form-control" placeholder="Ex: https://www.youtube.com/watch?v=videoID" />
         <div id="downloadButtons">
-            <button class="btn btn-primary download-button" onclick="downloadYouTube('v1/ytmp3')">Descargar Audio v1</button>
-            <button class="btn btn-primary download-button" onclick="downloadYouTube('v1/ytmp4')">Descargar Video v1</button>
-            <button class="btn btn-primary download-button" onclick="downloadYouTube('v2/ytmp3')">Descargar Audio v2</button>
-            <button class="btn btn-primary download-button" onclick="downloadYouTube('v2/ytmp4')">Descargar Video v2</button>
+            <button class="btn btn-primary download-button" onclick="downloadYouTube('v1/ytmp3')">Descargar Audio 1</button>
+            <button class="btn btn-primary download-button" onclick="downloadYouTube('v2/ytmp3')">Descargar Audio 2</button>
+            <button class="btn btn-primary download-button" onclick="downloadYouTube('v1/ytmp4')">Descargar Video 1</button>
+            <button class="btn btn-primary download-button" onclick="downloadYouTube('v2/ytmp4')">Descargar Video 2</button>
         </div>
         <p id="downloadLink" style="display: none;"></p>
     </div>
+ <!-- Barra de créditos -->
+<div class="credits-bar">
+    <p>👉Desarrollado por Bruno Sobrino👈</p>
+    <p>Agradecimientos: <a href="https://github.com/BrunoSobrino" target="_blank"><i class="fa fa-github"></i></a> | <a href="https://www.paypal.me/TheShadowBrokers133" target="_blank"><i class="fa fa-paypal"></i></a></p>
+</div>
+   
     <script>
         function downloadYouTube(option) {
             const youtubeLink = document.getElementById("youtubeLink").value.trim();
             if (youtubeLink === "") {
-                alert("Ingresa el enlace de un video de YouTube.");
+                alert("Inserta el enlace de un video de YouTube.");
                 return;
             }
             if (isValidYouTubeLink(youtubeLink)) {
