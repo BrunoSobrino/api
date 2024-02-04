@@ -5,7 +5,7 @@
 ------------------
 
 ## —◉ APIs online:
-- API 1: [https://api.cafirexos.com](https://api.cafirexos.com)
+- API: [https://api.cafirexos.com](https://api.cafirexos.com)
 
 ------------------
 
@@ -29,6 +29,7 @@
 
 ## —◉ Colaboradores
 <a href="https://github.com/Shizu-SH"><img src="https://github.com/Shizu-SH.png" width="100" height="100" alt="Shizu-SH"/></a>
+<a href="https://github.com/dftzippo"><img src="https://github.com/dftzippo.png" width="100" height="100" alt="dftzippo"/></a>
 
 ## —◉ Editor & propietario
 <a href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="150" height="150" alt="BrunoSobrino"/></a>
