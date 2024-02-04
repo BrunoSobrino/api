@@ -165,7 +165,7 @@
                 return;
             }
             if (isValidYouTubeLink(youtubeLink)) {
-                const downloadUrl = `/api/${option}?url=${youtubeLink}`;
+                const downloadUrl = `/human/${option}?url=${youtubeLink}`;
                 window.open(downloadUrl, '_blank');
             } else {
                 alert("El enlace no coincide con un enlace de YouTube válido.");
