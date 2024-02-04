@@ -135,8 +135,8 @@ app.use('/api/pinterest', pinterest);
 app.use('/api/test', test);
 
 app.use('/human', apirouter5);
-app.use('/human/ytmp3', hytmp3_1);
-app.use('/human/ytmp4', hytmp4_!);
+app.use('/human/v1/ytmp3', hytmp3_1);
+app.use('/human/v1/ytmp4', hytmp4_1);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
