@@ -32,7 +32,7 @@
     "@sasmeee/igdl": "*",
     "@ruhend/scraper": "*",
     "api-dylux": "^1.6.2",
-    "archiver"; "*",
+    "archiver": "*",
     "apicache": "^1.6.3",
     "axios": "^1.5.0",
     "chalk": "^4.1.2",
