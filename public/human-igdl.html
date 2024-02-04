@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta property="og:image" content="https://github.com/BrunoSobrino.png">   
+    <title>API | Instagram Downloader</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            background: #310404 url(https://example.com/tuimagen.png) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            font-family: 'Barlow', sans-serif;
+        }
+        @media (max-width: 768px) {
+            body {
+                background-image: url('https://example.com/tuimagen.png');
+            }
+        }      
+        .container {
+            border-radius: 8px;
+            margin: 20px auto; 
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 600px;
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        p {
+            color: #fff; 
+        }               
+        #downloadButtons {
+            text-align: center;
+        }
+        .download-button {
+            margin: 10px;
+        }
+        #downloadLink {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .error {
+            color: red;
+        }
+        .download-box {
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+        .download-box.dark-mode {
+            background-color: #333;
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }      
+        .theme-button {
+            background-color: transparent;
+            color: #fff;          
+            padding: 5px 10px; 
+            border: none; 
+            position: absolute;
+            top: 10px;
+            right: 10px;          
+        }
+        .theme-button i {
+            font-size: 20px; 
+            margin: 0 5px; 
+            border: none; 
+        }
+        .theme-button:hover {
+            background-color: transparent !important;
+            border: none !important;
+            outline: none !important;
+        }
+        .theme-button:active {
+            background-color: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+        .theme-button:focus {
+            outline: none !important;
+            box-shadow: none !important;
+            background-color: transparent !important;
+        }
+        .theme-button:focus-visible {
+            outline: none !important;
+            box-shadow: none !important;
+            background-color: transparent !important;
+        }
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+.credits-bar {
+    background-color: #004080;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.credits-bar p {
+    margin: 0;
+}
+
+.credits-bar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 5px;
+}
+        
+    </style>
+</head>
+<body>
+     <div class="container light-mode"> 
+            <button class="btn btn-primary theme-button" onclick="toggleTheme()">
+                <i class="fa fa-moon-o"></i><i class="fa fa-sun-o"></i>
+            </button>
+        <h1>Instagram Downloader</h1>
+        <p>◉ Inserte el enlace de una publicación o reel de Instagram y seleccione la opción de descarga:</p>
+        <input type="text" id="youtubeLink" class="form-control" placeholder="Ex: https://www.instagram.com/reel/Cc0NuYBg8CR/?utm_source=ig_web_copy_link" />
+        <div id="downloadButtons">
+            <button class="btn btn-primary download-button" onclick="downloadInstagram('igdl')">Descargar</button>
+        </div>
+        <p id="downloadLink" style="display: none;"></p>
+    </div>
+ <!-- Barra de créditos -->
+<div class="credits-bar">
+    <p>👉Desarrollado por Bruno Sobrino👈</p>
+    <p>Agradecimientos: <a href="https://github.com/BrunoSobrino" target="_blank"><i class="fa fa-github"></i></a> | <a href="https://www.paypal.me/TheShadowBrokers133" target="_blank"><i class="fa fa-paypal"></i></a></p>
+</div>
+   
+    <script>
+        function downloadInstagram(option) {
+            const youtubeLink = document.getElementById("youtubeLink").value.trim();
+            if (youtubeLink === "") {
+                alert("[❗] Inserta el enlace de una publicación o reel Instagram.");
+                return;
+            }
+            if (isValidInstagramLink(youtubeLink)) {
+                const downloadUrl = `/human/${option}?url=${youtubeLink}`;
+                window.open(downloadUrl, '_blank');
+            } else {
+                alert("[❗] El enlace no coincide con un enlace de Instagram válido.");
+            }
+        }
+        function isValidInstagramLink(link) {
+            const validPatterns = [/instagram\.com\/p\//i, /instagram\.com\/reel\//i, /instagram\.com\/tv\//i];
+            return validPatterns.some(pattern => pattern.test(link));
+        }
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle("light-mode");
+            body.classList.toggle("dark-mode");
+            const containers = document.querySelectorAll('.container');
+            containers.forEach(container => container.classList.toggle('light-mode'));
+            containers.forEach(container => container.classList.toggle('dark-mode'));
+            const downloadBox = document.querySelector('.download-box');
+            downloadBox.classList.toggle('light-mode');
+            downloadBox.classList.toggle('dark-mode');
+        }
+    </script>
+  </body>
+</html>
