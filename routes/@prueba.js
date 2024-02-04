@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const knights = require("@clayzaaubert/canvix");
+//const knights = require("@clayzaaubert/canvix");
 
 router.get('/', async (req, res) => {
   const username = req.query.username;
