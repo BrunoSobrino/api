@@ -441,6 +441,26 @@
                                 </div>
                             </div>
                         </div>
+
+                        
+                        <!-- Widgets - Latencia -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card h-50">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Latencia Interna</div>
+                                            <div id="latencia"></div>
+                                            <!-- div class="h5 mb-0 font-weight-bold"><%= totalRequests %></div -->
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-bolt faa-wrench fa-2x text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>     
+                        
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div id="findipurl">
                                 <a href="find-ip.net"></a>
@@ -481,6 +501,7 @@
             document.getElementById('totalRequests').textContent = data.totalRequests;
             document.getElementById('totalVisitors').textContent = data.totalVisitors;
             document.getElementById('uptime').textContent = data.uptime;
+            document.getElementById('latencia').textContent = data.latencia;
         });
     }
     setInterval(updateUptime, 1000);
