@@ -84,7 +84,7 @@ const getUptime = () => {
   const hours = Math.floor(uptimeInSeconds / 3600);
   const minutes = Math.floor((uptimeInSeconds % 3600) / 60);
   const seconds = uptimeInSeconds % 60;
-  return `${hours}h, ${minutes}m, ${seconds}s`;
+  return `${hours}h ${minutes}m ${seconds}s`;
 };
 
 // Subpaginas y usos
