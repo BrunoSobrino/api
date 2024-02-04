@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
-const YT = require('./func/YT_mp3_mp4');
-const { obtenerInformacionYoutube } = require('./func/ytdl3');
-const { getBuffer } = require('./func/functions');
+const YT = require('../func/YT_mp3_mp4');
+const { obtenerInformacionYoutube } = require('../func/ytdl3');
+const { getBuffer } = require('../func/functions');
 
 router.get('/', async (req, res) => {
   const match_url = req.query.url;
@@ -19,10 +19,8 @@ router.get('/', async (req, res) => {
       res.send(formattedResults_e);
       return;
     }    
-
     const youtubeInfo = await obtenerInformacionYoutube(match_url);
     const audioBuffer = await getBuffer(youtubeInfo.resultado.ytmp3v2.audio);
-
     let fileName = `audiomp3_${Date.now()}.mp3`;
     let fileIndex = 1;
     while (fs.existsSync(`./tmp/${fileName}`)) {
@@ -31,13 +29,9 @@ router.get('/', async (req, res) => {
       fileName = `${baseName}_${fileIndex}${extension}`;
       fileIndex++;
     }
-
     fs.writeFileSync(`./tmp/${fileName}`, audioBuffer);
-
-    // Configurar el encabezado para la descarga del archivo
-    res.setHeader('Content-Disposition', `attachment; filename="${youtubeInfo.resultado.ytmp3v2.title || fileName}"`);
+    res.setHeader('Content-Disposition', `attachment; filename="${youtubeInfo.resultado.ytmp3v2.title || fileName}.mp3"`);
     res.sendFile(fileName, { root: './tmp' });
-    
   } catch (error) {  
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
