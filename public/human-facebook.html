@@ -132,6 +132,38 @@
     text-decoration: none;
     margin: 0 5px;
 }
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+        
         
     </style>
 </head>
@@ -153,6 +185,9 @@
     <p>👉Desarrollado por Bruno Sobrino👈</p>
     <p>Agradecimientos: <a href="https://github.com/BrunoSobrino" target="_blank"><i class="fa fa-github"></i></a> | <a href="https://www.paypal.me/TheShadowBrokers133" target="_blank"><i class="fa fa-paypal"></i></a></p>
 </div>
+<div id="loadingOverlay" style="display: none;">
+    <div class="loading-spinner"></div>
+</div>
    
     <script>
         function downloadFacebook(option) {
@@ -162,8 +197,12 @@
                 return;
             }
             if (isValidFacebookLink(facebookLink)) {
+                showLoadingOverlay();
                 const downloadUrl = `/human/${option}?url=${facebookLink}`;
                 window.open(downloadUrl, '_blank');
+                window.onfocus = function() {
+                 hideLoadingOverlay();
+                };
             } else {
                 alert("[❗] El enlace no coincide con un enlace de Facebook válido.");
             }
@@ -183,6 +222,13 @@
             downloadBox.classList.toggle('light-mode');
             downloadBox.classList.toggle('dark-mode');
         }
+        
+function showLoadingOverlay() {
+    document.getElementById("loadingOverlay").style.display = "flex";
+}
+function hideLoadingOverlay() {
+    document.getElementById("loadingOverlay").style.display = "none";
+}
     </script>
   </body>
 </html>
