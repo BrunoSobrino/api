@@ -118,14 +118,24 @@ for (const apiEndpoint of apiEndpoints) {
   return result;
 }
 
-async function gpt(content, senderName) {
+async function gpt(content, senderName, prompt) {
+  if (!text) {
+    return {
+      status: false,
+      message: "No has ingresado un texto."
+    };
+  }    
+  const result = {
+    status: true,
+    resultado: "",
+  };
+  
   let url = 'https://c3.a0.chat/v1/chat/gpt/';
   let headers = {
     'Content-Type': 'application/json',
     'User-Agent': 'Mozilla/5.0 (Linux; Android 11; M2004J19C Build/RP1A.200720.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.129 Mobile Safari/537.36 WhatsApp/1.2.3',
     'Referer': 'https://c3.a0.chat/#/web/chat'
   }
-
   const datos = {
     list: [
       {
@@ -138,20 +148,19 @@ async function gpt(content, senderName) {
       }
     ],
     id: 1695108574472,
-    title: "Samuel",
+    title: "BrunoSobrino & Samuel - Dev",
     time: "2023-9-19 14:29:34",
-    prompt: "",//aca agrega como quieres que actue la ia xd
+    prompt: prompt,
     models: 0,
     temperature: 0,
     continuous: true
   }
-
   try {
     let ress = await axios.post(url, datos, { headers });
-    return ress.data;
+    result.resultado = ress.data
+    return result;
   } catch (error) {
-    console.error(error);
-    throw error;
+    return { status: false, error: error.message };
   }
 }
 
