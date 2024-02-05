@@ -11,21 +11,16 @@ const getTwitterMedia = require('get-twitter-media');
 
 async function downloadTwitterMedia(url) {
     try {
-        let media = await getTwitterMedia(url, {
-            buffer: true,
-            text: true,
-        });
-
+        let media = await getTwitterMedia(url, { text: true });
         let response = {
-            found: media.found || false,
+            status: true,
             type: media.type || '',
             media: media.media || {}
         };
-
+        console.log(media)
         if (media.type === 'Video') {
             response.media = {
-                url: media.media.url || '',
-                buffer: media.media.buffer || null
+                url: media.media.url || ''
             };
         } else if (media.type === 'image') {
             response.media = {
@@ -33,11 +28,10 @@ async function downloadTwitterMedia(url) {
                 text: media.text || ''
             };
         }
-
         return response;
     } catch (error) {
         console.log(error);
-        return { found: false, error: error.toString() };
+        return { status: false, error: error.message };
     }
 }
 
