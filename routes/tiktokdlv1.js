@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const { tiktokv2 } = require('./func/tiktokdl');
+const { tiktokv2, tiktokDownloader } = require('./func/tiktokdl');
 
 router.get('/', async (req, res) => {
   const url = req.query.url; 
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
       res.send(formattedResults_e);
       return;
     }        
-    const pint = await tiktokv2(url);
+    const pint = await tiktokDownloader(url);
     const formattedResults = JSON.stringify(pint, null, 2);
     res.setHeader('Content-Type', 'application/json');
     res.send(formattedResults);
