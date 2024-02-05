@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const chatgpt = require('./func/chatgpt'); 
+const { chatgpt, gpt } = require('./func/chatgpt'); 
 
 router.get('/', async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
       res.send(formattedResults_e);
       return;      
     }     
-    const results = await chatgpt(inputText, lenguaje);
+    const results = await gpt(inputText) //chatgpt(inputText, lenguaje);
     const formattedResults = JSON.stringify(results, null, 2);
     res.send(formattedResults);
   } catch (error) {
