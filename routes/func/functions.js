@@ -14,8 +14,10 @@ async function downloadTwitterMedia(url) {
         let media = await getTwitterMedia(url, { text: true });
         let response = {
             status: true,
-            text: media.text || '',
+	    resultado: {	
+            caption: media.text || '',
             media: []
+	  }
         };
         for (let item of media.media) {
             let mediaItem = {};
