@@ -12,4 +12,9 @@ router.get('/instagram', async (req, res) => {
     res.sendFile(indexPath);
 });
 
+router.get('/facebook', async (req, res) => {
+    const indexPath = path.join(__dirname, '..', 'public', 'human-facebook.html');
+    res.sendFile(indexPath);
+});
+
 module.exports = router;
