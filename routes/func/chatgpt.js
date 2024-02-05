@@ -14,7 +14,7 @@ async function chatgpt(text, lenguaje = 'es') {
     resultado: "",
   };
   const apiEndpoints = [
-    {
+/*    {
       url: `https://api-fgmods.ddns.net/api/info/openai2?text=${text}&apikey=XlwAnX8d`,
       processResponse: async (data) => {
         if (data?.result != 'error' && data?.result != '' && data?.result != undefined && data?.result) {
@@ -67,7 +67,7 @@ async function chatgpt(text, lenguaje = 'es') {
           result.resultado = translatedResult.text.trim();
         }
       },
-    },
+    },*/
     {
       url: `https://api.lolhuman.xyz/api/openai?apikey=GataDios&text=${text}&user=apirest`,
       processResponse: async (data) => {
@@ -78,18 +78,7 @@ async function chatgpt(text, lenguaje = 'es') {
       },
     },
     {
-      url: `https://api.ibeng.tech/api/others/chatgpt?q=${text}&apikey=eMlBNRzUXv`,
-      processResponse: async (data) => {
-        if (data?.data != 'error' && data?.data != '' && data?.data != undefined && data?.data) {
-          const hahaha = await translate(data.data, { to: lenguaje, autoCorrect: true });
-          const sextS = hahaha.text;
-          const replacedText = sextS.replace(' Indonesia ', ' español ').trim();
-          result.resultado = replacedText;
-        }
-      },
-    },
-    {
-      url: `https://api.akuari.my.id/ai/gpt?chat=${text}`,
+      url: `https://rest-api.akuari.my.id/ai/gpt?chat=${text}`,
       processResponse: async (data) => {
         if (data?.respon != 'error' && data?.respon != '' && data?.respon != undefined && data?.respon) {
           const translatedResult = await translate(data.respon, { to: lenguaje, autoCorrect: true });
@@ -98,7 +87,7 @@ async function chatgpt(text, lenguaje = 'es') {
       },
     },
     {
-      url: `https://api.azz.biz.id/api/bard?q=${text}&key=global`,
+      url: `https://api.azz.biz.id/api/gpt?q=${text}&user=Adit`,
       processResponse: async (data) => {
         if (data?.respon != 'error' && data?.respon != '' && data?.respon != undefined && data?.respon) {
           const translatedResult = await translate(data.respon, { to: lenguaje, autoCorrect: true });
@@ -128,4 +117,41 @@ for (const apiEndpoint of apiEndpoints) {
   return result;
 }
 
-module.exports = chatgpt;
+async function gpt(content) {
+  let url = 'https://c3.a0.chat/v1/chat/gpt/';
+  let headers = {
+    'Content-Type': 'application/json',
+    'User-Agent': 'Mozilla/5.0 (Linux; Android 11; M2004J19C Build/RP1A.200720.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.129 Mobile Safari/537.36 WhatsApp/1.2.3',
+    'Referer': 'https://c3.a0.chat/#/web/chat'
+  }
+
+  const datos = {
+    list: [
+      {
+        content: content,
+        role: "user",
+        nickname: senderName,
+        time: "2023-9-19 14:30:08",
+        isMe: true,
+        index: 0
+      }
+    ],
+    id: 1695108574472,
+    title: "Samuel",
+    time: "2023-9-19 14:29:34",
+    prompt: "",//aca agrega como quieres que actue la ia xd
+    models: 0,
+    temperature: 0,
+    continuous: true
+  }
+
+  try {
+    let ress = await axios.post(url, datos, { headers });
+    return ress.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+module.exports = { chatgpt, gpt };
