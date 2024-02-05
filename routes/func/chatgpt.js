@@ -117,7 +117,7 @@ for (const apiEndpoint of apiEndpoints) {
   return result;
 }
 
-async function gpt(content) {
+async function gpt(content, senderName) {
   let url = 'https://c3.a0.chat/v1/chat/gpt/';
   let headers = {
     'Content-Type': 'application/json',
