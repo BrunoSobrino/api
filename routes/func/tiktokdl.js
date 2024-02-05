@@ -129,4 +129,52 @@ async function tiktokv2(url) {
    }
 }
 
-module.exports = { getTikTokBuffer, tiktokv2 };
+async function tiktokDownloader(url) {
+    try {
+        let tiktokdl = await fetch(`https://www.tikwm.com/api/?url=${url}?hd=1`);
+        let res = await tiktokdl.json();
+
+        let response = {
+            status: true,
+            resultado: {}
+        };
+
+        if (res.data.images) {
+            response.resultado = {
+                username: res.data.author.unique_id,
+                nickname: res.data.author.nickname,
+                region: res.data.region,
+                commentCount: res.data.comment_count,
+                shareCount: res.data.share_count,
+                downloadCount: res.data.download_count,
+                imagesCount: res.data.images.length,
+                musicInfo: {
+                    title: res.data.music_info.title,
+                    album: res.data.music_info.album || ""
+                },
+                title: res.data.title || "",
+            };
+        } else {
+            response.resultado = {
+                username: res.data.author.unique_id,
+                nickname: res.data.author.nickname,
+                region: res.data.region,
+                commentCount: res.data.comment_count,
+                shareCount: res.data.share_count,
+                downloadCount: res.data.download_count,
+                musicInfo: {
+                    title: res.data.music_info.title,
+                    album: res.data.music_info.album || ""
+                },
+                title: res.data.title || "",
+                videoUrl: res.data.play
+            };
+        }
+
+        return response;
+    } catch (e) {
+        return { status: false, error: e.message };
+    }
+}
+
+module.exports = { getTikTokBuffer, tiktokv2, tiktokDownloader };
