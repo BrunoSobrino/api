@@ -33,7 +33,6 @@ router.get('/', async (req, res) => {
     res.attachment(fileName);
     res.send(fileBuffer);
   } catch (error) {
-    console.log(error)
     res.sendFile(path.join(__dirname, '../../public/500.html'));
   }
 });
