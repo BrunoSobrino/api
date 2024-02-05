@@ -6,6 +6,7 @@ const { chatgpt, gpt } = require('./func/chatgpt');
 router.get('/', async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   const inputText = req.query.text;
+  const senderName = req.query.name || ''; 
   const lenguaje = req.query.lenguaje || 'es'; 
    try {
     if (!inputText) {
@@ -18,7 +19,7 @@ router.get('/', async (req, res) => {
       res.send(formattedResults_e);
       return;      
     }     
-    const results = await gpt(inputText) //chatgpt(inputText, lenguaje);
+    const results = await gpt(inputText, senderName) //chatgpt(inputText, lenguaje);
     const formattedResults = JSON.stringify(results, null, 2);
     res.send(formattedResults);
   } catch (error) {
