@@ -53,7 +53,8 @@ router.get('/', async (req, res) => {
     // Enviar el archivo como descarga
     res.send(fileBuffer);
   } catch (error) {
-    res.sendFile(path.join(__dirname, '../public/500.html'));
+    console.log(error)
+    res.sendFile(path.join(__dirname, '../../public/500.html'));
   }
 });
 
