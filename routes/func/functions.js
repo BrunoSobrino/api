@@ -7,6 +7,39 @@ const { fromBuffer  } = require('file-type');
 const request = require('request')
 const { TiktokStalk } = require("@tobyg74/tiktok-api-dl")
 const FormData = require('form-data');
+const getTwitterMedia = require('get-twitter-media');
+
+async function downloadTwitterMedia(url) {
+    try {
+        let media = await getTwitterMedia(url, {
+            buffer: true,
+            text: true,
+        });
+
+        let response = {
+            found: media.found || false,
+            type: media.type || '',
+            media: media.media || {}
+        };
+
+        if (media.type === 'Video') {
+            response.media = {
+                url: media.media.url || '',
+                buffer: media.media.buffer || null
+            };
+        } else if (media.type === 'image') {
+            response.media = {
+                url: media.media.url || '',
+                text: media.text || ''
+            };
+        }
+
+        return response;
+    } catch (error) {
+        console.log(error);
+        return { found: false, error: error.toString() };
+    }
+}
 
 async function maker(url, text) {
    if (/https?:\/\/(ephoto360|photooxy|textpro)\/\.(com|me)/i.test(url)) throw new Error("URL Invalid")
@@ -482,5 +515,6 @@ module.exports = {
   ttp,
   stickersearch,
   pinterest,
-  maker
+  maker,
+  downloadTwitterMedia
 };
