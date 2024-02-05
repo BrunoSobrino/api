@@ -16,13 +16,13 @@ async function downloadTwitterMedia(url) {
             status: true,
             media: []
         };
-console.log(media)
+
         for (let item of media.media) {
             let mediaItem = {};
 
             if (item.url) {
-                let fileType = getFileType(item.url);
-                
+                let fileType = getFileTypeFromUrl(item.url);
+
                 if (fileType === 'video') {
                     mediaItem = {
                         type: 'video',
@@ -47,8 +47,8 @@ console.log(media)
     }
 }
 
-function getFileType(url) {
-    let extension = url.slice(-3).toLowerCase();
+function getFileTypeFromUrl(url) {
+    let extension = url.split('.').pop().toLowerCase();
 
     if (extension === 'mp4') {
         return 'video';
@@ -58,6 +58,7 @@ function getFileType(url) {
 
     return 'unknown';
 }
+
 
 async function maker(url, text) {
    if (/https?:\/\/(ephoto360|photooxy|textpro)\/\.(com|me)/i.test(url)) throw new Error("URL Invalid")
