@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
-const { facebookdlfunc } = require('./func/facebook');
+const { facebookdlfunc } = require('../func/facebook');
 const { getBuffer } = require('../func/functions');
 const fileType = require('file-type');
 
