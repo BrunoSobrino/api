@@ -10,6 +10,7 @@
 ## —◉ Funciones extras:
 - YT: [https://api.cafirexos.com/human/youtube](https://api.cafirexos.com/human/youtube)
 - IG: [https://api.cafirexos.com/human/instagram](https://api.cafirexos.com/human/instagram)
+- FB: [https://api.cafirexos.com/human/instagram](https://api.cafirexos.com/human/facebook)
 
 ------------------
 
