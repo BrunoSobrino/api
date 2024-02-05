@@ -22,6 +22,7 @@ router.get('/', async (req, res) => {
     const formattedResults = JSON.stringify(results, null, 2);
     res.send(formattedResults);
   } catch (error) {
+     console.log(error)
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
