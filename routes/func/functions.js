@@ -36,7 +36,7 @@ async function downloadTwitterMedia(url) {
                     };
                 }
             }
-            mediaItem.type && response.media.push(mediaItem);
+            mediaItem.type && response.resultado.media.push(mediaItem);
         }
         return response;
     } catch (error) {
