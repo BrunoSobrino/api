@@ -153,7 +153,7 @@ async function tiktokDownloader(url) {
                     album: res.data.music_info.album || ""
                 },
                 title: res.data.title || "",
-                images: res.data.images
+                imagesUrl: res.data.images
             };
         } else {
             response.resultado = {
