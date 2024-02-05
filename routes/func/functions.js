@@ -14,20 +14,31 @@ async function downloadTwitterMedia(url) {
         let media = await getTwitterMedia(url, { text: true });
         let response = {
             status: true,
-            type: media.type || '',
-            media: media.media || {}
+            media: []
         };
-        console.log(media)
-        if (media.type === 'Video') {
-            response.media = {
-                url: media.media.url || ''
-            };
-        } else if (media.type === 'image') {
-            response.media = {
-                url: media.media.url || '',
-                text: media.text || ''
-            };
+
+        for (let item of media.media) {
+            let mediaItem = {};
+
+            if (item.url) {
+                let extension = item.url.slice(-3).toLowerCase();
+                if (extension === 'mp4') {
+                    mediaItem = {
+                        type: 'video',
+                        url: item.url
+                    };
+                } else if (extension === 'jpg' || extension === 'png' || extension === 'gif') {
+                    mediaItem = {
+                        type: 'image',
+                        url: item.url,
+                        text: media.text || ''
+                    };
+                }
+            }
+
+            response.media.push(mediaItem);
         }
+
         return response;
     } catch (error) {
         console.log(error);
