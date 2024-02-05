@@ -14,12 +14,11 @@ async function downloadTwitterMedia(url) {
         let media = await getTwitterMedia(url, { text: true });
         let response = {
             status: true,
+            text: media.text || '',
             media: []
         };
-
         for (let item of media.media) {
             let mediaItem = {};
-
             if (item.url) {
                 let fileType = getFileTypeFromUrl(item.url);
 
@@ -31,18 +30,14 @@ async function downloadTwitterMedia(url) {
                 } else if (fileType === 'image') {
                     mediaItem = {
                         type: 'image',
-                        url: item.url,
-                        text: media.text || ''
+                        url: item.url
                     };
                 }
             }
-
             mediaItem.type && response.media.push(mediaItem);
         }
-
         return response;
     } catch (error) {
-        console.log(error);
         return { status: false, error: error.message };
     }
 }
@@ -50,16 +45,13 @@ async function downloadTwitterMedia(url) {
 function getFileTypeFromUrl(url) {
     let videoRegex = /\/ext_tw_video\//;
     let imageRegex = /\/media\//;
-
     if (videoRegex.test(url)) {
         return 'video';
     } else if (imageRegex.test(url)) {
         return 'image';
     }
-
     return 'unknown';
 }
-
 
 async function maker(url, text) {
    if (/https?:\/\/(ephoto360|photooxy|textpro)\/\.(com|me)/i.test(url)) throw new Error("URL Invalid")
