@@ -16,7 +16,7 @@ async function downloadTwitterMedia(url) {
             status: true,
             media: []
         };
-
+console.log(media)
         for (let item of media.media) {
             let mediaItem = {};
 
