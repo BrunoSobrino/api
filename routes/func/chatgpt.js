@@ -6,8 +6,7 @@ async function chatgpt(text, lenguaje = 'es') {
   if (!text) {
     return {
       status: false,
-      message: "No has ingresado un texto.",
-      ejemplo: "https://api.boxmine.xyz/chatgpt?text=hola&lenguaje=es"
+      message: "No has ingresado un texto."
     };
   }    
   const result = {
