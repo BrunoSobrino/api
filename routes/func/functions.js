@@ -16,16 +16,19 @@ async function downloadTwitterMedia(url) {
             status: true,
             media: []
         };
+
         for (let item of media.media) {
             let mediaItem = {};
+
             if (item.url) {
-                let extension = item.url.slice(-3).toLowerCase();
-                if (extension === 'mp4') {
+                let fileType = getFileType(item.url);
+                
+                if (fileType === 'video') {
                     mediaItem = {
                         type: 'video',
                         url: item.url
                     };
-                } else if (extension === 'jpg' || extension === 'png' || extension === 'gif') {
+                } else if (fileType === 'image') {
                     mediaItem = {
                         type: 'image',
                         url: item.url,
@@ -33,12 +36,27 @@ async function downloadTwitterMedia(url) {
                     };
                 }
             }
+
             mediaItem.type && response.media.push(mediaItem);
         }
+
         return response;
     } catch (error) {
+        console.log(error);
         return { status: false, error: error.message };
     }
+}
+
+function getFileType(url) {
+    let extension = url.slice(-3).toLowerCase();
+
+    if (extension === 'mp4') {
+        return 'video';
+    } else if (extension === 'jpg' || extension === 'png' || extension === 'gif') {
+        return 'image';
+    }
+
+    return 'unknown';
 }
 
 async function maker(url, text) {
