@@ -119,7 +119,7 @@ for (const apiEndpoint of apiEndpoints) {
 }
 
 async function gpt(content, senderName, prompt) {
-  if (!text) {
+  if (!content) {
     return {
       status: false,
       message: "No has ingresado un texto."
