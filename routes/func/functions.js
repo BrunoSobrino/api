@@ -48,11 +48,12 @@ async function downloadTwitterMedia(url) {
 }
 
 function getFileTypeFromUrl(url) {
-    let extension = url.split('.').pop().toLowerCase();
+    let videoRegex = /\/ext_tw_video\//;
+    let imageRegex = /\/media\//;
 
-    if (extension === 'mp4') {
+    if (videoRegex.test(url)) {
         return 'video';
-    } else if (extension === 'jpg' || extension === 'png' || extension === 'gif') {
+    } else if (imageRegex.test(url)) {
         return 'image';
     }
 
