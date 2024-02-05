@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const axios = require('axios');
 const translate = require('@vitalets/google-translate-api');
 
 async function chatgpt(text, lenguaje = 'es') {
