@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const Spotify = require('spotifydl-x');
+//const Spotify = require('spotifydl-x');
 const SpottyDL = require('spottydl');
 const fs = require('fs');
 const NodeID3 = require('node-id3');
@@ -7,11 +7,11 @@ const axios = require('axios');
 const uploadFile = require('./uploadFile')
 const { getBuffer } = require('./functions');
 
-const credentials = {
+/*const credentials = {
   clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3',
   clientSecret: '0e8439a1280a43aba9a5bc0a16f3f009',
 };
-const spotify = new Spotify.default(credentials);
+const spotify = new Spotify.default(credentials);*/
 
 async function getMusicBuffer(text) {
   try {
@@ -70,9 +70,8 @@ async function getMusicBuffer(text) {
       const jsonDL = await resDL.json();
       const linkDL = jsonDL.result[0].link;
       const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${linkDL}`);
-      //const spty = await spotifydl(isSpotifyUrl[0]);
       const dataInfo = await SpottyDL.getTrack(linkDL)      
-      const spty = await spotifydl(linkDL);
+      //const spty = await spotifydl(linkDL);
       const getRandom = (ext) => {
         return `${Math.floor(Math.random() * 10000)}${ext}`;
       };
