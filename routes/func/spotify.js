@@ -69,6 +69,67 @@ async function getMusicBuffer(text) {
       const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
       const jsonDL = await resDL.json();
       const linkDL = jsonDL.result[0].link;
+      const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${linkDL}`);
+      //const spty = await spotifydl(isSpotifyUrl[0]);
+      const dataInfo = await SpottyDL.getTrack(linkDL)      
+      const spty = await spotifydl(linkDL);
+      const getRandom = (ext) => {
+        return `${Math.floor(Math.random() * 10000)}${ext}`;
+      };
+      let randomName = getRandom('.mp3');
+      let filePath = `./tmp/${randomName}`; 
+      let fileExists = true;
+      while (fileExists) {
+        if (fs.existsSync(filePath)) {
+          randomName = getRandom('.mp3');
+          filePath = `./tmp/${randomName}`;
+        } else {
+          fileExists = false;
+        }
+      }
+      const artist = dataInfo.artist || '-';
+      const img = await (await fetch(`${dataInfo.albumCoverURL}`)).buffer()  
+      const tags = {
+        title: dataInfo.title || '-',
+        artist: artist,
+        album: dataInfo.album || '-',
+        year: dataInfo.year || '-',
+        genre: 'Música',
+        comment: {
+          language: 'spa',
+          text: '🤴🏻 Descarga por BrunoSobrino & TheMystic-Bot-MD 🤖',
+        },
+        unsynchronisedLyrics: {
+          language: 'spa',
+          text: '🤴🏻 Descarga por BrunoSobrino & TheMystic-Bot-MD 🤖',
+        },
+        image: {
+          mime: 'image/jpeg',
+          type: {
+            id: 3,
+            name: 'front cover',
+          },
+          description: 'Spotify Thumbnail',
+          imageBuffer: await axios.get(dataInfo.albumCoverURL, { responseType: 'arraybuffer' }).then((response) => Buffer.from(response.data, 'binary')),
+        },
+        mimetype: 'image/jpeg',
+        copyright: 'Copyright Darlyn ©2023',
+      };
+      await fs.promises.writeFile(filePath, dlspoty);
+      await NodeID3.write(tags, filePath);
+      return filePath;
+    }
+  } catch (error) {
+    console.error(error);
+    throw 'Error al obtener la ruta de la música.';
+  }
+}
+
+
+/*
+      const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
+      const jsonDL = await resDL.json();
+      const linkDL = jsonDL.result[0].link;
       const spty = await spotifydl(linkDL);
       const getRandom = (ext) => {
         return `${Math.floor(Math.random() * 10000)}${ext}`;
@@ -116,11 +177,7 @@ async function getMusicBuffer(text) {
       await NodeID3.write(tags, filePath);
       return filePath;
     }
-  } catch (error) {
-    console.error(error);
-    throw 'Error al obtener la ruta de la música.';
-  }
-}
+*/
 
 async function spotifySearch1(input) {
   try {
