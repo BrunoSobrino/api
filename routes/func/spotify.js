@@ -217,7 +217,8 @@ async function spotifySearch2(text) {
   }
 }
 
-async function spotifydl(url) {
+
+/*async function spotifydl(url) {
   return new Promise(async (resolve, reject) => {
     try {
       const res = await spotify.getTrack(url);
@@ -233,7 +234,7 @@ async function spotifydl(url) {
       reject(error);
     }
   });
-}
+}*/
 
 module.exports = {
   getMusicBuffer,
