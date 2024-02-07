@@ -3,7 +3,6 @@ const router = express.Router();
 const { spotifySearch2 } = require('./func/spotify');
 
 router.get('/', async (req, res) => {
-  res.setHeader('Content-Type', 'application/json');  
   const textoo = req.query.text;
   try {
     if (!textoo) {
@@ -14,10 +13,10 @@ router.get('/', async (req, res) => {
     const spty = await spotifySearch2(textoo);
     const formattedResponse = {status: true, spty};
     const formattedResults2 = JSON.stringify(formattedResponse, null, 2);
+    res.setHeader('Content-Type', 'application/json');  
     res.send(formattedResults2);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error al obtener los resultados.' });
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
