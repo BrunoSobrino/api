@@ -35,7 +35,7 @@ async function getMusicBuffer(text) {
         }
       }
       const artist = dataInfo.artist || '-';
-      const img = await (await fetch(`${spty.data.cover_url}`)).buffer()  
+      const img = await (await fetch(`${dataInfo.albumCoverURL}`)).buffer()  
       const tags = {
         title: dataInfo.title || '-',
         artist: artist,
