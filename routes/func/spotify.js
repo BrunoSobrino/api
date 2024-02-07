@@ -1,9 +1,11 @@
 const fetch = require('node-fetch');
 const Spotify = require('spotifydl-x');
+const SpottyDL = require('spottydl');
 const fs = require('fs');
 const NodeID3 = require('node-id3');
 const axios = require('axios');
 const uploadFile = require('./uploadFile')
+const { getBuffer } = require('./functions');
 
 const credentials = {
   clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3',
@@ -15,7 +17,9 @@ async function getMusicBuffer(text) {
   try {
     const isSpotifyUrl = text.match(/^(https:\/\/open\.spotify\.com\/track\/[a-zA-Z0-9]+)/i);
     if (isSpotifyUrl) {
-      const spty = await spotifydl(isSpotifyUrl[0]);
+      const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${isSpotifyUrl[0]}`);
+      //const spty = await spotifydl(isSpotifyUrl[0]);
+      const dataInfo = await SpottyDL.getTrack(isSpotifyUrl[0])
       const getRandom = (ext) => {
         return `${Math.floor(Math.random() * 10000)}${ext}`;
       };
@@ -30,13 +34,13 @@ async function getMusicBuffer(text) {
           fileExists = false;
         }
       }
-      const artist = spty.data.artists.join(', ') || '-';
+      const artist = dataInfo.artist || '-';
       const img = await (await fetch(`${spty.data.cover_url}`)).buffer()  
       const tags = {
-        title: spty.data.name || '-',
+        title: dataInfo.title || '-',
         artist: artist,
-        album: spty.data.album_name || '-',
-        year: spty.data.release_date || '-',
+        album: dataInfo.album || '-',
+        year: dataInfo.year || '-',
         genre: 'Música',
         comment: {
           language: 'spa',
@@ -53,12 +57,12 @@ async function getMusicBuffer(text) {
             name: 'front cover',
           },
           description: 'Spotify Thumbnail',
-          imageBuffer: await axios.get(spty.data.cover_url, { responseType: 'arraybuffer' }).then((response) => Buffer.from(response.data, 'binary')),
+          imageBuffer: await axios.get(dataInfo.albumCoverURL, { responseType: 'arraybuffer' }).then((response) => Buffer.from(response.data, 'binary')),
         },
         mimetype: 'image/jpeg',
         copyright: 'Copyright Darlyn ©2023',
       };
-      await fs.promises.writeFile(filePath, spty.audio);
+      await fs.promises.writeFile(filePath, dlspoty);
       await NodeID3.write(tags, filePath);
       return filePath;
     } else {
