@@ -186,18 +186,19 @@ async function spotifySearch1(input) {
       const jsonDL = await resDL.json();
       linkDL = jsonDL.result[0].link;
     }
-    const spty = await spotifydl(linkDL);
-    const artist = spty?.data.artists.join(', ') || '-';
+    const dataInfo = await SpottyDL.getTrack(linkDL)      
+    const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${linkDL}`);
+    const artist = dataInfo.artist || '-';
     const data = {
-      title: spty?.data.name || '-',
+      title: dataInfo.title || '-',
       artist: artist,
-      album: spty?.data.album_name || '-',
+      album: dataInfo.album || '-',
       url: linkDL || '-',
-      year: spty?.data.release_date || '-',
+      year: dataInfo.year || '-',
       genre: 'Música',
-      thumbnail: spty?.data.cover_url || '-'
+      thumbnail: dataInfo.albumCoverURL || '-'
     };
-    const audiodl = await uploadFile(spty?.audio)
+    const audiodl = await uploadFile(dlspoty)
     return { resultado: data, download: { audio: audiodl } };
   } catch (error) {
     console.error(error);
