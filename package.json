@@ -43,6 +43,7 @@
     "serve-favicon": "*",
     "spotifydl-x": "github:darlyn1234/SpotidyModule",
     "spottydl": "*",
+    "sanzy-spotifydl": "*",
     "fb-downloader-scrapper": "^1.0.1",
     "fluent-ffmpeg": "^2.1.2",
     "form-data": "^4.0.0",
