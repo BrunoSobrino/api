@@ -64,7 +64,7 @@ async function getMusicBuffer(text) {
         mimetype: 'image/jpeg',
         copyright: 'Copyright Darlyn ©2023',
       };
-      await fs.promises.writeFile(filePath, dlspoty.audioBuffer[0]);
+      await fs.promises.writeFile(filePath, dlspoty.audioBuffer);
       await NodeID3.write(tags, filePath);
       return filePath;
     } else {
