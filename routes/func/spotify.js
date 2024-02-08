@@ -6,7 +6,7 @@ const NodeID3 = require('node-id3');
 const axios = require('axios');
 const uploadFile = require('./uploadFile')
 const { getBuffer } = require('./functions');
-const { search, downloadTrack, downloadAlbum } = require("@nechlophomeriaa/spotifydl")
+const { search, downloadTrack, downloadAlbum } = require("sanzy-spotifydl")
 
 /*const credentials = {
   clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3',
