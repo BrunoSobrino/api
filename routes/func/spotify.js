@@ -72,7 +72,7 @@ async function getMusicBuffer(text) {
       const jsonDL = await resDL.json();
       const linkDL = jsonDL.result[0].link;
       //const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${linkDL}`);
-      const dlspoty = await downloadTrack(isSpotifyUrl[0]);
+      const dlspoty = await downloadTrack(linkDL);
       const dataInfo = await SpottyDL.getTrack(linkDL)      
       //const spty = await spotifydl(linkDL);
       const getRandom = (ext) => {
@@ -191,7 +191,7 @@ async function spotifySearch1(input) {
     }
     const dataInfo = await SpottyDL.getTrack(linkDL)      
     //const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${linkDL}`);
-    const dlspoty = await downloadTrack(isSpotifyUrl[0]);
+    const dlspoty = await downloadTrack(linkDL);
     const artist = dataInfo.artist || '-';
     const data = {
       title: dataInfo.title || '-',
