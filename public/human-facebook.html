@@ -169,7 +169,7 @@
             }
         }
         function isValidFacebookLink(link) {
-            const validPatterns = [/facebook\.com\/[^/]+\/videos\//i, /fb\.watch\//i, /fb\.com\/watch\//i, /fb\.me\//i, /fb\.com\/video\.php\?v=/i];
+            const validPatterns = [/facebook\.com\/[^/]+\/videos\//i, /fb\.watch\//i, /fb\.com\/watch\//i, /fb\.me\//i, /fb\.com\/video\.php\?v=/i, /fb\.share\//i];
             return validPatterns.some(pattern => pattern.test(link));
         }
         function toggleTheme() {
