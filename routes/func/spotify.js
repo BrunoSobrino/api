@@ -16,7 +16,7 @@ const spotify = new Spotify.default(credentials);*/
 
 async function getMusicBuffer(text) {
   try {
-    const isSpotifyUrl = text.match(/^(https:\/\/open\.spotify\.com\/track\/[a-zA-Z0-9]+)/i);
+    const isSpotifyUrl = text.match(/^(https:\/\/open\.spotify\.com\/(album|track)\/[a-zA-Z0-9]+)/i);
     if (isSpotifyUrl) {
       //const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${isSpotifyUrl[0]}`);
       const dlspoty = await downloadTrack(isSpotifyUrl[0]);
