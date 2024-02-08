@@ -71,7 +71,8 @@ async function getMusicBuffer(text) {
       const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
       const jsonDL = await resDL.json();
       const linkDL = jsonDL.result[0].link;
-      const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${linkDL}`);
+      //const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${linkDL}`);
+      const dlspoty = await downloadTrack(isSpotifyUrl[0]);
       const dataInfo = await SpottyDL.getTrack(linkDL)      
       //const spty = await spotifydl(linkDL);
       const getRandom = (ext) => {
@@ -116,7 +117,7 @@ async function getMusicBuffer(text) {
         mimetype: 'image/jpeg',
         copyright: 'Copyright Darlyn ©2023',
       };
-      await fs.promises.writeFile(filePath, dlspoty);
+      await fs.promises.writeFile(filePath, dlspoty.audioBuffer);
       await NodeID3.write(tags, filePath);
       return filePath;
     }
@@ -189,7 +190,8 @@ async function spotifySearch1(input) {
       linkDL = jsonDL.result[0].link;
     }
     const dataInfo = await SpottyDL.getTrack(linkDL)      
-    const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${linkDL}`);
+    //const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${linkDL}`);
+    const dlspoty = await downloadTrack(isSpotifyUrl[0]);
     const artist = dataInfo.artist || '-';
     const data = {
       title: dataInfo.title || '-',
@@ -200,7 +202,7 @@ async function spotifySearch1(input) {
       genre: 'Música',
       thumbnail: dataInfo.albumCoverURL || '-'
     };
-    const audiodl = await uploadFile(dlspoty)
+    const audiodl = await uploadFile(dlspoty.audioBuffer)
     return { resultado: data, download: { audio: audiodl } };
   } catch (error) {
     console.error(error);
