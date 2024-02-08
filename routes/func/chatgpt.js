@@ -159,7 +159,7 @@ async function gpt(content, senderName, prompt) {
     result.resultado = ress.data
   } catch {*/
   try {
-    let resultadoApi = await fetch(`https://aemt.me/prompt/gpt?prompt=${prompt}&text=${content}`)
+    let resultadoApi = await fetch(`https://Aaemt.me/prompt/gpt?prompt=${prompt}&text=${content}`)
     const resultado_Api = await resultadoApi.json()
     result.resultado = resultado_Api.result
     return result;
