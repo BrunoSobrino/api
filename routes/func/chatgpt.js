@@ -156,15 +156,22 @@ async function gpt(content, senderName, prompt) {
   }
   try {
     let ress = await axios.post(url, datos, { headers });
-    result.resultado = ress.data*/
+    result.resultado = ress.data
+  } catch {*/
   try {
     let resultadoApi = await fetch(`https://aemt.me/prompt/gpt?prompt=${prompt}&text=${content}`)
     const resultado_Api = await resultadoApi.json()
     result.resultado = resultado_Api.result
     return result;
+  } catch { 
+  try {
+    let resultadoApi2 = await fetch(`https://ultimetron.guruapi.tech/gpt4?prompt=${prompt}`)
+    const resultado_Api2 = await resultadoApi2.json()
+    result.resultado = resultado_Api2.result.reply
+    return result;
   } catch (error) {
     return { status: false, error: error.message };
-  }
+  }}
 }
 
 module.exports = { chatgpt, gpt };
