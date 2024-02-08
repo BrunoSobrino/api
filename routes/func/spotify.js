@@ -20,6 +20,7 @@ async function getMusicBuffer(text) {
     if (isSpotifyUrl) {
       //const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${isSpotifyUrl[0]}`);
       const dlspoty = await downloadTrack(isSpotifyUrl[0]);
+      console.log(dlspoty);
       //const spty = await spotifydl(isSpotifyUrl[0]);
       const dataInfo = await SpottyDL.getTrack(isSpotifyUrl[0])
       const getRandom = (ext) => {
