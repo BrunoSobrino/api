@@ -6,6 +6,7 @@ const NodeID3 = require('node-id3');
 const axios = require('axios');
 const uploadFile = require('./uploadFile')
 const { getBuffer } = require('./functions');
+const { search, downloadTrack, downloadAlbum } = require("@nechlophomeriaa/spotifydl")
 
 /*const credentials = {
   clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3',
@@ -17,7 +18,8 @@ async function getMusicBuffer(text) {
   try {
     const isSpotifyUrl = text.match(/^(https:\/\/open\.spotify\.com\/track\/[a-zA-Z0-9]+)/i);
     if (isSpotifyUrl) {
-      const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${isSpotifyUrl[0]}`);
+      //const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${isSpotifyUrl[0]}`);
+      const dlspoty = await downloadTrack(isSpotifyUrl[0]);
       //const spty = await spotifydl(isSpotifyUrl[0]);
       const dataInfo = await SpottyDL.getTrack(isSpotifyUrl[0])
       const getRandom = (ext) => {
@@ -62,7 +64,7 @@ async function getMusicBuffer(text) {
         mimetype: 'image/jpeg',
         copyright: 'Copyright Darlyn ©2023',
       };
-      await fs.promises.writeFile(filePath, dlspoty);
+      await fs.promises.writeFile(filePath, dlspoty.audioBuffer[0]);
       await NodeID3.write(tags, filePath);
       return filePath;
     } else {
