@@ -178,15 +178,15 @@ async function spotifyDownload(input) {
         if (isSpotifyUrl[2] === 'album') {
             response = await downloadAlbum(input);
             const uploadedAudio = await uploadFile(response.audioBuffer);
-            downloadUrl = await getDownloadUrl(uploadedAudio); // Cambia esto según cómo obtienes la URL de descarga
-            delete response.audioBuffer; // Eliminar el buffer de audio para evitar confusiones
+            downloadUrl = uploadedAudio; 
+            delete response.audioBuffer; 
             response.downloadUrl = downloadUrl;
             return { status: true, ...response };
         } else if (isSpotifyUrl[2] === 'track') {
             response = await downloadTrack(input);
             const uploadedAudio = await uploadFile(response.audioBuffer);
-            downloadUrl = await getDownloadUrl(uploadedAudio); // Cambia esto según cómo obtienes la URL de descarga
-            delete response.audioBuffer; // Eliminar el buffer de audio para evitar confusiones
+            downloadUrl = uploadedAudio; 
+            delete response.audioBuffer;
             response.downloadUrl = downloadUrl;
             return { status: true, ...response };
         }
