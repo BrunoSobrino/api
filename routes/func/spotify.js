@@ -19,7 +19,6 @@ async function getMusicBuffer(text) {
         const track = await downloadTrack(isSpotifyUrl[0]);
         dlspoty = track.audioBuffer;
       }
-      console.log(dlspoty);
       let dataInfo;
       if (isSpotifyUrl[2] === 'album') {
         dataInfo = await SpottyDL.getAlbum(isSpotifyUrl[0])
