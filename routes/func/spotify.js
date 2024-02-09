@@ -6,8 +6,6 @@ const axios = require('axios');
 const uploadFile = require('./uploadFile')
 const { getBuffer } = require('./functions');
 const { search, downloadTrack, downloadAlbum } = require("sanzy-spotifydl")
-const { uploadByBuffer } = require('telegraph-uploader')
-
 
 async function getMusicBuffer(text) {
   try {
@@ -179,16 +177,16 @@ async function spotifyDownload(input) {
         let downloadUrl;
         if (isSpotifyUrl[2] === 'album') {
             response = await downloadAlbum(input);
-            const uploadedAudio = await uploadByBuffer(response.audioBuffer);
-            downloadUrl = uploadedAudio.link; 
+            const uploadedAudio = await uploadFile(response.audioBuffer);
+            downloadUrl = uploadedAudio; 
             delete response.audioBuffer; 
             response.downloadUrl = downloadUrl;
             return { status: true, ...response };
         } else if (isSpotifyUrl[2] === 'track') {
             response = await downloadTrack(input);
-            const uploadedAudio = await uploadByBuffer(response.audioBuffer);
+            const uploadedAudio = await uploadFile(response.audioBuffer);
             console.log(uploadedAudio)
-            downloadUrl = uploadedAudio.link; 
+            downloadUrl = uploadedAudio; 
             delete response.audioBuffer;
             response.downloadUrl = downloadUrl;
             return { status: true, ...response };
