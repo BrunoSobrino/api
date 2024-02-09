@@ -26,8 +26,6 @@ async function getMusicBuffer(text) {
       } else if (isSpotifyUrl[2] === 'track') {
         dataInfo = await SpottyDL.getTrack(isSpotifyUrl[0])
       }
-      console.log(dataInfo);      
-      //const dataInfo = await SpottyDL.getTrack(isSpotifyUrl[0])
       const getRandom = (ext) => {
         return `${Math.floor(Math.random() * 10000)}${ext}`;
       };
@@ -45,9 +43,9 @@ async function getMusicBuffer(text) {
       const artist = dataInfo.artist || '-';
       const img = await (await fetch(`${dataInfo.albumCoverURL}`)).buffer()  
       const tags = {
-        title: dataInfo.title || '-',
+        title: dataInfo.title ? dataInfo.title : dataInfo.name || '-',
         artist: artist,
-        album: dataInfo.album || '-',
+        album: dataInfo.album ? dataInfo.album : dataInfo.name || '-',
         year: dataInfo.year || '-',
         genre: 'Música',
         comment: {
