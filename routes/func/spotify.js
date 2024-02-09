@@ -174,11 +174,14 @@ async function spotifyDownload(input) {
     const isSpotifyUrl = input.match(/^(https:\/\/open\.spotify\.com\/(album|track)\/[a-zA-Z0-9]+)/i);
     try {
         let response;
+        let audiodl;
         if (isSpotifyUrl[2] === 'album') {
             response = await downloadAlbum(input);
+            audiodl = await uploadFile(response.audioBuffer)
           return response;
         } else if (isSpotifyUrl[2] === 'track') {
             response = await downloadTrack(input);
+            audiodl = await uploadFile(response.audioBuffer)
           return response;
         }
     } catch (error) {
