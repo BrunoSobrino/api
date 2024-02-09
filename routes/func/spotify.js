@@ -170,10 +170,58 @@ async function spotifySearch2(text) {
   }
 }
 
+async function spotifyDownload(input) {
+    try {
+        let response;
+        if (input.startsWith("https://open.spotify.com/album/")) {
+            response = await downloadAlbum(input);
+            if (!response || response.type !== "album") {
+                throw new Error("No se pudo descargar el álbum.");
+            }
+
+            const audios = response.trackList.map((track) => {
+                return {
+                    title: track.metadata.title,
+                    audioBuffer: track.audioBuffer
+                };
+            });
+
+            return { status: true, resultado: { audios } };
+        } else if (input.startsWith("https://open.spotify.com/track/")) {
+            response = await downloadTrack(input);
+            if (!response || response.status !== true) {
+                throw new Error("No se pudo descargar la pista.");
+            }
+
+            const resultado = {
+                titulo: response.title,
+                artists: response.artists,
+                duration: response.duration,
+                url: response.url,
+                album: {
+                    name: response.album.name,
+                    type: response.album.type,
+                    releasedDate: response.album.releasedDate
+                },
+                imageUrl: response.imageUrl,
+                audioBuffer: response.audioBuffer
+            };
+
+            return { status: true, resultado };
+        } else {
+            throw new Error("URL no válida de Spotify.");
+        }
+    } catch (error) {
+        return { status: false, resultado: error.message };
+    }
+}
+
+
 module.exports = {
   getMusicBuffer,
   spotifySearch1,
   spotifySearch2,
+  spotifyDownload
 };
 
 /*const credentials = {
