@@ -174,21 +174,27 @@ async function spotifyDownload(input) {
     const isSpotifyUrl = input.match(/^(https:\/\/open\.spotify\.com\/(album|track)\/[a-zA-Z0-9]+)/i);
     try {
         let response;
-        let audiodl;
+        let downloadUrl;
         if (isSpotifyUrl[2] === 'album') {
             response = await downloadAlbum(input);
-            audiodl = await uploadFile(response.audioBuffer)
-          return response;
+            const uploadedAudio = await uploadFile(response.audioBuffer);
+            downloadUrl = await getDownloadUrl(uploadedAudio); // Cambia esto según cómo obtienes la URL de descarga
+            delete response.audioBuffer; // Eliminar el buffer de audio para evitar confusiones
+            response.downloadUrl = downloadUrl;
+            return { status: true, ...response };
         } else if (isSpotifyUrl[2] === 'track') {
             response = await downloadTrack(input);
-            audiodl = await uploadFile(response.audioBuffer)
-            response.audioBuffer.replace("", audiodl)
-          return response;
+            const uploadedAudio = await uploadFile(response.audioBuffer);
+            downloadUrl = await getDownloadUrl(uploadedAudio); // Cambia esto según cómo obtienes la URL de descarga
+            delete response.audioBuffer; // Eliminar el buffer de audio para evitar confusiones
+            response.downloadUrl = downloadUrl;
+            return { status: true, ...response };
         }
     } catch (error) {
         return { status: false, error: error.message };
     }
 }
+
 
 module.exports = {
   getMusicBuffer,
