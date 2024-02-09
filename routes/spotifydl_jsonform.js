@@ -18,9 +18,9 @@ router.get('/', async (req, res) => {
       return;      
     }
     const spty = await spotifyDownload(input);
-    //const formattedResults2 = JSON.stringify(spty, null, 2);
+    const formattedResults2 = JSON.stringify(spty, null, 2);
     res.setHeader('Content-Type', 'application/json');  
-    res.send(spty);
+    res.send(formattedResults2);
   } catch (error) {
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
