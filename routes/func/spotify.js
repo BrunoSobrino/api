@@ -187,6 +187,7 @@ async function spotifyDownload(input) {
         } else if (isSpotifyUrl[2] === 'track') {
             response = await downloadTrack(input);
             const uploadedAudio = await uploadByBuffer(response.audioBuffer);
+            console.log(uploadedAudio)
             downloadUrl = uploadedAudio.link; 
             delete response.audioBuffer;
             response.downloadUrl = downloadUrl;
