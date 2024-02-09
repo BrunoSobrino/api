@@ -16,7 +16,7 @@ async function getMusicBuffer(text) {
         dlspoty = await downloadAlbum(isSpotifyUrl[0]);
         const firstTrack = dlspoty.trackList[0];
         if (firstTrack && firstTrack.audioBuffer) {
-          dlspoty = firstTrack.audioBuffer;
+          dlspoty = firstTrack;
         }
       } else if (isSpotifyUrl[2] === 'track') {
         dlspoty = await downloadTrack(isSpotifyUrl[0]);
