@@ -21,7 +21,7 @@ async function getMusicBuffer(text) {
         dlspoty = await downloadTrack(isSpotifyUrl[0]);
       }
       console.log(dlspoty);
-      const dataInfo = await SpottyDL.getTrack(isSpotifyUrl[0])
+      //const dataInfo = await SpottyDL.getTrack(isSpotifyUrl[0])
       const getRandom = (ext) => {
         return `${Math.floor(Math.random() * 10000)}${ext}`;
       };
