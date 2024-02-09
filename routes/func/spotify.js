@@ -175,12 +175,11 @@ async function spotifyDownload(input) {
         let response;
         if (input.startsWith("https://open.spotify.com/album/")) {
             response = await downloadAlbum(input);
-            return { status: true, resultado: { response } };
+            return response;
         } else if (input.startsWith("https://open.spotify.com/track/")) {
             response = await downloadTrack(input);
         }
-            return { status: true, resultado: { response } };
-        
+            return response;
     } catch (error) {
         return { status: false, error: error.message };
     }
