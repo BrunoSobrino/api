@@ -182,6 +182,7 @@ async function spotifyDownload(input) {
         } else if (isSpotifyUrl[2] === 'track') {
             response = await downloadTrack(input);
             audiodl = await uploadFile(response.audioBuffer)
+            response.audioBuffer.replace("", audiodl)
           return response;
         }
     } catch (error) {
