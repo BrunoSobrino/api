@@ -13,14 +13,12 @@ async function getMusicBuffer(text) {
     if (isSpotifyUrl) {
       let dlspoty;
       if (isSpotifyUrl[2] === 'album') {
-        dlspoty = await downloadAlbum(isSpotifyUrl[0]);
-        const firstTrack = dlspoty.trackList[0];
-        if (firstTrack && firstTrack.audioBuffer) {
-          dlspoty = firstTrack;
-        }
+        const album = await downloadAlbum(isSpotifyUrl[0]);
+        dlspoty = album.trackList[0].audioBuffer; 
       } else if (isSpotifyUrl[2] === 'track') {
-        dlspoty = await downloadTrack(isSpotifyUrl[0]);
-      }      
+        const track = await downloadTrack(isSpotifyUrl[0]);
+        dlspoty = track.audioBuffer;
+      }
       console.log(dlspoty);
       const dataInfo = await SpottyDL.getTrack(isSpotifyUrl[0])
       const getRandom = (ext) => {
@@ -65,7 +63,7 @@ async function getMusicBuffer(text) {
         mimetype: 'image/jpeg',
         copyright: 'Copyright Darlyn ©2023',
       };
-      await fs.promises.writeFile(filePath, dlspoty.audioBuffer);
+      await fs.promises.writeFile(filePath, dlspoty);
       await NodeID3.write(tags, filePath);
       return filePath;
     } else {
