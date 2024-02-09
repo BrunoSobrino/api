@@ -176,30 +176,15 @@ async function spotifyDownload(input) {
         let response;
         if (isSpotifyUrl[2] === 'album') {
             response = await downloadAlbum(input);
-            if (response.type === 'album' && response.trackList) {
-                for (let i = 0; i < response.trackList.length; i++) {
-                    const track = response.trackList[i];
-                    if (track.audioBuffer) {
-                        const base64Audio = track.audioBuffer.toString('base64');
-                        response.trackList[i].audioBuffer = base64Audio;
-                    }
-                }
-            }
-            return response;
+          return response;
         } else if (isSpotifyUrl[2] === 'track') {
             response = await downloadTrack(input);
-            if (response.status === true && response.audioBuffer) {
-                const base64Audio = response.audioBuffer.toString('base64');
-                response.audioBuffer = base64Audio;
-            }
-            return response;
+          return response;
         }
     } catch (error) {
         return { status: false, error: error.message };
     }
 }
-
-
 
 module.exports = {
   getMusicBuffer,
