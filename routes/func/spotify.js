@@ -13,15 +13,16 @@ async function getMusicBuffer(text) {
     if (isSpotifyUrl) {
       let dlspoty;
       if (isSpotifyUrl[2] === 'album') {
-        const dataInfo = await SpottyDL.getTrack(isSpotifyUrl[0]);
-        const trackList = dataInfo.trackList;
-        if (trackList && trackList.length > 0) {
-          dlspoty = trackList[0].audioBuffer;
+        dlspoty = await downloadAlbum(isSpotifyUrl[0]);
+        const firstTrack = dlspoty.trackList[0];
+        if (firstTrack && firstTrack.audioBuffer) {
+          dlspoty = firstTrack.audioBuffer;
+        }
       } else if (isSpotifyUrl[2] === 'track') {
         dlspoty = await downloadTrack(isSpotifyUrl[0]);
-      }
+      }      
       console.log(dlspoty);
-      //const dataInfo = await SpottyDL.getTrack(isSpotifyUrl[0])
+      const dataInfo = await SpottyDL.getTrack(isSpotifyUrl[0])
       const getRandom = (ext) => {
         return `${Math.floor(Math.random() * 10000)}${ext}`;
       };
