@@ -171,15 +171,15 @@ async function spotifySearch2(text) {
 }
 
 async function spotifyDownload(input) {
+    const isSpotifyUrl = input.match(/^(https:\/\/open\.spotify\.com\/(album|track)\/[a-zA-Z0-9]+)/i);
     try {
         let response;
-        if (input.startsWith("https://open.spotify.com/album/")) {
+        if (isSpotifyUrl[2] === 'album') {
             response = await downloadAlbum(input);
-            return response;
-        } else if (input.startsWith("https://open.spotify.com/track/")) {
+        } else if (isSpotifyUrl[2] === 'track') {
             response = await downloadTrack(input);
         }
-            return response;
+      return response;
     } catch (error) {
         return { status: false, error: error.message };
     }
