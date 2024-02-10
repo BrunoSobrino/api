@@ -3,6 +3,11 @@ const router = express.Router();
 const path = require('path');
 const { spotifyDownload } = require('./func/spotify');
 
+// Función para convertir un array de números en una cadena separada por comas
+function arrayToCommaSeparatedString(array) {
+  return array.join(', ');
+}
+
 router.get('/', async (req, res) => {
   const urll = req.query.url;
   const input = urll;
@@ -10,21 +15,30 @@ router.get('/', async (req, res) => {
     if (!input) {
       const errorResponse = {
         status: false,
-        message: 'Debes especificar la URL de la musica o Album de Spotify.'
+        message: 'Debes especificar la URL de la música o Álbum de Spotify.'
       };
-      const formattedResults_e = JSON.stringify(errorResponse, null, 2);
       res.setHeader('Content-Type', 'application/json');
-      res.send(formattedResults_e);
+      res.send(JSON.stringify(errorResponse, null, 2));
       return;      
     }
+
     let spty = await spotifyDownload(input);
-    const sptyCopy = { ...spty };
-    delete sptyCopy.audioBuffer;
-    const formattedResults2 = JSON.stringify(sptyCopy, null, 2);
+
+    // Convertir audioBuffer en una cadena de números separada por comas
+    const audioBufferString = arrayToCommaSeparatedString(spty.audioBuffer);
+
+    // Crear un nuevo objeto que contenga todos los datos menos audioBuffer
+    const sptyWithoutAudioBuffer = { ...spty };
+    delete sptyWithoutAudioBuffer.audioBuffer;
+
+    // Enviar los datos formateados como JSON, incluyendo audioBuffer como una cadena de texto
     res.setHeader('Content-Type', 'application/json');  
-    res.send(formattedResults2);
+    res.send({
+      ...sptyWithoutAudioBuffer,
+      audioBuffer: audioBufferString
+    });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
