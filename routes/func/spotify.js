@@ -176,7 +176,7 @@ async function spotifyDownload(input) {
    try {
         const response = await downloadAlbum(isSpotifyUrl[0]);
         console.log(response)
-        return { ...response };
+        return { response };
     } catch (error) {
         return { status: false, error: error.message };
     }
