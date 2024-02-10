@@ -25,11 +25,20 @@ router.get('/', async (req, res) => {
     let spty = await spotifyDownload(input);
 
     // Convertir audioBuffer en una cadena de números separada por comas
-    const audioBufferString = arrayToCommaSeparatedString(spty.audioBuffer);
+    let audioBufferString = '';
+    if (spty.audioBuffer) {
+      audioBufferString = arrayToCommaSeparatedString(spty.audioBuffer);
+    } else if (spty.trackList && spty.trackList.length > 0) {
+      const trackAudioBuffers = spty.trackList.map(track => track.audioBuffer).filter(buffer => buffer); // Filter out null or undefined values
+      audioBufferString = arrayToCommaSeparatedString([].concat(...trackAudioBuffers));
+    }
 
     // Crear un nuevo objeto que contenga todos los datos menos audioBuffer
     const sptyWithoutAudioBuffer = { ...spty };
     delete sptyWithoutAudioBuffer.audioBuffer;
+    if (sptyWithoutAudioBuffer.trackList) {
+      sptyWithoutAudioBuffer.trackList.forEach(track => delete track.audioBuffer);
+    }
 
     // Enviar los datos formateados como JSON, incluyendo audioBuffer como una cadena de texto
     res.setHeader('Content-Type', 'application/json');  
