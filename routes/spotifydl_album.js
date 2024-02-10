@@ -22,13 +22,10 @@ router.get('/', async (req, res) => {
     // Convertir todos los audioBuffers a base64
     const audioBuffersBase64 = spty.trackList.map(track => track.audioBuffer.toString('base64'));
 
-    // Crear una cadena de texto con los datos de los audioBuffers en base64
-    const audioBufferString = audioBuffersBase64.join(', ');
-
     res.setHeader('Content-Type', 'application/json');  
     res.send(JSON.stringify({
       ...spty,
-      audioBuffer: audioBufferString
+      audioBuffer: audioBuffersBase64.join(', ')
     }, null, 2));
   } catch (error) {
     console.log(error);
