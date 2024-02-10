@@ -17,13 +17,15 @@ router.get('/', async (req, res) => {
       res.send(formattedResults_e);
       return;      
     }
-    const spty = await spotifyDownload(input);
-    delete spty.audioBuffer;
+    let spty
+    spty = await spotifyDownload(input);
     const formattedResults2 = JSON.stringify(spty, null, 2);
-    spy.audioBuffer = spty.audioBuffer;
+    delete formattedResults2.audioBuffer;
+    spty.audioBuffer = spty.audioBuffer;
     res.setHeader('Content-Type', 'application/json');  
     res.send(formattedResults2);
   } catch (error) {
+    console.log(error)
     res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
