@@ -18,7 +18,9 @@ router.get('/', async (req, res) => {
       return;      
     }
     const spty = await spotifyDownload(input);
+    delete spty.audioBuffer;
     const formattedResults2 = JSON.stringify(spty, null, 2);
+    spy.audioBuffer = spty.audioBuffer;
     res.setHeader('Content-Type', 'application/json');  
     res.send(formattedResults2);
   } catch (error) {
