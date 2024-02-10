@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
       return;      
     }
     let spty = await spotifyDownload(input);
+    console.log(spty)
     const audioBufferString = (spty.trackList[0].audioBuffer).join(', ');
     const sptyWithoutAudioBuffer = { ...spty };
     delete sptyWithoutAudioBuffer.trackList[0].audioBuffer;
