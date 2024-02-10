@@ -33,10 +33,10 @@ router.get('/', async (req, res) => {
 
     // Enviar los datos formateados como JSON, incluyendo audioBuffer como una cadena de texto
     res.setHeader('Content-Type', 'application/json');  
-    res.send({
+    res.send(JSON.stringify({
       ...sptyWithoutAudioBuffer,
       audioBuffer: audioBufferString
-    });
+    }, null, 2));
   } catch (error) {
     console.log(error);
     res.sendFile(path.join(__dirname, '../public/500.html'));
