@@ -5,7 +5,7 @@ const { spotifyDownload } = require('./func/spotify');
 
 router.get('/', async (req, res) => {
   const urll = req.query.url;
-  const input = urll
+  const input = urll;
   try {
     if (!input) {
       const errorResponse = {
@@ -17,11 +17,10 @@ router.get('/', async (req, res) => {
       res.send(formattedResults_e);
       return;      
     }
-    let spty
-    spty = await spotifyDownload(input);
-    const formattedResults2 = JSON.stringify(spty, null, 2);
-    delete formattedResults2.audioBuffer;
-    spty.audioBuffer = spty.audioBuffer;
+    let spty = await spotifyDownload(input);
+    const sptyCopy = { ...spty };
+    delete sptyCopy.audioBuffer;
+    const formattedResults2 = JSON.stringify(sptyCopy, null, 2);
     res.setHeader('Content-Type', 'application/json');  
     res.send(formattedResults2);
   } catch (error) {
