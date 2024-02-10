@@ -171,23 +171,15 @@ async function spotifySearch2(text) {
 }
 
 async function spotifyDownload(input) {
-    const isSpotifyUrl = input.match(/^(https:\/\/open\.spotify\.com\/(album|track)\/[a-zA-Z0-9]+)/i);
-    try {
-        let response;
-        let downloadUrl;
-        if (isSpotifyUrl[2] === 'album') {
-            response = await downloadAlbum(input);
-            return response;
-        } else if (isSpotifyUrl[2] === 'track') {
-            response = await downloadTrack(input);
-            return response;
-        }
+    const isSpotifyUrl = input.match(/^(https:\/\/open\.spotify\.com\/(album)\/[a-zA-Z0-9]+)/i);
+    if (!isSpotifyUrl) return { status: false, message: 'El link ingresado no es de algun album de spotify.' };
+   try {
+        const response = await downloadAlbum(input);
+        return response;
     } catch (error) {
         return { status: false, error: error.message };
     }
 }
-
-
 
 module.exports = {
   getMusicBuffer,
