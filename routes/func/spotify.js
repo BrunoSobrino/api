@@ -174,9 +174,9 @@ async function spotifyDownload(input) {
     const isSpotifyUrl = input.match(/^(https:\/\/open\.spotify\.com\/(album)\/[a-zA-Z0-9]+)/i);
     if (!isSpotifyUrl) return { status: false, message: 'El link ingresado no es de algun album de spotify.' };
    try {
-        const response = await downloadAlbum(input);
+        const response = await downloadAlbum(isSpotifyUrl[0]);
         console.log(response)
-        return response;
+        return { ...response };
     } catch (error) {
         return { status: false, error: error.message };
     }
