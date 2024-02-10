@@ -67,7 +67,7 @@ const stickersearch = require('./routes/stickersearch');
 const pinterest = require('./routes/pinterest');
 const tiktokdlv1 = require('./routes/tiktokdlv1');
 const xdl = require('./routes/x_twitter');
-const spotyjs = require('./routes/spotifydl_jsonform.js');
+const spotyjs = require('./routes/spotifydl_album.js');
 
 /* human */
 const hytmp3_1 = require('./routes/human/ytmp3_1');
@@ -139,7 +139,7 @@ app.use('/api/stickersearch', stickersearch);
 app.use('/api/pinterest', pinterest);
 app.use('/api/test', test);
 app.use('/api/twitterdl', xdl);
-app.use('/api/spotifydl2', spotyjs);
+app.use('/api/spotifydlalbum', spotyjs);
 
 app.use('/human', apirouter5);
 app.use('/human/v1/ytmp3', hytmp3_1);
