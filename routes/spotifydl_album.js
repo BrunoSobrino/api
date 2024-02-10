@@ -19,24 +19,15 @@ router.get('/', async (req, res) => {
     let spty = await spotifyDownload(input);
     console.log(spty);
 
-    // Crear una copia de la lista de pistas sin el primer audioBuffer
-    const trackListWithoutFirstBuffer = spty.trackList.slice(1);
-    
-    // Crear una cadena de texto con los datos de los audioBuffers
-    const audioBufferString = trackListWithoutFirstBuffer.map(track => track.audioBuffer.toString('hex')).join(', ');
+    // Convertir todos los audioBuffers a base64
+    const audioBuffersBase64 = spty.trackList.map(track => track.audioBuffer.toString('base64'));
 
-    // Crear un nuevo objeto de respuesta que excluya el primer audioBuffer
-    const sptyWithoutAudioBuffer = {
-      ...spty,
-      trackList: trackListWithoutFirstBuffer.map(track => {
-        const { audioBuffer, ...rest } = track;
-        return rest;
-      })
-    };
+    // Crear una cadena de texto con los datos de los audioBuffers en base64
+    const audioBufferString = audioBuffersBase64.join(', ');
 
     res.setHeader('Content-Type', 'application/json');  
     res.send(JSON.stringify({
-      ...sptyWithoutAudioBuffer,
+      ...spty,
       audioBuffer: audioBufferString
     }, null, 2));
   } catch (error) {
