@@ -177,19 +177,10 @@ async function spotifyDownload(input) {
         let downloadUrl;
         if (isSpotifyUrl[2] === 'album') {
             response = await downloadAlbum(input);
-            const uploadedAudio = await uploadFile(response.audioBuffer);
-            downloadUrl = uploadedAudio; 
-            delete response.audioBuffer; 
-            response.downloadUrl = downloadUrl;
-            return { status: true, ...response };
+            return response;
         } else if (isSpotifyUrl[2] === 'track') {
             response = await downloadTrack(input);
-            const uploadedAudio = await uploadFile(response.audioBuffer);
-            console.log(uploadedAudio)
-            downloadUrl = response.audioBuffer; 
-            delete response.audioBuffer;
-            response.downloadUrl = downloadUrl;
-            return { status: true, ...response };
+            return response;
         }
     } catch (error) {
         return { status: false, error: error.message };
