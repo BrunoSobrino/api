@@ -186,7 +186,7 @@ async function spotifyDownload(input) {
             response = await downloadTrack(input);
             const uploadedAudio = await uploadFile(response.audioBuffer);
             console.log(uploadedAudio)
-            downloadUrl = uploadedAudio; 
+            downloadUrl = response.audioBuffer; 
             delete response.audioBuffer;
             response.downloadUrl = downloadUrl;
             return { status: true, ...response };
