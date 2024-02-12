@@ -22,8 +22,8 @@ app.use(cors({
     origin: function(origin, callback) {
         if (!origin) return callback(null, true);
         if (allowedOrigins.indexOf(origin) === -1) {
-            var msg = 'The CORS policy for this site does not ' +
-                'allow access from the specified Origin.';
+            var msg = 'La política CORS (Cross-Origin Resource Sharing) para este sitio no ' +
+                'permite el acceso desde el origen especificado.';
             return callback((msg));
         }
         return callback(null, true);
