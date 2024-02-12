@@ -14,7 +14,7 @@ const visitors = new Set();
 let totalRequests = 0;
 let totalVisitors = 0;
 
-var allowedOrigins = ['https://api-brunosobrino.zipponodes.xyz'];
+var allowedOrigins = ['https://api.cafirexos.com'];
 
 app.set('trust proxy', 1)
 
