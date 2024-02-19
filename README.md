@@ -6,6 +6,7 @@
 
 ## —◉ APIs online:
 - API: [https://api.cafirexos.com](https://api.cafirexos.com)
+- API Canvas: [https://api-for-canvas-brunosobrino.koyeb.app](https://api-for-canvas-brunosobrino.koyeb.app)
 - API Test: [http://gru-np1.cafirexos.net:2027](http://gru-np1.cafirexos.net:2027)
 
 ## —◉ Funciones extras:
@@ -32,6 +33,10 @@
 - Panel: [panel.cafirexos.com](https://panel.cafirexos.com)
 - Documentación: [docs.cafirexos.com](https://docs.cafirexos.com)
 - Grupo de WhatsApp: [whatsapp.cafirexos.com](https://whatsapp.cafirexos.com)
+
+## —◉ Activar en koyeb
+
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)(https://app.koyeb.com/deploy?type=git&repository=github.com/BrunoSobrino/api&branch=koyeb&name=api-for-canvas&ports=2027;http;/) 
 
 ## —◉ Activar en replit
 
