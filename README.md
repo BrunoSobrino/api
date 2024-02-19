@@ -6,6 +6,7 @@
 
 ## —◉ APIs online:
 - API: [https://api.cafirexos.com](https://api.cafirexos.com)
+- API Test: [http://gru-np1.cafirexos.net:2027](http://gru-np1.cafirexos.net:2027)
 
 ## —◉ Funciones extras:
 - YT: [https://api.cafirexos.com/human/youtube](https://api.cafirexos.com/human/youtube)
