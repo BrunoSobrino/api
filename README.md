@@ -52,6 +52,7 @@
 <a href="https://github.com/Daniel9822"><img src="https://github.com/Daniel9822.png" width="100" height="100" alt="Daniel9822"/></a>
 <a href="https://github.com/Shizu-SH"><img src="https://github.com/Shizu-SH.png" width="100" height="100" alt="Shizu-SH"/></a>
 <a href="https://github.com/dftzippo"><img src="https://github.com/dftzippo.png" width="100" height="100" alt="dftzippo"/></a>
+<a href="https://github.com/ferhacks"><img src="https://github.com/ferhacks.png" width="100" height="100" alt="ferhacks"/></a>
 
 ## —◉ Editor & propietario
 <a href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="150" height="150" alt="BrunoSobrino"/></a>
