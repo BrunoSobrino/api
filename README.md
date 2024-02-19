@@ -33,6 +33,7 @@
 ------------------
 
 ## —◉ Colaboradores
+<a href="https://github.com/Daniel9822"><img src="https://github.com/Daniel9822.png" width="100" height="100" alt="Daniel9822"/></a>
 <a href="https://github.com/Shizu-SH"><img src="https://github.com/Shizu-SH.png" width="100" height="100" alt="Shizu-SH"/></a>
 <a href="https://github.com/dftzippo"><img src="https://github.com/dftzippo.png" width="100" height="100" alt="dftzippo"/></a>
 
