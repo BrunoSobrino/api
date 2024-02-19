@@ -1,0 +1,55 @@
+
+  "name": "api",
+  "type": "WEB",
+  "routes": [
+    {
+      "port": 2027,
+      "path": "/"
+    }
+  ],
+  "ports": [
+    {
+      "port": 2027,
+      "protocol": "http"
+    }
+  ],
+  "env": [],
+  "regions": [
+    "fra"
+  ],
+  "scalings": [
+    {
+      "scopes": [
+        "region:fra"
+      ],
+      "min": 1,
+      "max": 1,
+      "targets": []
+    }
+  ],
+  "instance_types": [
+    {
+      "scopes": [
+        "region:fra"
+      ],
+      "type": "free"
+    }
+  ],
+  "health_checks": [],
+  "skip_cache": false,
+  "git": {
+    "repository": "github.com/BrunoSobrino/api",
+    "branch": "koyeb",
+    "tag": "",
+    "sha": "",
+    "build_command": "",
+    "run_command": "",
+    "no_deploy_on_push": false,
+    "workdir": "",
+    "buildpack": {
+      "build_command": "",
+      "run_command": "",
+      "privileged": false
+    }
+  }
+}
