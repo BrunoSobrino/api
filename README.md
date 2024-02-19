@@ -14,6 +14,15 @@
 
 ------------------
 
+## —◉ Bugs & more:
+- IGStalk [Bug]
+- YTMP4 V2 [Bug]
+- ChatGPT [Bug]
+- Register user [Future update]
+- Apikey require [Future update]
+
+------------------
+
 ## —◉ Activar en Cafirexos
 <a href="https://www.cafirexos.com"><img src="https://grxcwmcwbxwj.objectstorage.sa-saopaulo-1.oci.customer-oci.com/n/grxcwmcwbxwj/b/cafirexos/o/logos%2Flogo.png" height="125px"></a>
 - Sitio web: [cafirexos.com](https://www.cafirexos.com)
