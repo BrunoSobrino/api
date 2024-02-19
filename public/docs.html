@@ -68,6 +68,40 @@
         white-space: nowrap;
         margin-right: 5px
     }
+
+    .scroll-mouse-enter {
+        max-height: 400px;
+        overflow-y: hidden;
+    }
+
+    .medium-scroll {
+        max-height: 300px;
+    }
+
+    .scroll-visible{
+        overflow-y: scroll;
+    }
+
+    .scroll-mouse-enter::-webkit-scrollbar {
+        width: 5px;
+    }
+
+
+    .scroll-mouse-enter::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+
+    .scroll-mouse-enter::-webkit-scrollbar-thumb {
+        background: #b9b8b837;
+        border-radius: 6px;
+    }
+
+
+    .scroll-mouse-enter::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
     @media (max-width: 768px) {
         .age-restriction-icon {
         padding: 5px 0; 
@@ -121,7 +155,7 @@
                     <span>Descargadores</span>
                 </a>
                 <div id="collapseDownload" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
+                    <div class="py-2 collapse-inner rounded scroll-mouse-enter">
                         <h6 class="collapse-header">YouTube</h6>
                         <a class="collapse-item" target="_blank" href="/api/v1/ytmp3?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p">MP3 - URL V1</a>
                         <a class="collapse-item" target="_blank" href="/api/v2/ytmp3?url=https://youtu.be/JLWRZ8eWyZo?si=EmeS9fJvS_OkDk7p">MP3 - URL V2</a>
@@ -170,7 +204,7 @@
                     <span>Herramientas</span>
                 </a>
                 <div id="collapseTools" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
+                    <div class="py-2 collapse-inner rounded scroll-mouse-enter">
                         <h6 class="collapse-header">Tools Features</h6>
                         <a class="collapse-item" target="_blank" href="/api/chatgpt?text=Hola&prompt=Tu%20seras%20una%20funcion%20de%20una%20api-web%20llamada%20Api%20Empire">ChatGPT</a>
                         <a class="collapse-item" target="_blank" href="/api/tempmail/getmail">TempMail getMail</a>
@@ -190,7 +224,7 @@
                     <span>NSFW</span>
                 </a>
                 <div id="collapseNsfw" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
+                    <div class="py-2 collapse-inner rounded scroll-mouse-enter">
                         <h6 class="collapse-header">NSFW Random</h6>
                         <a class="collapse-item" target="_blank" href="/api/nsfw/nsfwass">nsfwass</a>
                         <a class="collapse-item" target="_blank" href="/api/nsfw/nsfwbdsm">nsfwbdsm</a>
@@ -215,7 +249,7 @@
                     <span>Random +18</span>
                 </a>
                 <div id="collapse18plus" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
+                    <div class="py-2 collapse-inner rounded scroll-mouse-enter">
                         <h6 class="collapse-header">+18 Random</h6>
                         <a class="collapse-item" target="_blank" href="/api/adult/packgirl">Packs Girl</a>
                         <a class="collapse-item" target="_blank" href="/api/adult/packmen">Packs Mens</a>
@@ -239,7 +273,7 @@
                     <span>Random Anime</span>
                 </a>
                 <div id="collapAnimes" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
+                    <div class="py-2 collapse-inner rounded scroll-mouse-enter medium-scroll">
                         <h6 class="collapse-header">Anime Random</h6>
                         <a class="collapse-item" target="_blank" href="/api/anime/lolivid">loli video</a>
                         <a class="collapse-item" target="_blank" href="/api/anime/loli">loli</a>
@@ -288,7 +322,7 @@
                     <span>Wallpapers</span>
                 </a>
                 <div id="collapseWallpaper" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
+                    <div class="py-2 collapse-inner rounded scroll-mouse-enter medium-scroll">
                         <h6 class="collapse-header">Wallpapers Random</h6>
                         <a class="collapse-item" target="_blank" href="/api/wallpaper/coffee">coffee</a>
                         <a class="collapse-item" target="_blank" href="/api/wallpaper/wprandom">wprandom</a>
@@ -316,7 +350,7 @@
                     <span>Maker</span>
                 </a>
                 <div id="collapseMarker" class="collapse" aria-labelledby="headingSearch" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
+                    <div class="py-2 collapse-inner rounded scroll-mouse-enter medium-scroll">
                         <h6 class="collapse-header">stickers</h6>
                         <a class="collapse-item" target="_blank" href="/api/maker/attp?text=api%20emipire">Attp</a>  
                         <h6 class="collapse-header">Canvas</h6>
@@ -558,6 +592,22 @@
         }
         toggleButton.addEventListener("click", toggleAudio);
     });
+
+    const elementToScroll = document.getElementsByClassName('scroll-mouse-enter')
+
+    const elementArray = Array.from(elementToScroll)
+
+    elementArray.forEach(element => {
+        element.addEventListener('mouseenter', e => {
+            e.target.classList.add('scroll-visible')
+        })
+    });
+
+    elementArray.forEach(element => {
+        element.addEventListener('mouseleave', e => {
+            e.target.classList.remove('scroll-visible')
+        })
+    })
 </script>
     <script src="https://BrunoSobrino.github.io/template-api/vendor/jquery/jquery.min.js"></script>
     <script src="https://BrunoSobrino.github.io/template-api/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
