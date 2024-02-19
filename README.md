@@ -15,11 +15,12 @@
 ------------------
 
 ## —◉ Bugs & more:
-- IGStalk [Bug]
-- YTMP4 V2 [Bug]
+- IgStalk [Bug]
+- YtMP4 V2 [Bug]
 - ChatGPT [Bug]
 - Register user [Future update]
 - Apikey require [Future update]
+- Canvas not shareable with Cafirexos Host [Incompatibility]
 
 ------------------
 
