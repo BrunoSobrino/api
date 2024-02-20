@@ -65,7 +65,7 @@ router.post('/register', async (req, res) => {
             from: process.env.smtp_user,
             to: mail,
             subject: "Verificacion",
-            text: "Para utilizar nuestra api, Debes Verificar este correo electronico, Viendo el siguiente link: https://" + req.headers.host + "/api/manageusers/verify?token=" + newUser.verifyCode
+            text: "Para utilizar nuestra api, Debes Verificar este correo electronico, Viendo el siguiente link: https://" + req.headers.host + "/users/manageusers/verify?token=" + newUser.verifyCode
           });
         console.log("Message sent: %s", info.messageId);
         return res.status(200).json({ status: true, message: 'Usuario registrado, Para completar el registro, verifica tu correo, Si no ves el correo, revisa la carpeta de spam' });
@@ -153,7 +153,7 @@ router.post('/requestReset', async (req, res) => {
             from: process.env.smtp_user,
             to: mail,
             subject: "Restablecer contraseña",
-            text: "Para restablecer tu contraseña, ve al siguiente link: https://" + req.headers.host + "/api/manageusers/reset?token=" + resetCode
+            text: "Para restablecer tu contraseña, ve al siguiente link: https://" + req.headers.host + "/users/manageusers/reset?token=" + resetCode
           });
         console.log("Message sent: %s", info.messageId);
         return res.status(200).json({ status: true, message: 'Correo enviado' });
