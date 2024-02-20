@@ -108,7 +108,7 @@ router.post('/register', async (req, res) => {
                 <h1>Verificación de Correo Electrónico</h1>
                 <p>Hola Usuario,</p>
                 <p>Para completar tu registro y poder utilizar nuestros servicios de API, por favor haz clic en el siguiente enlace:</p>
-                <p><a href="https://${req.headers.host}/users/manageusers/verify?token=${newUser.verifyCode}">Verificar Correo</a></p>
+                <p><a href="https://${req.headers.host}/api/manageusers/verify?token=${newUser.verifyCode}">Verificar Correo</a></p>
                 <p>Si no has solicitado este correo, simplemente ignóralo.</p>
                 <p>¡Gracias!</p>
                 <div class="signature">
@@ -249,7 +249,7 @@ router.post('/requestReset', async (req, res) => {
             <h1>Restablecer Contraseña</h1>
             <p>Hola Usuario,</p>
             <p>Para restablecer tu contraseña, haz clic en el siguiente enlace:</p>
-            <p><a href="https://${req.headers.host}/users/manageusers/reset?token=${resetCode}">Restablecer Contraseña</a></p>
+            <p><a href="https://${req.headers.host}/api/manageusers/reset?token=${resetCode}">Restablecer Contraseña</a></p>
             <p>Si no has solicitado restablecer tu contraseña, simplemente ignora este correo.</p>
             <p>¡Gracias!</p>
             <div class="signature">
