@@ -98,7 +98,7 @@
       if (window.recaptchaKey) {
         grecaptcha.ready(function() {
           grecaptcha.execute(window.recaptchaKey, {action: 'submit'}).then(function(token) {
-            fetch("/users/manageusers/requestReset", {
+            fetch("/api/manageusers/requestReset", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"
@@ -122,7 +122,7 @@
           });
         });
       } else {
-        fetch("/users/manageusers/requestReset", {
+        fetch("/api/manageusers/requestReset", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -158,7 +158,7 @@
           grecaptcha.execute(window.recaptchaKey, {action: 'submit'}).then(function(token) {
               // Add your logic to submit to your backend server here.
 
-  fetch("/users/manageusers/register", {
+  fetch("/api/manageusers/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -185,7 +185,7 @@
 });
 
 } else {
-  fetch("/users/manageusers/register", {
+  fetch("/api/manageusers/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -212,7 +212,7 @@
         });
 logg.addEventListener("submit", function(event) {
   event.preventDefault();
-  fetch("/users/manageusers/login", {
+  fetch("/api/manageusers/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -236,7 +236,7 @@ logg.addEventListener("submit", function(event) {
     });
 });
 
-fetch("/users/manageusers/fetchRecaptcha").then(response => response.json()).then(data => {
+fetch("/api/manageusers/fetchRecaptcha").then(response => response.json()).then(data => {
   if (!data.status) return;
   window.recaptchaKey = data.sitekey;
   let recap = document.createElement("script")
