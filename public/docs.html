@@ -439,7 +439,7 @@
             </div>                     
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="profile" id="userDropdown" role="button" data-toggle="collapse" data-target="#dropdownProfile" aria-expanded="true" aria-controls="dropdownProfile">
+                            <a class="nav-link dropdown-toggle" href="/" id="userDropdown" role="button" data-toggle="collapse" data-target="#dropdownProfile" aria-expanded="true" aria-controls="dropdownProfile">
                                 <i class="fa fa-user-circle fa-2x"></i>
                                 <span class="ml-2 d-none d-lg-inline small font-weight-bold" id="usermail">USUARIO</span>
                             </a>
@@ -671,7 +671,7 @@
     } else {
         document.getElementById('usermail').textContent = "Invitado";
         document.getElementById('userDropdown').attributes.removeNamedItem('data-toggle');
-        document.getElementById('userDropdown').href = "/login.html";
+        document.getElementById('userDropdown').href = "/";
 
     }
 </script>
