@@ -90,7 +90,7 @@ logg.addEventListener("submit", function(event) {
     });
 });
 
-fetch("/api/manageusers/fetchRecaptcha").then(response => response.json()).then(data => {
+fetch("/users/manageusers/fetchRecaptcha").then(response => response.json()).then(data => {
   if (!data.status) return;
   window.recaptchaKey = data.sitekey;
   let recap = document.createElement("script")
