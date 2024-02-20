@@ -67,7 +67,7 @@ logg.addEventListener("submit", function(event) {
   }
   const urlParams = new URLSearchParams(window.location.search);
   const myParam = urlParams.get('resetToken');
-  fetch("/api/manageusers/reset", {
+  fetch("/users/manageusers/reset", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
