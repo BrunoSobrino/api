@@ -20,18 +20,6 @@ var allowedOrigins = ['https://api.cafirexos.com', 'http://localhost:2027'];
 
 app.set('trust proxy', 1)
 
-app.use(cors({
-    origin: function(origin, callback) {
-        if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) === -1) {
-            var msg = 'La política CORS (Cross-Origin Resource Sharing) para este sitio no ' +
-                'permite el acceso desde el origen especificado.';
-            return callback((msg));
-        }
-        return callback(null, true);
-    }
-}));
-
 // Inicicializar el servidor de correo
 
 if (process.env.new_user_verification === "true") {
