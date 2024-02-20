@@ -42,8 +42,6 @@ global.mTransporter = transporter;
 const home = require('./routes/home');
 const docs = require('./routes/docs');
 const apirouter5 = require('./routes/human-apis');
-const usersman = require('./routes/manageusers');
-
 
 const getUptime = () => {
   const uptimeInSeconds = Math.floor(process.uptime());
@@ -77,8 +75,6 @@ app.use('/human', require('./routes/human'))
 
 //si es /human entra aqui directamente
 app.use('/human', apirouter5);
-
-app.use('/users', usersman);
 
 app.use('/tmp', express.static('tmp'));
 app.use(express.static('public'));
