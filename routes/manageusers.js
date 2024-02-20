@@ -15,8 +15,8 @@ router.post('/login', async (req, res) => {
     const unbase64 = Buffer.from(password, 'base64').toString('utf-8');
     const hashPasswd = crypto.createHash('md5').update(unbase64).digest('hex')
     const user = database.getDatabaseByUser(mail, true);
-    console.log(hashPasswd);
-    console.log(user);
+    //console.log(hashPasswd);
+    //7console.log(user);
     if (!user) {
         return res.status(404).json({ status: false, message: 'Usuario no encontrado' });
     }
@@ -60,14 +60,67 @@ router.post('/register', async (req, res) => {
     if (process.env.new_user_verification === 'true') {
         // send mail
         try {
-        console.log('Enviando correo a ' + mail);
+        //console.log('Enviando correo a ' + mail);
         const info = await mTransporter.sendMail({
             from: process.env.smtp_user,
             to: mail,
-            subject: "Verificacion",
-            text: "Para utilizar nuestra api, Debes Verificar este correo electronico, Viendo el siguiente link: https://" + req.headers.host + "/users/manageusers/verify?token=" + newUser.verifyCode
+            subject: "Verificación de correo electrónico",
+            html: `
+                <html>
+                <head>
+                <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f4f4f4;
+                    color: #333;
+                    padding: 20px;
+                }
+                .container {
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    background-color: #fff;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                }
+                h1 {
+                    color: #007bff;
+                    text-align: center;
+                }
+                p {
+                    margin-bottom: 20px;
+                }
+                a {
+                    color: #007bff;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+                .signature {
+                    margin-top: 20px;
+                    border-top: 1px solid #ccc;
+                    padding-top: 10px;
+                    text-align: center;
+                }
+                </style>
+                </head>
+                <body>
+                <div class="container">
+                <h1>Verificación de Correo Electrónico</h1>
+                <p>Hola Usuario,</p>
+                <p>Para completar tu registro y poder utilizar nuestros servicios de API, por favor haz clic en el siguiente enlace:</p>
+                <p><a href="https://${req.headers.host}/users/manageusers/verify?token=${newUser.verifyCode}">Verificar Correo</a></p>
+                <p>Si no has solicitado este correo, simplemente ignóralo.</p>
+                <p>¡Gracias!</p>
+                <div class="signature">
+                <p><strong>the Shadow Brokers - TEAM</strong></p>
+                <p><strong>Bruno Sobrino</strong></p>
+                </div>
+                </div>
+                </body>
+                </html>
+                `
           });
-        console.log("Message sent: %s", info.messageId);
+        //console.log("Message sent: %s", info.messageId);
         return res.status(200).json({ status: true, message: 'Usuario registrado, Para completar el registro, verifica tu correo, Si no ves el correo, revisa la carpeta de spam' });
         } catch (error) {
             console.log(error);
@@ -153,9 +206,62 @@ router.post('/requestReset', async (req, res) => {
             from: process.env.smtp_user,
             to: mail,
             subject: "Restablecer contraseña",
-            text: "Para restablecer tu contraseña, ve al siguiente link: https://" + req.headers.host + "/users/manageusers/reset?token=" + resetCode
-          });
-        console.log("Message sent: %s", info.messageId);
+            html: `
+            <html>
+            <head>
+            <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                color: #333;
+                padding: 20px;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            h1 {
+                color: #007bff;
+                text-align: center;
+            }
+            p {
+                margin-bottom: 20px;
+            }
+            a {
+                color: #007bff;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            .signature {
+                margin-top: 20px;
+                border-top: 1px solid #ccc;
+                padding-top: 10px;
+                text-align: center;
+            }
+            </style>
+            </head>
+            <body>
+            <div class="container">
+            <h1>Restablecer Contraseña</h1>
+            <p>Hola Usuario,</p>
+            <p>Para restablecer tu contraseña, haz clic en el siguiente enlace:</p>
+            <p><a href="https://${req.headers.host}/users/manageusers/reset?token=${resetCode}">Restablecer Contraseña</a></p>
+            <p>Si no has solicitado restablecer tu contraseña, simplemente ignora este correo.</p>
+            <p>¡Gracias!</p>
+            <div class="signature">
+            <p><strong>the Shadow Brokers - TEAM</strong></p>
+            <p><strong>Bruno Sobrino</strong></p>
+            </div>
+            </div>
+            </body>
+            </html>
+            `
+        });
+        //console.log("Message sent: %s", info.messageId);
         return res.status(200).json({ status: true, message: 'Correo enviado' });
     } catch (error) {
         console.log(error);
