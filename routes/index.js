@@ -78,7 +78,7 @@ fs.readdirSync(path).filter(filename => {
 
   const version = routerVersion[name] ?? ''
 
-  console.log(`${version}/${name.startsWith('ytmp') ? '' : name}`);
+  //console.log(`${version}/${name.startsWith('ytmp') ? '' : name}`);
   if(name !== 'index' && !pathIgnore.includes(name)) {
     router.use(`${version}/${name.startsWith('ytmp') ? '' : name}`, require(`./${filename}`))
   }
