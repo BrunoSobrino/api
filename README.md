@@ -18,11 +18,22 @@
 
 ## —◉ Bugs & more:
 - IgStalk [Bug]
-- Register user [Future update]
-- Apikey require [Future update]
+- Register user [BETA]
+- Apikey require [BETA]
+- Premium Apikey [PARCIAL]
 - Canvas not shareable with Cafirexos Host [Incompatibility]
 
 ------------------
+
+## —◉ Configuracion
+- Al descargar esta api, Por favor modifique el archivo "Example.env", Una vez configurado, Renombrar a ".env"
+- Recomendamos Encarecidamente poner un JWT secret Unico, De lo contrario podria ser facil robar los tokens de sesion.
+- Para utilizar el Recaptcha Cree su key privada y publica en [Este Sitio](https://www.google.com/recaptcha/admin/create?hl=es-419)
+- Puede utilizar el SMTP [Brevo](https://www.brevo.com/free-smtp-server/) Para empezar, solo registrese, ponga algunos datos, Dirigase al apartado de transaccional y copie los datos.
+- Los limites de cada ApiKey se reestablecen Cada 24h
+
+------------------
+
 
 ## —◉ Activar en Cafirexos
 <a href="https://www.cafirexos.com"><img src="https://grxcwmcwbxwj.objectstorage.sa-saopaulo-1.oci.customer-oci.com/n/grxcwmcwbxwj/b/cafirexos/o/logos%2Flogo.png" height="125px"></a>
