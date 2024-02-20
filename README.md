@@ -20,6 +20,7 @@
 - IgStalk [Bug]
 - Register user [BETA]
 - Apikey require [BETA]
+- Premium Apikey [PARCIAL]
 - Canvas not shareable with Cafirexos Host [Incompatibility]
 
 ------------------
