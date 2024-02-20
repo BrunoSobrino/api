@@ -67,7 +67,7 @@ logg.addEventListener("submit", function(event) {
   }
   const urlParams = new URLSearchParams(window.location.search);
   const myParam = urlParams.get('resetToken');
-  fetch("/users/manageusers/reset", {
+  fetch("/api/manageusers/reset", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -90,7 +90,7 @@ logg.addEventListener("submit", function(event) {
     });
 });
 
-fetch("/users/manageusers/fetchRecaptcha").then(response => response.json()).then(data => {
+fetch("/api/manageusers/fetchRecaptcha").then(response => response.json()).then(data => {
   if (!data.status) return;
   window.recaptchaKey = data.sitekey;
   let recap = document.createElement("script")
