@@ -56,7 +56,7 @@ router.post('/register', async (req, res) => {
         }
     }
     const unbase64 = Buffer.from(password, 'base64').toString('utf-8');
-    const newUser = database.PostDatabase(mail, unbase64, !process.env.new_user_verification === 'true');
+    const newUser = database.PostDatabase(mail, unbase64, !(process.env.new_user_verification === 'true'));
     if (process.env.new_user_verification === 'true') {
         // send mail
         try {

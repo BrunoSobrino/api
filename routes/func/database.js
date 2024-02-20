@@ -150,7 +150,7 @@ const PostDatabase = (mail, password, verify) => {
         hashPassword,
         apikey: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
         date: new Date(),
-        isVerified: verify || false,
+        isVerified: verify ? true : false,
         verifyCode: !verify ? crypto.createHash('md5').update(userId + mail).digest('hex') : undefined,
         isPremium: false,
         isBanned: false,
