@@ -365,6 +365,10 @@
                         <a class="collapse-item" target="_blank" href="/api/maker/canvas/welcome3?username=Bruno%20Sobrino&groupname=API%20Empire%20-%20Comunidad&membercount=12&description=Bienvenido(a),%20lee%20las%20reglas%20del%20grupo&profile=https://github.com/BrunoSobrino.png">Card Welcome 3</a>
                         <a class="collapse-item" target="_blank" href="/api/maker/canvas/welcome4?username=Bruno%20Sobrino&groupname=API%20Empire%20-%20Comunidad&membercount=12&description=Bienvenido(a),%20lee%20las%20reglas%20del%20grupo&profile=https://github.com/BrunoSobrino.png">Card Welcome 4</a>
                         <a class="collapse-item" target="_blank" href="/api/maker/canvas/welcome5?username=bruno&groupname=api%20empire&membercount=12&groupicon=https://telegra.ph/file/4cc51944c9130560fb4a9.jpg&profile=https://github.com/BrunoSobrino.png&background=https://telegra.ph/file/82d079999da723cc80899.png">Card Welcome 5</a>
+                        <a class="collapse-item" target="_blank" href="/api/maker/canvas/goodbye?username=bruno&groupname=api%20empire&membercount=12&memberdiscriminator=13&profile=https://github.com/BrunoSobrino.png&background=https://telegra.ph/file/82d079999da723cc80899.png">Card GoodBye 1</a>
+                        <a class="collapse-item" target="_blank" href="/api/maker/canvas/goodbye2?username=bruno&groupname=api%20empire&membercount=12&groupicon=https://telegra.ph/file/4cc51944c9130560fb4a9.jpg&profile=https://github.com/BrunoSobrino.png&background=https://telegra.ph/file/82d079999da723cc80899.png">Card GoodBye 2</a>
+                        <a class="collapse-item" target="_blank" href="/api/maker/canvas/goodbye3?username=Bruno&membercount=12&profile=https://github.com/BrunoSobrino.png&background=https://telegra.ph/file/82d079999da723cc80899.png">Card GoodBye 3</a>
+                        <a class="collapse-item" target="_blank" href="/api/maker/canvas/goodbye4?username=Bruno&profile=https://github.com/BrunoSobrino.png">Card GoodBye 4</a>                        
                         <h6 class="collapse-header">textpro</h6>
                         <a class="collapse-item" target="_blank" href="/api/maker/textpro/deep-sea-metal?text=api%20empire">Deep Sea Metal</a>
                         <a class="collapse-item" target="_blank" href="/api/maker/textpro/wolf-logo-galaxy?text1=api%20empire&text2=by%20brunosobrino">Wolf Logo Galaxy</a>
@@ -435,18 +439,23 @@
                 <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
                     <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
             <i class="fa fa-bars"></i>
-          </button>
+          </button>      
             <div class="text-container">
                 <h1 class="my-4 fire-text">API - EMPIRE <span class="fire-emoji">🔥</span></h1>
-            </div>                    
+            </div>                     
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="profile" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="/" id="userDropdown" role="button" data-toggle="collapse" data-target="#dropdownProfile" aria-expanded="true" aria-controls="dropdownProfile">
                                 <i class="fa fa-user-circle fa-2x"></i>
-                                <span class="ml-2 d-none d-lg-inline small font-weight-bold">USUARIO</span>
+                                <span class="ml-2 d-none d-lg-inline small font-weight-bold" id="usermail">USUARIO</span>
                             </a>
                         </li>
                     </ul>
+                    <div id="dropdownProfile" class="collapse" aria-labelledby="headingSearch" data-parent="#accordionSidebar">
+                        <div class="py-2 collapse-inner rounded">
+                            <a class="collapse-item" onclick="cerrarSesion()" href="#">Cerrar Sesión</a>
+                        </div>
+                    </div>
                 </nav>
                 <!-- Topbar -->
         <!-- Sidebar -->
@@ -538,7 +547,24 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>     
+                        </div>
+                        
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card h-50">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">USOS RESTANTES</div>
+                                            <div id="totalUsos"></div>
+                                            <!-- div class="h5 mb-0 font-weight-bold"><%= totalRequests %></div -->
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-credit-card faa-wrench animated fa-2x text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div id="findipurl">
@@ -575,6 +601,12 @@
         //document.getElementById('totalVisitors').textContent = data.totalVisitors;
         //document.getElementById('uptime').textContent = data.uptime;
      // });
+
+    function cerrarSesion() {
+        localStorage.removeItem('token');
+        window.location.reload()
+    }
+
     function updateUptime() {
         fetch('/status').then(response => response.json()).then(data => {
             document.getElementById('totalRequests').textContent = data.totalRequests;
@@ -614,6 +646,40 @@
             e.target.classList.remove('scroll-visible')
         })
     })
+
+    if (localStorage.getItem('token')) {
+    fetch('/api/manageusers/user', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    })
+    .then(response => response.json()).then(data => {
+        if (!data.status) {
+        document.getElementById('usermail').textContent = "Invitado";
+        document.getElementById('userDropdown').attributes.removeNamedItem('data-toggle');
+        document.getElementById('userDropdown').href = "/login.html";
+        localStorage.removeItem('token');
+        } else {
+        document.getElementById('usermail').textContent = data.user.mail.split('@')[0];
+        document.getElementById("totalUsos").textContent = data.CurrentLimit - data.user.uses
+        for (let item of document.getElementsByTagName("a")) {
+            if (item.href.includes("api")) {
+                if (!item.href.includes("?")) item.href = item.href + "?apikey=" + data.user.apikey
+                else {
+                    item.href = item.href + "&apikey=" + data.user.apikey
+                }
+    }
+}
+        }
+    })
+    } else {
+        document.getElementById('usermail').textContent = "Invitado";
+        document.getElementById('userDropdown').attributes.removeNamedItem('data-toggle');
+        document.getElementById('userDropdown').href = "/";
+
+    }
 </script>
     <script src="https://BrunoSobrino.github.io/template-api/vendor/jquery/jquery.min.js"></script>
     <script src="https://BrunoSobrino.github.io/template-api/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
