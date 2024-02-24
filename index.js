@@ -1,4 +1,5 @@
 process.on('uncaughtException', console.error)
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -10,32 +11,37 @@ const path = require('path');
 const { execSync } = require('child_process');
 const axios = require('axios');
 const favicon = require('serve-favicon');
+const nodemailer = require("nodemailer");
 const visitors = new Set(); 
 let totalRequests = 0;
 let totalVisitors = 0;
 
-var allowedOrigins = ['https://api.cafirexos.com'];
+var allowedOrigins = ['https://api.cafirexos.com', 'http://localhost:2027'];
 
 app.set('trust proxy', 1)
 
-app.use(cors({
-    origin: function(origin, callback) {
-        if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) === -1) {
-            var msg = 'La política CORS (Cross-Origin Resource Sharing) para este sitio no ' +
-                'permite el acceso desde el origen especificado.';
-            return callback((msg));
-        }
-        return callback(null, true);
-    }
-}));
+// Inicicializar el servidor de correo
+
+if (process.env.new_user_verification === "true") {
+const transporter = nodemailer.createTransport({
+  host: process.env.smtp_host,
+  port: Number(process.env.smtp_port),
+  secure: process.env.smtp_is_secure === 'true',
+  auth: {
+    user: process.env.smtp_user,
+    pass: process.env.smtp_password
+  },
+});
+global.mTransporter = transporter;
+}
+
+
 
 // Funciones
 
 const home = require('./routes/home');
 const docs = require('./routes/docs');
 const apirouter5 = require('./routes/human-apis');
-
 
 const getUptime = () => {
   const uptimeInSeconds = Math.floor(process.uptime());

@@ -6,6 +6,7 @@
 
 ## —◉ APIs online:
 - API: [https://api.cafirexos.com](https://api.cafirexos.com)
+- API Canvas: [https://api-for-canvas-brunosobrino.koyeb.app](https://api-for-canvas-brunosobrino.koyeb.app)
 - API Test: [http://gru-np1.cafirexos.net:2027](http://gru-np1.cafirexos.net:2027)
 
 ## —◉ Funciones extras:
@@ -17,13 +18,22 @@
 
 ## —◉ Bugs & more:
 - IgStalk [Bug]
-- YtMP4 V2 [Bug]
-- ChatGPT [Bug]
-- Register user [Future update]
-- Apikey require [Future update]
+- Register user [BETA]
+- Apikey require [BETA]
+- Premium Apikey [PARCIAL]
 - Canvas not shareable with Cafirexos Host [Incompatibility]
 
 ------------------
+
+## —◉ Configuracion
+- Al descargar esta api, Por favor modifique el archivo "Example.env", Una vez configurado, Renombrar a ".env"
+- Recomendamos Encarecidamente poner un JWT secret Unico, De lo contrario podria ser facil robar los tokens de sesion.
+- Para utilizar el Recaptcha Cree su key privada y publica en [Este Sitio](https://www.google.com/recaptcha/admin/create?hl=es-419)
+- Puede utilizar el SMTP [Brevo](https://www.brevo.com/free-smtp-server/) Para empezar, solo registrese, ponga algunos datos, Dirigase al apartado de transaccional y copie los datos.
+- Los limites de cada ApiKey se reestablecen Cada 24h
+
+------------------
+
 
 ## —◉ Activar en Cafirexos
 <a href="https://www.cafirexos.com"><img src="https://grxcwmcwbxwj.objectstorage.sa-saopaulo-1.oci.customer-oci.com/n/grxcwmcwbxwj/b/cafirexos/o/logos%2Flogo.png" height="125px"></a>
@@ -32,6 +42,10 @@
 - Panel: [panel.cafirexos.com](https://panel.cafirexos.com)
 - Documentación: [docs.cafirexos.com](https://docs.cafirexos.com)
 - Grupo de WhatsApp: [whatsapp.cafirexos.com](https://whatsapp.cafirexos.com)
+
+## —◉ Activar en koyeb
+
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/BrunoSobrino/api&branch=koyeb&name=api-for-canvas&ports=2027;http;/) 
 
 ## —◉ Activar en replit
 
@@ -47,6 +61,7 @@
 <a href="https://github.com/Daniel9822"><img src="https://github.com/Daniel9822.png" width="100" height="100" alt="Daniel9822"/></a>
 <a href="https://github.com/Shizu-SH"><img src="https://github.com/Shizu-SH.png" width="100" height="100" alt="Shizu-SH"/></a>
 <a href="https://github.com/dftzippo"><img src="https://github.com/dftzippo.png" width="100" height="100" alt="dftzippo"/></a>
+<a href="https://github.com/ferhacks"><img src="https://github.com/ferhacks.png" width="100" height="100" alt="ferhacks"/></a>
 
 ## —◉ Editor & propietario
 <a href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="150" height="150" alt="BrunoSobrino"/></a>

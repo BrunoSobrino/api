@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciar Sesion En Empire API</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
+
+    <script>
+        if (localStorage.getItem("token")) {
+            window.location.href = "/docs";
+        }
+    </script>
+
+    <title>EMPIRE API - LOGIN</title>
+</head>
+<body>
+
+   <!-- Formularios -->
+    <div class="contenedor-formularios">
+        <!-- Links de los formularios -->
+        <ul class="contenedor-tabs">
+            <li class="tab tab-segunda active"><a href="#iniciar-sesion">Iniciar Sesión</a></li>
+            <li class="tab tab-primera"><a href="#registrarse">Registrarse</a></li>
+        </ul>
+
+        <!-- Contenido de los Formularios -->
+        <div class="contenido-tab">
+            <!-- Iniciar Sesion -->
+            <div id="iniciar-sesion">
+                <h1>Iniciar Sesión</h1>
+                <form action="#" method="post" id="logg">
+                    <div class="contenedor-input">
+                        <label>
+                            Correo <span class="req">*</span>
+                        </label>
+                        <input type="text" required id="logmail">
+                    </div>
+
+                    <div class="contenedor-input">
+                        <label>
+                            Contraseña <span class="req">*</span>
+                        </label>
+                        <input type="password" required id="logpass">
+                    </div>
+                    <p class="forgot"><a href="#" onclick="requestReset()">Se te olvidó la contraseña?</a></p>
+                    <input type="submit" class="button button-block" value="Iniciar Sesión">
+                </form>
+            </div>
+
+            <!-- Registrarse -->
+            <div id="registrarse">
+                <h1>Registrarse</h1>
+                <form action="#" method="post" id="regg">
+                    <div class="contenedor-input">
+                            <label>
+                                Email <span class="req">*</span>
+                            </label>
+                        <input type="email" required id="regmail">
+                    </div>
+                    <div class="contenedor-input">
+                        <label>
+                            Contraseña <span class="req">*</span>
+                        </label>
+                        <input type="password" required id="reggpass">
+                    </div>
+
+                    <div class="contenedor-input">
+                        <label>
+                            Repetir Contraseña <span class="req">*</span>
+                        </label>
+                        <input type="password" required id="reggpass2">
+                    </div>
+
+                    <input type="submit" class="button button-block" value="Registrarse" id="submitButton">
+                </form>
+            </div>
+        </div>
+    </div>
+   <script>
+
+    async function requestReset() {
+      if (!logmail.value) {
+        alert("Ingrese su correo");
+        return;
+      }
+      if (window.recaptchaKey) {
+        grecaptcha.ready(function() {
+          grecaptcha.execute(window.recaptchaKey, {action: 'submit'}).then(function(token) {
+            fetch("/api/manageusers/requestReset", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                mail: logmail.value,
+                recaptchaVerify: token
+              })
+            })
+              .then(response => response.json())
+              .then(data => {
+                if (!data.status) {
+                  alert(data.message);
+                } else {
+                  alert(data.message);
+                }
+              })
+              .catch(error => {
+                alert("Error en el registro");
+              });
+          });
+        });
+      } else {
+        fetch("/api/manageusers/requestReset", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            mail: logmail.value
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (!data.status) {
+              alert(data.message);
+            } else {
+              alert(data.message);
+            }
+          })
+          .catch(error => {
+            alert("Error en el registro");
+          });
+      }
+    }
+
+    regg.addEventListener("submit", function(event) {
+  event.preventDefault();
+  if (reggpass.value !== reggpass2.value) {
+    alert("Las contraseñas no coinciden");
+    return;
+  }
+
+  if (window.recaptchaKey) {
+
+  grecaptcha.ready(function() {
+          grecaptcha.execute(window.recaptchaKey, {action: 'submit'}).then(function(token) {
+              // Add your logic to submit to your backend server here.
+
+  fetch("/api/manageusers/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      mail: regmail.value,
+      password: btoa(reggpass.value),
+      recaptchaVerify: token
+    })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (!data.status) {
+        alert(data.message);
+      } else {
+        alert(data.message);
+        window.location.reload()
+      }
+    })
+    .catch(error => {
+      alert("Error en el registro");
+    });
+});
+});
+
+} else {
+  fetch("/api/manageusers/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      mail: regmail.value,
+      password: btoa(reggpass.value)
+    })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (!data.status) {
+        alert(data.message);
+      } else {
+        alert("Usuario registrado con éxito");
+        window.location.reload()
+      }
+    })
+    .catch(error => {
+      alert("Error en el registro");
+    });
+    }
+
+        });
+logg.addEventListener("submit", function(event) {
+  event.preventDefault();
+  fetch("/api/manageusers/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      mail: logmail.value,
+      password: btoa(logpass.value)
+    })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (!data.status) {
+        alert(data.message);
+      } else {
+        localStorage.setItem("token", data.token);
+        window.location.href = "/docs";
+      }
+    })
+    .catch(error => {
+      alert("Error en el login");
+    });
+});
+
+fetch("/api/manageusers/fetchRecaptcha").then(response => response.json()).then(data => {
+  if (!data.status) return;
+  window.recaptchaKey = data.sitekey;
+  let recap = document.createElement("script")
+  recap.src = "https://www.google.com/recaptcha/api.js?render=" + data.sitekey;
+  document.head.appendChild(recap);
+
+});
+   </script>
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   <script>
+    $(document).ready(function(){
+        $('.tab a').on('click', function (e) {
+            e.preventDefault();
+
+            $(this).parent().addClass('active');
+            $(this).parent().siblings().removeClass('active');
+
+            target = $(this).attr('href');
+
+            $('.contenido-tab > div').not(target).hide();
+
+            $(target).fadeIn(600);
+
+        });
+})
+   </script>
+   <script>
+    $(document).ready(function(){
+        $('.tab a').on('click', function (e) {
+            e.preventDefault();
+
+            $(this).parent().addClass('active');
+            $(this).parent().siblings().removeClass('active');
+
+            target = $(this).attr('href');
+
+            $('.contenido-tab > div').not(target).hide();
+
+            $(target).fadeIn(600);
+
+        });
+})
+   </script>
+
+</body>
+</html>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
