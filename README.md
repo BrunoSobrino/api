@@ -1,23 +1,23 @@
-# Free Api Rest - By BrunoSobrino
+# API Rest by BrunoSobrino
 
-- En desarrollo
+- EN DESARROLLO
 
 ------------------
 
-## —◉ APIs online:
-- API: [https://api.cafirexos.com](https://api.cafirexos.com)
-- API Canvas: [https://api-for-canvas-brunosobrino.koyeb.app](https://api-for-canvas-brunosobrino.koyeb.app)
-- API Test: [http://gru-np1.cafirexos.net:2027](http://gru-np1.cafirexos.net:2027)
+## —◉ APIs en línea:
+- Cafirexos: [api.cafirexos.com](https://api.cafirexos.com)
+- Compatible con Canvas: [api-for-canvas-brunosobrino.koyeb.app](https://api-for-canvas-brunosobrino.koyeb.app)
+- Desarrollo: [gru-np1.cafirexos.net:2027](http://gru-np1.cafirexos.net:2027)
 
 ## —◉ Funciones extras:
-- YT: [https://api.cafirexos.com/human/youtube](https://api.cafirexos.com/human/youtube)
-- IG: [https://api.cafirexos.com/human/instagram](https://api.cafirexos.com/human/instagram)
-- FB: [https://api.cafirexos.com/human/facebook](https://api.cafirexos.com/human/facebook)
+- YouTube: [api.cafirexos.com/human/youtube](https://api.cafirexos.com/human/youtube)
+- Instagram: [api.cafirexos.com/human/instagram](https://api.cafirexos.com/human/instagram)
+- Facebook: [api.cafirexos.com/human/facebook](https://api.cafirexos.com/human/facebook)
 
 ------------------
 
 ## —◉ Bugs & more:
-- IgStalk [Bug]
+- IgStalk [BUG]
 - Register user [BETA]
 - Apikey require [BETA]
 - Premium Apikey [PARCIAL]
@@ -25,33 +25,34 @@
 
 ------------------
 
-## —◉ Configuracion
-- Al descargar esta api, Por favor modifique el archivo "Example.env", Una vez configurado, Renombrar a ".env"
-- Recomendamos Encarecidamente poner un JWT secret Unico, De lo contrario podria ser facil robar los tokens de sesion.
-- Para utilizar el Recaptcha Cree su key privada y publica en [Este Sitio](https://www.google.com/recaptcha/admin/create?hl=es-419)
-- Puede utilizar el SMTP [Brevo](https://www.brevo.com/free-smtp-server/) Para empezar, solo registrese, ponga algunos datos, Dirigase al apartado de transaccional y copie los datos.
-- Los limites de cada ApiKey se reestablecen Cada 24h
+## —◉ Configuración
+- Al instalar está API, Por favor modifique el archivo "example.env", una vez configurado, renombrar a ".env".
+- Recomendamos establecer [JWT_SECRET](https://github.com/BrunoSobrino/api/blob/2109f7c00962c8ede489337e1b0218c8783e3ce3/example.env#L2) único, De lo contrario podria ser fácil robar los tokens de sesión.
+- Para utilizar el reCAPTCHA, Cree su llave privada y publica en [este sitio](https://www.google.com/recaptcha/admin/create?hl=es-419)
+- Puede utilizar el  servicio SMTP de [Brevo](https://www.brevo.com/free-smtp-server/) Para empezar, solo registrese, ponga algunos datos, Dirigase al apartado de transaccional y copie los datos.
+- Los limites de cada API Key se reestablecen cada 24 horas.
 
 ------------------
 
 
 ## —◉ Activar en Cafirexos
-<a href="https://www.cafirexos.com"><img src="https://grxcwmcwbxwj.objectstorage.sa-saopaulo-1.oci.customer-oci.com/n/grxcwmcwbxwj/b/cafirexos/o/logos%2Flogo.png" height="125px"></a>
-- Sitio web: [cafirexos.com](https://www.cafirexos.com)
+<a href="https://www.cafirexos.com"><img src="https://grxcwmcwbxwj.objectstorage.sa-saopaulo-1.oci.customer-oci.com/n/grxcwmcwbxwj/b/cafirexos/o/logos%2Flogo_2.png" height="125px"></a>
+- Sitio web: [www.cafirexos.com](https://www.cafirexos.com)
 - Dash: [dash.cafirexos.com](https://dash.cafirexos.com)
 - Panel: [panel.cafirexos.com](https://panel.cafirexos.com)
 - Documentación: [docs.cafirexos.com](https://docs.cafirexos.com)
-- Grupo de WhatsApp: [whatsapp.cafirexos.com](https://whatsapp.cafirexos.com)
+- Canal de WhatsApp: [cafirexos.com/whatsapp](https://cafirexos.com/whatsapp)
+- Comunidad en WhatsApp: [cafirexos.com/comunidad](https://cafirexos.com/comunidad)
 
-## —◉ Activar en koyeb
+## —◉ Activar en Koyeb
 
 [![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/BrunoSobrino/api&branch=koyeb&name=api-for-canvas&ports=2027;http;/) 
 
-## —◉ Activar en replit
+## —◉ Activar en Replit
 
 [![Run on Repl.it](https://repl.it/badge/github/BrunoSobrino/api)](https://repl.it/github/BrunoSobrino/api) 
   
-## —◉ Activar en render
+## —◉ Activar en Render
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://dashboard.render.com/blueprint/new?repo=https%3A%2F%2Fgithub.com%2FBrunoSobrino%2Fapi) 
 
@@ -63,6 +64,6 @@
 <a href="https://github.com/dftzippo"><img src="https://github.com/dftzippo.png" width="100" height="100" alt="dftzippo"/></a>
 <a href="https://github.com/ferhacks"><img src="https://github.com/ferhacks.png" width="100" height="100" alt="ferhacks"/></a>
 
-## —◉ Editor & propietario
+## —◉ Propietario
 <a href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="150" height="150" alt="BrunoSobrino"/></a>
-- Api Rest Free - By Bruno Sobrino
+- API Rest by Bruno Sobrino
