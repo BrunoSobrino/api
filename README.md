@@ -18,22 +18,20 @@
 
 ## —◉ Bugs & more:
 - IgStalk [BUG]
-- Register user [BETA]
-- Apikey require [BETA]
-- Premium Apikey [PARCIAL]
-- Canvas not shareable with Cafirexos Host [Incompatibility]
+- Logueo de usuarios [BETA]
+- API Key requerida [BETA]
+- Premium API Key [PARCIAL]
 
 ------------------
 
 ## —◉ Configuración
 - Al instalar está API, Por favor modifique el archivo "example.env", una vez configurado, renombrar a ".env".
-- Recomendamos establecer [JWT_SECRET](https://github.com/BrunoSobrino/api/blob/2109f7c00962c8ede489337e1b0218c8783e3ce3/example.env#L2) único, De lo contrario podria ser fácil robar los tokens de sesión.
+- Recomendamos establecer un [JWT_SECRET](https://github.com/BrunoSobrino/api/blob/2109f7c00962c8ede489337e1b0218c8783e3ce3/example.env#L2) único, De lo contrario podria ser fácil robar los tokens de sesión.
 - Para utilizar el reCAPTCHA, Cree su llave privada y publica en [este sitio](https://www.google.com/recaptcha/admin/create?hl=es-419)
-- Puede utilizar el  servicio SMTP de [Brevo](https://www.brevo.com/free-smtp-server/) Para empezar, solo registrese, ponga algunos datos, Dirigase al apartado de transaccional y copie los datos.
+- Puede utilizar el  servicio SMTP de [Brevo](https://www.brevo.com/free-smtp-server/) Para empezar, solo registrese, rellene algunos datos, Dirigase al apartado de transaccional y copie los datos de SMTP.
 - Los limites de cada API Key se reestablecen cada 24 horas.
 
 ------------------
-
 
 ## —◉ Activar en Cafirexos
 <a href="https://www.cafirexos.com"><img src="https://grxcwmcwbxwj.objectstorage.sa-saopaulo-1.oci.customer-oci.com/n/grxcwmcwbxwj/b/cafirexos/o/logos%2Flogo_2.png" height="125px"></a>
