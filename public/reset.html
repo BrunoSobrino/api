@@ -21,13 +21,13 @@
             <label>
               Nueva Contraseña <span class="req">*</span>
             </label>
-            <input type="password" required id="logpass" oninput="moveLabel('logpass')">  
+            <input type="password" required id="logmail" oninput="moveLabel('logmail')">  
           </div>
           <div class="contenedor-input">
             <label>
               Confirmar Contraseña <span class="req">*</span>
             </label>
-            <input type="password" required id="logpass-confirm" oninput="moveLabel('logpass-confirm')">    
+            <input type="password" required id="logpass_confirm" oninput="moveLabel('logpass_confirm')">    
           </div>
           <input type="submit" class="button button-block" value="Reestablecer Contraseña">
         </form>
@@ -53,7 +53,7 @@
 
       logg.addEventListener("submit", function(event) {
         event.preventDefault();
-        if (logpass.value !== logpass-confirm.value) {
+        if (logmail.value !== logpass_confirm.value) {
           alert("Las contraseñas no coinciden");
           return;
         }
@@ -66,14 +66,14 @@
           },
           body: JSON.stringify({
             tokenReset: myParam,
-            password: btoa(logpass.value)
+            password: btoa(logmail.value)
           })
         })
           .then(response => response.json())
           .then(data => {
             if (!data.status) {
               alert(data.message);
-            } else if (reggpass.value.length < 8) {  
+            } else if (logmail.value.length < 8) {  
                 alert("[❗] La contraseña debe tener al menos 8 caracteres.");
                 return;                     
             } else {
