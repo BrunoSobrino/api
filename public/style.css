@@ -1,64 +1,66 @@
 * {
   padding: 0;
   margin: 0;
-}
-
-*, *:before, *:after {
   box-sizing: border-box;
 }
 
 body {
-  background: #c1bdba;
-  font-family: "Ubuntu", helvetica;
+  background-image: url('https://wallpapercave.com/wp/wp8981053.jpg');
+  background-color: #000033; 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: "Ubuntu", sans-serif;
+  line-height: 1.6;
 }
 
 a {
   text-decoration: none;
-  color: #1ab188;
-  transition: 0.5s ease;
+  color: #00CCFF; 
+  transition: color 0.5s ease;
 }
 a:hover {
-  color: #179b77;
+  color: #CC00CC; 
 }
 
 .contenedor-formularios {
-  background: rgba(19, 35, 47, 0.9);
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 40px;
   max-width: 600px;
   margin: 40px auto;
   border-radius: 4px;
-  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+  box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.3);
+  border: 2px solid #00CCFF;
 }
 
 .contenedor-tabs {
   list-style: none;
   padding: 0;
   margin: 0 0 40px 0;
-}
-.contenedor-tabs:after {
-  content: "";
-  display: table;
-  clear: both;
+  display: flex;
+  justify-content: space-between;
 }
 .contenedor-tabs li a {
-  display: block;
+  display: flex;
+  align-items: center; /* Centra el texto verticalmente */
+  justify-content: center;  
   text-decoration: none;
   padding: 15px;
-  background: rgba(160, 179, 176, 0.25);
+  background: rgba(0, 204, 255, 0.25); /* Azul neón transparente */
   color: #a0b3b0;
   font-size: 20px;
-  float: left;
-  width: 50%;
   text-align: center;
   cursor: pointer;
-  transition: 0.5s ease;
+  transition: background 0.5s ease;
+  height: 65px;
+  width: 100%; 
 }
 .contenedor-tabs li a:hover {
-  background: #179b77;
+  background: #CC00CC; /* Morado neón */
   color: #fff;
 }
 .contenedor-tabs .active a {
-  background: #1ab188;
+  background: #00CCFF; /* Azul neón */
   color: #fff;
 }
 
@@ -85,7 +87,7 @@ label {
 }
 label .req {
   margin: 2px;
-  color: #1ab188;
+  color: #00CCFF; /* Azul neón */
 }
 
 label.active {
@@ -115,12 +117,12 @@ input {
   border-right: none;
   color: #fff;
   border-radius: 0;
-  transition: all 0.5s ease;
+  transition: border-color 0.5s ease;
   border-radius: 5px;
 }
 input:focus {
   outline: none;
-  border-color: #1ab188;
+  border-color: #00CCFF; /* Azul neón */
 }
 
 .contenedor-input {
@@ -128,18 +130,9 @@ input:focus {
   margin-bottom: 40px;
 }
 
-.fila-arriba:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.fila-arriba div {
-  float: left;
-  width: 48%;
-  margin-right: 4%;
-}
-.fila-arriba div:last-child {
-  margin: 0;
+.fila-arriba {
+  display: flex;
+  justify-content: space-between;
 }
 
 .button {
@@ -149,13 +142,13 @@ input:focus {
   cursor: pointer;
   padding: 15px 0;
   font-size: 2rem;
-  background: #1ab188;
+  background: #00CCFF; /* Azul neón */
   color: #fff;
-  transition: all 0.5s ease;
+  transition: background 0.5s ease;
   -webkit-appearance: none;
 }
 .button:hover, .button:focus {
-  background: #179b77;
+  background: #CC00CC; /* Morado neón */
 }
 
 .button-block {
@@ -170,15 +163,24 @@ input:focus {
 }
 
 @media screen and (max-width: 500px) {
-  .fila-arriba div {
-    width: 100%;
+  .fila-arriba {
+    flex-direction: column;
   }
-  .fila-arriba div:last-child {
-    margin-bottom: 40px;
+  h1, label, input, .button {
+    font-size: 18px;
+  }
+  .contenedor-tabs li a {
+    height: 95px; 
   }
 }
 @media screen and (max-width: 400px) {
   .contenedor-tabs li a {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    height: 100vh; 
   }
 }
