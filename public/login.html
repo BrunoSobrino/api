@@ -164,9 +164,14 @@
     regg.addEventListener("submit", function(event) {
   event.preventDefault();
   if (reggpass.value !== reggpass2.value) {
-    alert("[❗] Las contraseñas no coinciden");
+    alert("[❗] Las contraseñas no coinciden.");
     return;
   }
+
+  if (reggpass.value.length < 8) {
+    alert("[❗] La contraseña debe tener al menos 8 caracteres.");
+    return;
+  }        
         
   if (window.recaptchaKey) {
 
