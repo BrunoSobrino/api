@@ -109,6 +109,12 @@
         alert("[❗] Ingrese su correo");
         return;
       }
+        
+  if (reggpass.value.length < 8) {
+    alert("[❗] La contraseña debe tener al menos 8 caracteres.");
+    return;
+  }  
+        
       if (window.recaptchaKey) {
         grecaptcha.ready(function() {
           grecaptcha.execute(window.recaptchaKey, {action: 'submit'}).then(function(token) {
@@ -165,7 +171,13 @@
     alert("[❗] Las contraseñas no coinciden");
     return;
   }
-                
+        
+  if (reggpass.value.length < 8) {
+    alert("[❗] La contraseña debe tener al menos 8 caracteres.");
+    return;
+  }  
+
+        
   if (window.recaptchaKey) {
 
   grecaptcha.ready(function() {
@@ -188,10 +200,6 @@
       if (!data.status) {
         alert(data.message);
       } else {
-          if (reggpass.value.length < 8) {
-              alert("[❗] La contraseña debe tener al menos 8 caracteres.");
-              return;
-          }  
         alert(data.message);
         window.location.reload()
       }
