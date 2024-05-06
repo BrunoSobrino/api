@@ -10,12 +10,12 @@
 - Onrender: [api-brunosobrino.onrender.com](https://api-brunosobrino.onrender.com/docs)
 * Nota: API Actualizada 100%, apikey: q3ibff5tmqf8zjg74is7l
 - Compatible con Canvas: [api-for-canvas-brunosobrino.koyeb.app](https://api-for-canvas-brunosobrino.koyeb.app)
-* Nota: Todas las demas funciones trabajan con normalidad
+* Nota: Casi todas las demas funciones trabajan con normalidad, API no actualizada.
 
 ## —◉ Funciones extras:
-- YouTube: [api.cafirexos.com/human/youtube](https://api.cafirexos.com/human/youtube)
-- Instagram: [api.cafirexos.com/human/instagram](https://api.cafirexos.com/human/instagram)
-- Facebook: [api.cafirexos.com/human/facebook](https://api.cafirexos.com/human/facebook)
+- YouTube: [api.cafirexos.com/human/youtube](https://api-brunosobrino.onrender.com/human/youtube)
+- Instagram: [api.cafirexos.com/human/instagram](https://api-brunosobrino.onrender.com/human/instagram)
+- Facebook: [api.cafirexos.com/human/facebook](https://api-brunosobrino.onrender.com/human/facebook)
 
 ------------------
 
