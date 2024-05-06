@@ -60,7 +60,8 @@
                         </label>
                         <input type="password" required id="logpass">
                     </div>
-                    <p class="forgot"><a href="#" onclick="requestReset()">Se te olvidó la contraseña?</a></p>
+                    <p class="forgot"><a href="javascript:void(0);" onclick="requestReset()">Se te olvidó la contraseña?</a></p>
+                    <!--<p class="forgot"><a href="#" onclick="requestReset()">Se te olvidó la contraseña?</a></p> -->
                     <input type="submit" class="button button-block" value="Iniciar Sesión">
                 </form>
             </div>
@@ -109,12 +110,7 @@
         alert("[❗] Ingrese su correo");
         return;
       }
-        
-  if (reggpass.value.length < 8) {
-    alert("[❗] La contraseña debe tener al menos 8 caracteres.");
-    return;
-  }  
-        
+                
       if (window.recaptchaKey) {
         grecaptcha.ready(function() {
           grecaptcha.execute(window.recaptchaKey, {action: 'submit'}).then(function(token) {
@@ -172,12 +168,6 @@
     return;
   }
         
-  if (reggpass.value.length < 8) {
-    alert("[❗] La contraseña debe tener al menos 8 caracteres.");
-    return;
-  }  
-
-        
   if (window.recaptchaKey) {
 
   grecaptcha.ready(function() {
@@ -199,10 +189,14 @@
     .then(data => {
       if (!data.status) {
         alert(data.message);
+      else if (reggpass.value.length < 8) {
+          alert("[❗] La contraseña debe tener al menos 8 caracteres.");
+          return;    
       } else {
         alert(data.message);
         window.location.reload()
       }
+     }
     })
     .catch(error => {
       alert("[⚠️] Error en el registro, reporte el error en Github.");
@@ -238,7 +232,7 @@
         });
 logg.addEventListener("submit", function(event) {
   event.preventDefault();
-       
+    
   fetch("/api/manageusers/login", {
     method: "POST",
     headers: {
@@ -254,10 +248,6 @@ logg.addEventListener("submit", function(event) {
       if (!data.status) {
         alert(data.message);
       } else {
-          if (logpass.value.length < 8) {
-              alert("[❗] Contraseña incorrecta, la contraseña debe tener al menos 8 caracteres.");
-              return;
-          }           
         localStorage.setItem("token", data.token);
         window.location.href = "/docs";
       }
