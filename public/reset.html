@@ -1,144 +1,104 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Empire API - Reestablecer Contraseña<title>
-  <link rel="stylesheet" href="./style.css">
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
-
-    <script>
-        if (localStorage.getItem("token")) {
-            window.location.href = "/docs";
-        }
-    </script>
-
-    <title>EMPIRE API - LOGIN</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">   
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta property="og:image" content="https://github.com/BrunoSobrino.png">
+  <title>API | Reset password</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-
-   <!-- Formularios -->
-    <div class="contenedor-formularios">
-        <!-- Links de los formularios -->
-        <ul class="contenedor-tabs">
-            <li class="tab tab-segunda active"><a href="#iniciar-sesion">Reestablecer Contraseña</a></li>
-        </ul>
-
-        <!-- Contenido de los Formularios -->
-        <div class="contenido-tab">
-            <!-- Iniciar Sesion -->
-            <div id="iniciar-sesion">
-                <h1>Iniciar Sesión</h1>
-                <form action="#" method="post" id="logg">
-                    <div class="contenedor-input">
-                        <label>
-                          Contraseña <span class="req">*</span>
-                        </label>
-                        <input type="password" required id="logmail">
-                    </div>
-
-                    <div class="contenedor-input">
-                        <label>
-                           Confirme Contraseña <span class="req">*</span>
-                        </label>
-                        <input type="password" required id="logpass">
-                    </div>
-                    <input type="submit" class="button button-block" value="Iniciar Sesión">
-                </form>
-            </div>
-        </div>
+  <div class="contenedor-formularios">
+    <div class="contenido-tab">
+      <div id="iniciar-sesion" style="display: block;">
+        <h1>Reestablecer Contraseña</h1>
+        <form action="#" method="post" id="logg">
+          <div class="contenedor-input">
+            <label>
+              Nueva Contraseña <span class="req">*</span>
+            </label>
+            <input type="password" required id="logpass" oninput="moveLabel('logpass')">  
+          </div>
+          <div class="contenedor-input">
+            <label>
+              Confirmar Contraseña <span class="req">*</span>
+            </label>
+            <input type="password" required id="logpass-confirm" oninput="moveLabel('logpass-confirm')">    
+          </div>
+          <input type="submit" class="button button-block" value="Reestablecer Contraseña">
+        </form>
+      </div>
     </div>
-   <script>
-logg.addEventListener("submit", function(event) {
-  event.preventDefault();
-  if (logmail.value !== logpass.value) {
-    alert("Las contraseñas no coinciden");
-    return;
-  }
-  const urlParams = new URLSearchParams(window.location.search);
-  const myParam = urlParams.get('resetToken');
-  fetch("/api/manageusers/reset", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      tokenReset: myParam,
-      password: btoa(logpass.value)
-    })
-  })
-    .then(response => response.json())
-    .then(data => {
-      if (!data.status) {
-        alert(data.message);
-      } else {
-        window.location.href = "/login.html";
-      }
-    })
-    .catch(error => {
-      alert("Error en el login");
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.tab a').on('click', function (e) {
+        e.preventDefault();
+
+        $(this).parent().addClass('active');
+        $(this).parent().siblings().removeClass('active');
+
+        target = $(this).attr('href');
+
+        $('.contenido-tab > div').not(target).hide();
+
+        $(target).fadeIn(600);
+      });
+
+      logg.addEventListener("submit", function(event) {
+        event.preventDefault();
+        if (logpass.value !== logpass-confirm.value) {
+          alert("Las contraseñas no coinciden");
+          return;
+        }
+        const urlParams = new URLSearchParams(window.location.search);
+        const myParam = urlParams.get('resetToken');
+        fetch("/api/manageusers/reset", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            tokenReset: myParam,
+            password: btoa(logpass.value)
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (!data.status) {
+              alert(data.message);
+            } else if (reggpass.value.length < 8) {  
+                alert("[❗] La contraseña debe tener al menos 8 caracteres.");
+                return;                     
+            } else {
+              window.location.href = "/login.html";
+            }
+          })
+          .catch(error => {
+            alert("Error en el login");
+          });
+      });
     });
-});
-
-fetch("/api/manageusers/fetchRecaptcha").then(response => response.json()).then(data => {
-  if (!data.status) return;
-  window.recaptchaKey = data.sitekey;
-  let recap = document.createElement("script")
-  recap.src = "https://www.google.com/recaptcha/api.js?render=" + data.sitekey;
-  document.head.appendChild(recap);
-
-});
-   </script>
-   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-   <script>
-    $(document).ready(function(){
-        $('.tab a').on('click', function (e) {
-            e.preventDefault();
-
-            $(this).parent().addClass('active');
-            $(this).parent().siblings().removeClass('active');
-
-            target = $(this).attr('href');
-
-            $('.contenido-tab > div').not(target).hide();
-
-            $(target).fadeIn(600);
-
-        });
-})
-   </script>
-   <script>
-    $(document).ready(function(){
-        $('.tab a').on('click', function (e) {
-            e.preventDefault();
-
-            $(this).parent().addClass('active');
-            $(this).parent().siblings().removeClass('active');
-
-            target = $(this).attr('href');
-
-            $('.contenido-tab > div').not(target).hide();
-
-            $(target).fadeIn(600);
-
-        });
-})
-   </script>
-
-</body>
-</html>
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script  src="./script.js"></script>
-
+      
+    function moveLabel(inputId) {
+      const input = document.getElementById(inputId);
+      const label = input.previousElementSibling;
+      if (input.value.length > 0) {
+        label.style.transform = 'translateY(-20px)';
+        label.style.fontSize = '14px';
+        label.querySelector('.req').style.display = 'none';
+      } else {
+        label.style.transform = '';
+        label.style.fontSize = '';
+        label.querySelector('.req').style.display = 'inline';
+      }
+    }
+  </script>
 </body>
 </html>
