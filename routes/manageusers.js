@@ -18,13 +18,13 @@ router.post('/login', async (req, res) => {
     //console.log(hashPasswd);
     //7console.log(user);
     if (!user) {
-        return res.status(404).json({ status: false, message: 'Usuario no encontrado' });
+        return res.status(404).json({ status: false, message: '[❗] Usuario no encontrado, por favor registrese.' });
     }
     if (user.hashPassword !== hashPasswd) {
-        return res.status(401).json({ status: false, message: 'Contraseña incorrecta' });
+        return res.status(401).json({ status: false, message: '[❗] Contraseña incorrecta, recuerde que debe ser de 8 digitos o más.' });
     }
     if (!user.isVerified) {
-        return res.status(401).json({ status: false, message: 'Usuario no verificado' });
+        return res.status(401).json({ status: false, message: '[❗] Usuario no verificado, revise la bandeja de entrada o de spam de su correo.' });
     }
 
     const token = jwt.sign({ mail: mail, userid: user.userId }, process.env.JWT_SECRET || 'B3tterTh@nB');
@@ -44,7 +44,7 @@ router.post('/register', async (req, res) => {
 
     const user = database.getDatabaseByUser(mail);
     if (user) {
-        return res.status(409).json({ status: false, message: 'Usuario ya registrado' });
+        return res.status(409).json({ status: false, message: '[❗] Usuario ya registrado, verifique su correo e inicie sesión.' });
     }
     if (processR) {
         const recaptcha = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.recaptcha_secret}&response=${recaptchaVerify}`, {
@@ -112,7 +112,7 @@ router.post('/register', async (req, res) => {
                 <p>Si no has solicitado este correo, simplemente ignóralo.</p>
                 <p>¡Gracias!</p>
                 <div class="signature">
-                <p><strong>the Shadow Brokers - TEAM</strong></p>
+                <p><strong>The Shadow Brokers - TEAM</strong></p>
                 <p><strong>Bruno Sobrino</strong></p>
                 </div>
                 </div>
@@ -121,14 +121,14 @@ router.post('/register', async (req, res) => {
                 `
           });
         //console.log("Message sent: %s", info.messageId);
-        return res.status(200).json({ status: true, message: 'Usuario registrado, Para completar el registro, verifica tu correo, Si no ves el correo, revisa la carpeta de spam' });
+        return res.status(200).json({ status: true, message: '[❗] Usuario registrado, para completar el registro, verifica tu correo, si no ves el correo revisa la carpeta de spam.' });
         } catch (error) {
             console.log(error);
             database.DeleteDatabase(newUser.mail);
-            return res.status(500).json({ status: false, message: 'Error al enviar el correo' });
+            return res.status(500).json({ status: false, message: '[⚠️] Error al enviar el correo, reporte el error en Github.' });
         }
     }
-    return res.status(200).json({ status: true, message: 'Usuario registrado' });
+    return res.status(200).json({ status: true, message: '[❗] Usuario registrado.' });
 });
 
 router.get('/user', async (req, res) => {
@@ -136,7 +136,7 @@ router.get('/user', async (req, res) => {
     // remove Bearer from token
     token = token.split(' ')[1];
     if (!token) {
-        return res.status(401).json({ status: false, message: 'No se proporcionó un token' });
+        return res.status(401).json({ status: false, message: '[❗] No se proporcionó un token, haga click en el enlace que fue enviado a su correo.' });
     }
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET || 'B3tterTh@nB');
@@ -146,13 +146,13 @@ router.get('/user', async (req, res) => {
         }
         return res.status(200).json({ status: true, user: user, CurrentLimit: user.isPremium ? Number(process.env.premium_user_limit) : Number(process.env.free_user_limit) });
     } catch (error) {
-        return res.status(401).json({ status: false, message: 'Token inválido' });
+        return res.status(401).json({ status: false, message: '[❗] Token inválido, haga click en el enlace que fue enviado a su correo.' });
     }
 });
 
 router.get('/fetchRecaptcha', async (req, res) => {
     if (!processR) {
-        return res.status(404).json({ status: false, message: 'Recaptcha no habilitado' });
+        return res.status(404).json({ status: false, message: '[❗] Recaptcha no habilitado.' });
     }
     const recaptchaSiteKey = process.env.recaptcha_site_key;
     return res.status(200).json({ status: true, sitekey: recaptchaSiteKey });
@@ -182,7 +182,7 @@ router.post('/requestReset', async (req, res) => {
     }
     const user = database.getDatabaseByUser(mail);
     if (!user) {
-        return res.status(404).json({ status: false, message: 'Usuario no encontrado' });
+        return res.status(404).json({ status: false, message: '[❗] Usuario no encontrado, por favor verifique que sea el correo correcto.' });
     }
 
     if (processR && !recaptchaVerify) {
@@ -253,7 +253,7 @@ router.post('/requestReset', async (req, res) => {
             <p>Si no has solicitado restablecer tu contraseña, simplemente ignora este correo.</p>
             <p>¡Gracias!</p>
             <div class="signature">
-            <p><strong>the Shadow Brokers - TEAM</strong></p>
+            <p><strong>The Shadow Brokers - TEAM</strong></p>
             <p><strong>Bruno Sobrino</strong></p>
             </div>
             </div>
@@ -262,10 +262,10 @@ router.post('/requestReset', async (req, res) => {
             `
         });
         //console.log("Message sent: %s", info.messageId);
-        return res.status(200).json({ status: true, message: 'Correo enviado' });
+        return res.status(200).json({ status: true, message: '[❗] Correo enviado, verifique su bandeja de entradas o la carpeta de spam.' });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({ status: false, message: 'Error al enviar el correo' });
+        return res.status(500).json({ status: false, message: '[⚠️] Error al enviar el correo, reporte en Github.' });
     }
 })
 
@@ -283,11 +283,11 @@ router.post('/reset', async (req, res) => {
     const users = database.getDatabase()
     const user = users.find(user => user.resetCode === token);
     if (!user) {
-        return res.status(404).json({ status: false, message: 'Usuario no encontrado' });
+        return res.status(404).json({ status: false, message: '[❗] Usuario no encontrado, por favor registrese.' });
     }
     const unbase64 = Buffer.from(password, 'base64').toString('utf-8');
     const updatedUser = database.UpdateDatabase(user.mail, { hashPassword: crypto.createHash('md5').update(unbase64).digest('hex'), resetCode: undefined });
-    return res.status(200).json({ status: true, message: 'Contraseña restablecida' });
+    return res.status(200).json({ status: true, message: '[❗] Contraseña restablecida.' });
 })
 
 
