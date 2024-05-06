@@ -1,29 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="es" >
 <head>
-  <meta charset="UTF-8">
-  <title>Iniciar Sesion En Empire API</title>
-  <link rel="stylesheet" href="./style.css">
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta property="og:image" content="https://github.com/BrunoSobrino.png">
+    <title>API | Login</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
-    <!-- Google Fonts -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta property="og:image" content="https://github.com/BrunoSobrino.png">
+    <title>API | BrunoSobrino</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
-
     <script>
         if (localStorage.getItem("token")) {
             window.location.href = "/docs";
         }
     </script>
-
-    <title>EMPIRE API - LOGIN</title>
 </head>
 <body>
 
@@ -117,7 +122,7 @@
                 }
               })
               .catch(error => {
-                alert("Error en el registro");
+                alert("[⚠️] Error en el registro, reporte el error en Github.");
               });
           });
         });
@@ -140,7 +145,7 @@
             }
           })
           .catch(error => {
-            alert("Error en el registro");
+            alert("[⚠️] Error en el registro, reporte el error en Github.");
           });
       }
     }
@@ -148,10 +153,15 @@
     regg.addEventListener("submit", function(event) {
   event.preventDefault();
   if (reggpass.value !== reggpass2.value) {
-    alert("Las contraseñas no coinciden");
+    alert("[❗] Las contraseñas no coinciden");
     return;
   }
-
+        
+  if (reggpass.value.length < 8) {
+    alert("[❗] La contraseña debe tener al menos 8 caracteres.");
+    return;
+  }
+        
   if (window.recaptchaKey) {
 
   grecaptcha.ready(function() {
@@ -179,7 +189,7 @@
       }
     })
     .catch(error => {
-      alert("Error en el registro");
+      alert("[⚠️] Error en el registro, reporte el error en Github.");
     });
 });
 });
@@ -200,18 +210,19 @@
       if (!data.status) {
         alert(data.message);
       } else {
-        alert("Usuario registrado con éxito");
+        alert("[❗] Usuario registrado con éxito, revise su bandeja de entrada o de spam en su correo para validarlo.");
         window.location.reload()
       }
     })
     .catch(error => {
-      alert("Error en el registro");
+      alert("[⚠️] Error en el registro, reporte el error en Github.");
     });
     }
 
         });
 logg.addEventListener("submit", function(event) {
   event.preventDefault();
+       
   fetch("/api/manageusers/login", {
     method: "POST",
     headers: {
@@ -227,13 +238,17 @@ logg.addEventListener("submit", function(event) {
       if (!data.status) {
         alert(data.message);
       } else {
+          if (logpass.value.length < 8) {
+              alert("[❗] Contraseña incorrecta, la contraseña debe tener al menos 8 caracteres.");
+              return;
+          }           
         localStorage.setItem("token", data.token);
         window.location.href = "/docs";
       }
     })
     .catch(error => {
-      alert("Error en el login");
-    });
+      alert("[⚠️] Error en el login, reporte el error en Github.");
+    });    
 });
 
 fetch("/api/manageusers/fetchRecaptcha").then(response => response.json()).then(data => {
