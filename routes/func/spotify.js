@@ -71,9 +71,9 @@ async function getMusicBuffer(text) {
       await NodeID3.write(tags, filePath);
       return filePath;
     } else {
-      const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
+      const resDL = await fetch(`https://controlled-gae-deliriusapi.koyeb.app/api/spotify?q=${text}`);
       const jsonDL = await resDL.json();
-      const linkDL = jsonDL.result[0].link;
+      const linkDL = jsonDL.data[0].url;
       const dlspoty = await downloadTrack(linkDL);
       const dataInfo = await SpottyDL.getTrack(linkDL)      
       const getRandom = (ext) => {
@@ -128,16 +128,13 @@ async function getMusicBuffer(text) {
   }
 }
 
-
-
-
 async function spotifySearch1(input) {
   try {
     let linkDL = input;
     if (!input.match(/^(https:\/\/open\.spotify\.com\/track\/[a-zA-Z0-9]+)/i)) {
-      const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${input}`);
+      const resDL = await fetch(`https://controlled-gae-deliriusapi.koyeb.app/api/spotify?q=${input}`);
       const jsonDL = await resDL.json();
-      linkDL = jsonDL.result[0].link;
+      linkDL = jsonDL.data[0].url;
     }
     const dataInfo = await SpottyDL.getTrack(linkDL)      
     const dlspoty = await downloadTrack(linkDL);
@@ -161,9 +158,9 @@ async function spotifySearch1(input) {
 
 async function spotifySearch2(text) {
   try {
-    const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
+    const resDL = await fetch(`https://controlled-gae-deliriusapi.koyeb.app/api/spotify?q=${text}`);
     const jsonDL = await resDL.json();
-    return { resultado: jsonDL.result };
+    return { resultado: jsonDL.data };
   } catch (error) {
     console.error(error);
     throw 'Error en la búsqueda de Spotify.';
