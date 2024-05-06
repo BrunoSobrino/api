@@ -97,7 +97,7 @@
 
     async function requestReset() {
       if (!logmail.value) {
-        alert("Ingrese su correo");
+        alert("[❗] Ingrese su correo");
         return;
       }
       if (window.recaptchaKey) {
@@ -156,12 +156,7 @@
     alert("[❗] Las contraseñas no coinciden");
     return;
   }
-        
-  if (reggpass.value.length < 8) {
-    alert("[❗] La contraseña debe tener al menos 8 caracteres.");
-    return;
-  }
-        
+                
   if (window.recaptchaKey) {
 
   grecaptcha.ready(function() {
@@ -184,6 +179,10 @@
       if (!data.status) {
         alert(data.message);
       } else {
+          if (reggpass.value.length < 8) {
+              alert("[❗] La contraseña debe tener al menos 8 caracteres.");
+              return;
+          }  
         alert(data.message);
         window.location.reload()
       }
