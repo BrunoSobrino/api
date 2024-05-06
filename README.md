@@ -8,7 +8,7 @@
 - Cafirexos: [api.cafirexos.com](https://api.cafirexos.com)
 * Nota: Solo disponible para usar desde el Bot hospedado en [cafirexos](https://dash.cafirexos.com)
 - Onrender: [api-brunosobrino.onrender.com](https://api-brunosobrino.onrender.com)
-* Nota: Desactualizada, api olvidada xd
+* Nota: API Actualizada 100%, apikey: q3ibff5tmqf8zjg74is7l
 - Compatible con Canvas: [api-for-canvas-brunosobrino.koyeb.app](https://api-for-canvas-brunosobrino.koyeb.app)
 * Nota: Todas las demas funciones trabajan con normalidad
 - Desarrollo: [gru-np1.cafirexos.net:2027](http://gru-np1.cafirexos.net:2027)
