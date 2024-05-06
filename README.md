@@ -11,8 +11,6 @@
 * Nota: API Actualizada 100%, apikey: q3ibff5tmqf8zjg74is7l
 - Compatible con Canvas: [api-for-canvas-brunosobrino.koyeb.app](https://api-for-canvas-brunosobrino.koyeb.app)
 * Nota: Todas las demas funciones trabajan con normalidad
-- Desarrollo: [gru-np1.cafirexos.net:2027](http://gru-np1.cafirexos.net:2027)
-* No activa siempre, solo para pruebas
 
 ## —◉ Funciones extras:
 - YouTube: [api.cafirexos.com/human/youtube](https://api.cafirexos.com/human/youtube)
