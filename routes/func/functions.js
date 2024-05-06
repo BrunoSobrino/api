@@ -5,7 +5,7 @@ const path = require('path');
 const cheerio = require('cheerio');
 const { fromBuffer  } = require('file-type');
 const request = require('request')
-const { TiktokStalk } = require("@tobyg74/tiktok-api-dl")
+const Tiktok = require("@tobyg74/tiktok-api-dl")
 const FormData = require('form-data');
 const getTwitterMedia = require('get-twitter-media');
 
@@ -248,7 +248,7 @@ async function getCookie() {
 async function tiktokStalk(username, options) {
   try {
     username = username.replace("@", "");
-    const data = await TiktokStalk(username, { cookie: await getCookie() });
+    const data = await Tiktok.StalkUser(username, { cookie: await getCookie() });
     if (!data || !data?.result || !data?.result?.users || !data?.result?.stats) return { status: false, message: 'Username no encontrado, verifique nuevamente.' };
     const userData = data.result.users;
     const statsData = data.result.stats;
