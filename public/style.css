@@ -12,6 +12,7 @@ body {
   background-repeat: no-repeat;
   font-family: "Ubuntu", sans-serif;
   line-height: 1.6;
+  margin-top: 50px;
 }
 
 a {
@@ -23,11 +24,41 @@ a:hover {
   color: #CC00CC; 
 }
 
+.contenedor-contacto {
+  background-color: rgba(0, 0, 0, 0.7); 
+  padding: 1px;
+  max-width: 600px;
+  margin: 10px auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: #fff;
+  border: 2px solid #00CCFF; 
+}
+
+.contenedor-contacto h2 {
+  margin-bottom: 20px;
+}
+
+.contacto-info {
+  display: flex;
+  justify-content: space-around; 
+}
+
+.contacto-info a:hover {
+  color: #CC00CC; 
+}
+
+.contenedor-contacto a {
+  color: #00CCFF; 
+  font-size: 2rem;
+}
+
 .contenedor-formularios {
   background-color: rgba(0, 0, 0, 0.7);
   padding: 40px;
   max-width: 600px;
-  margin: 40px auto;
+  margin: 10px auto;
   border-radius: 4px;
   box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.3);
   border: 2px solid #00CCFF;
