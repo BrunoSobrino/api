@@ -348,36 +348,36 @@ async function wallpaper(title, page = '1') {
   });
 }
 
-async function lyrics(search) {
-  const searchUrl = `https://www.musixmatch.com/search/${search}`;
-  const searchResponse = await axios.get(searchUrl);
-  const searchHtml = searchResponse.data;
-  const $ = cheerio.load(searchHtml);
-  const link = $('div.media-card-body > div > h2').find('a').attr('href');
-  const lyricsUrl = `https://www.musixmatch.com${link}`;
-  const lyricsResponse = await axios.get(lyricsUrl);
-  const lyricsHtml = lyricsResponse.data;
-  const $$ = cheerio.load(lyricsHtml);
-  const thumb = $$('div.col-sm-1.col-md-2.col-ml-3.col-lg-3.static-position > div > div > div').find('img').attr('src');
-  const lyrics1 = $$('div.col-sm-10.col-md-8.col-ml-6.col-lg-6 > div.mxm-lyrics > span > p > span').text().trim();
-  const lyrics2 = $$('div.col-sm-10.col-md-8.col-ml-6.col-lg-6 > div.mxm-lyrics > span > div > p > span').text().trim();
-  const title = $$('#site > div > div > div > main > div > div > div.mxm-track-banner.top > div > div > div').find('div.col-sm-10.col-md-8.col-ml-9.col-lg-9.static-position > div.track-title-header > div.mxm-track-title > h1').text().trim().replace('Lyrics','')
-  const artist = $$('#site > div > div > div > main > div > div > div > div > div > div > div> div > div > h2 > span').text().trim();
-  const img = `https:${thumb || ''}`
-  let lyrics;
-  if (lyrics1 && lyrics2) {
-  lyrics = `${lyrics1}\n${lyrics2}`;
-  } else if (lyrics1) {
-  lyrics = lyrics1;
-  } else if (lyrics2) {
-  lyrics = lyrics2;
-  } else {
-  lyrics = false;
+async function lyrics(term) {
+  try {
+    if (!term) return "🟥 Provide the name of the song to search the lyrics";
+    const geniusResponse = await axios.get(`https://letra-lime.vercel.app/genius?query=${term}`);
+    const geniusData = geniusResponse.data;
+    if (!geniusData.length) return `🟨 Couldn't find any lyrics for "${term}"`;
+    const lyricsUrl = geniusData[0].url;
+    const lyricsResponse = await axios.get(`https://letra-lime.vercel.app/lyrics?url=${lyricsUrl}`);
+    const result = {
+      status: true,
+      resultado: {  
+      titulo: geniusData[0].title || "",
+      fullTitle: geniusData[0].fullTitle || "",
+      artista: geniusData[0].artist.name || "",
+      artistUrl: geniusData[0].artist.url || "",
+      id: geniusData[0].id || "",
+      enpoint: geniusData[0].endpoint || "",
+      instrumental: geniusData[0].instrumental,
+      image: geniusData[0].image || "",
+      url: geniusData[0].url || "",
+      letra: lyricsResponse.data.lyrics || ""
+      }
+    };
+    return result;
+  } catch (error) {
+    return {
+      status: false,
+      message: error.message,
+    };
   }
-  if (!thumb || (!lyrics1 || !lyrics2 || !lyrics)) {
-    return { status: false, message: 'Algunos de los datos no fueron obtenidos correctamente.', resultado: { titulo: title ? title : 'Titulo no encontrado', artista: artist ? artist : 'Artista no encontrado', imagen: img ? img : 'Imagen no encontrada', letra: lyrics ? lyrics : 'Letra no encontrada'}};
-  }
-  return { status: true, resultado: { titulo: title, artista: artist, imagen: `https:${thumb}`, letra: lyrics}};
 }
 
 function RandomAgresivo(min, max) {
