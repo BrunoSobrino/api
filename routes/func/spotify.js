@@ -168,6 +168,7 @@ async function spotifySearch2(text) {
 }
 
 async function spotifyDownload(input) {
+    input = String(input); 
     const isSpotifyUrl = input.match(/^(https:\/\/open\.spotify\.com\/(album)\/[a-zA-Z0-9]+)/i);
     if (!isSpotifyUrl) return { status: false, message: 'El link ingresado no es de algun album de spotify.' };
    try {
