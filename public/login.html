@@ -189,14 +189,13 @@
     .then(data => {
       if (!data.status) {
         alert(data.message);
-      else if (reggpass.value.length < 8) {
+      } else if (reggpass.value.length < 8) {
           alert("[❗] La contraseña debe tener al menos 8 caracteres.");
           return;    
       } else {
         alert(data.message);
         window.location.reload()
       }
-     }
     })
     .catch(error => {
       alert("[⚠️] Error en el registro, reporte el error en Github.");
