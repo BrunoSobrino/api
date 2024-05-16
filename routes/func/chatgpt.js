@@ -122,7 +122,7 @@ async function gpt(content, senderName, prompt) {
     return result;    
   } catch (error) {    
     return { status: false, error: error.message };
-  }}}
+  }}}}
 }
 
 module.exports = { chatgpt, gpt };
