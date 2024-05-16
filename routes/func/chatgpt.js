@@ -63,7 +63,7 @@ for (const apiEndpoint of apiEndpoints) {
   return result;
 }
 
-async function gpt(content, senderName, prompt) {
+async function gpt(content, senderName = 'null', prompt, lenguaje = 'es') {
   if (!content) {
     return {
       status: false,
@@ -116,13 +116,28 @@ async function gpt(content, senderName, prompt) {
     return result;
   } catch {
   try {
+    let resultadoApi5 = await fetch(`https://delirios-api-delta.vercel.app/ia/gptweb?text=${content}`)
+    const resultado_Api5 = await resultadoApi5.json()
+    result.resultado = resultado_Api5.gpt
+    return result;    
+  } catch {  
+  try {
+    let resultadoApi4 = await fetch(`https://api.lolhuman.xyz/api/openai?apikey=GataDios&text=${content}&user=apirest`)
+    const resultado_Api4 = await resultadoApi4.json()
+    if (resultado_Api4?.result != 'error' && resultado_Api4?.result != '' && resultado_Api4?.result != undefined && resultado_Api4?.result) {
+    const translatedResult2 = await translate(resultado_Api4.result, { to: lenguaje, autoCorrect: true });
+    result.resultado = translatedResult.text.trim();
+    }
+    return result;    
+  } catch {    
+  try {
     let resultadoApi2 = await fetch(`https://ultimetron.guruapi.tech/gpt4?prompt=${content}`)
     const resultado_Api2 = await resultadoApi2.json()
     result.resultado = resultado_Api2.result.reply
     return result;    
   } catch (error) {    
     return { status: false, error: error.message };
-  }}}}
+  }}}}}}
 }
 
 module.exports = { chatgpt, gpt };
