@@ -74,7 +74,7 @@ async function gpt(content, senderName = 'null', prompt, lenguaje = 'es') {
     status: true,
     resultado: "",
   };
-  let url = 'https://c3.a0.chat/v1/chat/gpt/';
+  /*let url = 'https://c3.a0.chat/v1/chat/gpt/';
   let headers = {
     'Content-Type': 'application/json',
     'User-Agent': 'Mozilla/5.0 (Linux; Android 11; M2004J19C Build/RP1A.200720.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.129 Mobile Safari/537.36 WhatsApp/1.2.3',
@@ -102,7 +102,7 @@ async function gpt(content, senderName = 'null', prompt, lenguaje = 'es') {
   try {
     let ress = await axios.post(url, datos, { headers });
     result.resultado = ress.data
-  } catch {
+  } catch {*/
   try {
     let resultadoApi = await fetch(`https://aemt.me/prompt/gpt?prompt=${prompt}&text=${content}`)
     const resultado_Api = await resultadoApi.json()
@@ -137,7 +137,7 @@ async function gpt(content, senderName = 'null', prompt, lenguaje = 'es') {
     return result;    
   } catch (error) {    
     return { status: false, error: error.message };
-  }}}}}}
+  }}}}}
 }
 
 module.exports = { chatgpt, gpt };
