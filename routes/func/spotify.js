@@ -213,7 +213,7 @@ const spotify = new Spotify.default(credentials);*/
 //const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${linkDL}`);
 
 /*
-      const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
+      const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=${global.lolkeysapi}&query=${text}`);
       const jsonDL = await resDL.json();
       const linkDL = jsonDL.result[0].link;
       const spty = await spotifydl(linkDL);
