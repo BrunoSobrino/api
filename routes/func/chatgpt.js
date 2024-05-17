@@ -15,7 +15,7 @@ async function chatgpt(text, lenguaje = 'es') {
   };
   const apiEndpoints = [
     {
-      url: `https://api.lolhuman.xyz/api/openai?apikey=GataDios&text=${text}&user=apirest`,
+      url: `https://api.lolhuman.xyz/api/openai?apikey=${global.lolkeysapi}&text=${text}&user=apirest`,
       processResponse: async (data) => {
         if (data?.result != 'error' && data?.result != '' && data?.result != undefined && data?.result) {
           const translatedResult = await translate(data.result, { to: lenguaje, autoCorrect: true });
@@ -122,7 +122,7 @@ async function gpt(content, senderName = 'null', prompt, lenguaje = 'es') {
     return result;    
   } catch {  
   try {
-    let resultadoApi4 = await fetch(`https://api.lolhuman.xyz/api/openai?apikey=GataDios&text=${content}&user=apirest`)
+    let resultadoApi4 = await fetch(`https://api.lolhuman.xyz/api/openai?apikey=${global.lolkeysapi}&text=${content}&user=apirest`)
     const resultado_Api4 = await resultadoApi4.json()
     if (resultado_Api4?.result != 'error' && resultado_Api4?.result != '' && resultado_Api4?.result != undefined && resultado_Api4?.result) {
     const translatedResult2 = await translate(resultado_Api4.result, { to: lenguaje, autoCorrect: true });
