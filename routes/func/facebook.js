@@ -38,7 +38,7 @@ const facebookdlfunc = async (url) => {
       };
     } catch (error2) {
       try {
-        const Rres = await fetch(`https://api.lolhuman.xyz/api/facebook?apikey=GataDios&url=${url}`);
+        const Rres = await fetch(`https://api.lolhuman.xyz/api/facebook?apikey=${global.lolkeysapi}&url=${url}`);
         const Jjson = await Rres.json();
         let VIDEO = Jjson.result[0];
         if (VIDEO == '' || !VIDEO || VIDEO == null) VIDEO = Jjson.result[1];
