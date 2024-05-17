@@ -107,6 +107,8 @@ app.use(function(req, res, next) {
     res.sendFile(filePath);
 });
 
+global.lolkeysapi = 'Gata_Dios';
+
 // Funciones automáticas 
 const clearTmpFiles = () => {
   const tmpDir = './tmp';
