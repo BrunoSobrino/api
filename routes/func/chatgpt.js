@@ -104,15 +104,16 @@ async function gpt(content, senderName = 'null', prompt, lenguaje = 'es') {
     result.resultado = ress.data
   } catch {*/
   try {
-    let resultadoApi = await fetch(`https://aemt.me/prompt/gpt?prompt=${prompt}&text=${content}`)
-    const resultado_Api = await resultadoApi.json()
-    result.resultado = resultado_Api.result
-    return result;
-  } catch { 
-  try {
     let resultadoApi3 = await fetch(`https://delirios-api-delta.vercel.app/ia/gptprompt?text=${content}&prompt=${prompt}`)
     const resultado_Api3 = await resultadoApi3.json()
     result.resultado = resultado_Api3.gpt
+    return result;    
+  } catch { 
+  try {
+    let resultadoApi = await fetch(`https://aemt.me/prompt/gpt?prompt=${prompt}&text=${content}`)
+    const resultado_Api = await resultadoApi.json()
+    if (resultado_Api.resultado.includes("error")) resultado_Api = XD;
+    result.resultado = resultado_Api.result
     return result;
   } catch {
   try {
