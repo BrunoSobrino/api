@@ -71,9 +71,9 @@ async function getMusicBuffer(text) {
       await NodeID3.write(tags, filePath);
       return filePath;
     } else {
-      const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
+      const resDL = await fetch(`https://controlled-gae-deliriusapi.koyeb.app/api/spotify?q=${text}`);
       const jsonDL = await resDL.json();
-      const linkDL = jsonDL.result[0].link;
+      const linkDL = jsonDL.data[0].url;
       const dlspoty = await downloadTrack(linkDL);
       const dataInfo = await SpottyDL.getTrack(linkDL)      
       const getRandom = (ext) => {
@@ -128,16 +128,13 @@ async function getMusicBuffer(text) {
   }
 }
 
-
-
-
 async function spotifySearch1(input) {
   try {
     let linkDL = input;
     if (!input.match(/^(https:\/\/open\.spotify\.com\/track\/[a-zA-Z0-9]+)/i)) {
-      const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${input}`);
+      const resDL = await fetch(`https://controlled-gae-deliriusapi.koyeb.app/api/spotify?q=${input}`);
       const jsonDL = await resDL.json();
-      linkDL = jsonDL.result[0].link;
+      linkDL = jsonDL.data[0].url;
     }
     const dataInfo = await SpottyDL.getTrack(linkDL)      
     const dlspoty = await downloadTrack(linkDL);
@@ -161,9 +158,9 @@ async function spotifySearch1(input) {
 
 async function spotifySearch2(text) {
   try {
-    const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
+    const resDL = await fetch(`https://controlled-gae-deliriusapi.koyeb.app/api/spotify?q=${text}`);
     const jsonDL = await resDL.json();
-    return { resultado: jsonDL.result };
+    return { resultado: jsonDL.data };
   } catch (error) {
     console.error(error);
     throw 'Error en la búsqueda de Spotify.';
@@ -171,6 +168,7 @@ async function spotifySearch2(text) {
 }
 
 async function spotifyDownload(input) {
+    input = String(input); 
     const isSpotifyUrl = input.match(/^(https:\/\/open\.spotify\.com\/(album)\/[a-zA-Z0-9]+)/i);
     if (!isSpotifyUrl) return { status: false, message: 'El link ingresado no es de algun album de spotify.' };
    try {
@@ -215,7 +213,7 @@ const spotify = new Spotify.default(credentials);*/
 //const dlspoty = await getBuffer(`https://www.guruapi.tech/api/spotifydl?text=${linkDL}`);
 
 /*
-      const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=GataDios&query=${text}`);
+      const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=${global.lolkeysapi}&query=${text}`);
       const jsonDL = await resDL.json();
       const linkDL = jsonDL.result[0].link;
       const spty = await spotifydl(linkDL);
