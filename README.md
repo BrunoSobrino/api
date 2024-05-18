@@ -6,8 +6,8 @@
 
 ## —◉ APIs online:
 - API: [https://api.cafirexos.com](https://api.cafirexos.com)
-- API Canvas: [https://api-for-canvas-brunosobrino.koyeb.app](https://api-for-canvas-brunosobrino.koyeb.app)
-- API Test: [http://gru-np1.cafirexos.net:2027](http://gru-np1.cafirexos.net:2027)
+- API Canvas: [api-brunosobrino-dcaf9040.koyeb.app](https://api-brunosobrino-dcaf9040.koyeb.app)
+- API Render: [http://api-brunosobrino.onrender.com](http://api-brunosobrino.onrender.com)
 
 ## —◉ Funciones extras:
 - YT: [https://api.cafirexos.com/human/youtube](https://api.cafirexos.com/human/youtube)
