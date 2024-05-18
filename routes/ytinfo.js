@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
-const YT = require('../func/YT_mp3_mp4');
+const YT = require('./func/YT_mp3_mp4');
 
 router.get('/', async (req, res) => {
   const match_url = req.query.url;
