@@ -14,62 +14,8 @@ async function chatgpt(text, lenguaje = 'es') {
     resultado: "",
   };
   const apiEndpoints = [
-/*    {
-      url: `https://api-fgmods.ddns.net/api/info/openai2?text=${text}&apikey=XlwAnX8d`,
-      processResponse: async (data) => {
-        if (data?.result != 'error' && data?.result != '' && data?.result != undefined && data?.result) {
-          const translatedResult = await translate(data.result, { to: lenguaje, autoCorrect: true });
-          result.resultado = translatedResult.text.trim();
-        }
-      },
-    },
     {
-      url: `https://vihangayt.me/tools/chatgpt?q=${text}`,
-      processResponse: async (data) => {
-        if (data?.data != 'error' && data?.data != '' && data?.data != undefined && data?.data) {
-          let parsedData = '';
-          try {
-            parsedData = unescape(data.data);
-          } catch {
-            parsedData = data.data;
-          }
-          const translatedResult = await translate(parsedData.replace(/\\[uU]([0-9A-Fa-f]{4})/g, (match, grp) => String.fromCharCode(parseInt(grp, 16))), { to: lenguaje, autoCorrect: true });
-          result.resultado = translatedResult.text.trim();
-        }
-      },
-    },
-    {
-      url: `https://vihangayt.me/tools/chatgpt2?q=${text}`,
-      processResponse: async (data) => {
-        if (data?.data != 'error' && data?.data != '' && data?.data != undefined && data?.data) {
-          let parsedData = '';
-          try {
-            parsedData = unescape(data.data);
-          } catch {
-            parsedData = data.data;
-          }
-          const translatedResult = await translate(parsedData.replace(/\\[uU]([0-9A-Fa-f]{4})/g, (match, grp) => String.fromCharCode(parseInt(grp, 16))), { to: lenguaje, autoCorrect: true });
-          result.resultado = translatedResult.text.trim();
-        }
-      },
-    },
-    {
-      url: `https://vihangayt.me/tools/chatgpt3?q=${text}`,
-      processResponse: async (data) => {
-        if (data?.data != 'error' && data?.data != '' && data?.data != undefined && data?.data) {
-          let parsedData = '';
-          try {
-            parsedData = unescape(data.data);
-          } catch {
-            parsedData = data.data;
-          }
-          const translatedResult = await translate(parsedData.replace(/\\[uU]([0-9A-Fa-f]{4})/g, (match, grp) => String.fromCharCode(parseInt(grp, 16))), { to: lenguaje, autoCorrect: true });
-          result.resultado = translatedResult.text.trim();
-        }
-      },
-    },*/
-    {
-      url: `https://api.lolhuman.xyz/api/openai?apikey=GataDios&text=${text}&user=apirest`,
+      url: `https://api.lolhuman.xyz/api/openai?apikey=${global.lolkeysapi}&text=${text}&user=apirest`,
       processResponse: async (data) => {
         if (data?.result != 'error' && data?.result != '' && data?.result != undefined && data?.result) {
           const translatedResult = await translate(data.result, { to: lenguaje, autoCorrect: true });
@@ -117,7 +63,7 @@ for (const apiEndpoint of apiEndpoints) {
   return result;
 }
 
-async function gpt(content, senderName, prompt) {
+async function gpt(content, senderName = 'null', prompt, lenguaje = 'es') {
   if (!content) {
     return {
       status: false,
@@ -128,7 +74,6 @@ async function gpt(content, senderName, prompt) {
     status: true,
     resultado: "",
   };
-  
   /*let url = 'https://c3.a0.chat/v1/chat/gpt/';
   let headers = {
     'Content-Type': 'application/json',
@@ -159,19 +104,41 @@ async function gpt(content, senderName, prompt) {
     result.resultado = ress.data
   } catch {*/
   try {
+    let resultadoApi3 = await fetch(`https://delirios-api-delta.vercel.app/ia/gptprompt?text=${content}&prompt=${prompt}`)
+    const resultado_Api3 = await resultadoApi3.json()
+    result.resultado = resultado_Api3.gpt
+    return result;    
+  } catch { 
+  try {
     let resultadoApi = await fetch(`https://aemt.me/prompt/gpt?prompt=${prompt}&text=${content}`)
     const resultado_Api = await resultadoApi.json()
+    if (resultado_Api.resultado.includes("error")) resultado_Api = XD;
     result.resultado = resultado_Api.result
     return result;
-  } catch { 
+  } catch {
+  try {
+    let resultadoApi5 = await fetch(`https://delirios-api-delta.vercel.app/ia/gptweb?text=${content}`)
+    const resultado_Api5 = await resultadoApi5.json()
+    result.resultado = resultado_Api5.gpt
+    return result;    
+  } catch {  
+  try {
+    let resultadoApi4 = await fetch(`https://api.lolhuman.xyz/api/openai?apikey=${global.lolkeysapi}&text=${content}&user=apirest`)
+    const resultado_Api4 = await resultadoApi4.json()
+    if (resultado_Api4?.result != 'error' && resultado_Api4?.result != '' && resultado_Api4?.result != undefined && resultado_Api4?.result) {
+    const translatedResult2 = await translate(resultado_Api4.result, { to: lenguaje, autoCorrect: true });
+    result.resultado = translatedResult.text.trim();
+    }
+    return result;    
+  } catch {    
   try {
     let resultadoApi2 = await fetch(`https://ultimetron.guruapi.tech/gpt4?prompt=${content}`)
     const resultado_Api2 = await resultadoApi2.json()
     result.resultado = resultado_Api2.result.reply
-    return result;
-  } catch (error) {
+    return result;    
+  } catch (error) {    
     return { status: false, error: error.message };
-  }}
+  }}}}}
 }
 
 module.exports = { chatgpt, gpt };
