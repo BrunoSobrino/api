@@ -9,7 +9,7 @@
 * Nota: Solo disponible para usar desde el Bot hospedado en [cafirexos](https://dash.cafirexos.com)
 - Onrender: [api-brunosobrino.onrender.com](https://api-brunosobrino.onrender.com/docs)
 * Nota: API Actualizada 100% y compartible con canvas, apikey: BrunoSobrino
-- Compatible con Canvas: [api-for-canvas-brunosobrino.koyeb.app](https://api-for-canvas-brunosobrino.koyeb.app)
+- Compatible con Canvas: [api-brunosobrino-dcaf9040.koyeb.app](https://api-brunosobrino-dcaf9040.koyeb.app)
 * Nota: Casi todas las demas funciones trabajan con normalidad, API no actualizada.
 
 ## —◉ Funciones extras:
