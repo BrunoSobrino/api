@@ -93,7 +93,7 @@ try {
     };   
 } catch {
 try {
-     const human = await fetch(`https://api.lolhuman.xyz/api/instagram?apikey=GataDios&url=${url}`);
+     const human = await fetch(`https://api.lolhuman.xyz/api/instagram?apikey=${global.lolkeysapi}&url=${url}`);
      const json = await human.json();
      const videoig = json.result;
     if (!videoig || videoig.length === 0) return XD; //Error undefined
