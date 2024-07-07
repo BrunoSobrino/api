@@ -45,7 +45,7 @@ const getUptime = () => {
   return `${hours}h ${minutes}m ${seconds}s`;
 };
 
-global.lolkeysapi = 'Gata_Dios';
+global.lolkeysapi = 'GataDiosV2';
 
 // Subpaginas y usos
 
