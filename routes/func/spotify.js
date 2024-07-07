@@ -71,11 +71,18 @@ async function getMusicBuffer(text) {
       await NodeID3.write(tags, filePath);
       return filePath;
     } else {
+     let linkDLLL;
+     try {  
       const resDL = await fetch(`https://controlled-gae-deliriusapi.koyeb.app/api/spotify?q=${text}`);
       const jsonDL = await resDL.json();
-      const linkDL = jsonDL.data[0].url;
-      const dlspoty = await downloadTrack(linkDL);
-      const dataInfo = await SpottyDL.getTrack(linkDL)      
+      linkDLLL = jsonDL.data[0].url;
+     } catch {
+      const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=${global.lolkeysapi}&query=${text}`);
+      const jsonDL = await resDL.json();
+      linkDLLL = jsonDL.result[0].link;    
+      }     
+      const dlspoty = await downloadTrack(linkDLLL);
+      const dataInfo = await SpottyDL.getTrack(linkDLLL)      
       const getRandom = (ext) => {
         return `${Math.floor(Math.random() * 10000)}${ext}`;
       };
@@ -132,9 +139,15 @@ async function spotifySearch1(input) {
   try {
     let linkDL = input;
     if (!input.match(/^(https:\/\/open\.spotify\.com\/track\/[a-zA-Z0-9]+)/i)) {
+     try {  
       const resDL = await fetch(`https://controlled-gae-deliriusapi.koyeb.app/api/spotify?q=${input}`);
       const jsonDL = await resDL.json();
       linkDL = jsonDL.data[0].url;
+     } catch {
+      const resDL = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=${global.lolkeysapi}&query=${input}`);
+      const jsonDL = await resDL.json();
+      linkDL = jsonDL.result[0].link;    
+      }    
     }
     const dataInfo = await SpottyDL.getTrack(linkDL)      
     const dlspoty = await downloadTrack(linkDL);
@@ -161,10 +174,16 @@ async function spotifySearch2(text) {
     const resDL = await fetch(`https://controlled-gae-deliriusapi.koyeb.app/api/spotify?q=${text}`);
     const jsonDL = await resDL.json();
     return { resultado: jsonDL.data };
+  } catch {
+  try {   
+    const resDLl = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=${global.lolkeysapi}&query=${text}`);
+    const jsonDLl = await resDLl.json();    
+    return { resultado: jsonDLl.data };
   } catch (error) {
     console.error(error);
     throw 'Error en la búsqueda de Spotify.';
   }
+ }
 }
 
 async function spotifyDownload(input) {
