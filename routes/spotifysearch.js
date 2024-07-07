@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { spotifySearch2 } = require('./func/spotify');
+const path = require('path');
 
 router.get('/', async (req, res) => {
   const textoo = req.query.text;
