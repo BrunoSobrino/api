@@ -178,7 +178,7 @@ async function spotifySearch2(text) {
   try {   
     const resDLl = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=${global.lolkeysapi}&query=${text}`);
     const jsonDLl = await resDLl.json();    
-    return { resultado: jsonDLl.data };
+    return { resultado: jsonDLl.result };
   } catch (error) {
     console.error(error);
     throw 'Error en la búsqueda de Spotify.';
