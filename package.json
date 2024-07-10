@@ -26,7 +26,7 @@
   "homepage": "https://github.com/BrunoSobrino/api#readme",
   "dependencies": {
     "@bochilteam/scraper": "^4.2.4",
-    "ruhend/scraper": "*",
+    "ruhend-scraper": "*",
     "@sasmeee/igdl": "*",
     "@tobyg74/tiktok-api-dl": "*",
     "@vitalets/google-translate-api": "^8.0.0",
