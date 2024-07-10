@@ -1,4 +1,4 @@
-const { ytmp3v2, ytmp4 } = require('ruhend/scraper');
+const { ytmp3v2, ytmp4 } = require('ruhend-scraper');
 
 async function obtenerInformacionYoutube(url) {
     try {
