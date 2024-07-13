@@ -4,8 +4,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const chalk = require('chalk');
-const port = 2035;
-const port2 = 10000;
+const PORT = parseInt(process.env.PORT || 2035);
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
@@ -150,13 +149,13 @@ async function checkRepoUpdates() {
 setInterval(checkRepoUpdates, 300000); //300000
 
 // Log incial 
-app.listen(port, function() {
+app.listen(PORT, function() {
     const line = chalk.yellow('==========================================');
-    const serverUrl = 'http://localhost:' + port;
+    const serverUrl = 'http://localhost:' + PORT;
     const serverMessage = chalk.green.bold('| Server activo: ') + chalk.blue.bold(serverUrl);
     const creatorMessage = chalk.magenta.bold('| Creador: BrunoSobrino');
     const numberMessage = chalk.magenta.bold('| Numero: +52 1 999 612 5657');
-    const apiMessage = chalk.red.bold('|          "Api Rest Free"');
+    const apiMessage = chalk.red.bold('|          "Free Api Rest"');
     console.log(chalk.yellow(line));
     console.log(apiMessage);
     console.log(chalk.yellow(line));
@@ -166,4 +165,3 @@ app.listen(port, function() {
     console.log(numberMessage);
     console.log(chalk.yellow(line));
 });
-app.listen(port2, function() {});
