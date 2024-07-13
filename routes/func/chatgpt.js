@@ -104,7 +104,7 @@ async function gpt(content, senderName = 'null', prompt, lenguaje = 'es') {
     result.resultado = ress.data
   } catch {*/
   try {
-    let resultadoApi3 = await fetch(`https://delirios-api-delta.vercel.app/ia/gptprompt?text=${content}&prompt=${prompt}`)
+    let resultadoApi3 = await fetch(`https://deliriusapi-official.vercel.app/ia/gptprompt?text=${content}&prompt=${prompt}`)
     const resultado_Api3 = await resultadoApi3.json()
     result.resultado = resultado_Api3.gpt
     return result;    
@@ -117,7 +117,7 @@ async function gpt(content, senderName = 'null', prompt, lenguaje = 'es') {
     return result;
   } catch {
   try {
-    let resultadoApi5 = await fetch(`https://delirios-api-delta.vercel.app/ia/gptweb?text=${content}`)
+    let resultadoApi5 = await fetch(`https://deliriusapi-official.vercel.app/ia/gptweb?text=${content}`)
     const resultado_Api5 = await resultadoApi5.json()
     result.resultado = resultado_Api5.gpt
     return result;    
