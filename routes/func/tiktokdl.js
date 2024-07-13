@@ -15,23 +15,30 @@ const getTikTokBuffer = async (url) => {
   }
 
   try {
+    const dataFF = await tiktokDownloader(url);
+    const sexx = dataFF?.resultado?.videoUrl  
+    if (!sexx || sexx == null || sexx == '' || sexx == undefined) return XD;  
+    const videoBuffer = await getBuffer(sexx);
+    return videoBuffer;
+  } catch {    
+  try {
     const dataF = await tiktok.v1(url);
     if (!dataF?.play || dataF?.play == null || dataF?.play == '' || dataF?.play == undefined) return XD;  
     const videoBuffer = await getBuffer(dataF.play);
     return videoBuffer;
-  } catch (e1) {
+  } catch {
     try {
       const tTiktok = await tiktokdlF(url);
       if (!tTiktok?.video || tTiktok?.video == null || tTiktok?.video == '' || tTiktok?.video == undefined) return XD;
       const videoBuffer = await getBuffer(tTiktok.video);
       return videoBuffer;
-    } catch (e2) {
+    } catch {
       try {
         const p = await fg.tiktok(url);
         if (!p?.nowm || p?.nowm == null || p?.nowm == '' || p?.nowm == undefined) return XD;  
         const videoBuffer = await getBuffer(p.nowm);
         return videoBuffer;
-      } catch (e3) {
+      } catch {
         try {
           const { video } = await tiktokdl(url);
           const videoUrl = video.no_watermark2 || video.no_watermark || 'https://tikcdn.net' + video.no_watermark_raw || video.no_watermark_hd;
@@ -47,7 +54,7 @@ const getTikTokBuffer = async (url) => {
       }
     }
   }
-}
+}}
 
 async function tiktokdlF(url) {
   if (!/tiktok/.test(url)) return 'Enlace incorrecto';
