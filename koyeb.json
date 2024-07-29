@@ -38,18 +38,22 @@
   "health_checks": [],
   "skip_cache": false,
   "git": {
-    "repository": "github.com/BrunoSobrino/api",
+    "repository": "https://github.com/BrunoSobrino/api",
     "branch": "koyeb",
     "tag": "",
     "sha": "",
-    "build_command": "",
-    "run_command": "",
+    "build_command": "npm install",
+    "run_command": "npm start",
     "no_deploy_on_push": false,
     "workdir": "",
     "buildpack": {
-      "build_command": "",
-      "run_command": "",
+      "build_command": "npm install",
+      "run_command": "npm start",
       "privileged": false
     }
+  },
+  "domain": {
+    "name": "api-brunosobrino.koyeb.app",
+    "custom_domain": true
   }
 }
