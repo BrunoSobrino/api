@@ -60,7 +60,7 @@
     "spotifydl-x": "github:darlyn1234/SpotidyModule",
     "spottydl": "*",
     "yt-search": "^2.10.3",
-    "ytdl-core": "github:soya-daizu/ytdl-core#sig-patch"
+    "ytdl-core": "github:khlevon/node-ytdl-core#v4.11.4-patch.2"
   },
   "optionalDependencies": {
     "@clayzaaubert/canvix": "*",
