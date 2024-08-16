@@ -23,18 +23,15 @@ router.get('/', async (req, res) => {
     
     try {
       const result = await ytmp33(match_url);
-      if (result.status) {
+      const audio11 = await getBuffer(result.resultados.descargar);
         const fileName = `audio_${Date.now()}.mp3`;
         let fileIndex = 1;
         while (fs.existsSync(`./tmp/${fileName}`)) {
           fileName = `audio_${Date.now()}_${fileIndex}.mp3`;
           fileIndex++;
         }
-        fs.writeFileSync(`./tmp/${fileName}`, Buffer.from(result.resultados.descargar));
+        fs.writeFileSync(`./tmp/${fileName}`, Buffer.from(audio11));
         res.sendFile(fileName, { root: './tmp', headers: { 'Content-Type': 'audio/mpeg' } });
-      } else {
-        throw new Error(result.error);
-      }
     } catch (error) {
       try {
         const audioBuffer = await YT.mp3(match_url);
