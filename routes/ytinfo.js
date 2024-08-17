@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.send(formattedResults);    
   } catch (error) {
-    res.sendFile(path.join(__dirname, '../../public/500.html'));
+    res.sendFile(path.join(__dirname, '../public/500.html'));
   }
 });
 
