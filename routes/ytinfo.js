@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
-const YT = require('./func/YT_mp3_mp4');
+const { ytplay } = require('./func/ytplay');
 
 router.get('/', async (req, res) => {
   const match_url = req.query.url;
@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
       res.send(formattedResults_e);
       return;
     }        
-    const infoaud = await YT.ytinfo2(match_url);
+    const infoaud = await ytplay(match_url);
     const formattedResults = JSON.stringify(infoaud, null, 2);
     res.setHeader('Content-Type', 'application/json');
     res.send(formattedResults);    
