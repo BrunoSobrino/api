@@ -17,7 +17,7 @@ const facebookdlfunc = async (url) => {
   }
   try {
     const fbdlResult = await fbdl(url);
-    if (fbdlResult.result.hd || fbdlResult.result.sd) {
+    if (fbdlResult?.result?.hd || fbdlResult?.result?.sd) {
       return {
         status: true,
         resultado: {
@@ -25,7 +25,7 @@ const facebookdlfunc = async (url) => {
           data: fbdlResult.result.hd || fbdlResult.result.sd
         }
       };
-    }
+    } else { throw XD }
   } catch (error) {
   try {
     const fbdlResult = await facebookVideo(url);
