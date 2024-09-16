@@ -57,7 +57,7 @@
     "readline": "^1.3.0",
     "sanzy-spotifydl": "*",
     "serve-favicon": "*",
-    "spotifydl-x": "github:darlyn1234/SpotidyModule",
+    "spotifydl-x": "*",
     "spottydl": "*",
     "yt-search": "^2.10.3",
     "ytdl-core": "github:khlevon/node-ytdl-core#v4.11.4-patch.2"
